@@ -126,6 +126,16 @@
             border-radius: 0.75rem;
             text-align: center;
         }
+        #productDetailsContent::-webkit-scrollbar {
+  width: 8px;
+}
+#productDetailsContent::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+#productDetailsContent::-webkit-scrollbar-track {
+  background: transparent;
+}
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
@@ -287,7 +297,7 @@
                 </div>
 
                 <!-- Product Details Container -->
-                <div id="productDetailsContent">
+                <div id="productDetailsContent" class="max-h-[80vh] overflow-y-auto pr-4 space-y-6">
                     <p class="text-center text-gray-400 py-10">Vui lòng chọn một danh mục sản phẩm để xem chi tiết hoặc nhập từ khóa để tìm kiếm.</p>
                 </div>
             </div>
@@ -334,8 +344,8 @@
 
     <!-- Nút xem tất cả -->
     <div class="text-center mt-12">
-      <a href="giai-phap.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition">
-        Xem Tất Cả Giải Pháp
+      <a href="du-an.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition">
+        Xem Dự Án Tiêu Biểu
       </a>
     </div>
   </div>
