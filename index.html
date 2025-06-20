@@ -768,7 +768,7 @@ function createProductCardHtml(product) {
                                         return data.labels.map((label, i) => {
                                             const value = data.datasets[0].data[i];
                                             const percentage = total > 0 ? ((value / total) * 100).toFixed(1) + '%' : '0%';
-                                            return { text: `${label}: ${value} (${percentage})`, fillStyle: data.datasets[0].backgroundColor[i], hidden: isNaN(data.datasets[0].data[i]), index: i };
+                                            return { text: `${label}: ${value} (${percentage})`, fontColor: '#FFFFFF', fillStyle: data.datasets[0].backgroundColor[i], hidden: isNaN(data.datasets[0].data[i]), index: i };
                                         });
                                     }
                                     return [];
@@ -1077,30 +1077,43 @@ populateCategories();
 // =====================================================================
     });
     </script>
-<div id="calculatorModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+<div id="calculatorModal" class="fixed inset-0 z-50 flex items-start justify-center p-4 pt-10 md:pt-16 hidden">
     
     <div id="modalOverlay" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
 
-    <div class="relative w-full max-w-4xl mx-auto bg-gray-800 rounded-2xl shadow-2xl transform transition-all duration-300 ease-in-out scale-95">
+    <div class="relative w-full max-w-4xl mx-auto bg-gray-800 rounded-2xl shadow-2xl transform transition-all duration-300 ease-in-out scale-95 flex flex-col max-h-[90vh]">
         
-        <button id="closeCalculatorBtn" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10">
-            <i class="fas fa-times"></i>
-        </button>
-
-        <div class="p-6 md:p-8">
-            <div class="text-center mb-8">
-                <h1 class="text-2xl md:text-3xl font-bold text-white">
-                    <i class="fas fa-calculator mr-2 text-blue-400"></i>
-                    Công Cụ Tư Vấn Đèn MAXBEN
-                </h1>
-                <p class="text-gray-400 mt-2">Chọn không gian và sản phẩm để có giải pháp chiếu sáng tối ưu.</p>
-            </div>
-
+        <div class="flex-shrink-0 p-4 md:p-6 flex items-center justify-between border-b border-gray-700">
+            <h1 class="text-xl font-bold text-white">
+                <i class="fas fa-calculator mr-2 text-blue-400"></i>
+                Công Cụ Tư Vấn Đèn
+            </h1>
+            <button id="closeCalculatorBtn" class="text-gray-400 hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="p-4 md:p-6 overflow-y-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
+
+                <div class="bg-gray-900/50 rounded-lg p-6 flex flex-col items-center justify-center text-center lg:order-last">
+                    <h2 class="text-lg font-semibold text-gray-300 mb-4">GIẢI PHÁP ĐỀ XUẤT</h2>
+                    <div id="result" class="space-y-6 w-full">
+                        <div class="bg-blue-500/10 p-4 rounded-lg">
+                            <p class="text-sm text-blue-300">Số lượng đèn cần dùng</p>
+                            <p id="lampCount" class="text-4xl font-bold text-white">-</p>
+                        </div>
+                        <div class="bg-green-500/10 p-4 rounded-lg">
+                            <p class="text-sm text-green-300">Mật độ công suất (W/m²)</p>
+                            <p id="powerDensity" class="text-4xl font-bold text-white">-</p>
+                        </div>
+                    </div>
+                    <div id="errorMessage" class="text-red-400 mt-4 font-medium h-5"></div>
+                </div>
+
                 <div class="space-y-5">
                     <div>
-                        <label class="block text-sm font-medium mb-2">1. Thông số không gian</label>
+                        <label class="block text-sm font-medium mb-2 text-gray-300">1. Thông số không gian</label>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
                             <div>
                                 <label for="length" class="text-xs text-gray-400">Dài (m)</label>
@@ -1125,14 +1138,12 @@ populateCategories();
                             <option value="100">Hành lang, Kho, Phòng nghỉ</option>
                         </select>
                     </div>
-
                     <div>
-                        <label for="illuminance" class="block text-sm font-medium mb-2">2. Độ rọi yêu cầu (Lux)</label>
+                        <label for="illuminance" class="block text-sm font-medium mb-2 text-gray-300">2. Độ rọi yêu cầu (Lux)</label>
                         <input type="number" id="illuminance" placeholder="Ví dụ: 500" class="w-full rounded-md p-2 form-input" value="300">
                     </div>
-                    
                     <div>
-                        <label class="block text-sm font-medium mb-2">3. Chọn sản phẩm MAXBEN</label>
+                        <label class="block text-sm font-medium mb-2 text-gray-300">3. Chọn sản phẩm MAXBEN</label>
                         <div class="space-y-3">
                             <select id="productCategory" class="w-full rounded-md p-2.5 form-select">
                                 <option value="">-- Chọn danh mục --</option>
@@ -1145,26 +1156,11 @@ populateCategories();
                             </select>
                         </div>
                     </div>
-
                     <button id="calculateBtn" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105">
                         <i class="fas fa-cogs mr-2"></i>TÍNH TOÁN
                     </button>
                 </div>
 
-                <div class="bg-gray-900/50 rounded-lg p-6 flex flex-col items-center justify-center text-center">
-                    <h2 class="text-lg font-semibold text-gray-300 mb-4">GIẢI PHÁP ĐỀ XUẤT</h2>
-                    <div id="result" class="space-y-6 w-full">
-                        <div class="bg-blue-500/10 p-4 rounded-lg">
-                            <p class="text-sm text-blue-300">Số lượng đèn cần dùng</p>
-                            <p id="lampCount" class="text-4xl font-bold text-white">-</p>
-                        </div>
-                        <div class="bg-green-500/10 p-4 rounded-lg">
-                            <p class="text-sm text-green-300">Mật độ công suất (W/m²)</p>
-                            <p id="powerDensity" class="text-4xl font-bold text-white">-</p>
-                        </div>
-                    </div>
-                    <div id="errorMessage" class="text-red-400 mt-4 font-medium"></div>
-                </div>
             </div>
         </div>
     </div>
