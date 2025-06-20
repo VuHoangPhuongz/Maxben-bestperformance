@@ -17,9 +17,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
     <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
     <style>
         body {
@@ -214,29 +216,70 @@
 
     <main>
         <!-- HERO SECTION -->
-             <section class="h-[70vh] md:h-[90vh] flex items-center justify-center text-center relative bg-no-repeat bg-center" style="background-image: url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); background-size: cover; background-attachment: fixed;">
-            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative z-10 p-4">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 text-white drop-shadow-lg">
-                    Ánh Sáng <span class="gradient-text">Kiến Tạo</span> Không Gian Sống
-                </h1>
-                <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 drop-shadow-md">
-                    MAXBEN mang đến các sản phẩm chiếu sáng LED cao cấp với chỉ số hoàn màu CRI > 98,
-                    tái tạo màu sắc chân thực và bảo vệ thị lực tối ưu cho mọi không gian.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#catalog" class="cta-button bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg">
-                        Khám Phá Sản Phẩm
-                    </a>
-                    <a href="tu-van-du-an.html" class="cta-button bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-8 rounded-lg shadow-lg">
-                        Tư Vấn Dự Án
-                    </a>
-                       <a href="#" id="openCalculatorBtn" class="cta-button bg-green-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg">
-                <i class="fas fa-calculator mr-2"></i> Công Cụ Tính Đèn
-            </a>
+             <section id="hero-slider" class="relative h-[70vh] md:h-[90vh] text-white">
+    <div class="swiper h-full">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="relative z-10 flex items-center justify-center h-full text-center p-4">
+                    <div>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                            Ánh Sáng <span class="gradient-text">Kiến Tạo</span> Không Gian Sống
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 drop-shadow-md">
+                            MAXBEN mang đến các sản phẩm LED cao cấp với chỉ số hoàn màu CRI > 98,
+                            tái tạo màu sắc chân thực và bảo vệ thị lực.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="#catalog" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Khám Phá Sản Phẩm</a>
+                            <a href="#" id="openCalculatorBtn" class="cta-button bg-green-600 font-semibold py-3 px-8 rounded-lg shadow-lg"><i class="fas fa-calculator mr-2"></i> Công Cụ Tính Đèn</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+
+            <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="relative z-10 flex items-center justify-center h-full text-center p-4">
+                    <div>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                            Giải Pháp <span class="gradient-text">Chiếu Sáng</span> Chuyên Nghiệp
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 drop-shadow-md">
+                            Tư vấn và thiết kế cho biệt thự, showroom, văn phòng với các sản phẩm UGR < 19, an toàn cho mắt.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                             <a href="tu-van-du-an.html" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Tư Vấn Dự Án</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/6585756/pexels-photo-6585756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="relative z-10 flex items-center justify-center h-full text-center p-4">
+                    <div>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                            Đối Tác <span class="gradient-text">Tin Cậy</span> Của Mọi Công Trình
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 drop-shadow-md">
+                           Sản phẩm chất lượng cao, bảo hành 3-5 năm, chính sách đại lý hấp dẫn.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="cam-nang-kinh-doanh.html" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Dành Cho Đối Tác</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="swiper-button-prev text-white"></div>
+        <div class="swiper-button-next text-white"></div>
+
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
         <!-- WHY CHOOSE US SECTION -->
         <section class="py-20 bg-gray-800/50">
             <div class="container mx-auto px-4">
@@ -1126,5 +1169,31 @@ populateCategories();
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    // Tùy chọn cơ bản
+    loop: true, // Cho phép lặp lại vô tận
+    effect: 'fade', // Hiệu ứng chuyển slide (có thể là 'slide', 'fade', 'cube', 'coverflow', 'flip')
+    
+    // Tự động chạy
+    autoplay: {
+      delay: 5000, // Thời gian chờ 5 giây
+      disableOnInteraction: false, // Không dừng khi người dùng tương tác
+    },
+
+    // Dấu chấm phân trang
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true, // Cho phép click vào dấu chấm để chuyển slide
+    },
+
+    // Mũi tên điều hướng
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
 </body>
 </html>
