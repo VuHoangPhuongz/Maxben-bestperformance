@@ -111,10 +111,15 @@
     </div>
 
 <script>
+    // --- KHAI BÁO BIẾN TOÀN CỤC ---
     let chart;
-    let provinceData = {};
-    const provinceNameMap = { 'vn-hn': 'Hà Nội', 'vn-hc': 'TP. Hồ Chí Minh', 'vn-hp': 'Hải Phòng', 'vn-da': 'Đà Nẵng', 'vn-ct': 'Cần Thơ', 'vn-3655': 'An Giang', 'vn-br': 'Bà Rịa - Vũng Tàu', 'vn-bk': 'Bắc Kạn', 'vn-bg': 'Bắc Giang', 'vn-bl': 'Bạc Liêu', 'vn-bn': 'Bắc Ninh', 'vn-bt': 'Bến Tre', 'vn-bi': 'Bình Định', 'vn-bd': 'Bình Dương', 'vn-bp': 'Bình Phước', 'vn-bu': 'Bình Thuận', 'vn-cm': 'Cà Mau', 'vn-cb': 'Cao Bằng', 'vn-dl': 'Đắk Lắk', 'vn-do': 'Đắk Nông', 'vn-db': 'Điện Biên', 'vn-dn': 'Đồng Nai', 'vn-dt': 'Đồng Tháp', 'vn-gl': 'Gia Lai', 'vn-hg': 'Hà Giang', 'vn-hm': 'Hà Nam', 'vn-ht': 'Hà Tĩnh', 'vn-hd': 'Hải Dương', 'vn-711': 'Hậu Giang', 'vn-hb': 'Hòa Bình', 'vn-hy': 'Hưng Yên', 'vn-kh': 'Khánh Hòa', 'vn-kg': 'Kiên Giang', 'vn-kt': 'Kon Tum', 'vn-li': 'Lai Châu', 'vn-ld': 'Lâm Đồng', 'vn-ls': 'Lạng Sơn', 'vn-lc': 'Lào Cai', 'vn-la': 'Long An', 'vn-nd': 'Nam Định', 'vn-na': 'Nghệ An', 'vn-nb': 'Ninh Bình', 'vn-nt': 'Ninh Thuận', 'vn-pt': 'Phú Thọ', 'vn-py': 'Phú Yên', 'vn-qb': 'Quảng Bình', 'vn-qm': 'Quảng Nam', 'vn-qg': 'Quảng Ngãi', 'vn-qn': 'Quảng Ninh', 'vn-qt': 'Quảng Trị', 'vn-st': 'Sóc Trăng', 'vn-sl': 'Sơn La', 'vn-tn': 'Tây Ninh', 'vn-tb': 'Thái Bình', 'vn-ty': 'Thái Nguyên', 'vn-th': 'Thanh Hóa', 'vn-tt': 'Thừa Thiên Huế', 'vn-tg': 'Tiền Giang', 'vn-tv': 'Trà Vinh', 'vn-tq': 'Tuyên Quang', 'vn-vl': 'Vĩnh Long', 'vn-vp': 'Vĩnh Phúc', 'vn-yb': 'Yên Bái' };
-    const initialProvinceData = { 'vn-hn': { daiLy: ['Đại lý Thăng Long', 'Đại lý Đông Đô', 'Đại lý Cầu Giấy', 'Đại lý Hoàng Mai', 'Đại lý Long Biên', 'Đại lý Tây Hồ', 'Đại lý Hà Đông', 'Đại lý Nam Từ Liêm', 'Đại lý Ba Vì', 'Đại lý Đống Đa'], khachHang: ['Tập đoàn ABC', 'Công ty Xây dựng XYZ', 'Shop Điện máy Xanh'], spBanChay: ['Đèn LED Âm trần 12W', 'Đèn Panel 600x600', 'Đèn Tuýp LED T8'] }, 'vn-hc': { daiLy: ['Đại lý Sài Gòn', 'Đại lý Miền Nam'], khachHang: ['Công ty DEF', 'Khu Chế xuất Tân Thuận'], spBanChay: ['Đèn Đường LED 150W', 'Đèn Pha LED 100W'] }, 'vn-da': { daiLy: ['Đại lý Sông Hàn'], khachHang: ['Resort Furama', 'Cảng Tiên Sa'], spBanChay: ['Đèn Sân vườn', 'Đèn LED chống thấm'] } };
+    let provinceData = {}; // Biến này sẽ chứa toàn bộ dữ liệu (được load từ bộ nhớ hoặc file)
+
+    // Dữ liệu không đổi
+    const provinceNameMap = { 'vn-hn': 'Hà Nội', 'vn-hc': 'TP. Hồ Chí Minh', 'vn-hp': 'Hải Phòng', 'vn-da': 'Đà Nẵng', 'vn-ct': 'Cần Thơ', 'vn-ag': 'An Giang', 'vn-br': 'Bà Rịa - Vũng Tàu', 'vn-bk': 'Bắc Kạn', 'vn-bg': 'Bắc Giang', 'vn-bl': 'Bạc Liêu', 'vn-bn': 'Bắc Ninh', 'vn-bt': 'Bến Tre', 'vn-bi': 'Bình Định', 'vn-bd': 'Bình Dương', 'vn-bp': 'Bình Phước', 'vn-bu': 'Bình Thuận', 'vn-cm': 'Cà Mau', 'vn-cb': 'Cao Bằng', 'vn-dl': 'Đắk Lắk', 'vn-do': 'Đắk Nông', 'vn-db': 'Điện Biên', 'vn-dn': 'Đồng Nai', 'vn-dt': 'Đồng Tháp', 'vn-gl': 'Gia Lai', 'vn-hg': 'Hà Giang', 'vn-hm': 'Hà Nam', 'vn-ht': 'Hà Tĩnh', 'vn-hd': 'Hải Dương', 'vn-711': 'Hậu Giang', 'vn-hb': 'Hòa Bình', 'vn-hy': 'Hưng Yên', 'vn-kh': 'Khánh Hòa', 'vn-kg': 'Kiên Giang', 'vn-kt': 'Kon Tum', 'vn-li': 'Lai Châu', 'vn-ld': 'Lâm Đồng', 'vn-ls': 'Lạng Sơn', 'vn-lc': 'Lào Cai', 'vn-la': 'Long An', 'vn-nd': 'Nam Định', 'vn-na': 'Nghệ An', 'vn-nb': 'Ninh Bình', 'vn-nt': 'Ninh Thuận', 'vn-pt': 'Phú Thọ', 'vn-py': 'Phú Yên', 'vn-qb': 'Quảng Bình', 'vn-qm': 'Quảng Nam', 'vn-qg': 'Quảng Ngãi', 'vn-qn': 'Quảng Ninh', 'vn-qt': 'Quảng Trị', 'vn-st': 'Sóc Trăng', 'vn-sl': 'Sơn La', 'vn-tn': 'Tây Ninh', 'vn-tb': 'Thái Bình', 'vn-ty': 'Thái Nguyên', 'vn-th': 'Thanh Hóa', 'vn-tt': 'Thừa Thiên Huế', 'vn-tg': 'Tiền Giang', 'vn-tv': 'Trà Vinh', 'vn-tq': 'Tuyên Quang', 'vn-vl': 'Vĩnh Long', 'vn-vp': 'Vĩnh Phúc', 'vn-yb': 'Yên Bái' };
+    const initialProvinceData = { 'vn-hn': { daiLy: ['Đại lý Thăng Long'], khachHang: ['Tập đoàn ABC'], spBanChay: ['Đèn LED Âm trần 12W'] }, 'vn-hc': { daiLy: ['Đại lý Sài Gòn'], khachHang: ['Công ty DEF'], spBanChay: ['Đèn Đường LED 150W'] } };
+
+    // --- CÁC HÀM XỬ LÝ DỮ LIỆU VÀ GIAO DIỆN ---
 
     function showNotification(message, isError = false) {
         const notification = document.getElementById('notification');
@@ -124,20 +129,48 @@
         setTimeout(() => { notification.className = ''; }, 3000);
     }
 
-    function updateMap(newProvinceData) {
-        provinceData = newProvinceData;
-        const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
-            'hc-key': p.properties['hc-key'],
-            value: newProvinceData[p.properties['hc-key']] ? 100 : 10,
-            name: provinceNameMap[p.properties['hc-key']] || p.properties['name']
-        }));
-        if (chart) { chart.series[0].setData(seriesData, true); } 
-        document.getElementById('info-content').innerHTML = '<div class="h-full flex flex-col justify-center items-center text-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg><h3 class="text-lg font-semibold text-gray-700">Thông tin Chi tiết</h3><p class="text-sm text-gray-500 mt-1">Bấm vào một tỉnh trên bản đồ để xem dữ liệu.</p></div>';
-        showNotification('Dữ liệu đã được cập nhật thành công từ file Excel!');
+    function saveDataToLocalStorage(data) {
+        try {
+            localStorage.setItem('maxbenProvinceData', JSON.stringify(data));
+        } catch (error) {
+            console.error("Lỗi khi lưu dữ liệu vào LocalStorage:", error);
+            showNotification("Lỗi khi lưu dữ liệu.", true);
+        }
     }
 
-    function initializeMap(initialData) {
-        provinceData = initialData;
+    function loadDataFromLocalStorage() {
+        const savedData = localStorage.getItem('maxbenProvinceData');
+        if (savedData) {
+            try {
+                const parsedData = JSON.parse(savedData);
+                // Đảm bảo dữ liệu đọc ra là một object hợp lệ
+                if (typeof parsedData === 'object' && parsedData !== null) {
+                    return parsedData;
+                }
+            } catch (error) {
+                console.error("Lỗi khi đọc dữ liệu từ LocalStorage:", error);
+                // Nếu dữ liệu lỗi, trả về dữ liệu ban đầu
+                return initialProvinceData;
+            }
+        }
+        // Nếu không có dữ liệu nào được lưu, trả về dữ liệu ban đầu
+        return initialProvinceData;
+    }
+
+    function redrawMap() {
+        const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
+            'hc-key': p.properties['hc-key'],
+            value: provinceData[p.properties['hc-key']] ? 100 : 10,
+            name: provinceNameMap[p.properties['hc-key']] || p.properties['name']
+        }));
+
+        if (chart) {
+            chart.series[0].setData(seriesData, true);
+        }
+        document.getElementById('info-content').innerHTML = '<div class="h-full flex flex-col justify-center items-center text-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg><h3 class="text-lg font-semibold text-gray-700">Thông tin Chi tiết</h3><p class="text-sm text-gray-500 mt-1">Bấm vào một tỉnh trên bản đồ để xem dữ liệu.</p></div>';
+    }
+
+    function initializeMap() {
         const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
             'hc-key': p.properties['hc-key'],
             value: provinceData[p.properties['hc-key']] ? 100 : 10,
@@ -154,8 +187,9 @@
             tooltip: {
                 formatter: function () {
                     const info = provinceData[this.point['hc-key']];
-                    let text = `<b style="font-size: 14px;">${this.point.name}</b><br/>`;
-                    text += info ? `Số đại lý: <b>${info.daiLy.length}</b>` : 'Chưa có dữ liệu';
+                    const provinceName = provinceNameMap[this.point['hc-key']] || this.point.name;
+                    let text = `<b style="font-size: 14px;">${provinceName}</b><br/>`;
+                    text += info ? `Số đại lý: <b>${info.daiLy?.length || 0}</b>` : 'Chưa có dữ liệu';
                     return text;
                 }
             },
@@ -166,11 +200,9 @@
                             click: function () {
                                 const data = provinceData[this['hc-key']];
                                 const infoContent = document.getElementById('info-content');
-                                const provinceName = this.name;
+                                const provinceName = provinceNameMap[this['hc-key']] || this.name;
                                 if (data) {
                                     const createGenericList = (items) => (items && items.length) ? items.map(x => `<li class="py-1.5 px-3 bg-red-50 text-red-800 rounded-md mb-1.5 text-sm">${x}</li>`).join('') : '<li class="text-xs italic text-gray-500">Chưa có dữ liệu</li>';
-                                    const daiLyListHTML = (data.daiLy && data.daiLy.length) ? data.daiLy.map(x => `<li class="dai-ly-item py-1.5 px-3 bg-red-50 text-red-800 rounded-md mb-1.5 text-sm">${x}</li>`).join('') : '<li class="text-xs italic text-gray-500">Chưa có dữ liệu</li>';
-                                    
                                     infoContent.innerHTML = `
                                         <div class="flex items-center gap-3 mb-4 border-b pb-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -178,14 +210,14 @@
                                         </div>
                                         <div class="space-y-5">
                                             <div>
-                                                <b class="text-gray-700">Đại lý (${data.daiLy.length}):</b> 
+                                                <b class="text-gray-700">Đại lý (${data.daiLy?.length || 0}):</b> 
                                                 <div class="relative mt-2">
                                                     <span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg></span>
                                                     <input type="text" id="dealer-search" placeholder="Tìm kiếm đại lý..." class="block w-full text-sm border-gray-200 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 p-2 pl-10">
                                                 </div>
-                                                <ul id="dealer-list" class="mt-2 list-none max-h-36 overflow-y-auto pr-2">${daiLyListHTML}</ul>
+                                                <ul id="dealer-list" class="mt-2 list-none max-h-36 overflow-y-auto pr-2">${createGenericList(data.daiLy)}</ul>
                                             </div>
-                                            <div><b class="text-gray-700">Khách hàng (${data.khachHang.length}):</b> <ul class="mt-2 list-none">${createGenericList(data.khachHang)}</ul></div>
+                                            <div><b class="text-gray-700">Khách hàng (${data.khachHang?.length || 0}):</b> <ul class="mt-2 list-none">${createGenericList(data.khachHang)}</ul></div>
                                             <div><b class="text-gray-700">Sản phẩm bán chạy:</b> <ul class="mt-2 list-none">${createGenericList(data.spBanChay)}</ul></div>
                                         </div>`;
 
@@ -193,14 +225,11 @@
                                     if (searchInput) {
                                         searchInput.addEventListener('input', function() {
                                             const filter = this.value.toLowerCase();
-                                            const ul = document.getElementById('dealer-list');
-                                            const items = ul.getElementsByTagName('li');
-                                            for (let i = 0; i < items.length; i++) {
-                                                const item = items[i];
-                                                if (item.classList.contains('dai-ly-item')) {
-                                                    item.style.display = (item.textContent || item.innerText).toLowerCase().includes(filter) ? "" : "none";
-                                                }
-                                            }
+                                            const items = document.querySelectorAll('#dealer-list li');
+                                            items.forEach(item => {
+                                                const itemText = (item.textContent || item.innerText).toLowerCase();
+                                                item.style.display = itemText.includes(filter) ? "" : "none";
+                                            });
                                         });
                                     }
                                 } else {
@@ -211,12 +240,7 @@
                     }
                 }
             },
-            series: [{ 
-                data: seriesData, 
-                name: 'Tình hình kinh doanh', 
-                states: { hover: { color: '#F87171' } },
-                dataLabels: { enabled: true, formatter: function() { return this.point.name; }, style: { color: '#881337', fontSize: '9px', fontWeight: 'bold', textOutline: 'none' } }
-            }]
+            series: [{ data: seriesData, name: 'Tình hình kinh doanh', states: { hover: { color: '#F87171' } }, dataLabels: { enabled: true, formatter: function() { return provinceNameMap[this.point['hc-key']] || this.point.name; }, style: { color: '#881337', fontSize: '9px', fontWeight: 'bold', textOutline: 'none' } } }]
         });
     }
 
@@ -229,30 +253,34 @@
         const reader = new FileReader();
         reader.onload = function(e) {
             try {
-                const data = new Uint8Array(e.target.result);
-                const workbook = XLSX.read(data, { type: 'array' });
-                const firstSheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[firstSheetName];
+                const workbook = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
+                const worksheet = workbook.Sheets[workbook.SheetNames[0]];
                 const jsonData = XLSX.utils.sheet_to_json(worksheet);
-                const newProvinceData = {};
+                let updatedCount = 0;
+                
                 jsonData.forEach(row => {
                     const hcKey = row['hc-key'];
                     if (hcKey && provinceNameMap[hcKey]) {
-                        newProvinceData[hcKey] = {
+                        // Gộp dữ liệu mới vào dữ liệu hiện có
+                        provinceData[hcKey] = {
                             daiLy: row.daiLy ? String(row.daiLy).split(',').map(s => s.trim()) : [],
                             khachHang: row.khachHang ? String(row.khachHang).split(',').map(s => s.trim()) : [],
                             spBanChay: row.spBanChay ? String(row.spBanChay).split(',').map(s => s.trim()) : []
                         };
+                        updatedCount++;
                     }
                 });
-                if(Object.keys(newProvinceData).length === 0) {
-                    showNotification('File Excel không có dữ liệu hợp lệ. Vui lòng kiểm tra lại.', true);
+                
+                if (updatedCount > 0) {
+                    redrawMap(); // Vẽ lại bản đồ với dữ liệu đã được gộp
+                    saveDataToLocalStorage(provinceData); // Lưu lại toàn bộ dữ liệu vào bộ nhớ
+                    showNotification(`Đã cập nhật thành công dữ liệu cho ${updatedCount} tỉnh/thành!`);
                 } else {
-                    updateMap(newProvinceData);
+                    showNotification('File Excel không có dữ liệu hợp lệ hoặc cột "hc-key" bị thiếu.', true);
                 }
             } catch (error) {
-                console.error("Error processing Excel file:", error);
-                showNotification("Lỗi khi đọc file Excel. Vui lòng kiểm tra định dạng file.", true);
+                console.error("Lỗi khi xử lý file Excel:", error);
+                showNotification("Lỗi khi đọc file. Vui lòng kiểm tra định dạng file.", true);
             } finally {
                 spinner.classList.add('hidden');
                 event.target.value = '';
@@ -265,8 +293,13 @@
         reader.readAsArrayBuffer(file);
     }
 
+    // --- HÀM KHỞI CHẠY CHÍNH ---
     document.addEventListener('DOMContentLoaded', function () {
-        initializeMap(initialProvinceData);
+        // 1. Tải dữ liệu đã lưu khi mở trang
+        provinceData = loadDataFromLocalStorage();
+        // 2. Vẽ bản đồ với dữ liệu đã tải
+        initializeMap();
+        // 3. Gắn sự kiện cho nút tải file
         document.getElementById('file-upload').addEventListener('change', handleFile, false);
     });
 </script>
