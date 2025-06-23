@@ -38,20 +38,22 @@ function processProductData() {
         productDatabase[category].forEach(productLine => {
             const extraImages = ["https://i.ibb.co/y4Y2Q73/zen-detail-1.png", "https://i.ibb.co/JqjT2W6/zen-detail-2.png", "https://i.ibb.co/5KhkQ5P/zen-detail-3.png"];
             
-            productLine.variants.forEach((variant) => {
-                const uniqueName = `${productLine.name} ${variant.power}`;
-                const id = uniqueName.replace(/[\s/]/g, '-').toLowerCase();
-                const gallery = [productLine.image, ...extraImages].slice(0, 4);
+productLine.variants.forEach((variant) => {
+    // ✅ Thêm light để phân biệt biến thể
+    const uniqueName = `${productLine.name} ${variant.power} ${variant.light || ''}`.trim();
+    const id = uniqueName.replace(/[\s/]/g, '-').toLowerCase();  // Tạo ID duy nhất hơn
 
-                allProducts[id] = { 
-                    ...productLine, // Sao chép tất cả thuộc tính của dòng sản phẩm (name, features,...)
-                    ...variant,     // Sao chép và ghi đè bằng thuộc tính của biến thể (power, price,...)
-                    id,             // ID duy nhất đã tạo
-                    category,       // Tên danh mục
-                    displayName: uniqueName, // Tên đầy đủ để hiển thị
-                    gallery         // Bộ sưu tập hình ảnh
-                };
-            });
+    const gallery = [productLine.image, ...extraImages].slice(0, 4);
+
+    allProducts[id] = { 
+        ...productLine,
+        ...variant,
+        id,
+        category,
+        displayName: uniqueName, // ví dụ: "Đèn LED Bulb MAXBEN 7W 4000K"
+        gallery
+    };
+});
         });
     }
 }
