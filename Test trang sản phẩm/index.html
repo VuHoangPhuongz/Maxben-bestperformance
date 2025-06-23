@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAXBEN - Giải Pháp Chiếu Sáng LED Chuyên Nghiệp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #111827; color: #E5E7EB; scroll-behavior: smooth; }
+        .gradient-text { background: linear-gradient(90deg, #38BDF8, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .sticky-nav { position: sticky; top: 0; z-index: 50; background-color: rgba(17, 24, 39, 0.85); backdrop-filter: blur(12px); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4); }
+        .category-link { display: flex; align-items: center; padding: 12px; border-radius: 8px; font-weight: 600; color: #4a5568; transition: all 0.2s ease-in-out; border: 1px solid transparent; }
+        .category-link:hover { background-color: #f0f5ff; color: #2563eb; border-color: #dbeafe; }
+        .category-link.active { background-color: #e0eaff; color: #1d4ed8; border-color: #c7d2fe; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .category-link.active .category-count { background-color: #1d4ed8; color: white; }
+        .category-icon { width: 20px; text-align: center; margin-right: 12px; color: #9ca3af; }
+        .category-link.active .category-icon { color: #1d4ed8; }
+        .category-count { margin-left: auto; font-size: 12px; background-color: #e5e7eb; padding: 2px 8px; border-radius: 99px; font-weight: 500; color: #4b5563; }
+        .product-card-new { background-color: white; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .product-card-new:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); border-color: #93c5fd; }
+        .pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
+    border-radius: 0.375rem; /* rounded-md */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 600; /* font-semibold */
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #4b5563; /* text-gray-600 */
+    border: 1px solid #d1d5db; /* border-gray-300 */
+}
+.pagination-btn:hover:not(.active) {
+    background-color: #f9fafb; /* bg-gray-50 */
+    border-color: #2563eb;
+    color: #2563eb;
+}
+.pagination-btn.active {
+    background-color: #2563eb; /* bg-blue-600 */
+    color: white;
+    border-color: #2563eb;
+    cursor: default;
+}
+.pagination-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <header class="sticky-nav border-b border-gray-700/50">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between h-20">
+                <a href="index.html" class="text-3xl font-bold gradient-text">MAXBEN💡</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a href="#hero-slider" class="text-gray-300 hover:text-white transition-colors">Trang Chủ</a>
+                    <a href="#new-product-catalog" class="text-gray-300 hover:text-white transition-colors">Sản Phẩm</a>
+                    <a href="#solutions" class="text-gray-300 hover:text-white transition-colors">Giải Pháp</a>
+                </div>
+                <a href="tel:0886666730" class="cta-button bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-lg hidden md:block">📞 Gọi Ngay</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero-slider" class="relative h-[70vh] md:h-[90vh] text-white">
+            <div class="swiper h-full">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                        <div class="relative z-10 flex items-center justify-center h-full text-center p-4">
+                            <div>
+                                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">Ánh Sáng <span class="gradient-text">Kiến Tạo</span> Không Gian Sống</h1>
+                                <a href="#new-product-catalog" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Khám Phá Sản Phẩm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev text-white"></div>
+                <div class="swiper-button-next text-white"></div>
+            </div>
+        </section>
+
+        <section id="new-product-catalog" class="py-16 lg:py-24 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Khám Phá Danh Mục Sản Phẩm</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Tìm kiếm và lựa chọn các giải pháp chiếu sáng LED chất lượng cao, phù hợp với mọi nhu cầu của bạn.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    <aside class="lg:col-span-1">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-3">Danh Mục</h3>
+                            <div id="catalog-sidebar" class="space-y-2">
+                                <div class="text-center py-8"><i class="fas fa-spinner fa-spin text-2xl text-blue-500"></i></div>
+                            </div>
+                        </div>
+                    </aside>
+                    <div class="lg:col-span-3">
+                        <div class="relative mb-6">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search"></i></span>
+                            <input type="text" id="catalog-search-input" placeholder="Tìm kiếm tên, mã sản phẩm..." class="w-full bg-white border border-gray-300 rounded-lg py-3 pl-12 pr-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <h3 id="catalog-title" class="text-2xl font-bold text-gray-800 mb-4">Tất cả sản phẩm</h3>
+                        <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 min-h-[500px]"></div>
+                        <div id="catalog-pagination" class="flex justify-center items-center space-x-2 mt-12">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solutions" class="py-20 bg-gray-900/70">
+            <div class="container mx-auto px-4"><h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Giải Pháp Chiếu Sáng Toàn Diện</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="relative rounded-lg overflow-hidden h-64 bg-cover bg-center group" style="background-image: url('https://adp.net.vn/wp-content/uploads/2022/12/den-led-roi-ray-cho-shop-thoi-trang.jpg');"><div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-70 transition duration-300 flex flex-col items-center justify-center text-center p-4"><div class="text-4xl text-blue-400 mb-2 drop-shadow"><i class="fas fa-store"></i></div><h3 class="text-xl font-bold mb-1 drop-shadow-md">Cửa Hàng & Showroom</h3></div></div>
+                    <div class="relative rounded-lg overflow-hidden h-64 bg-cover bg-center group" style="background-image: url('https://roman.vn/pic/News/images/cach-chon-den-led-chieu-sang-cho-van-phong.jpg');"><div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-70 transition duration-300 flex flex-col items-center justify-center text-center p-4"><div class="text-4xl text-blue-400 mb-2 drop-shadow"><i class="fas fa-building"></i></div><h3 class="text-xl font-bold mb-1 drop-shadow-md">Văn Phòng Hiện Đại</h3></div></div>
+                    <div class="relative rounded-lg overflow-hidden h-64 bg-cover bg-center group" style="background-image: url('https://images.kingled.vn/data/Product/7CC53839-BAF0-434B-812D-E3B8D076A137/chi%E1%BA%BFu%20s%C3%A1ng%20n%E1%BB%99i%20th%E1%BA%A5t%202.jpg');"><div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-70 transition duration-300 flex flex-col items-center justify-center text-center p-4"><div class="text-4xl text-blue-400 mb-2 drop-shadow"><i class="fas fa-home"></i></div><h3 class="text-xl font-bold mb-1 drop-shadow-md">Nhà Ở & Căn Hộ</h3></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 border-t border-gray-700/50">
+       <div class="container mx-auto px-4 py-12"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left"><div><a href="index.html" class="text-2xl font-bold gradient-text">MAXBEN💡</a><p class="text-gray-400 text-sm mt-2">Kiến tạo không gian bằng ánh sáng.</p></div><div><h4 class="font-bold text-white mb-4">LIÊN KẾT</h4><ul><li><a href="#new-product-catalog" class="text-gray-400 hover:text-white">Sản Phẩm</a></li><li><a href="#solutions" class="text-gray-400 hover:text-white">Giải Pháp</a></li></ul></div><div><h4 class="font-bold text-white mb-4">KẾT NỐI</h4><a href="https://www.facebook.com/maxbenled" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-facebook fa-2x"></i></a></div></div></div>
+    </footer>
+
+    <script src="product-details.js"></script>
+
+    <script src="catalog.js"></script>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+.category-link {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #d1d5db; /* Chữ xám nhạt */
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent; /* Bỏ viền mặc định */
+}
+.category-link:hover {
+    background-color: #374151; /* Nền xám đậm hơn khi hover */
+    color: #ffffff;
+}
+.category-link.active {
+    background-color: #2563eb; /* Nền xanh khi active */
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+}
+.category-link.active .category-count {
+    background-color: #ffffff;
+    color: #2563eb;
+}
+.category-icon {
+    width: 20px;
+    text-align: center;
+    margin-right: 12px;
+    color: #9ca3af;
+}
+.category-link.active .category-icon {
+    color: #ffffff;
+}
+.category-count {
+    margin-left: auto;
+    font-size: 12px;
+    background-color: #4b5563; /* Nền tối hơn cho badge */
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-weight: 500;
+    color: #e5e7eb;
+}
+
+/* --- Thẻ Sản Phẩm --- */
+.product-card-new {
+    background-color: #1f2937; /* Nền card tối */
+    border-radius: 12px;
+    border: 1px solid #374151; /* Viền tối */
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.product-card-new:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Dải băng đỏ góc phải */
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden; /* Đảm bảo dải băng không tràn ra ngoài */
+}
+.product-image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    /* Kích thước của tam giác */
+    border-width: 0 50px 50px 0; 
+    /* Màu của tam giác: trong suốt, đỏ, trong suốt, trong suốt */
+    border-color: transparent #ef4444 transparent transparent;
+    z-index: 10;
+}
+
+
+/* --- Phân trang (giữ nguyên nhưng có thể chỉnh lại màu nền nếu muốn) --- */
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem; height: 2.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem; font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: #1f2937; /* Nền tối */
+    color: #d1d5db;
+    border: 1px solid #374151;
+}
+.pagination-btn:hover:not(.active) {
+    background-color: #374151;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+.pagination-btn.active {
+    background-color: #2563eb;
+    color: white;
+    border-color: #2563eb;
+    cursor: default;
+}
+.pagination-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
