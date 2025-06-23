@@ -184,8 +184,8 @@
                 <a href="index.html" class="text-3xl font-bold gradient-text">MAXBEN💡</a>
                 <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
                     <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Trang Chủ</a>
-                    <a href="#dashboard" class="text-gray-300 hover:text-white transition-colors">Tổng Quan</a>
-                    <a href="#catalog" class="text-gray-300 hover:text-white transition-colors">Sản Phẩm</a>
+                    <a href="du-an.html" class="text-gray-300 hover:text-white transition-colors">Dự Án Tiêu Biểu</a>
+                    <a href="#new-product-catalog" class="text-gray-300 hover:text-white transition-colors">Sản Phẩm</a>
                     <!-- SỬA LỖI: Cập nhật link cho trang Giải Pháp -->
                     <a href="giai-phap.html" class="text-gray-300 hover:text-white transition-colors">Giải Pháp</a>
                     <!-- SỬA LỖI: Cập nhật link cho trang Tư Vấn -->
@@ -210,7 +210,7 @@
         <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
             <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Trang Chủ</a>
             <a href="#dashboard" class="block py-2 text-gray-300 hover:text-white">Tổng Quan</a>
-            <a href="#catalog" class="block py-2 text-gray-300 hover:text-white">Sản Phẩm</a>
+            <a href="#new-product-catalog" class="block py-2 text-gray-300 hover:text-white">Sản Phẩm</a>
             <a href="giai-phap.html" class="block py-2 text-gray-300 hover:text-white">Giải Pháp</a>
             <a href="tu-van-du-an.html" class="block py-2 text-gray-300 hover:text-white">Tư Vấn Dự Án</a>
             <a href="cam-nang-kinh-doanh.html" class="block py-2 text-gray-300 hover:text-white">Cẩm nang</a>
@@ -238,7 +238,7 @@
                             tái tạo màu sắc chân thực và bảo vệ thị lực.
                         </p>
                         <div class="flex flex-wrap justify-center gap-4">
-                            <a href="#catalog" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Khám Phá Sản Phẩm</a>
+                            <a href="#new-product-catalog" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Khám Phá Sản Phẩm</a>
                             <a href="#" id="openCalculatorBtn" class="cta-button bg-green-600 font-semibold py-3 px-8 rounded-lg shadow-lg"><i class="fas fa-calculator mr-2"></i> Công Cụ Tính Đèn</a>
                         </div>
                     </div>
@@ -438,6 +438,10 @@
     <script>
     // This script block contains the consolidated and cleaned-up code from your 'main.js' file.
     document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener("DOMContentLoaded", () => {
+    // Xử lý nội dung trang chủ hiển thị ở đây (nếu có)
+    window.scrollTo(0, 0); // Ngăn auto-scroll về giữa trang
+});
         // --- CONFIG & DATA ---
         const vibrantPalette = {
             red: '#FF5C5C',
@@ -792,7 +796,7 @@ function createProductCardHtml(product) {
                 const products = productDetails[category];
                 displayProducts(products, category);
                 if(searchInput) searchInput.value = '';
-                window.scrollTo({ top: document.getElementById('catalog').offsetTop - 80, behavior: 'smooth' });
+                window.scrollTo({ top: document.getElementById('new-product-catalog').offsetTop - 80, behavior: 'smooth' });
             });
         });
 
