@@ -271,7 +271,7 @@
         <div class="absolute inset-0 bg-black/60 z-10"></div>
         
         <div class="container mx-auto px-6 text-center relative z-20">
-            <h2 class="text-sm md:text-base font-bold uppercase tracking-widest text-blue-400 mb-4" style="text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);">
+            <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-red-500   mb-4" style="text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);">
                 CÂU CHUYỆN VỀ MAXBEN
             </h2>
             <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6" style="text-shadow: 0 0 20px rgba(0,0,0,0.7);">
@@ -283,7 +283,7 @@
         </div>
     </section>
 
-    <section class="py-20 md:py-32 bg-gray-900 text-gray-300">
+    <section class="py-10  md:py-15   bg-gray-900 text-gray-300">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 md:mb-32">
                 <div class="order-2 lg:order-1">
@@ -303,7 +303,7 @@
                 </div>
             </div>
 
-            <hr class="border-t-2 border-gray-700 max-w-lg mx-auto mb-20 md:mb-32">
+            <hr class="border-t-2 border-gray-700 max-w-lg mx-auto mb-10   md:mb-15  ">
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <div>
@@ -314,7 +314,7 @@
                         </span>
                     </h2>
                     <p class="text-lg md:text-xl text-gray-400 leading-relaxed max-w-lg mt-8">
-                        MAXBEN tự hào với hành trình ba thập kỷ không ngừng đổi mới, mang đến những giải pháp chiếu sáng đột phá và chất lượng vượt trội, định hình không gian sống và làm việc.
+                        MAXBEN tự hào với hành trình không ngừng đổi mới, mang đến những giải pháp chiếu sáng đột phá và chất lượng vượt trội, định hình không gian sống và làm việc.
                     </p>
                 </div>
 
@@ -356,7 +356,7 @@
         </div>
     </section>
 
-    <section class="py-20 md:py-32 bg-gray-950 text-gray-300">
+    <section class="py-10 md:py-15   bg-gray-950 text-gray-300">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-100">Sứ Mệnh & Tầm Nhìn</h2>
@@ -387,7 +387,14 @@
         </div>
     </section>
 
-    <section class="py-20 md:py-32 bg-gray-900 text-gray-300">
+    <section class="relative py-10 md:py-15 text-gray-300" 
+style="
+    background-image: url(./icons/su\ menh.webp);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+"
+    >
         <div class="container mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-100">Giá Trị Cốt Lõi</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -415,7 +422,14 @@
         </div>
     </section>
 
-    <section class="py-20 md:py-32 bg-gray-950 text-gray-300">
+    <section class="relative py-10 md:py-15text-gray-300" 
+style="
+    background-image: url(./icons/su\ menh.webp);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+"
+    >
         <div class="container mx-auto px-6">
             <div class="bg-gray-900 rounded-3xl p-10 md:p-20 text-center shadow-2xl border border-gray-800">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-100">Sẵn Sàng Đồng Hành Cùng Bạn</h2>
@@ -638,5 +652,52 @@ const N=(E*A)/(F*UF*CALC_MF);const lampCount=Math.ceil(N);const totalPower=lampC
 </div>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>const swiper=new Swiper('.swiper',{loop:!0,effect:'fade',autoplay:{delay:5000,disableOnInteraction:!1,},pagination:{el:'.swiper-pagination',clickable:!0,},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev',},});</script>
+<script>
+      const counterElements = document.querySelectorAll('.gradient-text');
+
+    // Hàm để tạo hiệu ứng chạy số cho một phần tử
+    const animateCounter = (element) => {
+        const originalText = element.textContent.trim(); // Lấy nội dung gốc, ví dụ: "250+"
+        const targetValue = parseInt(originalText, 10); // Lấy giá trị số, ví dụ: 250
+        
+        // Nếu không phải là số thì không làm gì cả
+        if (isNaN(targetValue)) {
+            return;
+        }
+
+        const suffix = originalText.substring(targetValue.toString().length); // Lấy hậu tố, ví dụ: "+" hoặc "K+"
+        const duration = 2000; // Thời gian hoàn thành hiệu ứng (2000ms = 2 giây)
+        let startTime = null;
+
+        // Hàm step được gọi lặp đi lặp lại để tạo hoạt ảnh
+        const step = (timestamp) => {
+            if (!startTime) {
+                startTime = timestamp;
+            }
+
+            const progress = timestamp - startTime;
+            const percentage = Math.min(progress / duration, 1);
+            
+            // Tính giá trị hiện tại dựa trên tiến độ, sử dụng hàm "ease-out" để hiệu ứng mượt hơn
+            // (Bắt đầu nhanh và chậm dần về cuối)
+            const easedProgress = 1 - Math.pow(1 - percentage, 3);
+            const currentValue = Math.floor(easedProgress * targetValue);
+
+            // Cập nhật nội dung của phần tử
+            element.textContent = currentValue + suffix;
+
+            // Nếu chưa hoàn thành, tiếp tục gọi lại hàm step
+            if (progress < duration) {
+                window.requestAnimationFrame(step);
+            } else {
+                // Khi hoàn thành, đảm bảo giá trị cuối cùng là giá trị gốc
+                element.textContent = originalText;
+            }
+        };
+
+        // Bắt đầu hoạt ảnh
+        window.requestAnimationFrame(step);
+    };
+</script>
 </body>
 </html>
