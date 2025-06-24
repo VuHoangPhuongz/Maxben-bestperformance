@@ -110,100 +110,13 @@
         </div>
     </div>
 
-<script>
-    // --- KHAI BÁO BIẾN TOÀN CỤC ---
-    let chart;
-    let provinceData = {}; // Biến này sẽ chứa toàn bộ dữ liệu (được load từ bộ nhớ hoặc file)
-
-    // Dữ liệu không đổi
-    const provinceNameMap = { 'vn-hn': 'Hà Nội', 'vn-hc': 'TP. Hồ Chí Minh', 'vn-hp': 'Hải Phòng', 'vn-da': 'Đà Nẵng', 'vn-ct': 'Cần Thơ', 'vn-ag': 'An Giang', 'vn-br': 'Bà Rịa - Vũng Tàu', 'vn-bk': 'Bắc Kạn', 'vn-bg': 'Bắc Giang', 'vn-bl': 'Bạc Liêu', 'vn-bn': 'Bắc Ninh', 'vn-bt': 'Bến Tre', 'vn-bi': 'Bình Định', 'vn-bd': 'Bình Dương', 'vn-bp': 'Bình Phước', 'vn-bu': 'Bình Thuận', 'vn-cm': 'Cà Mau', 'vn-cb': 'Cao Bằng', 'vn-dl': 'Đắk Lắk', 'vn-do': 'Đắk Nông', 'vn-db': 'Điện Biên', 'vn-dn': 'Đồng Nai', 'vn-dt': 'Đồng Tháp', 'vn-gl': 'Gia Lai', 'vn-hg': 'Hà Giang', 'vn-hm': 'Hà Nam', 'vn-ht': 'Hà Tĩnh', 'vn-hd': 'Hải Dương', 'vn-711': 'Hậu Giang', 'vn-hb': 'Hòa Bình', 'vn-hy': 'Hưng Yên', 'vn-kh': 'Khánh Hòa', 'vn-kg': 'Kiên Giang', 'vn-kt': 'Kon Tum', 'vn-li': 'Lai Châu', 'vn-ld': 'Lâm Đồng', 'vn-ls': 'Lạng Sơn', 'vn-lc': 'Lào Cai', 'vn-la': 'Long An', 'vn-nd': 'Nam Định', 'vn-na': 'Nghệ An', 'vn-nb': 'Ninh Bình', 'vn-nt': 'Ninh Thuận', 'vn-pt': 'Phú Thọ', 'vn-py': 'Phú Yên', 'vn-qb': 'Quảng Bình', 'vn-qm': 'Quảng Nam', 'vn-qg': 'Quảng Ngãi', 'vn-qn': 'Quảng Ninh', 'vn-qt': 'Quảng Trị', 'vn-st': 'Sóc Trăng', 'vn-sl': 'Sơn La', 'vn-tn': 'Tây Ninh', 'vn-tb': 'Thái Bình', 'vn-ty': 'Thái Nguyên', 'vn-th': 'Thanh Hóa', 'vn-tt': 'Thừa Thiên Huế', 'vn-tg': 'Tiền Giang', 'vn-tv': 'Trà Vinh', 'vn-tq': 'Tuyên Quang', 'vn-vl': 'Vĩnh Long', 'vn-vp': 'Vĩnh Phúc', 'vn-yb': 'Yên Bái' };
-    const initialProvinceData = { 'vn-hn': { daiLy: ['Đại lý Thăng Long'], khachHang: ['Tập đoàn ABC'], spBanChay: ['Đèn LED Âm trần 12W'] }, 'vn-hc': { daiLy: ['Đại lý Sài Gòn'], khachHang: ['Công ty DEF'], spBanChay: ['Đèn Đường LED 150W'] } };
-
-    // --- CÁC HÀM XỬ LÝ DỮ LIỆU VÀ GIAO DIỆN ---
-
-    function showNotification(message, isError = false) {
-        const notification = document.getElementById('notification');
-        notification.textContent = message;
-        notification.className = 'show';
-        if (isError) notification.classList.add('error');
-        setTimeout(() => { notification.className = ''; }, 3000);
-    }
-
-    function saveDataToLocalStorage(data) {
-        try {
-            localStorage.setItem('maxbenProvinceData', JSON.stringify(data));
-        } catch (error) {
-            console.error("Lỗi khi lưu dữ liệu vào LocalStorage:", error);
-            showNotification("Lỗi khi lưu dữ liệu.", true);
-        }
-    }
-
-    function loadDataFromLocalStorage() {
-        const savedData = localStorage.getItem('maxbenProvinceData');
-        if (savedData) {
-            try {
-                const parsedData = JSON.parse(savedData);
-                // Đảm bảo dữ liệu đọc ra là một object hợp lệ
-                if (typeof parsedData === 'object' && parsedData !== null) {
-                    return parsedData;
-                }
-            } catch (error) {
-                console.error("Lỗi khi đọc dữ liệu từ LocalStorage:", error);
-                // Nếu dữ liệu lỗi, trả về dữ liệu ban đầu
-                return initialProvinceData;
-            }
-        }
-        // Nếu không có dữ liệu nào được lưu, trả về dữ liệu ban đầu
-        return initialProvinceData;
-    }
-
-    function redrawMap() {
-        const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
-            'hc-key': p.properties['hc-key'],
-            value: provinceData[p.properties['hc-key']] ? 100 : 10,
-            name: provinceNameMap[p.properties['hc-key']] || p.properties['name']
-        }));
-
-        if (chart) {
-            chart.series[0].setData(seriesData, true);
-        }
-        document.getElementById('info-content').innerHTML = '<div class="h-full flex flex-col justify-center items-center text-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg><h3 class="text-lg font-semibold text-gray-700">Thông tin Chi tiết</h3><p class="text-sm text-gray-500 mt-1">Bấm vào một tỉnh trên bản đồ để xem dữ liệu.</p></div>';
-    }
-
-    function initializeMap() {
-        const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
-            'hc-key': p.properties['hc-key'],
-            value: provinceData[p.properties['hc-key']] ? 100 : 10,
-            name: provinceNameMap[p.properties['hc-key']] || p.properties['name']
-        }));
-
-        chart = Highcharts.mapChart('container', {
-            chart: { map: 'countries/vn/vn-all', backgroundColor: 'transparent' },
-            title: { text: null },
-            subtitle: { text: null },
-            mapNavigation: { enabled: true, buttonOptions: { verticalAlign: 'bottom', align: 'right' } },
-            colorAxis: { min: 0, stops: [[0, '#FEE2E2'], [0.8, '#DC2626'], [1, '#991B1B']], visible: false },
-            legend: { enabled: false },
-            tooltip: {
-                formatter: function () {
-                    const info = provinceData[this.point['hc-key']];
-                    const provinceName = provinceNameMap[this.point['hc-key']] || this.point.name;
-                    let text = `<b style="font-size: 14px;">${provinceName}</b><br/>`;
-                    text += info ? `Số đại lý: <b>${info.daiLy?.length || 0}</b>` : 'Chưa có dữ liệu';
-                    return text;
-                }
-            },
-            plotOptions: {
-                series: {
-                    point: {
-                        events: {
-                            click: function () {
-                                const data = provinceData[this['hc-key']];
-                                const infoContent = document.getElementById('info-content');
-                                const provinceName = provinceNameMap[this['hc-key']] || this.name;
-                                if (data) {
-                                    const createGenericList = (items) => (items && items.length) ? items.map(x => `<li class="py-1.5 px-3 bg-red-50 text-red-800 rounded-md mb-1.5 text-sm">${x}</li>`).join('') : '<li class="text-xs italic text-gray-500">Chưa có dữ liệu</li>';
-                                    infoContent.innerHTML = `
+<script>let chart;let provinceData={};const provinceNameMap={'vn-hn':'Hà Nội','vn-hc':'TP. Hồ Chí Minh','vn-hp':'Hải Phòng','vn-da':'Đà Nẵng','vn-ct':'Cần Thơ','vn-ag':'An Giang','vn-br':'Bà Rịa - Vũng Tàu','vn-bk':'Bắc Kạn','vn-bg':'Bắc Giang','vn-bl':'Bạc Liêu','vn-bn':'Bắc Ninh','vn-bt':'Bến Tre','vn-bi':'Bình Định','vn-bd':'Bình Dương','vn-bp':'Bình Phước','vn-bu':'Bình Thuận','vn-cm':'Cà Mau','vn-cb':'Cao Bằng','vn-dl':'Đắk Lắk','vn-do':'Đắk Nông','vn-db':'Điện Biên','vn-dn':'Đồng Nai','vn-dt':'Đồng Tháp','vn-gl':'Gia Lai','vn-hg':'Hà Giang','vn-hm':'Hà Nam','vn-ht':'Hà Tĩnh','vn-hd':'Hải Dương','vn-711':'Hậu Giang','vn-hb':'Hòa Bình','vn-hy':'Hưng Yên','vn-kh':'Khánh Hòa','vn-kg':'Kiên Giang','vn-kt':'Kon Tum','vn-li':'Lai Châu','vn-ld':'Lâm Đồng','vn-ls':'Lạng Sơn','vn-lc':'Lào Cai','vn-la':'Long An','vn-nd':'Nam Định','vn-na':'Nghệ An','vn-nb':'Ninh Bình','vn-nt':'Ninh Thuận','vn-pt':'Phú Thọ','vn-py':'Phú Yên','vn-qb':'Quảng Bình','vn-qm':'Quảng Nam','vn-qg':'Quảng Ngãi','vn-qn':'Quảng Ninh','vn-qt':'Quảng Trị','vn-st':'Sóc Trăng','vn-sl':'Sơn La','vn-tn':'Tây Ninh','vn-tb':'Thái Bình','vn-ty':'Thái Nguyên','vn-th':'Thanh Hóa','vn-tt':'Thừa Thiên Huế','vn-tg':'Tiền Giang','vn-tv':'Trà Vinh','vn-tq':'Tuyên Quang','vn-vl':'Vĩnh Long','vn-vp':'Vĩnh Phúc','vn-yb':'Yên Bái'};const initialProvinceData={'vn-hn':{daiLy:['Đại lý Thăng Long'],khachHang:['Tập đoàn ABC'],spBanChay:['Đèn LED Âm trần 12W']},'vn-hc':{daiLy:['Đại lý Sài Gòn'],khachHang:['Công ty DEF'],spBanChay:['Đèn Đường LED 150W']}};function showNotification(message,isError=!1){const notification=document.getElementById('notification');notification.textContent=message;notification.className='show';if(isError)notification.classList.add('error');setTimeout(()=>{notification.className=''},3000)}
+function saveDataToLocalStorage(data){try{localStorage.setItem('maxbenProvinceData',JSON.stringify(data))}catch(error){console.error("Lỗi khi lưu dữ liệu vào LocalStorage:",error);showNotification("Lỗi khi lưu dữ liệu.",!0)}}
+function loadDataFromLocalStorage(){const savedData=localStorage.getItem('maxbenProvinceData');if(savedData){try{const parsedData=JSON.parse(savedData);if(typeof parsedData==='object'&&parsedData!==null){return parsedData}}catch(error){console.error("Lỗi khi đọc dữ liệu từ LocalStorage:",error);return initialProvinceData}}
+return initialProvinceData}
+function redrawMap(){const seriesData=Highcharts.maps['countries/vn/vn-all'].features.map(p=>({'hc-key':p.properties['hc-key'],value:provinceData[p.properties['hc-key']]?100:10,name:provinceNameMap[p.properties['hc-key']]||p.properties.name}));if(chart){chart.series[0].setData(seriesData,!0)}
+document.getElementById('info-content').innerHTML='<div class="h-full flex flex-col justify-center items-center text-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg><h3 class="text-lg font-semibold text-gray-700">Thông tin Chi tiết</h3><p class="text-sm text-gray-500 mt-1">Bấm vào một tỉnh trên bản đồ để xem dữ liệu.</p></div>'}
+function initializeMap(){const seriesData=Highcharts.maps['countries/vn/vn-all'].features.map(p=>({'hc-key':p.properties['hc-key'],value:provinceData[p.properties['hc-key']]?100:10,name:provinceNameMap[p.properties['hc-key']]||p.properties.name}));chart=Highcharts.mapChart('container',{chart:{map:'countries/vn/vn-all',backgroundColor:'transparent'},title:{text:null},subtitle:{text:null},mapNavigation:{enabled:!0,buttonOptions:{verticalAlign:'bottom',align:'right'}},colorAxis:{min:0,stops:[[0,'#FEE2E2'],[0.8,'#DC2626'],[1,'#991B1B']],visible:!1},legend:{enabled:!1},tooltip:{formatter:function(){const info=provinceData[this.point['hc-key']];const provinceName=provinceNameMap[this.point['hc-key']]||this.point.name;let text=`<b style="font-size: 14px;">${provinceName}</b><br/>`;text+=info?`Số đại lý: <b>${info.daiLy?.length || 0}</b>`:'Chưa có dữ liệu';return text}},plotOptions:{series:{point:{events:{click:function(){const data=provinceData[this['hc-key']];const infoContent=document.getElementById('info-content');const provinceName=provinceNameMap[this['hc-key']]||this.name;if(data){const createGenericList=(items)=>(items&&items.length)?items.map(x=>`<li class="py-1.5 px-3 bg-red-50 text-red-800 rounded-md mb-1.5 text-sm">${x}</li>`).join(''):'<li class="text-xs italic text-gray-500">Chưa có dữ liệu</li>';infoContent.innerHTML=`
                                         <div class="flex items-center gap-3 mb-4 border-b pb-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                                             <h3 class="text-xl font-bold text-gray-800">${provinceName}</h3>
@@ -219,90 +132,9 @@
                                             </div>
                                             <div><b class="text-gray-700">Khách hàng (${data.khachHang?.length || 0}):</b> <ul class="mt-2 list-none">${createGenericList(data.khachHang)}</ul></div>
                                             <div><b class="text-gray-700">Sản phẩm bán chạy:</b> <ul class="mt-2 list-none">${createGenericList(data.spBanChay)}</ul></div>
-                                        </div>`;
-
-                                    const searchInput = document.getElementById('dealer-search');
-                                    if (searchInput) {
-                                        searchInput.addEventListener('input', function() {
-                                            const filter = this.value.toLowerCase();
-                                            const items = document.querySelectorAll('#dealer-list li');
-                                            items.forEach(item => {
-                                                const itemText = (item.textContent || item.innerText).toLowerCase();
-                                                item.style.display = itemText.includes(filter) ? "" : "none";
-                                            });
-                                        });
-                                    }
-                                } else {
-                                    infoContent.innerHTML = `<p class="italic text-gray-500">Không có dữ liệu cho <b>${provinceName}</b>.</p>`;
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            series: [{ data: seriesData, name: 'Tình hình kinh doanh', states: { hover: { color: '#F87171' } }, dataLabels: { enabled: true, formatter: function() { return provinceNameMap[this.point['hc-key']] || this.point.name; }, style: { color: '#881337', fontSize: '9px', fontWeight: 'bold', textOutline: 'none' } } }]
-        });
-    }
-
-    function handleFile(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        const spinner = document.getElementById('loading-spinner');
-        spinner.classList.remove('hidden');
-
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            try {
-                const workbook = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
-                const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                const jsonData = XLSX.utils.sheet_to_json(worksheet);
-                let updatedCount = 0;
-                
-                jsonData.forEach(row => {
-                    const hcKey = row['hc-key'];
-                    if (hcKey && provinceNameMap[hcKey]) {
-                        // Gộp dữ liệu mới vào dữ liệu hiện có
-                        provinceData[hcKey] = {
-                            daiLy: row.daiLy ? String(row.daiLy).split(',').map(s => s.trim()) : [],
-                            khachHang: row.khachHang ? String(row.khachHang).split(',').map(s => s.trim()) : [],
-                            spBanChay: row.spBanChay ? String(row.spBanChay).split(',').map(s => s.trim()) : []
-                        };
-                        updatedCount++;
-                    }
-                });
-                
-                if (updatedCount > 0) {
-                    redrawMap(); // Vẽ lại bản đồ với dữ liệu đã được gộp
-                    saveDataToLocalStorage(provinceData); // Lưu lại toàn bộ dữ liệu vào bộ nhớ
-                    showNotification(`Đã cập nhật thành công dữ liệu cho ${updatedCount} tỉnh/thành!`);
-                } else {
-                    showNotification('File Excel không có dữ liệu hợp lệ hoặc cột "hc-key" bị thiếu.', true);
-                }
-            } catch (error) {
-                console.error("Lỗi khi xử lý file Excel:", error);
-                showNotification("Lỗi khi đọc file. Vui lòng kiểm tra định dạng file.", true);
-            } finally {
-                spinner.classList.add('hidden');
-                event.target.value = '';
-            }
-        };
-        reader.onerror = function() {
-            spinner.classList.add('hidden');
-            showNotification('Không thể đọc file đã chọn.', true);
-        };
-        reader.readAsArrayBuffer(file);
-    }
-
-    // --- HÀM KHỞI CHẠY CHÍNH ---
-    document.addEventListener('DOMContentLoaded', function () {
-        // 1. Tải dữ liệu đã lưu khi mở trang
-        provinceData = loadDataFromLocalStorage();
-        // 2. Vẽ bản đồ với dữ liệu đã tải
-        initializeMap();
-        // 3. Gắn sự kiện cho nút tải file
-        document.getElementById('file-upload').addEventListener('change', handleFile, false);
-    });
-</script>
+                                        </div>`;const searchInput=document.getElementById('dealer-search');if(searchInput){searchInput.addEventListener('input',function(){const filter=this.value.toLowerCase();const items=document.querySelectorAll('#dealer-list li');items.forEach(item=>{const itemText=(item.textContent||item.innerText).toLowerCase();item.style.display=itemText.includes(filter)?"":"none"})})}}else{infoContent.innerHTML=`<p class="italic text-gray-500">Không có dữ liệu cho <b>${provinceName}</b>.</p>`}}}}}},series:[{data:seriesData,name:'Tình hình kinh doanh',states:{hover:{color:'#F87171'}},dataLabels:{enabled:!0,formatter:function(){return provinceNameMap[this.point['hc-key']]||this.point.name},style:{color:'#881337',fontSize:'9px',fontWeight:'bold',textOutline:'none'}}}]})}
+function handleFile(event){const file=event.target.files[0];if(!file)return;const spinner=document.getElementById('loading-spinner');spinner.classList.remove('hidden');const reader=new FileReader();reader.onload=function(e){try{const workbook=XLSX.read(new Uint8Array(e.target.result),{type:'array'});const worksheet=workbook.Sheets[workbook.SheetNames[0]];const jsonData=XLSX.utils.sheet_to_json(worksheet);let updatedCount=0;jsonData.forEach(row=>{const hcKey=row['hc-key'];if(hcKey&&provinceNameMap[hcKey]){provinceData[hcKey]={daiLy:row.daiLy?String(row.daiLy).split(',').map(s=>s.trim()):[],khachHang:row.khachHang?String(row.khachHang).split(',').map(s=>s.trim()):[],spBanChay:row.spBanChay?String(row.spBanChay).split(',').map(s=>s.trim()):[]};updatedCount++}});if(updatedCount>0){redrawMap();saveDataToLocalStorage(provinceData);showNotification(`Đã cập nhật thành công dữ liệu cho ${updatedCount} tỉnh/thành!`)}else{showNotification('File Excel không có dữ liệu hợp lệ hoặc cột "hc-key" bị thiếu.',!0)}}catch(error){console.error("Lỗi khi xử lý file Excel:",error);showNotification("Lỗi khi đọc file. Vui lòng kiểm tra định dạng file.",!0)}finally{spinner.classList.add('hidden');event.target.value=''}};reader.onerror=function(){spinner.classList.add('hidden');showNotification('Không thể đọc file đã chọn.',!0)};reader.readAsArrayBuffer(file)}
+document.addEventListener('DOMContentLoaded',function(){provinceData=loadDataFromLocalStorage();initializeMap();document.getElementById('file-upload').addEventListener('change',handleFile,!1)});</script>
 
 </body>
 </html>
