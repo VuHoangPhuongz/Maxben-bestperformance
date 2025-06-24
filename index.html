@@ -29,7 +29,20 @@
 #productDetailsContent::-webkit-scrollbar{width:8px}
 #productDetailsContent::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2);border-radius:10px}
 #productDetailsContent::-webkit-scrollbar-track{background:transparent}.form-input,.form-select{background-color:#1F2937;border:1px solid #4B5563;color:#FFFFFF;transition:border-color 0.3s}.form-input:focus,.form-select:focus{outline:none;border-color:#38BDF8;box-shadow:0 0 0 2px rgba(56,189,248,0.4)}.form-select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;-webkit-appearance:none;-moz-appearance:none;appearance:none}
-#calculatorModal.form-select option{background:#1F2937;color:#E5E7EB}</style>
+#calculatorModal.form-select option{background:#1F2937;color:#E5E7EB}
+        #story-hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+</style>
 </head>
 <body class="bg-gray-900 text-gray-200">
 
@@ -247,19 +260,28 @@
     </main>
     <!-- Hero Section -->
  <main>
-    <section class="relative py-28 md:py-48 bg-gray-950 text-white overflow-hidden">
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h1 class="text-blue-400 text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+    
+    <section class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-white overflow-hidden">
+        <!-- Video nền -->
+        <video id="story-hero-video" autoplay muted loop playsinline>
+             <!-- Bạn có thể thay thế bằng link video của mình hoặc sử dụng link mẫu này -->
+            <source src="./icons/Untitled video - Made with Clipchamp.mp4"  type="video/mp4">
+        </video>
+        <!-- Lớp phủ tối -->
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-20">
+            <h2 class="text-sm md:text-base font-bold uppercase tracking-widest text-blue-400 mb-4" style="text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);">
                 CÂU CHUYỆN VỀ MAXBEN
-            </h1>
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+            </h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6" style="text-shadow: 0 0 20px rgba(0,0,0,0.7);">
                 Chúng tôi tin rằng <span class="gradient-text">ánh sáng</span> có sức mạnh <br class="hidden md:block"> thay đổi cuộc sống.
             </h1>
-            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 MAXBEN không chỉ tạo ra những sản phẩm chiếu sáng. Chúng tôi kiến tạo nên những không gian đầy cảm hứng, nơi công nghệ và nghệ thuật hòa quyện để nâng cao chất lượng sống và làm việc.
             </p>
         </div>
-        </section>
+    </section>
 
     <section class="py-20 md:py-32 bg-gray-900 text-gray-300">
         <div class="container mx-auto px-6">
@@ -274,7 +296,7 @@
                     </p>
                 </div>
                 <div class="order-1 lg:order-2">
-                    <img src="./icons/tải xuống.webp"
+                    <img src="./icons/MR_haender_1sal_1.webp"
                          alt="Bản vẽ kỹ thuật về đèn LED, biểu tượng của sự đổi mới kỹ thuật và thiết kế chính xác của MAXBEN"
                          loading="lazy"
                          class="rounded-xl shadow-xl w-full object-cover aspect-[4/3] lg:aspect-square transform hover:scale-102 transition duration-300 ease-in-out">
@@ -287,7 +309,7 @@
                 <div>
                     <h2 class="text-6xl md:text-8xl lg:text-9xl font-extrabold mb-6 leading-none tracking-tighter text-gray-100">
                         13
-                        <span class="block text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-400 uppercase mt-4 md:mt-6">
+                        <span class="block text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-400 uppercase mt-6  md:mt-8">
                             Năm Kiến Tạo
                         </span>
                     </h2>
@@ -401,7 +423,7 @@
                     Hãy khám phá các sản phẩm của chúng tôi hoặc liên hệ với đội ngũ chuyên gia để bắt đầu kiến tạo không gian ánh sáng của riêng bạn.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-6">
-                    <a href="index.html#new-product-catalog" class="
+                    <a href="index.html#" class="
                         bg-blue-600 hover:bg-blue-700 transition-colors duration-300 ease-in-out
                         text-white font-bold py-4 px-10 rounded-full shadow-md
                         text-lg md:text-xl whitespace-nowrap transform hover:scale-105
