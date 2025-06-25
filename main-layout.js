@@ -2,20 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // ---- Logic cho Menu Mobile ----
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Đóng menu khi click vào một link trên mobile
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    }
+
 
     // ---- Logic cho Dropdown Sản phẩm ----
     // Đảm bảo rằng biến 'productDatabase' từ tệp 'product-details.js' đã tồn tại
