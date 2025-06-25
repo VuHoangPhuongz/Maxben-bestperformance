@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dự Án Tiêu Biểu - MAXBEN Lighting</title>
-    <meta name="description" content="Khám phá các dự án chiếu sáng ấn tượng do MAXBEN thực hiện cho biệt thự, căn hộ, văn phòng, cửa hàng và nhiều không gian khác.">
+    <title>Dự Án & Tư Vấn Chiếu Sáng - MAXBEN</title>
+    <meta name="description" content="Khám phá các dự án chiếu sáng tiêu biểu và quy trình tư vấn chuyên nghiệp từ MAXBEN, đối tác tin cậy cho mọi công trình.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,20 +13,42 @@
     <style>
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
-            background-color: #111827;
-            color: #E5E7EB;
+            background-color: #020617; /* Slate 950 */
+            color: #e2e8f0; /* Slate 200 */
         }
         .gradient-text {
-            background: linear-gradient(90deg, #38BDF8, #A78BFA);
+            background: linear-gradient(90deg, #38bdf8, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .cta-button {
-            transition: all 0.3s ease;
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(15, 23, 42, 0.8); /* Slate 900 with opacity */
+            backdrop-filter: blur(10px);
         }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 25px rgba(59, 130, 246, 0.4);
+        .form-input, .form-textarea, .form-select {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155; /* Slate 700 */
+            color: #cbd5e1; /* Slate 300 */
+            transition: all 0.3s ease;
+            border-radius: 0.5rem;
+            padding: 0.85rem 1rem;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: #38bdf8; /* Sky 500 */
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .project-card {
             background-color: #1F2937;
@@ -34,184 +56,417 @@
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #374151;
+            display: flex;
+            flex-direction: column;
         }
         .project-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
-        .project-card img {
+        .project-card .project-image-wrapper {
+            overflow: hidden;
+        }
+        .project-card .project-image {
             transition: transform 0.4s ease;
         }
-        .project-card:hover img {
+        .project-card:hover .project-image {
             transform: scale(1.05);
         }
+        .filter-btn.active {
+             background-color: #2563EB; /* bg-blue-600 */
+             color: #ffffff;
+        }
+        .pagination-btn.active {
+            background-color: #2563EB;
+            color: #ffffff;
+            border-color: #2563EB;
+        }
+            .form-field {
+        background-color: rgba(30, 41, 59, 0.8); /* bg-slate-800 with opacity */
+        border: 1px solid #475569; /* border-slate-700 */
+        color: #F8FAFC; /* text-slate-50 */
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        transition: all 0.2s ease-in-out;
+    }
+    .form-field:focus {
+        border-color: #38BDF8; /* border-sky-400 */
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        outline: none;
+    }
+    /* Tùy chỉnh mũi tên cho dropdown */
+    .custom-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+    }
     </style>
 </head>
-<body class="bg-gray-900">
+<body class="bg-slate-950 text-gray-300">
 
-    <!-- Header -->
-    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+    <header class="sticky-nav border-b border-gray-700">
         <div class="container mx-auto px-4">
             <nav class="flex items-center justify-between h-20">
                 <a href="index.html" class="text-3xl font-bold gradient-text">MAXBEN💡</a>
-                <a href="index.html" class="text-gray-300 hover:text-white transition-colors font-medium">
-                    <i class="fas fa-arrow-left mr-2"></i> Quay lại trang chủ
-                </a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Trang Chủ</a>
+                    <a href="du-an.html" class="text-gray-300 hover:text-white transition-colors">Dự Án & Tư Vấn</a>
+                    <a href="#new-product-catalog" class="text-gray-300 hover:text-white transition-colors">Sản Phẩm</a>
+                    <a href="du-lieu.html" class="text-gray-300 hover:text-white transition-colors">Dữ liệu khách hàng</a>
+                    <a href="TCO.html" class="text-gray-300 hover:text-white transition-colors">Công cụ tính TCO</a>
+                </div>
+                <div class="flex items-center">
+                     <a href="tel:0886666730" class="cta-button bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-lg hidden md:block">
+                       📞 Gọi Ngay
+                    </a>
+                    <div class="md:hidden ml-4">
+                        <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                            <i class="fas fa-bars fa-lg"></i>
+                        </button>
+                    </div>
+                </div>
             </nav>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Trang Chủ</a>
+            <a href="#new-product-catalog" class="block py-2 text-gray-300 hover:text-white">Sản Phẩm</a>
+            <a href="giai-phap.html" class="block py-2 text-gray-300 hover:text-white">Giải Pháp</a>
+            <a href="tu-van-du-an.html" class="block py-2 text-gray-300 hover:text-white">Tư Vấn Dự Án</a>
+            <a href="du-lieu.html" class="block py-2 text-gray-300 hover:text-white">Dữ liệu khách hàng</a>
+             <a href="TCO.html" class="block py-2 text-gray-300 hover:text-white">Công cụ tính Tổng Chi Phí Sở Hữu</a>
+            <a href="tel:0886666730" class="block py-2 text-gray-300 hover:text-white">📞 Liên Hệ </a>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-16 md:py-24">
-        
-        <!-- Main Title Section -->
-        <div class="text-center mb-16 md:mb-20">
-            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
-                Dự Án <span class="gradient-text">Chúng Tôi Đã Thực Hiện</span>
-            </h1>
-            <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-                Minh chứng cho chất lượng và sự chuyên nghiệp. Mỗi dự án là một câu chuyện về ánh sáng mà chúng tôi tự hào được kể.
-            </p>
+<main>
+    <!-- Hero Section -->
+    <section class="relative py-24 md:py-32 bg-slate-900 overflow-hidden">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-20">
+             <source src="https://assets.mixkit.co/videos/preview/mixkit-data-center-on-a-monitor-screen-4074-large.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Giải Pháp Chiếu Sáng <span class="gradient-text">Toàn Diện</span></h1>
+            <p class="text-lg text-gray-400 max-w-3xl mx-auto">Từ những công trình biểu tượng đến quy trình tư vấn chuyên sâu, MAXBEN là đối tác tin cậy cho mọi dự án của bạn.</p>
+             <a href="#du-an" class="mt-8 bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg inline-block">
+                Khám Phá Dự Án
+             </a>
         </div>
+    </section>
 
-        <!-- Projects Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+    <!-- Project Gallery Section -->
+    <section id="du-an" class="py-16 md:py-24 bg-slate-950">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Dự Án Tiêu Biểu</h2>
+                <p class="text-gray-400">Khám phá cách MAXBEN biến đổi không gian qua các dự án chiếu sáng ấn tượng mà chúng tôi đã thực hiện.</p>
+            </div>
+            <!-- Filter Buttons -->
+            <div id="project-filters" class="flex justify-center flex-wrap gap-2 md:gap-4 mb-12 scroll-reveal">
+                <button data-filter="all" class="filter-btn px-5 py-2 text-sm font-semibold rounded-full active">Tất Cả</button>
+                <button data-filter="Văn Phòng" class="filter-btn px-5 py-2 text-sm font-semibold bg-slate-800 text-gray-300 hover:bg-slate-700 rounded-full">Văn Phòng</button>
+                <button data-filter="Bán Lẻ" class="filter-btn px-5 py-2 text-sm font-semibold bg-slate-800 text-gray-300 hover:bg-slate-700 rounded-full">Bán Lẻ & Showroom</button>
+                <button data-filter="Nhà Ở" class="filter-btn px-5 py-2 text-sm font-semibold bg-slate-800 text-gray-300 hover:bg-slate-700 rounded-full">Biệt Thự & Nhà Ở</button>
+                <button data-filter="Ngoại thất" class="filter-btn px-5 py-2 text-sm font-semibold bg-slate-800 text-gray-300 hover:bg-slate-700 rounded-full">Ngoại thất</button>
+                 <button data-filter="Nhà Xưởng" class="filter-btn px-5 py-2 text-sm font-semibold bg-slate-800 text-gray-300 hover:bg-slate-700 rounded-full">Nhà Xưởng</button>
+            </div>
 
-            <!-- Project Card 1: Luxury Villa -->
-            <div class="project-card">
-                <div class="overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1770&auto=format&fit=crop" alt="Biệt thự sang trọng với hệ thống chiếu sáng hiện đại" class="w-full h-56 object-cover">
-                </div>
-                <div class="p-6">
-                    <p class="text-sm text-blue-400 font-semibold mb-1">BIỆT THỰ HIỆN ĐẠI</p>
-                    <h3 class="text-xl font-bold text-white mb-3">Biệt Thự The Harmony, Long Biên</h3>
-                    <p class="text-gray-400 text-sm mb-4">Giải pháp chiếu sáng 3 lớp sử dụng hệ ray nam châm và spotlight CRI>98, tạo nên không gian sống tinh tế, linh hoạt và tôn vinh kiến trúc nội thất.</p>
-                    <div class="flex flex-wrap gap-2 text-xs mb-5">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Chiếu sáng phòng khách</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Ray Nam Châm</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">CRI>98</span>
-                    </div>
-                    <a href="du-an-harmony.html" class="font-semibold text-white hover:text-blue-400 transition-colors">Xem Chi Tiết Dự Án &rarr;</a>
-                </div>
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-reveal min-h-[500px]">
+                <!-- Project cards will be rendered by JS -->
             </div>
             
-            <!-- Project Card 2: Fashion Store -->
-            <div class="project-card">
-                <div class="overflow-hidden">
-                    <img src="https://images.pexels.com/photos/271795/pexels-photo-271795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Cửa hàng thời trang cao cấp" class="w-full h-56 object-cover">
-                </div>
-                 <div class="p-6">
-                    <p class="text-sm text-blue-400 font-semibold mb-1">CỬA HÀNG BÁN LẺ</p>
-                    <h3 class="text-xl font-bold text-white mb-3">Showroom Thời Trang IVY, Quận 1</h3>
-                    <p class="text-gray-400 text-sm mb-4">Hệ thống đèn rọi ray chuyên dụng với CRI cao giúp màu sắc sản phẩm được hiển thị trung thực, thu hút khách hàng và tăng trải nghiệm mua sắm.</p>
-                     <div class="flex flex-wrap gap-2 text-xs mb-5">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Chiếu sáng Showroom</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Đèn Rọi Ray</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Ánh sáng 4000K</span>
-                    </div>
-                    <a href="du-an-ivy.html" class="font-semibold text-white hover:text-blue-400 transition-colors">Xem Chi Tiết Dự Án &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Project Card 3: Modern Office -->
-            <div class="project-card">
-                <div class="overflow-hidden">
-                    <img src="https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Văn phòng làm việc hiện đại" class="w-full h-56 object-cover">
-                </div>
-                <div class="p-6">
-                    <p class="text-sm text-blue-400 font-semibold mb-1">VĂN PHÒNG DOANH NGHIỆP</p>
-                    <h3 class="text-xl font-bold text-white mb-3">Văn Phòng FPT Software, Cầu Giấy</h3>
-                    <p class="text-gray-400 text-sm mb-4">Triển khai hệ thống đèn Panel và tuýp LED bán nguyệt đạt chuẩn UGR<19, đảm bảo môi trường làm việc không gây chói, bảo vệ thị lực và tăng sự tập trung.</p>
-                     <div class="flex flex-wrap gap-2 text-xs mb-5">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Chiếu sáng văn phòng</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Đèn Panel</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">UGR<19</span>
-                    </div>
-                    <a href="du-an-fpt.html" class="font-semibold text-white hover:text-blue-400 transition-colors">Xem Chi Tiết Dự Án &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Project Card 4: Apartment -->
-             <div class="project-card">
-                <div class="overflow-hidden">
-                    <img src="https://images.pexels.com/photos/6434623/pexels-photo-6434623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Phòng ngủ ấm cúng" class="w-full h-56 object-cover">
-                </div>
-                <div class="p-6">
-                    <p class="text-sm text-blue-400 font-semibold mb-1">CĂN HỘ CAO CẤP</p>
-                    <h3 class="text-xl font-bold text-white mb-3">Căn Hộ Masteri West Heights</h3>
-                    <p class="text-gray-400 text-sm mb-4">Kết hợp đèn âm trần chống chói và dây LED hắt trần, tạo không gian nghỉ ngơi thư giãn với ánh sáng êm dịu, ấm cúng và sang trọng.</p>
-                    <div class="flex flex-wrap gap-2 text-xs mb-5">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Chiếu sáng phòng ngủ</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Âm trần chống chói</span>
-                    </div>
-                    <a href="du-an-masteri.html" class="font-semibold text-white hover:text-blue-400 transition-colors">Xem Chi Tiết Dự Án &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Project Card 5: Restaurant -->
-             <div class="project-card">
-                <div class="overflow-hidden">
-                    <img src="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Nhà hàng sang trọng" class="w-full h-56 object-cover">
-                </div>
-                <div class="p-6">
-                    <p class="text-sm text-blue-400 font-semibold mb-1">NHÀ HÀNG & QUÁN CAFE</p>
-                    <h3 class="text-xl font-bold text-white mb-3">Nhà hàng L'amour Steak, Hà Nội</h3>
-                    <p class="text-gray-400 text-sm mb-4">Sử dụng đèn spotlight với góc chiếu hẹp và ánh sáng vàng ấm 3000K để tạo điểm nhấn trên từng bàn ăn, mang lại trải nghiệm ẩm thực thân mật và lãng mạn.</p>
-                     <div class="flex flex-wrap gap-2 text-xs mb-5">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Chiếu sáng nhà hàng</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Spotlight</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Ánh sáng 3000K</span>
-                    </div>
-                    <a href="du-an-lamour.html" class="font-semibold text-white hover:text-blue-400 transition-colors">Xem Chi Tiết Dự Án &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Project Card 6: Landscape -->
-             <div class="project-card">
-                <div class="overflow-hidden">
-                    <img src="https://images.pexels.com/photos/2132126/pexels-photo-2132126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Khu vực ngoại thất" class="w-full h-56 object-cover">
-                </div>
-                <div class="p-6">
-                    <p class="text-sm text-blue-400 font-semibold mb-1">NGOẠI THẤT & SÂN VƯỜN</p>
-                    <h3 class="text-xl font-bold text-white mb-3">Chiếu sáng sân vườn Biệt thự Ecopark</h3>
-                    <p class="text-gray-400 text-sm mb-4">Sử dụng các loại đèn pha và đèn sân vườn IP65, vừa đảm bảo an toàn, vừa làm nổi bật các tiểu cảnh, lối đi, tạo nên một không gian ngoài trời lung linh vào ban đêm.</p>
-                     <div class="flex flex-wrap gap-2 text-xs mb-5">
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Chiếu sáng sân vườn</span>
-                        <span class="bg-gray-700 px-3 py-1 rounded-full">Đèn Pha LED IP65</span>
-                    </div>
-                    <a href="du-an-ecopark.html" class="font-semibold text-white hover:text-blue-400 transition-colors">Xem Chi Tiết Dự Án &rarr;</a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- CTA Section -->
-        <section class="mt-24">
-            <div class="bg-gray-800 rounded-xl p-8 md:p-12 text-center">
-                 <h2 class="text-3xl font-bold mb-4">Bạn có một dự án cần chiếu sáng?</h2>
-                 <p class="text-gray-400 max-w-2xl mx-auto mb-8">
-                    Hãy để các chuyên gia của MAXBEN giúp bạn biến ý tưởng thành hiện thực với giải pháp chiếu sáng tối ưu và chuyên nghiệp nhất.
-                 </p>
-                 <a href="tu-van-du-an.html" class="cta-button bg-blue-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg inline-block text-lg">
-                    Liên Hệ Tư Vấn Ngay
-                 </a>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-700 mt-16">
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400">&copy; 2025 MAXBEN. All Rights Reserved.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="https://facebook.com/your-fanpage" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
-                    <a href="https://youtube.com/your-channel" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
-                    <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
-                </div>
+            <!-- Pagination -->
+            <div id="pagination-container" class="flex justify-center items-center mt-12 space-x-2">
+                <!-- Pagination buttons will be rendered by JS -->
             </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- NEW CTA SECTION -->
+    <section class="py-16 md:py-20 bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-10 md:p-12 text-center md:text-left md:flex items-center justify-between shadow-2xl scroll-reveal">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">Bạn có một dự án cần tư vấn?</h2>
+                    <p class="text-blue-100 max-w-2xl">Hãy để các chuyên gia của chúng tôi giúp bạn hiện thực hóa ý tưởng với giải pháp chiếu sáng tối ưu nhất.</p>
+                </div>
+                <a href="#tu-van" class="mt-6 md:mt-0 bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-slate-100 transition-all transform hover:scale-105 whitespace-nowrap inline-block">
+                    Liên Hệ Ngay
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quy Trình & Form Liên Hệ -->
+
+<section id="tu-van" class="py-16 md:py-24 bg-slate-950 overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Quy Trình Tư Vấn Chiếu Sáng 4 Bước</h2>
+            <p class="text-gray-400">Một quy trình tinh gọn để đảm bảo mọi dự án đều được lên kế hoạch và thực thi một cách hoàn hảo.</p>
+        </div>
+        
+        <div class="grid lg:grid-cols-5 gap-12 items-start">
+            <div class="lg:col-span-3 space-y-16 scroll-reveal">
+                <div class="flex items-start space-x-6">
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div class="w-16 h-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center">
+                            <i class="fa-solid fa-clipboard-list text-amber-400 text-2xl"></i>
+                        </div>
+                        <div class="w-px h-32 bg-slate-700 mt-4"></div>
+                    </div>
+                    <div>
+                        <p class="text-amber-400 font-semibold mb-1">Bước 01</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Khảo Sát & Thấu Hiểu</h3>
+                        <p class="text-gray-400">Lắng nghe ý tưởng, phân tích yêu cầu và khảo sát thực tế để nắm bắt trọn vẹn nhu cầu và mong muốn của bạn.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="flex flex-col items-center flex-shrink-0">
+                         <div class="w-16 h-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center">
+                            <i class="fa-solid fa-compass-drafting text-amber-400 text-2xl"></i>
+                        </div>
+                        <div class="w-px h-32 bg-slate-700 mt-4"></div>
+                    </div>
+                    <div>
+                        <p class="text-amber-400 font-semibold mb-1">Bước 02</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Thiết Kế & Mô Phỏng</h3>
+                        <p class="text-gray-400">Sử dụng phần mềm DIALux Evo để thiết kế, mô phỏng 3D trực quan, giúp bạn hình dung trước hiệu quả ánh sáng và có cơ sở kỹ thuật rõ ràng.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="flex flex-col items-center flex-shrink-0">
+                         <div class="w-16 h-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center">
+                            <i class="fa-solid fa-calculator text-amber-400 text-2xl"></i>
+                        </div>
+                        <div class="w-px h-32 bg-slate-700 mt-4"></div>
+                    </div>
+                    <div>
+                        <p class="text-amber-400 font-semibold mb-1">Bước 03</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Tối Ưu & Báo Giá</h3>
+                        <p class="text-gray-400">Dựa trên thiết kế, chúng tôi tư vấn các sản phẩm phù hợp nhất và cung cấp báo giá chi tiết, minh bạch để tối ưu chi phí đầu tư.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-hard-hat text-amber-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-amber-400 font-semibold mb-1">Bước 04</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Hỗ Trợ & Giám Sát Thi Công</h3>
+                        <p class="text-gray-400">Cung cấp tài liệu kỹ thuật chi tiết và giám sát, hỗ trợ đội thi công để đảm bảo việc lắp đặt chính xác theo đúng thiết kế ban đầu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 sticky top-24 scroll-reveal" style="transition-delay: 200ms;">
+                <div class="bg-gradient-to-br from-amber-500 to-blue-500 p-0.5 rounded-2xl">
+                    <div class="bg-slate-900 rounded-[15px] p-8">
+                        <h3 class="text-2xl font-bold text-white text-center mb-6">Yêu Cầu Tư Vấn Miễn Phí</h3>
+                        <form action="https://formspree.io/f/xovwpjdn" method="POST">
+                            <div class="space-y-5">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Tên của bạn</label>
+                                    <input type="text" name="name" id="name" required class="form-field" placeholder="Nguyễn Văn An">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-slate-300 mb-2">Số điện thoại</label>
+                                    <input type="tel" name="phone" id="phone" required class="form-field" placeholder="09xxxxxxxx">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                    <input type="email" name="email" id="email" class="form-field" placeholder="email@example.com">
+                                </div>
+                                 <div>
+                                    <label for="project-type" class="block text-sm font-medium text-slate-300 mb-2">Loại dự án</label>
+                                    <select id="project-type" name="project-type" class="form-field custom-select">
+                                        <option selected disabled>Chọn loại dự án...</option>
+                                        <option>Văn phòng</option>
+                                        <option>Nhà ở / Căn hộ</option>
+                                        <option>Cửa hàng / Showroom</option>
+                                        <option>Nhà xưởng</option>
+                                        <option>Khách sạn / Resort</option>
+                                        <option>Khác</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Nội dung yêu cầu</label>
+                                    <textarea id="message" name="message" rows="4" class="form-field" placeholder="Mô tả ngắn gọn về dự án của bạn..."></textarea>
+                                </div>
+                            </div>
+                            <div class="mt-8 text-center">
+                                <button type="submit" class="w-full bg-amber-500 text-slate-900 font-bold py-3 px-8 rounded-full hover:bg-amber-400 transition-all transform hover:scale-105 shadow-lg shadow-amber-500/20">
+                                    <i class="fa-solid fa-paper-plane mr-2"></i>
+                                    Gửi Yêu Cầu Ngay
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="bg-slate-900 border-t border-slate-800">
+    <div class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="col-span-1 md:col-span-2">
+                <a href="index.html" class="text-2xl font-bold gradient-text">MAXBEN💡</a>
+                <p class="text-gray-400 text-sm mt-4 max-w-sm">Kiến tạo không gian bằng ánh sáng chất lượng và giải pháp chuyên nghiệp.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4 uppercase tracking-wider">Liên kết</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="ve-chung-toi.html" class="text-gray-400 hover:text-amber-400 transition-colors">Về Chúng Tôi</a></li>
+                    <li><a href="san-pham.html" class="text-gray-400 hover:text-amber-400 transition-colors">Sản Phẩm</a></li>
+                    <li><a href="du-an-tieu-bieu.html" class="text-gray-400 hover:text-amber-400 transition-colors">Dự Án</a></li>
+                    <li><a href="lien-he.html" class="text-gray-400 hover:text-amber-400 transition-colors">Liên Hệ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4 uppercase tracking-wider">Kết nối</h4>
+                <div class="flex space-x-4">
+                   <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
+                   <a href="#" class="text-gray-400 hover:text-red-500 transition-colors" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+                   <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+               </div>
+            </div>
+        </div>
+        <div class="border-t border-slate-800 pt-8 text-center text-sm text-gray-500">
+            <p>&copy; 2025 MAXBEN. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // --- PROJECT DATA & PAGINATION ---
+        const allProjects = [
+            { id: "biet-thu-harmony", category: "Nhà Ở", title: "Biệt Thự The Harmony, Long Biên", desc: "Giải pháp chiếu sáng 3 lớp tạo nên không gian sống tinh tế và linh hoạt.", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1770&auto=format&fit=crop", tags: ["Ray Nam Châm", "Spotlight", "CRI > 98"] },
+            { id: "showroom-ivy", category: "Bán Lẻ", title: "Showroom Thời Trang IVY, Quận 1", desc: "Hệ thống đèn rọi ray chuyên dụng giúp màu sắc sản phẩm được hiển thị trung thực, thu hút khách hàng.", img: "https://images.pexels.com/photos/271795/pexels-photo-271795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Đèn Rọi Ray", "CRI>95"] },
+            { id: "van-phong-fpt", category: "Văn Phòng", title: "Văn Phòng FPT Software, Cầu Giấy", desc: "Triển khai hệ thống đèn Panel và tuýp LED bán nguyệt đạt chuẩn UGR<19, đảm bảo môi trường làm việc không gây chói.", img: "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Đèn Panel", "UGR<19", "Tiết kiệm năng lượng"] },
+            { id: "can-ho-masteri", category: "Nhà Ở", title: "Căn Hộ Masteri West Heights", desc: "Kết hợp đèn âm trần chống chói và dây LED hắt trần, tạo không gian nghỉ ngơi thư giãn với ánh sáng êm dịu, ấm cúng.", img: "https://images.pexels.com/photos/6434623/pexels-photo-6434623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Âm trần chống chói", "Dây LED"] },
+            { id: "nha-hang-lamour", category: "Bán Lẻ", title: "Nhà hàng L'amour Steak, Hà Nội", desc: "Sử dụng đèn spotlight với góc chiếu hẹp và ánh sáng vàng ấm 3000K để tạo điểm nhấn trên từng bàn ăn.", img: "https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Spotlight", "3000K"] },
+            { id: "san-vuon-ecopark", category: "Ngoại thất", title: "Chiếu sáng sân vườn Biệt thự Ecopark", desc: "Sử dụng các loại đèn pha và đèn sân vườn IP65, vừa đảm bảo an toàn, vừa làm nổi bật các tiểu cảnh, lối đi.", img: "https://images.pexels.com/photos/2132126/pexels-photo-2132126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Đèn Pha LED", "IP65", "Sân Vườn"] },
+            { id: "coworking-toong", category: "Văn Phòng", title: "Coworking Space Toong, Hoàng Đạo Thúy", desc: "Giải pháp chiếu sáng linh hoạt với các vùng sáng khác nhau, phục vụ đa dạng nhu cầu làm việc và sáng tạo.", img: "https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Đèn Tuýp", "Linh hoạt"] },
+            { id: "cafe-signature", category: "Bán Lẻ", title: "Quán Cafe The Coffee House Signature", desc: "Ánh sáng được thiết kế để tạo ra một không gian ấm cúng, gần gũi, là nơi lý tưởng để gặp gỡ và làm việc.", img: "https://images.pexels.com/photos/1749821/pexels-photo-1749821.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Đèn Thả", "Ấm cúng"] },
+            { id: "penthouse-landmark", category: "Nhà Ở", title: "Penthouse Tòa nhà Landmark 81", desc: "Hệ thống chiếu sáng thông minh, có thể điều khiển qua smartphone, tạo ra các kịch bản chiếu sáng đa dạng.", img: "https://images.pexels.com/photos/6585758/pexels-photo-6585758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Smart Lighting", "Dimmable"] },
+            { id: "cua-hang-pnj", category: "Bán Lẻ", title: "Cửa hàng trang sức PNJ Next", desc: "Giải pháp chiếu sáng chuyên dụng cho trang sức, làm nổi bật sự lấp lánh và tinh xảo của sản phẩm.", img: "https://images.pexels.com/photos/16668101/pexels-photo-16668101/free-photo-of-gold-necklaces-in-a-shop.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Chiếu sáng trang sức", "CRI>98"] },
+            { id: "tru-so-techcombank", category: "Văn Phòng", title: "Trụ sở chính Techcombank Tower", desc: "Hệ thống chiếu sáng kiến trúc hiện đại, đồng bộ và thông minh, thể hiện đẳng cấp thương hiệu.", img: "https://images.pexels.com/photos/7794042/pexels-photo-7794042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Facade Lighting", "Smart Control"] },
+            { id: "nha-xuong-vinatex", category: "Nhà Xưởng", title: "Nhà Xưởng Dệt May Vinatex", desc: "Giải pháp chiếu sáng công nghiệp sử dụng đèn High-bay, đảm bảo độ sáng và an toàn cho hoạt động sản xuất.", img: "https://images.pexels.com/photos/2228561/pexels-photo-2228561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Đèn High-bay", "IP65"] },
+            { id: "khach-san-marriott", category: "Bán Lẻ", title: "Khách Sạn JW Marriott, Hà Nội", desc: "Hệ thống chiếu sáng sảnh và phòng nghỉ sang trọng, tạo trải nghiệm đẳng cấp 5 sao.", img: "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Hospitality", "Dimmable"] },
+            { id: "san-golf-long-bien", category: "Ngoại thất", title: "Sân Golf Long Biên", desc: "Chiếu sáng toàn diện cho sân golf, đảm bảo tầm nhìn tốt nhất cho các golfer vào buổi tối.", img: "https://images.pexels.com/photos/1323456/pexels-photo-1323456.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Đèn Pha LED", "Thể thao"] },
+            { id: "chung-cu-sunshine", category: "Nhà Ở", title: "Chung cư Sunshine City", desc: "Cung cấp giải pháp chiếu sáng đồng bộ cho hàng ngàn căn hộ, tối ưu chi phí và đảm bảo chất lượng.", img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Âm trần", "Số lượng lớn"] },
+            { id: "trung-tam-aeon", category: "Bán Lẻ", title: "Trung Tâm Thương Mại AEON Mall", desc: "Hệ thống chiếu sáng chung cho không gian rộng lớn, đảm bảo tính thẩm mỹ và tiết kiệm năng lượng.", img: "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["TTTM", "Tiết kiệm năng lượng"] },
+            { id: "ngan-hang-vietcombank", category: "Văn Phòng", title: "Trụ sở Vietcombank Tower, TP.HCM", desc: "Chiếu sáng mặt dựng tòa nhà biểu tượng, khẳng định vị thế thương hiệu hàng đầu.", img: "https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Facade Lighting", "Kiến trúc"] },
+            { id: "nha-may-samsung", category: "Nhà Xưởng", title: "Nhà máy Samsung Electronics, Bắc Ninh", desc: "Giải pháp chiếu sáng cho dây chuyền sản xuất yêu cầu độ chính xác cao và chống tĩnh điện.", img: "https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Nhà máy", "Chống tĩnh điện"] },
+            { id: "resort-intercontinental", category: "Ngoại thất", title: "Khu nghỉ dưỡng InterContinental, Phú Quốc", desc: "Chiếu sáng cảnh quan và biệt thự nghỉ dưỡng, tạo không gian thư giãn, hòa mình với thiên nhiên.", img: "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", tags: ["Resort", "Cảnh quan", "IP67"] }
+        ];
+
+
+        const projectsGrid = document.getElementById('projects-grid');
+        const paginationContainer = document.getElementById('pagination-container');
+        const filterContainer = document.getElementById('project-filters');
+        const itemsPerPage = 6;
+        let currentPage = 1;
+        let currentFilter = 'all';
+
+        function displayProjects() {
+            projectsGrid.innerHTML = '';
+            const filteredProjects = currentFilter === 'all' 
+                ? allProjects 
+                : allProjects.filter(p => p.category === currentFilter);
+            
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
+
+            paginatedProjects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <div class="project-image-wrapper">
+                        <img src="${project.img}" alt="${project.title}" class="project-image w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <p class="text-sm text-blue-400 font-semibold mb-1 uppercase">${project.category}</p>
+                        <h3 class="text-xl font-bold text-white mb-2 flex-grow">${project.title}</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${(project.tags || []).map(tag => `<span class="text-xs bg-slate-700 text-slate-300 px-2 py-1 rounded-full">${tag}</span>`).join('')}
+                        </div>
+                        <a href="du-an-chi-tiet.html?id=${project.id}" class="font-semibold text-amber-400 hover:text-amber-300 transition-colors mt-auto self-start">Xem Chi Tiết &rarr;</a>
+                    </div>
+                `;
+                projectsGrid.appendChild(card);
+            });
+            setupPagination(filteredProjects);
+        }
+
+        function setupPagination(filteredProjects) {
+            paginationContainer.innerHTML = '';
+            const pageCount = Math.ceil(filteredProjects.length / itemsPerPage);
+            if (pageCount <= 1) return;
+            
+            for (let i = 1; i <= pageCount; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = `pagination-btn w-10 h-10 rounded-md font-semibold border border-slate-700 transition-colors hover:bg-slate-700`;
+                if (i === currentPage) {
+                    btn.classList.add('active');
+                }
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    displayProjects();
+                    document.getElementById('du-an').scrollIntoView({ behavior: 'smooth' });
+                });
+                paginationContainer.appendChild(btn);
+            }
+        }
+        
+        filterContainer.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const activeButton = filterContainer.querySelector('.active');
+                if (activeButton) {
+                     activeButton.classList.remove('active');
+                     activeButton.classList.add('bg-slate-800', 'text-gray-300');
+                }
+                e.target.classList.add('active');
+                e.target.classList.remove('bg-slate-800', 'text-gray-300');
+                
+                currentFilter = e.target.dataset.filter;
+                currentPage = 1;
+                displayProjects();
+            }
+        });
+        displayProjects();
+    });
+</script>
 
 </body>
 </html>

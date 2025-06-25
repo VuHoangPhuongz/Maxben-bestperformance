@@ -3,171 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Về Chúng Tôi - Câu Chuyện Thương Hiệu MAXBEN</title>
-    <meta name="description" content="Tìm hiểu về MAXBEN - thương hiệu chuyên cung cấp các giải pháp chiếu sáng LED chất lượng cao, với sứ mệnh kiến tạo không gian sống và làm việc bằng ánh sáng nghệ thuật và công nghệ.">
+    <title>Câu Chuyện Về MAXBEN - Giải Pháp Chiếu Sáng Chuyên Nghiệp</title>
+    <!-- Thêm các thẻ meta, link CSS, font chữ cần thiết ở đây -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
-            background-color: #111827;
-            color: #E5E7EB;
-            scroll-behavior: smooth;
+            background-color: #020617; /* Nền xanh đen rất đậm */
         }
         .gradient-text {
-            background: linear-gradient(90deg, #38BDF8, #A78BFA);
+            background: linear-gradient(90deg, #38bdf8, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .cta-button {
-            transition: all 0.3s ease;
+        #story-hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
         }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 25px rgba(59, 130, 246, 0.4);
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .stat-card {
-            background-color: #1F2937;
-            border: 1px solid #374151;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            text-align: center;
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stat-card:hover {
+            border-color: rgba(245, 158, 11, 0.5); /* amber-500 */
+            background-color: #1e293b; /* bg-slate-800 */
+        }
+        .core-value-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem; /* Phải giống với border-radius của card */
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0), rgba(56, 189, 248, 0));
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: background 0.4s ease;
+        }
+        .core-value-card:hover::before {
+             background: linear-gradient(135deg, #f59e0b, #38bdf8);
+        }
+        .core-value-card:hover .core-value-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+        .sticky-nav{
+            position:sticky;
+            top:0;
+            z-index:50;
+            background-color:rgba(17,24,39,0.8);
+            backdrop-filter:blur(10px);
         }
     </style>
 </head>
-<body class="bg-gray-900">
+<body class="bg-slate-950">
 
-    <!-- Header -->
-    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
-        <div class="container mx-auto px-4">
-            <nav class="flex items-center justify-between h-20">
-                <a href="index.html" class="text-3xl font-bold gradient-text">MAXBEN💡</a>
-                <a href="index.html" class="text-gray-300 hover:text-white transition-colors font-medium">
-                    <i class="fas fa-arrow-left mr-2"></i> Quay lại trang chủ
+<header class="sticky-nav border-b border-gray-700/50">
+    <div class="container mx-auto px-4">
+        <nav class="flex items-center justify-between h-20">
+            <a href="index.html" class="text-3xl font-bold gradient-text">MAXBEN💡</a>
+
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8 text-gray-300">
+                <a href="index.html" class="hover:text-white transition-colors">Trang Chủ</a>
+                <a href="#new-product-catalog" class="hover:text-white transition-colors">Sản Phẩm</a>
+                <a href="giai-phap.html" class="hover:text-white transition-colors">Giải Pháp</a>
+                <a href="tu-van-du-an.html" class="hover:text-white transition-colors">Tư Vấn Dự Án</a>
+                <a href="cam-nang-kinh-doanh.html" class="hover:text-white transition-colors">Cẩm nang</a>
+            </div>
+            
+            <div class="flex items-center">
+                <a href="tel:0886666730" class="bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-lg hidden md:block hover:bg-blue-700 transition-colors">
+                    📞 Gọi Ngay
                 </a>
-            </nav>
+                <div class="md:hidden ml-4">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+        <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Trang Chủ</a>
+        <a href="#new-product-catalog" class="block py-2 text-gray-300 hover:text-white">Sản Phẩm</a>
+        <a href="giai-phap.html" class="block py-2 text-gray-300 hover:text-white">Giải Pháp</a>
+        <a href="tu-van-du-an.html" class="block py-2 text-gray-300 hover:text-white">Tư Vấn Dự Án</a>
+        <a href="cam-nang-kinh-doanh.html" class="block py-2 text-gray-300 hover:text-white">Cẩm nang</a>
+        <a href="tel:0886666730" class="block mt-2 py-2 text-center bg-blue-600 rounded-lg text-white font-semibold">📞 Liên Hệ</a>
+    </div>
+</header>
+
+<main>
+    <!-- HERO SECTION - CÂU CHUYỆN VỀ MAXBEN -->
+    <section class="relative h-[80vh] md:h-[90vh] flex items-center justify-center text-white overflow-hidden">
+        <!-- Video nền -->
+        <video id="story-hero-video" autoplay muted loop playsinline>
+            <source src="./icons/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+        </video>
+        <!-- Lớp phủ tối -->
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-20">
+            <h2 class="text-sm md:text-base font-bold uppercase tracking-widest text-blue-400 mb-4" style="text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);">
+                CÂU CHUYỆN VỀ MAXBEN
+            </h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6" style="text-shadow: 0 0 20px rgba(0,0,0,0.7);">
+                Chúng tôi tin rằng <span class="gradient-text">ánh sáng</span> có sức mạnh <br class="hidden md:block"> thay đổi cuộc sống.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                MAXBEN không chỉ tạo ra những sản phẩm chiếu sáng. Chúng tôi kiến tạo nên những không gian đầy cảm hứng, nơi công nghệ và nghệ thuật hòa quyện để nâng cao chất lượng sống và làm việc.
+            </p>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="py-20 md:py-32 bg-gray-900">
-            <div class="container mx-auto px-4 text-center">
-                <p class="text-blue-400 font-semibold mb-2">CÂU CHUYỆN VỀ MAXBEN</p>
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 text-white">
-                    Chúng tôi tin rằng <span class="gradient-text">ánh sáng</span> có sức mạnh <br class="hidden md:block"> thay đổi cuộc sống.
-                </h1>
-                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-                    MAXBEN không chỉ tạo ra những sản phẩm chiếu sáng. Chúng tôi kiến tạo nên những không gian đầy cảm hứng, nơi công nghệ và nghệ thuật hòa quyện để nâng cao chất lượng sống và làm việc.
-                </p>
-            </div>
-        </section>
-
-        <!-- Our Story Section -->
-        <section class="py-16 md:py-24">
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1770&auto=format&fit=crop" alt="Một bản vẽ kỹ thuật về đèn LED" class="rounded-xl shadow-2xl w-full">
+    <!-- HÀNH TRÌNH KIẾN TẠO -->
+    <section class="py-12 md:py-20 bg-slate-900 text-gray-300 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight text-white">Hành Trình Kiến Tạo Ánh Sáng</h2>
+                    <p class="text-lg mb-6 leading-relaxed text-gray-400">
+                        Được thành lập bởi đội ngũ kỹ sư và chuyên gia đầy nhiệt huyết, MAXBEN khởi nguồn từ một niềm đam mê cháy bỏng: mang đến cho thị trường Việt Nam những giải pháp chiếu sáng không chỉ đạt chuẩn về kỹ thuật mà còn giàu tính thẩm mỹ.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-400">
+                        Chúng tôi nhận thấy rằng ánh sáng thường bị xem nhẹ, chỉ như một yếu tố phụ trong kiến trúc. Với MAXBEN, chúng tôi mong muốn thay đổi điều đó. Mỗi sản phẩm ra đời là kết quả của quá trình nghiên cứu kỹ lưỡng, từ việc lựa chọn con chip LED tốt nhất, tối ưu thiết kế tản nhiệt, đến việc hoàn thiện từng chi tiết nhỏ để tạo ra nguồn sáng chất lượng, an toàn và tinh tế.
+                    </p>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="relative rounded-2xl shadow-2xl p-2 bg-gradient-to-br from-slate-800 to-slate-900">
+                         <img src="./icons/MR_haender_1sal_1.webp"
+                             alt="Bản vẽ kỹ thuật về đèn LED, biểu tượng của sự đổi mới kỹ thuật và thiết kế chính xác của MAXBEN"
+                             loading="lazy"
+                             class="rounded-xl w-full object-cover aspect-video lg:aspect-square">
                     </div>
-                    <div>
-                        <h2 class="text-3xl font-bold mb-4">Hành Trình Của Chúng Tôi</h2>
-                        <p class="text-gray-400 mb-4">
-                            Được thành lập bởi đội ngũ kỹ sư và chuyên gia đầy nhiệt huyết, MAXBEN khởi nguồn từ một niềm đam mê cháy bỏng: mang đến cho thị trường Việt Nam những giải pháp chiếu sáng không chỉ đạt chuẩn về kỹ thuật mà còn giàu tính thẩm mỹ.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÁC CON SỐ ẤN TƯỢNG -->
+    <section class="py-12 md:py-20 bg-slate-950 text-gray-300 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Những Con Số Biết Nói</h2>
+                 <p class="text-lg text-gray-400">Hơn một thập kỷ nỗ lực không ngừng được thể hiện qua những thành tựu mà chúng tôi tự hào.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Thẻ 1: Dự án -->
+                <div class="stat-card bg-slate-900 p-8 rounded-2xl text-center border border-slate-800 transition-all duration-300 scroll-reveal">
+                    <p class="stat-number text-5xl md:text-6xl font-bold gradient-text mb-2" data-target="250">0</p>
+                    <p class="text-lg font-medium text-gray-400">Dự án hoàn thành</p>
+                </div>
+                <!-- Thẻ 2: Sản phẩm -->
+                <div class="stat-card bg-slate-900 p-8 rounded-2xl text-center border border-slate-800 transition-all duration-300 scroll-reveal" style="transition-delay: 100ms;">
+                    <p class="stat-number text-5xl md:text-6xl font-bold gradient-text mb-2" data-target="500">0</p>
+                    <p class="text-lg font-medium text-gray-400">Sản phẩm phân phối (K+)</p>
+                </div>
+                <!-- Thẻ 3: Hài lòng -->
+                <div class="stat-card bg-slate-900 p-8 rounded-2xl text-center border border-slate-800 transition-all duration-300 scroll-reveal" style="transition-delay: 200ms;">
+                    <p class="stat-number text-5xl md:text-6xl font-bold gradient-text mb-2" data-target="95">0</p>
+                    <p class="text-lg font-medium text-gray-400">Tỷ lệ hài lòng (%)</p>
+                </div>
+                <!-- Thẻ 4: Đối tác -->
+                <div class="stat-card bg-slate-900 p-8 rounded-2xl text-center border border-slate-800 transition-all duration-300 scroll-reveal" style="transition-delay: 300ms;">
+                    <p class="stat-number text-5xl md:text-6xl font-bold gradient-text mb-2" data-target="15">0</p>
+                    <p class="text-lg font-medium text-gray-400">Đối tác chiến lược</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KHỐI NỘI DUNG CÓ NỀN ĐỒNG BỘ -->
+    <div class="relative text-gray-300" 
+      style="
+        background-image: url('https://download.light-point.com/resource/background/675/appearance/login-background.jpg?1701950588');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      ">
+      <!-- Lớp phủ cho toàn bộ khối -->
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.75)); z-index: 1;"></div>
+
+      <!-- Wrapper cho nội dung, nằm trên lớp phủ -->
+      <div class="relative z-10">
+
+        <!-- SỨ MỆNH & TẦM NHÌN -->
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Sứ Mệnh & Tầm Nhìn</h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                        Tại MAXBEN, mỗi tia sáng đều mang một câu chuyện và một mục đích.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-center">
+                    <div class="p-8 rounded-xl bg-slate-900/70 backdrop-blur-md shadow-2xl flex flex-col items-center transform hover:-translate-y-2 transition duration-300 ease-in-out border border-slate-700 scroll-reveal">
+                        <div class="text-6xl text-blue-400 mb-6"><i class="fas fa-rocket"></i></div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Sứ Mệnh</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            "Cung cấp các giải pháp chiếu sáng ưu việt, đặt chất lượng ánh sáng và sức khỏe thị giác của người dùng lên hàng đầu, góp phần nâng cao giá trị của mọi không gian kiến trúc."
                         </p>
-                        <p class="text-gray-400">
-                            Chúng tôi nhận thấy rằng ánh sáng thường bị xem nhẹ, chỉ như một yếu tố phụ trong kiến trúc. Với MAXBEN, chúng tôi mong muốn thay đổi điều đó. Mỗi sản phẩm ra đời là kết quả của quá trình nghiên cứu kỹ lưỡng, từ việc lựa chọn con chip LED tốt nhất, tối ưu thiết kế tản nhiệt, đến việc hoàn thiện từng chi tiết nhỏ để tạo ra nguồn sáng chất lượng, an toàn và tinh tế.
+                    </div>
+                    <div class="p-8 rounded-xl bg-slate-900/70 backdrop-blur-md shadow-2xl flex flex-col items-center transform hover:-translate-y-2 transition duration-300 ease-in-out border border-slate-700 scroll-reveal" style="transition-delay: 150ms;">
+                        <div class="text-6xl text-amber-400 mb-6"><i class="fas fa-eye"></i></div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Tầm Nhìn</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            "Trở thành thương hiệu chiếu sáng chuyên dụng hàng đầu tại Việt Nam, là lựa chọn tin cậy của các kiến trúc sư, nhà thiết kế và người tiêu dùng am hiểu về chất lượng."
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Mission & Vision Section -->
-        <section class="py-16 md:py-24 bg-gray-800/50">
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-center md:text-left">
-                    <div class="flex flex-col items-center md:items-start">
-                        <div class="text-4xl gradient-text mb-4"><i class="fas fa-rocket"></i></div>
-                        <h3 class="text-2xl font-bold mb-2">Sứ Mệnh</h3>
-                        <p class="text-gray-400 max-w-md">"Cung cấp các giải pháp chiếu sáng ưu việt, đặt chất lượng ánh sáng và sức khỏe thị giác của người dùng lên hàng đầu, góp phần nâng cao giá trị của mọi không gian kiến trúc."</p>
-                    </div>
-                    <div class="flex flex-col items-center md:items-start">
-                        <div class="text-4xl gradient-text mb-4"><i class="fas fa-eye"></i></div>
-                        <h3 class="text-2xl font-bold mb-2">Tầm Nhìn</h3>
-                        <p class="text-gray-400 max-w-md">"Trở thành thương hiệu chiếu sáng chuyên dụng hàng đầu tại Việt Nam, là lựa chọn tin cậy của các kiến trúc sư, nhà thiết kế và người tiêu dùng am hiểu về chất lượng."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Core Values Section -->
-        <section class="py-16 md:py-24">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">Giá Trị Cốt Lõi</h2>
+        <!-- GIÁ TRỊ CỐT LÕI -->
+        <section class="py-12 md:py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white scroll-reveal">Giá Trị Cốt Lõi</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="stat-card">
-                        <i class="fas fa-gem text-3xl text-blue-400 mb-3"></i>
-                        <h4 class="text-xl font-bold text-white mb-1">Chất Lượng</h4>
-                        <p class="text-gray-400 text-sm">Cam kết chất lượng ánh sáng trung thực (CRI>98) và sản phẩm bền bỉ.</p>
+                    <!-- Card 1 -->
+                    <div class="core-value-card relative p-8 rounded-3xl bg-slate-900/70 backdrop-blur-md text-center flex flex-col items-center justify-start transform hover:-translate-y-2 transition-transform duration-300 scroll-reveal">
+                        <i class="core-value-icon fas fa-gem text-5xl text-blue-400 mb-5 transition-transform duration-300"></i>
+                        <h4 class="text-xl font-bold mb-2 text-white">Chất Lượng</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Cam kết chất lượng ánh sáng trung thực (CRI>98) và sản phẩm bền bỉ.</p>
                     </div>
-                    <div class="stat-card">
-                        <i class="fas fa-lightbulb text-3xl text-green-400 mb-3"></i>
-                        <h4 class="text-xl font-bold text-white mb-1">Đổi Mới</h4>
-                        <p class="text-gray-400 text-sm">Luôn tiên phong ứng dụng công nghệ mới để tạo ra các giải pháp đột phá.</p>
+                    <!-- Card 2 -->
+                    <div class="core-value-card relative p-8 rounded-3xl bg-slate-900/70 backdrop-blur-md text-center flex flex-col items-center justify-start transform hover:-translate-y-2 transition-transform duration-300 scroll-reveal" style="transition-delay: 100ms;">
+                        <i class="core-value-icon fas fa-lightbulb text-5xl text-amber-400 mb-5 transition-transform duration-300"></i>
+                        <h4 class="text-xl font-bold mb-2 text-white">Đổi Mới</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Luôn tiên phong ứng dụng công nghệ mới để tạo ra các giải pháp đột phá.</p>
                     </div>
-                    <div class="stat-card">
-                        <i class="fas fa-users text-3xl text-yellow-400 mb-3"></i>
-                        <h4 class="text-xl font-bold text-white mb-1">Khách Hàng</h4>
-                        <p class="text-gray-400 text-sm">Lấy sự hài lòng của khách hàng và đối tác làm trọng tâm cho mọi hoạt động.</p>
+                    <!-- Card 3 -->
+                    <div class="core-value-card relative p-8 rounded-3xl bg-slate-900/70 backdrop-blur-md text-center flex flex-col items-center justify-start transform hover:-translate-y-2 transition-transform duration-300 scroll-reveal" style="transition-delay: 200ms;">
+                        <i class="core-value-icon fas fa-users text-5xl text-emerald-500 mb-5 transition-transform duration-300"></i>
+                        <h4 class="text-xl font-bold mb-2 text-white">Khách Hàng</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Lấy sự hài lòng của khách hàng và đối tác làm trọng tâm cho mọi hoạt động.</p>
                     </div>
-                    <div class="stat-card">
-                        <i class="fas fa-handshake text-3xl text-purple-400 mb-3"></i>
-                        <h4 class="text-xl font-bold text-white mb-1">Chính Trực</h4>
-                        <p class="text-gray-400 text-sm">Minh bạch về thông số, trung thực trong tư vấn và có trách nhiệm trong bảo hành.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA Section -->
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <div class="bg-gray-800 rounded-xl p-8 md:p-12 text-center">
-                     <h2 class="text-3xl font-bold mb-4">Sẵn Sàng Đồng Hành Cùng Bạn</h2>
-                     <p class="text-gray-400 max-w-2xl mx-auto mb-8">
-                        Hãy khám phá các sản phẩm của chúng tôi hoặc liên hệ với đội ngũ chuyên gia để bắt đầu kiến tạo không gian ánh sáng của riêng bạn.
-                     </p>
-                     <div class="flex flex-wrap justify-center gap-4">
-                        <a href="index.html#catalog" class="cta-button bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg inline-block text-lg">
-                           Xem Sản Phẩm
-                        </a>
-                        <a href="tu-van-du-an.html" class="cta-button bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg inline-block text-lg">
-                           Liên Hệ Tư Vấn
-                        </a>
+                     <!-- Card 4 -->
+                    <div class="core-value-card relative p-8 rounded-3xl bg-slate-900/70 backdrop-blur-md text-center flex flex-col items-center justify-start transform hover:-translate-y-2 transition-transform duration-300 scroll-reveal" style="transition-delay: 300ms;">
+                        <i class="core-value-icon fas fa-handshake text-5xl text-slate-400 mb-5 transition-transform duration-300"></i>
+                        <h4 class="text-xl font-bold mb-2 text-white">Chính Trực</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Minh bạch về thông số, trung thực trong tư vấn và có trách nhiệm trong bảo hành.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-700">
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400">&copy; 2025 MAXBEN. All Rights Reserved.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
+        <!-- CALL TO ACTION -->
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-6">
+                <div class="relative rounded-3xl p-10 md:p-16 text-center overflow-hidden bg-slate-900/70 backdrop-blur-md border border-slate-700 scroll-reveal">
+                     <!-- Lớp nền gradient mờ ảo -->
+                     <div class="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-br from-amber-500/10 via-transparent to-transparent rounded-full blur-3xl opacity-50"></div>
+                     <div class="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent rounded-full blur-3xl opacity-50"></div>
+                    
+                    <div class="relative z-10">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Sẵn Sàng Đồng Hành Cùng Bạn</h2>
+                        <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+                            Hãy khám phá các sản phẩm của chúng tôi hoặc liên hệ với đội ngũ chuyên gia để bắt đầu kiến tạo không gian ánh sáng của riêng bạn.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-6">
+                            <a href="index.html#" 
+                               class="bg-amber-500 hover:bg-amber-600 transition-all duration-300 ease-in-out text-slate-900 font-bold py-4 px-10 rounded-full shadow-lg shadow-amber-500/30 text-lg md:text-xl whitespace-nowrap transform hover:scale-105">
+                                Xem Sản Phẩm
+                            </a>
+                            <a href="tu-van-du-an.html" 
+                               class="bg-slate-800 hover:bg-slate-700 transition-all duration-300 ease-in-out text-gray-300 font-bold py-4 px-10 rounded-full shadow-lg text-lg md:text-xl whitespace-nowrap transform hover:scale-105">
+                                Liên Hệ Tư Vấn
+                            </a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+      </div>
+    </div>
+
+</main>
+
+<footer class="bg-slate-900 border-t border-slate-800">
+    <div class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- Company Info -->
+            <div class="col-span-1 md:col-span-2">
+                <a href="index.html" class="text-2xl font-bold gradient-text">MAXBEN💡</a>
+                <p class="text-gray-400 text-sm mt-4 max-w-sm">Kiến tạo không gian bằng ánh sáng chất lượng và giải pháp chuyên nghiệp.</p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-bold text-white mb-4 uppercase tracking-wider">Liên kết</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Về Chúng Tôi</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Sản Phẩm</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Dự Án</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Liên Hệ</a></li>
+                </ul>
+            </div>
+            <!-- Social -->
+            <div>
+                <h4 class="font-bold text-white mb-4 uppercase tracking-wider">Kết nối</h4>
+                <div class="flex space-x-4">
+                   <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
+                   <a href="#" class="text-gray-400 hover:text-red-500 transition-colors" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+                   <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+               </div>
             </div>
         </div>
-    </footer>
+        <div class="border-t border-slate-800 pt-8 text-center text-sm text-gray-500">
+            <p>&copy; 2025 MAXBEN. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    // Script cho hiệu ứng cuộn và đếm số
+    document.addEventListener('DOMContentLoaded', () => {
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Hiệu ứng cuộn
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Nếu là thẻ đếm số, bắt đầu đếm
+                    if (entry.target.classList.contains('stat-card')) {
+                        const numberElement = entry.target.querySelector('.stat-number');
+                        if (numberElement && !numberElement.classList.contains('counted')) {
+                             animateCount(numberElement);
+                             numberElement.classList.add('counted');
+                        }
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1 // Kích hoạt khi 10% phần tử hiển thị
+        });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Hàm đếm số
+        function animateCount(element) {
+            const target = +element.getAttribute('data-target');
+            const duration = 2000; // Thời gian đếm (ms)
+            const frameRate = 1000 / 60; // 60fps
+            const totalFrames = Math.round(duration / frameRate);
+            let frame = 0;
+
+            const counter = setInterval(() => {
+                frame++;
+                const easeOutQuad = t => t * (2 - t);
+                const progress = easeOutQuad(frame / totalFrames);
+                const current = Math.round(target * progress);
+                
+                if (target > 1000) {
+                     element.innerText = `${Math.round(current/1000)}K+`;
+                } else if(element.getAttribute('data-target') > 50) {
+                     element.innerText = `${current}%`;
+                }
+                else {
+                    element.innerText = current.toLocaleString('vi-VN') + (target >= 15 ? '+' : '');
+                }
+
+                if (frame === totalFrames) {
+                     if (target > 1000) {
+                        element.innerText = `${Math.round(target/1000)}K+`;
+                     } else if(element.getAttribute('data-target') > 50) {
+                         element.innerText = `${target}%`;
+                     } else {
+                        element.innerText = target.toLocaleString('vi-VN') + (target >= 15 ? '+' : '');
+                     }
+                    clearInterval(counter);
+                }
+            }, frameRate);
+        }
+
+        // Quan sát các thẻ đếm số
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach(card => {
+             observer.observe(card);
+        });
+
+    });
+</script>
 
 </body>
 </html>
