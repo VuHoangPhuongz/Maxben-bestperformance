@@ -4,24 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bản đồ Đại lý Maxben</title>
-    <!-- Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- SheetJS library for reading Excel files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <!-- Highcharts Map libraries -->
     <script src="https://code.highcharts.com/maps/highmaps.js"></script>
     <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-    <!-- Vietnam map data -->
     <script src="https://code.highcharts.com/mapdata/countries/vn/vn-all.js"></script>
     <style>
-        body { 
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            /* Subtle background pattern for a professional feel */
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ef4444' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        /* CSS từ ve-chung-toi.html cho header/footer và tổng thể */
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif; /* Consistent font with ve-chung-toi */
+            background-color: #020617; /* Consistent background with ve-chung-toi */
+            color: #d1d5db; /* Default text color for dark background */
         }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sticky-nav{
+            position:sticky;
+            top:0;
+            z-index:50;
+            background-color:rgba(17,24,39,0.8);
+            backdrop-filter:blur(10px);
+        }
+        #product-dropdown-menu a {
+            display: block;
+            padding: 0.6rem 1rem;
+            border-radius: 0.375rem;
+            color: #d1d5db;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        #product-dropdown-menu a:hover {
+            background-color: #2563EB;
+            color: #ffffff;
+        }
+
+        /* CSS của du-lieu.html (có điều chỉnh để phù hợp với nền tối và toàn bộ main là trắng) */
         #container { height: 70vh; min-width: 310px; width: 100%; border-radius: 0.75rem; }
-        .highcharts-tooltip span { background-color: white; border: 1px solid #ccc; padding: 10px; border-radius: 8px; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        /* Tooltip background for Highcharts - should be dark to fit overall theme */
+        .highcharts-tooltip span { background-color: #1a202c; border: 1px solid #4a5568; padding: 10px; border-radius: 8px; color: #d1d5db; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+
         /* Custom notification style */
         #notification {
             position: fixed;
@@ -39,44 +65,90 @@
             transform: translateY(-20px);
         }
         #notification.show { opacity: 1; visibility: visible; transform: translateY(0); }
-        #notification.error { background-color: #991B1B; }
+        #notification.error { background-color: #991B1B; } /* Even darker for error */
 
-        /* Custom scrollbar for dealer list */
+        /* Custom scrollbar for dealer list (adjusted for light background within info box) */
         #dealer-list::-webkit-scrollbar { width: 8px; }
-        #dealer-list::-webkit-scrollbar-track { background: #fee2e2; border-radius: 10px; }
-        #dealer-list::-webkit-scrollbar-thumb { background-color: #f87171; border-radius: 10px; border: 2px solid #fee2e2; }
+        #dealer-list::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 10px; } /* Light track */
+        #dealer-list::-webkit-scrollbar-thumb { background-color: #f87171; border-radius: 10px; border: 2px solid #e5e7eb; }
         #dealer-list::-webkit-scrollbar-thumb:hover { background-color: #ef4444; }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 text-gray-800">
+<body class="bg-slate-950 text-gray-300">
 
     <div id="notification"></div>
-    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200">
+
+    <header class="sticky-nav border-b border-gray-700">
         <div class="container mx-auto px-4">
-            <nav class="flex items-center justify-between h-16">
-                <a href="index.html" class="text-2xl font-bold gradient-text">MAXBEN💡</a>
-                <a href="index.html" class="text-gray-600 hover:text-red-600 transition-colors font-medium text-sm flex items-center gap-2">
-                    <i class="fas fa-arrow-left"></i>
-                    🔙 Quay lại trang chủ
-                </a>
+            <nav class="flex items-center justify-between h-20">
+                   <a href="index.html" class="text-3xl font-bold text-red-500">MAXBEN💡</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Trang Chủ</a>
+                    <a href="ve-chung-toi.html" class="text-gray-300 hover:text-white">Về Chúng Tôi</a>
+                    <a href="du-an.html" class="text-gray-300 hover:text-white transition-colors">Dự Án & Tư Vấn</a>
+<div class="relative group">
+    <a href="san-pham.html" class="text-gray-300 hover:text-white transition-colors flex items-center py-2">
+        Sản Phẩm
+        <i class="fas fa-chevron-down text-xs ml-2 transition-transform duration-300 group-hover:rotate-180"></i>
+    </a>
+    <div id="product-dropdown-menu" class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-60 bg-slate-800 border border-slate-700 rounded-lg shadow-lg p-2 z-50
+        opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0
+        transition-all duration-300 ease-in-out">
+        <div class="text-center py-4">
+            <i class="fas fa-spinner fa-spin text-white"></i>
+        </div>
+    </div>
+</div>
+                    <a href="du-lieu.html" class="text-gray-300 hover:text-white transition-colors">Dữ liệu khách hàng</a>
+                    <a href="TCO.html" class="text-gray-300 hover:text-white transition-colors">Công cụ tính TCO</a>
+                </div>
+                <div class="flex items-center">
+                     <a href="tel:0886666730" class="cta-button bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-lg hidden md:block">
+                       📞 Gọi Ngay
+                    </a>
+                    <div class="md:hidden ml-4">
+                        <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                            <i class="fas fa-bars fa-lg"></i>
+                        </button>
+                    </div>
+                </div>
             </nav>
         </div>
-    <div class="container mx-auto p-4 md:p-8">
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+    <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Trang Chủ</a>
+    <div class="relative group">
+        <a href="san-pham.html" class="block py-2 text-gray-300 hover:text-white flex items-center justify-between">
+            Sản Phẩm
+            <i class="fas fa-chevron-down text-xs ml-2 transition-transform duration-300"></i>
+        </a>
+        <div id="mobile-product-categories-list" class="pl-4 border-l border-gray-700 mt-2 space-y-1">
+            </div>
+    </div>
+    <a href="du-an.html" class="block py-2 text-gray-300 hover:text-white">Dự Án & Tư Vấn</a>
+    <a href="du-lieu.html" class="block py-2 text-gray-300 hover:text-white">Dữ liệu khách hàng</a>
+    <a href="TCO.html" class="block py-2 text-gray-300 hover:text-white">Công cụ tính TCO</a>
+    <a href="tel:0886666730" class="block py-2 text-gray-300 hover:text-white">📞 Liên Hệ </a>
+</div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8 bg-white rounded-xl shadow-xl border border-gray-200">
         <header class="text-center mb-8">
             <div class="flex justify-center items-center gap-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
-                <h1 class="text-3xl md:text-4xl font-extrabold text-red-700 tracking-tight">Bản đồ Phân phối Đại lý Maxben</h1>
+                <h1 class="text-3xl md:text-5xl font-extrabold text-red-700 tracking-tight">Bản đồ Phân phối Đại lý Maxben</h1>
             </div>
-            <p class="text-md text-gray-600 mt-2 max-w-2xl mx-auto">Dữ liệu kinh doanh và phân phối đèn LED trên toàn quốc. Tương tác với bản đồ để xem thông tin chi tiết.</p>
+            <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Khám phá dữ liệu kinh doanh và phân phối đèn LED trên toàn quốc. Tương tác với bản đồ để xem thông tin chi tiết theo từng tỉnh thành.</p>
         </header>
 
-        <div class="mb-8 bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-            <h3 class="font-bold text-lg text-gray-800 mb-4">Tải lên dữ liệu từ Excel</h3>
+        <div class="mb-8 bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+            <h3 class="font-bold text-xl text-gray-800 mb-4 flex items-center gap-2">
+                <i class="fas fa-file-excel text-green-600"></i> Tải lên dữ liệu từ Excel
+            </h3>
             <div class="grid md:grid-cols-2 gap-6 items-center">
                 <div>
                     <label for="file-upload" class="block text-sm font-medium text-gray-700 mb-2">Chọn file Excel để nhập dữ liệu:</label>
@@ -86,55 +158,379 @@
                         <span>Đang xử lý file...</span>
                     </div>
                 </div>
-                <div class="text-sm text-gray-600 bg-slate-50 p-4 rounded-lg border">
-                    <p><strong>Lưu ý:</strong> File Excel cần có các cột: <code>hc-key</code>, <code>daiLy</code>, <code>khachHang</code>, và <code>spBanChay</code>.</p>
-                    <p class="mt-1">Để nhập nhiều mục trong một ô, hãy ngăn cách bằng dấu phẩy ",".</p>
+                <div class="text-sm text-gray-700 bg-red-50 p-4 rounded-lg border border-red-200">
+                    <p class="font-semibold text-red-800 flex items-center gap-2"><i class="fas fa-info-circle"></i> Lưu ý quan trọng:</p>
+                    <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>File Excel cần có các cột: <code class="font-mono text-red-700">hc-key</code>, <code class="font-mono text-red-700">daiLy</code>, <code class="font-mono text-red-700">khachHang</code>, và <code class="font-mono text-red-700">spBanChay</code>.</li>
+                        <li>Để nhập nhiều mục trong một ô (ví dụ: nhiều đại lý), hãy ngăn cách bằng dấu phẩy ",".</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div class="flex flex-col lg:flex-row gap-8">
-            <div class="w-full lg:w-2/3 bg-white p-2 rounded-xl shadow-xl">
+            <div class="w-full lg:w-2/3 bg-white p-4 rounded-xl shadow-xl border border-gray-200">
                 <div id="container"></div>
             </div>
 
             <div class="w-full lg:w-1/3">
-                 <div id="info-box" class="bg-white p-6 rounded-xl shadow-xl h-full sticky top-8">
-                    <div id="info-content" class="mt-4 text-gray-700 h-full flex flex-col justify-center items-center">
+                 <div id="info-box" class="bg-white p-6 rounded-xl shadow-xl h-full sticky top-20 border border-gray-200">
+                    <div id="info-content" class="mt-4 text-gray-700 h-full flex flex-col justify-center items-center text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                        <h3 class="text-lg font-semibold text-gray-700">Thông tin Chi tiết</h3>
-                        <p class="text-center text-sm text-gray-500 mt-1">Bấm vào một tỉnh trên bản đồ để xem dữ liệu.</p>
+                        <h3 class="text-xl font-semibold text-gray-700">Thông tin Chi tiết Tỉnh/Thành</h3>
+                        <p class="text-sm text-gray-500 mt-2">Bấm vào một tỉnh trên bản đồ để xem dữ liệu phân phối.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-<script>let chart;let provinceData={};const provinceNameMap={'vn-hn':'Hà Nội','vn-hc':'TP. Hồ Chí Minh','vn-hp':'Hải Phòng','vn-da':'Đà Nẵng','vn-ct':'Cần Thơ','vn-ag':'An Giang','vn-br':'Bà Rịa - Vũng Tàu','vn-bk':'Bắc Kạn','vn-bg':'Bắc Giang','vn-bl':'Bạc Liêu','vn-bn':'Bắc Ninh','vn-bt':'Bến Tre','vn-bi':'Bình Định','vn-bd':'Bình Dương','vn-bp':'Bình Phước','vn-bu':'Bình Thuận','vn-cm':'Cà Mau','vn-cb':'Cao Bằng','vn-dl':'Đắk Lắk','vn-do':'Đắk Nông','vn-db':'Điện Biên','vn-dn':'Đồng Nai','vn-dt':'Đồng Tháp','vn-gl':'Gia Lai','vn-hg':'Hà Giang','vn-hm':'Hà Nam','vn-ht':'Hà Tĩnh','vn-hd':'Hải Dương','vn-711':'Hậu Giang','vn-hb':'Hòa Bình','vn-hy':'Hưng Yên','vn-kh':'Khánh Hòa','vn-kg':'Kiên Giang','vn-kt':'Kon Tum','vn-li':'Lai Châu','vn-ld':'Lâm Đồng','vn-ls':'Lạng Sơn','vn-lc':'Lào Cai','vn-la':'Long An','vn-nd':'Nam Định','vn-na':'Nghệ An','vn-nb':'Ninh Bình','vn-nt':'Ninh Thuận','vn-pt':'Phú Thọ','vn-py':'Phú Yên','vn-qb':'Quảng Bình','vn-qm':'Quảng Nam','vn-qg':'Quảng Ngãi','vn-qn':'Quảng Ninh','vn-qt':'Quảng Trị','vn-st':'Sóc Trăng','vn-sl':'Sơn La','vn-tn':'Tây Ninh','vn-tb':'Thái Bình','vn-ty':'Thái Nguyên','vn-th':'Thanh Hóa','vn-tt':'Thừa Thiên Huế','vn-tg':'Tiền Giang','vn-tv':'Trà Vinh','vn-tq':'Tuyên Quang','vn-vl':'Vĩnh Long','vn-vp':'Vĩnh Phúc','vn-yb':'Yên Bái'};const initialProvinceData={'vn-hn':{daiLy:['Đại lý Thăng Long'],khachHang:['Tập đoàn ABC'],spBanChay:['Đèn LED Âm trần 12W']},'vn-hc':{daiLy:['Đại lý Sài Gòn'],khachHang:['Công ty DEF'],spBanChay:['Đèn Đường LED 150W']}};function showNotification(message,isError=!1){const notification=document.getElementById('notification');notification.textContent=message;notification.className='show';if(isError)notification.classList.add('error');setTimeout(()=>{notification.className=''},3000)}
-function saveDataToLocalStorage(data){try{localStorage.setItem('maxbenProvinceData',JSON.stringify(data))}catch(error){console.error("Lỗi khi lưu dữ liệu vào LocalStorage:",error);showNotification("Lỗi khi lưu dữ liệu.",!0)}}
-function loadDataFromLocalStorage(){const savedData=localStorage.getItem('maxbenProvinceData');if(savedData){try{const parsedData=JSON.parse(savedData);if(typeof parsedData==='object'&&parsedData!==null){return parsedData}}catch(error){console.error("Lỗi khi đọc dữ liệu từ LocalStorage:",error);return initialProvinceData}}
-return initialProvinceData}
-function redrawMap(){const seriesData=Highcharts.maps['countries/vn/vn-all'].features.map(p=>({'hc-key':p.properties['hc-key'],value:provinceData[p.properties['hc-key']]?100:10,name:provinceNameMap[p.properties['hc-key']]||p.properties.name}));if(chart){chart.series[0].setData(seriesData,!0)}
-document.getElementById('info-content').innerHTML='<div class="h-full flex flex-col justify-center items-center text-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg><h3 class="text-lg font-semibold text-gray-700">Thông tin Chi tiết</h3><p class="text-sm text-gray-500 mt-1">Bấm vào một tỉnh trên bản đồ để xem dữ liệu.</p></div>'}
-function initializeMap(){const seriesData=Highcharts.maps['countries/vn/vn-all'].features.map(p=>({'hc-key':p.properties['hc-key'],value:provinceData[p.properties['hc-key']]?100:10,name:provinceNameMap[p.properties['hc-key']]||p.properties.name}));chart=Highcharts.mapChart('container',{chart:{map:'countries/vn/vn-all',backgroundColor:'transparent'},title:{text:null},subtitle:{text:null},mapNavigation:{enabled:!0,buttonOptions:{verticalAlign:'bottom',align:'right'}},colorAxis:{min:0,stops:[[0,'#FEE2E2'],[0.8,'#DC2626'],[1,'#991B1B']],visible:!1},legend:{enabled:!1},tooltip:{formatter:function(){const info=provinceData[this.point['hc-key']];const provinceName=provinceNameMap[this.point['hc-key']]||this.point.name;let text=`<b style="font-size: 14px;">${provinceName}</b><br/>`;text+=info?`Số đại lý: <b>${info.daiLy?.length || 0}</b>`:'Chưa có dữ liệu';return text}},plotOptions:{series:{point:{events:{click:function(){const data=provinceData[this['hc-key']];const infoContent=document.getElementById('info-content');const provinceName=provinceNameMap[this['hc-key']]||this.name;if(data){const createGenericList=(items)=>(items&&items.length)?items.map(x=>`<li class="py-1.5 px-3 bg-red-50 text-red-800 rounded-md mb-1.5 text-sm">${x}</li>`).join(''):'<li class="text-xs italic text-gray-500">Chưa có dữ liệu</li>';infoContent.innerHTML=`
-                                        <div class="flex items-center gap-3 mb-4 border-b pb-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                            <h3 class="text-xl font-bold text-gray-800">${provinceName}</h3>
-                                        </div>
-                                        <div class="space-y-5">
-                                            <div>
-                                                <b class="text-gray-700">Đại lý (${data.daiLy?.length || 0}):</b> 
-                                                <div class="relative mt-2">
-                                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg></span>
-                                                    <input type="text" id="dealer-search" placeholder="Tìm kiếm đại lý..." class="block w-full text-sm border-gray-200 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 p-2 pl-10">
-                                                </div>
-                                                <ul id="dealer-list" class="mt-2 list-none max-h-36 overflow-y-auto pr-2">${createGenericList(data.daiLy)}</ul>
+    <footer class="bg-slate-900 border-t border-slate-800 mt-8">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="text-2xl font-bold text-red-500">MAXBEN💡</a>
+                    <p class="text-gray-400 text-sm mt-4 max-w-sm">Kiến tạo không gian bằng ánh sáng chất lượng và giải pháp chuyên nghiệp.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4 uppercase tracking-wider">Liên kết</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Về Chúng Tôi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Sản Phẩm</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Dự Án</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4 uppercase tracking-wider">Kết nối</h4>
+                    <div class="flex space-x-4">
+                       <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
+                       <a href="#" class="text-gray-400 hover:text-red-500 transition-colors" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+                       <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                   </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2025 MAXBEN. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Start of du-lieu.html specific JavaScript logic
+        let chart;
+        let provinceData = {};
+        const provinceNameMap = {
+            'vn-hn': 'Hà Nội', 'vn-hc': 'TP. Hồ Chí Minh', 'vn-hp': 'Hải Phòng', 'vn-da': 'Đà Nẵng', 'vn-ct': 'Cần Thơ',
+            'vn-ag': 'An Giang', 'vn-br': 'Bà Rịa - Vũng Tàu', 'vn-bk': 'Bắc Kạn', 'vn-bg': 'Bắc Giang', 'vn-bl': 'Bạc Liêu',
+            'vn-bn': 'Bắc Ninh', 'vn-bt': 'Bến Tre', 'vn-bi': 'Bình Định', 'vn-bd': 'Bình Dương', 'vn-bp': 'Bình Phước',
+            'vn-bu': 'Bình Thuận', 'vn-cm': 'Cà Mau', 'vn-cb': 'Cao Bằng', 'vn-dl': 'Đắk Lắk', 'vn-do': 'Đắk Nông',
+            'vn-db': 'Điện Biên', 'vn-dn': 'Đồng Nai', 'vn-dt': 'Đồng Tháp', 'vn-gl': 'Gia Lai', 'vn-hg': 'Hà Giang',
+            'vn-hm': 'Hà Nam', 'vn-ht': 'Hà Tĩnh', 'vn-hd': 'Hải Dương', 'vn-711': 'Hậu Giang', 'vn-hb': 'Hòa Bình',
+            'vn-hy': 'Hưng Yên', 'vn-kh': 'Khánh Hòa', 'vn-kg': 'Kiên Giang', 'vn-kt': 'Kon Tum', 'vn-li': 'Lai Châu',
+            'vn-ld': 'Lâm Đồng', 'vn-ls': 'Lạng Sơn', 'vn-lc': 'Lào Cai', 'vn-la': 'Long An', 'vn-nd': 'Nam Định',
+            'vn-na': 'Nghệ An', 'vn-nb': 'Ninh Bình', 'vn-nt': 'Ninh Thuận', 'vn-pt': 'Phú Thọ', 'vn-py': 'Phú Yên',
+            'vn-qb': 'Quảng Bình', 'vn-qm': 'Quảng Nam', 'vn-qg': 'Quảng Ngãi', 'vn-qn': 'Quảng Ninh', 'vn-qt': 'Quảng Trị',
+            'vn-st': 'Sóc Trăng', 'vn-sl': 'Sơn La', 'vn-tn': 'Tây Ninh', 'vn-tb': 'Thái Bình', 'vn-ty': 'Thái Nguyên',
+            'vn-th': 'Thanh Hóa', 'vn-tt': 'Thừa Thiên Huế', 'vn-tg': 'Tiền Giang', 'vn-tv': 'Trà Vinh', 'vn-tq': 'Tuyên Quang',
+            'vn-vl': 'Vĩnh Long', 'vn-vp': 'Vĩnh Phúc', 'vn-yb': 'Yên Bái'
+        };
+
+        // Initial dummy data for demonstration if local storage is empty
+        const initialProvinceData = {
+            'vn-hn': { daiLy: ['Đại lý Thăng Long', 'Cửa hàng Minh Khai'], khachHang: ['Tập đoàn ABC', 'Công ty XYZ'], spBanChay: ['Đèn LED Âm trần 12W', 'Đèn tuýp LED 0.6m'] },
+            'vn-hc': { daiLy: ['Đại lý Sài Gòn', 'Chi nhánh Q.1'], khachHang: ['Công ty DEF'], spBanChay: ['Đèn Đường LED 150W'] },
+            'vn-dn': { daiLy: ['Đại lý Sông Hàn'], khachHang: [], spBanChay: ['Đèn Downlight 9W'] },
+            'vn-na': { daiLy: ['Đại lý Vinh'], khachHang: ['Dự án Chung cư'], spBanChay: ['Đèn Nhà xưởng 200W'] }
+        };
+
+        function showNotification(message, isError = false) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'show'; // Resets and adds 'show'
+            if (isError) {
+                notification.classList.add('error');
+            } else {
+                notification.classList.remove('error'); // Ensure error class is removed for success messages
+            }
+            setTimeout(() => {
+                notification.className = ''; // Hides and resets transition
+            }, 3000);
+        }
+
+        function saveDataToLocalStorage(data) {
+            try {
+                localStorage.setItem('maxbenProvinceData', JSON.stringify(data));
+            } catch (error) {
+                console.error("Lỗi khi lưu dữ liệu vào LocalStorage:", error);
+                showNotification("Lỗi khi lưu dữ liệu. Vui lòng kiểm tra cài đặt trình duyệt.", true);
+            }
+        }
+
+        function loadDataFromLocalStorage() {
+            const savedData = localStorage.getItem('maxbenProvinceData');
+            if (savedData) {
+                try {
+                    const parsedData = JSON.parse(savedData);
+                    // Basic validation to ensure it's an object and not null
+                    if (typeof parsedData === 'object' && parsedData !== null) {
+                        return parsedData;
+                    }
+                } catch (error) {
+                    console.error("Lỗi khi đọc dữ liệu từ LocalStorage:", error);
+                    // If corrupted, return initial data and notify
+                    showNotification("Dữ liệu lưu trữ bị lỗi hoặc cũ. Đang tải dữ liệu mặc định.", true);
+                    return initialProvinceData;
+                }
+            }
+            return initialProvinceData; // Return initial data if nothing saved or error
+        }
+
+        function redrawMap() {
+            const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
+                'hc-key': p.properties['hc-key'],
+                value: provinceData[p.properties['hc-key']] ? 100 : 10, // Highlight if data exists
+                name: provinceNameMap[p.properties['hc-key']] || p.properties.name
+            }));
+
+            if (chart) {
+                chart.series[0].setData(seriesData, true);
+            }
+
+            // Reset info box content
+            document.getElementById('info-content').innerHTML = `
+                <div class="h-full flex flex-col justify-center items-center text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    <h3 class="text-xl font-semibold text-gray-700">Thông tin Chi tiết Tỉnh/Thành</h3>
+                    <p class="text-sm text-gray-500 mt-2">Bấm vào một tỉnh trên bản đồ để xem dữ liệu phân phối.</p>
+                </div>
+            `;
+        }
+
+        function initializeMap() {
+            const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
+                'hc-key': p.properties['hc-key'],
+                value: provinceData[p.properties['hc-key']] ? 100 : 10, // Value determines color, 100 if data, 10 if not
+                name: provinceNameMap[p.properties['hc-key']] || p.properties.name
+            }));
+
+            chart = Highcharts.mapChart('container', {
+                chart: {
+                    map: 'countries/vn/vn-all',
+                    backgroundColor: '#FFFFFF' // Set background to white for the map
+                },
+                title: {
+                    text: null // No chart title
+                },
+                subtitle: {
+                    text: null // No chart subtitle
+                },
+                mapNavigation: {
+                    enabled: true,
+                    buttonOptions: {
+                        verticalAlign: 'bottom',
+                        align: 'right',
+                        theme: { // Adjust button theme for light background
+                            fill: '#f0f0f0', // Lighter background for buttons
+                            stroke: '#cccccc',
+                            'stroke-width': 1,
+                            r: 5,
+                            style: {
+                                color: '#333333' // Darker text color
+                            },
+                            states: {
+                                hover: {
+                                    fill: '#e0e0e0',
+                                    style: {
+                                        color: '#000000'
+                                    }
+                                },
+                                select: {
+                                    fill: '#d0d0d0',
+                                    style: {
+                                        color: '#000000'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                colorAxis: {
+                    min: 0,
+                    stops: [
+                        [0, '#FEE2E2'], // Lightest red for no data (Tailwind red-100)
+                        [0.8, '#DC2626'], // Medium red for some data (Tailwind red-700)
+                        [1, '#991B1B']   // Darkest red for data presence (Tailwind red-800)
+                    ],
+                    visible: false // Hide the color axis legend
+                },
+                legend: {
+                    enabled: false // Hide the legend
+                },
+                tooltip: {
+                    formatter: function () {
+                        const info = provinceData[this.point['hc-key']];
+                        const provinceName = provinceNameMap[this.point['hc-key']] || this.point.name;
+                        let text = `<b style="font-size: 14px; color: #333;">${provinceName}</b><br/>`; // Adjust text color for light tooltip
+                        text += info ? `Số đại lý: <b>${info.daiLy?.length || 0}</b>` : 'Chưa có dữ liệu';
+                        return text;
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        point: {
+                            events: {
+                                click: function () {
+                                    const data = provinceData[this['hc-key']];
+                                    const infoContent = document.getElementById('info-content');
+                                    const provinceName = provinceNameMap[this['hc-key']] || this.name;
+
+                                    if (data) {
+                                        const createGenericList = (items) => {
+                                            return (items && items.length)
+                                                ? items.map(x => `<li class="py-1.5 px-3 bg-red-50 text-red-800 rounded-md mb-1.5 text-sm">${x}</li>`).join('')
+                                                : '<li class="text-xs italic text-gray-500">Chưa có dữ liệu</li>';
+                                        };
+
+                                        infoContent.innerHTML = `
+                                            <div class="flex items-center gap-3 mb-4 border-b border-gray-200 pb-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                                <h3 class="text-2xl font-bold text-gray-800">${provinceName}</h3>
                                             </div>
-                                            <div><b class="text-gray-700">Khách hàng (${data.khachHang?.length || 0}):</b> <ul class="mt-2 list-none">${createGenericList(data.khachHang)}</ul></div>
-                                            <div><b class="text-gray-700">Sản phẩm bán chạy:</b> <ul class="mt-2 list-none">${createGenericList(data.spBanChay)}</ul></div>
-                                        </div>`;const searchInput=document.getElementById('dealer-search');if(searchInput){searchInput.addEventListener('input',function(){const filter=this.value.toLowerCase();const items=document.querySelectorAll('#dealer-list li');items.forEach(item=>{const itemText=(item.textContent||item.innerText).toLowerCase();item.style.display=itemText.includes(filter)?"":"none"})})}}else{infoContent.innerHTML=`<p class="italic text-gray-500">Không có dữ liệu cho <b>${provinceName}</b>.</p>`}}}}}},series:[{data:seriesData,name:'Tình hình kinh doanh',states:{hover:{color:'#F87171'}},dataLabels:{enabled:!0,formatter:function(){return provinceNameMap[this.point['hc-key']]||this.point.name},style:{color:'#881337',fontSize:'9px',fontWeight:'bold',textOutline:'none'}}}]})}
-function handleFile(event){const file=event.target.files[0];if(!file)return;const spinner=document.getElementById('loading-spinner');spinner.classList.remove('hidden');const reader=new FileReader();reader.onload=function(e){try{const workbook=XLSX.read(new Uint8Array(e.target.result),{type:'array'});const worksheet=workbook.Sheets[workbook.SheetNames[0]];const jsonData=XLSX.utils.sheet_to_json(worksheet);let updatedCount=0;jsonData.forEach(row=>{const hcKey=row['hc-key'];if(hcKey&&provinceNameMap[hcKey]){provinceData[hcKey]={daiLy:row.daiLy?String(row.daiLy).split(',').map(s=>s.trim()):[],khachHang:row.khachHang?String(row.khachHang).split(',').map(s=>s.trim()):[],spBanChay:row.spBanChay?String(row.spBanChay).split(',').map(s=>s.trim()):[]};updatedCount++}});if(updatedCount>0){redrawMap();saveDataToLocalStorage(provinceData);showNotification(`Đã cập nhật thành công dữ liệu cho ${updatedCount} tỉnh/thành!`)}else{showNotification('File Excel không có dữ liệu hợp lệ hoặc cột "hc-key" bị thiếu.',!0)}}catch(error){console.error("Lỗi khi xử lý file Excel:",error);showNotification("Lỗi khi đọc file. Vui lòng kiểm tra định dạng file.",!0)}finally{spinner.classList.add('hidden');event.target.value=''}};reader.onerror=function(){spinner.classList.add('hidden');showNotification('Không thể đọc file đã chọn.',!0)};reader.readAsArrayBuffer(file)}
-document.addEventListener('DOMContentLoaded',function(){provinceData=loadDataFromLocalStorage();initializeMap();document.getElementById('file-upload').addEventListener('change',handleFile,!1)});</script>
+                                            <div class="space-y-5">
+                                                <div>
+                                                    <b class="text-gray-700">Đại lý (${data.daiLy?.length || 0}):</b>
+                                                    <div class="relative mt-2">
+                                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg></span>
+                                                        <input type="text" id="dealer-search" placeholder="Tìm kiếm đại lý..." class="block w-full text-sm border-gray-200 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 p-2 pl-10 text-gray-800 bg-white">
+                                                    </div>
+                                                    <ul id="dealer-list" class="mt-2 list-none max-h-36 overflow-y-auto pr-2">${createGenericList(data.daiLy)}</ul>
+                                                </div>
+                                                <div><b class="text-gray-700">Khách hàng (${data.khachHang?.length || 0}):</b> <ul class="mt-2 list-none">${createGenericList(data.khachHang)}</ul></div>
+                                                <div><b class="text-gray-700">Sản phẩm bán chạy:</b> <ul class="mt-2 list-none">${createGenericList(data.spBanChay)}</ul></div>
+                                            </div>
+                                        `;
+                                        // Add event listener for search input
+                                        const searchInput = document.getElementById('dealer-search');
+                                        if (searchInput) {
+                                            searchInput.addEventListener('input', function() {
+                                                const filter = this.value.toLowerCase();
+                                                const items = document.querySelectorAll('#dealer-list li');
+                                                items.forEach(item => {
+                                                    const itemText = (item.textContent || item.innerText).toLowerCase();
+                                                    item.style.display = itemText.includes(filter) ? "" : "none";
+                                                });
+                                            });
+                                        }
+                                    } else {
+                                        infoContent.innerHTML = `
+                                            <div class="h-full flex flex-col justify-center items-center text-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                                <p class="italic text-gray-500">Không có dữ liệu cho <b>${provinceName}</b>.</p>
+                                            </div>
+                                        `;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    data: seriesData,
+                    name: 'Tình hình kinh doanh',
+                    states: {
+                        hover: {
+                            color: '#F87171' // Lighter red on hover (Tailwind red-400)
+                        }
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            return provinceNameMap[this.point['hc-key']] || this.point.name;
+                        },
+                        style: {
+                            color: '#881337', // Darker red for labels to stand out on white map
+                            fontSize: '9px',
+                            fontWeight: 'bold',
+                            textOutline: 'none' // Remove text outline for cleaner look
+                        }
+                    }
+                }]
+            });
+        }
 
+        function handleFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const spinner = document.getElementById('loading-spinner');
+            spinner.classList.remove('hidden');
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const workbook = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
+                    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+                    let updatedCount = 0;
+                    jsonData.forEach(row => {
+                        const hcKey = row['hc-key']; // Expected column name for province key
+                        if (hcKey && provinceNameMap[hcKey]) {
+                            provinceData[hcKey] = {
+                                daiLy: row.daiLy ? String(row.daiLy).split(',').map(s => s.trim()) : [],
+                                khachHang: row.khachHang ? String(row.khachHang).split(',').map(s => s.trim()) : [],
+                                spBanChay: row.spBanChay ? String(row.spBanChay).split(',').map(s => s.trim()) : []
+                            };
+                            updatedCount++;
+                        }
+                    });
+
+                    if (updatedCount > 0) {
+                        redrawMap();
+                        saveDataToLocalStorage(provinceData);
+                        showNotification(`Đã cập nhật thành công dữ liệu cho ${updatedCount} tỉnh/thành!`);
+                    } else {
+                        showNotification('File Excel không có dữ liệu hợp lệ hoặc cột "hc-key" bị thiếu.', true);
+                    }
+
+                } catch (error) {
+                    console.error("Lỗi khi xử lý file Excel:", error);
+                    showNotification("Lỗi khi đọc file. Vui lòng kiểm tra định dạng file.", true);
+                } finally {
+                    spinner.classList.add('hidden');
+                    event.target.value = ''; // Clear the file input
+                }
+            };
+
+            reader.onerror = function() {
+                spinner.classList.add('hidden');
+                showNotification('Không thể đọc file đã chọn.', true);
+            };
+
+            reader.readAsArrayBuffer(file);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            provinceData = loadDataFromLocalStorage();
+            initializeMap();
+            document.getElementById('file-upload').addEventListener('change', handleFile, false);
+
+            // Mobile Menu Toggle (from ve-chung-toi.html)
+
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+        // End of du-lieu.html specific JavaScript logic
+    </script>
+
+    <script src="product-details.js"></script>
+    <script src="san-pham.js"></script>
+      <script src="main-layout.js"></script> 
 </body>
 </html>

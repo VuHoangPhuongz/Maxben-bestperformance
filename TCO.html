@@ -28,18 +28,43 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-            #product-dropdown-menu a {
+        #product-dropdown-menu a {
     display: block;
     padding: 0.6rem 1rem;
-    border-radius: 0.375rem;
-    color: #d1d5db;
-    font-size: 0.875rem;
+    border-radius: 0.375rem; /* tương đương rounded-md */
+    color: #d1d5db; /* tương đương text-gray-300 */
+    font-size: 0.875rem; /* tương đương text-sm */
     white-space: nowrap;
     transition: background-color 0.2s, color 0.2s;
 }
 #product-dropdown-menu a:hover {
-    background-color: #2563EB;
-    color: #ffffff;
+    background-color: #2563EB; /* tương đương bg-blue-600 */
+    color: #ffffff; /* tương đương text-white */
+}
+ #modal-tab-content #description-content ul {
+        list-style-type: disc; /* Đảm bảo kiểu gạch đầu dòng là đĩa */
+        margin-left: 1.5rem;   /* Thụt vào để có không gian cho gạch đầu dòng */
+        padding-left: 0;       /* Đảm bảo không có padding thừa */
+    }
+
+    #modal-tab-content #description-content ul li {
+        margin-bottom: 0.5rem; /* Khoảng cách giữa các mục */
+        padding-left: 0.5rem;  /* Một chút padding cho text */
+    }
+
+    /* Đổi màu của gạch đầu dòng (bullet point) */
+    #modal-tab-content #description-content ul li::marker {
+        color: #38bdf8; /* Màu xanh sáng của Tailwind's sky-400 hoặc blue-400 */
+    }
+    #product-dropdown-menu {
+    display: none; /* Mặc định ẩn */
+}
+
+@media (min-width: 768px) { /* Khi màn hình là md trở lên */
+    #product-dropdown-menu {
+        display: block; /* Hoặc flex/grid tùy vào layout của bạn */
+        /* Các style desktop dropdown khác */
+    }
 }
     </style>
 </head>
@@ -48,7 +73,7 @@
     <header class="sticky-nav border-b border-gray-700">
         <div class="container mx-auto px-4">
             <nav class="flex items-center justify-between h-20">
-                <a href="index.html" class="text-3xl font-bold gradient-text">MAXBEN💡</a>
+                <a href="index.html" class="text-3xl font-bold text-red-500">MAXBEN💡</a>
                 <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
                     <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Trang Chủ</a>
                     <a href="ve-chung-toi.html" class="text-gray-300 hover:text-white">Về Chúng Tôi</a>
@@ -245,7 +270,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <!-- Company Info -->
             <div class="col-span-1 md:col-span-2">
-                <a href="index.html" class="text-2xl font-bold gradient-text">MAXBEN💡</a>
+                <a href="index.html" class="text-2xl font-bold text-red-500">MAXBEN💡</a>
                 <p class="text-gray-400 text-sm mt-4 max-w-sm">Kiến tạo không gian bằng ánh sáng chất lượng và giải pháp chuyên nghiệp.</p>
             </div>
             <!-- Quick Links -->
