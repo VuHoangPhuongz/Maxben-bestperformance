@@ -106,3 +106,28 @@
     opacity: 0.5;
     cursor: not-allowed;
 }
+#product-dropdown-menu .main-menu-item,
+#product-dropdown-menu .submenu-item {
+    display: block;
+    padding: 0.6rem 1rem;
+    border-radius: 0.375rem;
+    color: #d1d5db;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+    position: relative;
+}
+
+#product-dropdown-menu .main-menu-item:hover,
+#product-dropdown-menu .submenu-item:hover {
+    background-color: #2563EB; /* bg-blue-600 */
+    color: #ffffff; /* text-white */
+}
+
+/* Ẩn/hiện submenu */
+.menu-item-with-submenu .submenu {
+    transform: translateX(-10px);
+}
+.menu-item-with-submenu:hover .submenu {
+    transform: translateX(0);
+}

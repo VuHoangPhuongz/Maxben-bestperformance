@@ -253,7 +253,47 @@ const productDatabase = {
         {"power": "15W", "light": "3000K/4000K/6500K", "góc_chiếu": "15°/24°/36°/50°", "choa": "ĐEN/TRẮNG", "kích_thước": "D110*H117", "cắt_lỗ": "Φ100", "đóng_gói": "30 PCS", "price": "1.020.000 VND", "Mã Quản Lý": "DL-MB-SP-R-D100-15"},
         {"power": "18W", "light": "3000K/4000K/6500K", "góc_chiếu": "15°/24°/36°/50°", "choa": "ĐEN/TRẮNG", "kích_thước": "D110*H117", "cắt_lỗ": "Φ100", "đóng_gói": "30 PCS", "price": "1.040.000 VND", "Mã Quản Lý": "DL-MB-SP-R-D100-18"}
       ]
+    },
+    {
+  "name": "Đèn Âm Trần Spotlight Prolux-TT (Bát Đôi)",
+  "category": "Đèn LED Âm Trần",
+  "image": "URL_CUA_ANH_SPOTLIGHT_PROLUX_TT",
+  "description": "Đèn spotlight âm trần bát đôi công nghệ chống chói UGR<6, cho phép điều chỉnh góc chiếu linh hoạt. Chỉ số hoàn màu CRI>98 siêu cao, mang lại ánh sáng chân thực.",
+  "features": "Công nghệ chống chói UGR<6 tích hợp ẩn nguồn sáng. Góc chiếu linh hoạt 15°-50°. Chỉ số hoàn màu CRI>98 cho màu sắc chân thực. An toàn cho sức khỏe, không phát tia UV, không chứa thủy ngân. Hạn chế ánh sáng xanh. Vỏ nhôm đúc.",
+  "applications": "Cửa hàng, Nhà ở, Văn phòng",
+  "variants": [
+    {
+      "Mã Quản Lý": "DL-MB-SP-S2-D80-7",
+      "power": "7W",
+      "quang_thông": "595 Lm",
+      "light": "3000K/4000K/6500K",
+      "kích_thước": "D170*H90*C97",
+      "cắt_lỗ": "D155*H80",
+      "đóng_gói": "15 PCS",
+      "price": "1.499.000 VNĐ"
+    },
+    {
+      "Mã Quản Lý": "DL-MB-SP-S2-D80-10",
+      "power": "10W",
+      "quang_thông": "850 Lm",
+      "light": "3000K/4000K/6500K",
+      "kích_thước": "D170*H90*C98",
+      "cắt_lỗ": "D155*H80",
+      "đóng_gói": "15 PCS",
+      "price": "1.602.000 VNĐ"
+    },
+    {
+      "Mã Quản Lý": "DL-MB-SP-S2-D100-12",
+      "power": "12W",
+      "quang_thông": "1020 Lm",
+      "light": "ĐỔI MÀU",
+      "kích_thước": "D210*H115*C117",
+      "cắt_lỗ": "D190*H100",
+      "đóng_gói": "15 PCS",
+      "price": "LIÊN HỆ"
     }
+  ]
+}
   ],
   "Đèn LED Ốp Trần": [
     {
@@ -607,6 +647,45 @@ const productDatabase = {
         {"battery": "3.6V-1800mA", "charger": "USB/Solar", "light": "6500K/3000K", "price": "201.000 VND", "Mã Quản Lý": "DP-MB-J02-DD-T/V", "dimensions_mm": "Ø60*H63", "CHẾ ĐỘ SÁNG": 4, "T. GIAN SÁNG": "7H", "T.GIAN SẠC": "6-8H"}
       ]
     }
+  ],
+  "Đèn high bay": [
+    {
+  "name": "Đèn LED Highbay",
+  "category": "Đèn LED Nhà xưởng",
+  "image": "https://i.ibb.co/dsCN8SDp/COB-H.png",
+  "description": "Đèn LED Highbay công suất lớn, sử dụng chip LED hiệu suất cao và lens tản quang cho ánh sáng đồng đều. Thích hợp cho nhà xưởng, kho bãi.",
+  "features": "Thiết kế hiện đại, sử dụng lens tản quang góc rộng 130°. Vỏ nhôm chất lượng cao, bền bỉ, đạt chuẩn IP65. Chỉ số hoàn màu CRI>80. Tuổi thọ 30.000H.",
+  "applications": "Nhà Xưởng, Kho bãi",
+  "variants": [
+    {
+      "Mã Quản Lý": "DX-MB-HB300-100-T",
+      "power": "100W",
+      "quang_thông": "11.000 Lm",
+      "light": "6500K",
+      "kích_thước": "D267*H29*C60",
+      "đóng_gói": "15 PCS",
+      "price": "1.717.000 VNĐ"
+    },
+    {
+      "Mã Quản Lý": "DX-MB-HB300-150-T",
+      "power": "150W",
+      "quang_thông": "16.000 Lm",
+      "light": "6500K",
+      "kích_thước": "D297*H29*C60",
+      "đóng_gói": "10 PCS",
+      "price": "2.361.000 VNĐ"
+    },
+    {
+      "Mã Quản Lý": "DX-MB-HB300-200-T",
+      "power": "200W",
+      "quang_thông": "20.000 Lm",
+      "light": "6500K",
+      "kích_thước": "D369*H39*C60",
+      "đóng_gói": "10 PCS",
+      "price": "2.999.000 VNĐ"
+    }
+  ]
+}
   ]
 };
 
