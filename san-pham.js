@@ -149,4 +149,80 @@
          
 
             populateMenus(); populateMobileMenu(); populateFilters(); setupFilterListeners(); initializeFiltersFromURL(); renderProducts();
+        function setupMobileCategoryIcons() {
+               const debouncedSearchAndScroll = debounce(() => {
+        renderProducts();
+        
+        // Chỉ thực hiện cuộn trên màn hình nhỏ (mobile/tablet)
+        if (window.innerWidth < 1024) { // 1024px là breakpoint 'lg'
+            productGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 300);
+    const container = document.getElementById('mobile-icon-categories');
+    const mobileSearchInput = document.getElementById('mobile-search-input');
+    if (!container || !mobileSearchInput) return;
+
+    // Danh sách các icon và danh mục tương ứng
+    const icons = [
+        { name: 'Tất cả', category: 'all', icon: 'fa-border-all' },
+        { name: 'Âm Trần', category: 'Đèn LED Âm Trần', icon: 'fa-cloud-arrow-down' },
+        { name: 'Ốp Trần', category: 'Đèn LED Ốp Trần', icon: 'fa-border-all' },
+        { name: 'Tuýp LED', category: 'Đèn Tuýp LED', icon: 'fa-ruler-horizontal' },
+        { name: 'Búp LED', category: 'Đèn LED Bulb', icon: 'fa-lightbulb' },
+        { name: 'Đèn Pha', category: 'Đèn Pha LED', icon: 'fa-bolt' },
+        { name: 'Dây LED', category: 'Dây LED', icon: 'fa-wave-square' },
+        { name: 'Năng Lượng', category: 'Đèn Năng Lượng Mặt Trời', icon: 'fa-sun' },
+        { name: 'Quạt Trần', category: 'Quạt Trần Đèn', icon: 'fa-fan' },
+        { name: 'Đèn Pin', category: 'Đèn Pin', icon: 'fa-flashlight' },
+        { name: 'Ống Bơ', category: 'Đèn Ống Bơ', icon: 'fa-t' },
+        { name: 'Highbay', category: 'Đèn high bay', icon: 'fa-industry' }
+    ];
+
+    // Tạo HTML cho các icon
+    container.innerHTML = icons.map((item, index) => `
+        <button data-category="${item.category}" class="mobile-icon-btn group flex flex-col items-center justify-center text-center p-4 bg-slate-800 rounded-lg border border-slate-700 transition-all duration-200 ${index === 0 ? 'active' : ''}">
+            <i class="fa-solid ${item.icon} text-2xl mb-2 text-blue-400 transition-transform group-hover:scale-110"></i>
+            <span class="text-sm font-semibold text-slate-300">${item.name}</span>
+        </button>
+    `).join('');
+
+    // Xử lý sự kiện click vào icon
+    container.addEventListener('click', (e) => {
+        const button = e.target.closest('.mobile-icon-btn');
+        if (!button) return;
+
+        // Bỏ active ở button cũ và thêm active cho button mới
+        container.querySelectorAll('.mobile-icon-btn').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const category = button.dataset.category;
+        
+        // Cập nhật state và render lại sản phẩm
+        state.currentPage = 1;
+        state.categories = category === 'all' ? [] : [category];
+        
+        // Bỏ check ở các checkbox trong bộ lọc desktop để đồng bộ
+        document.querySelectorAll('#category-filter-container input:checked').forEach(cb => cb.checked = false);
+        if (category !== 'all') {
+             const checkboxToCheck = document.querySelector(`#category-filter-container input[value="${category}"]`);
+             if(checkboxToCheck) checkboxToCheck.checked = true;
+        }
+
+        renderProducts();
+    });
+    
+    // Đồng bộ hóa thanh tìm kiếm trên mobile với state
+    const debouncedRender = debounce(renderProducts, 300);
+    mobileSearchInput.addEventListener('input', e => {
+        const searchTerm = e.target.value;
+        state.currentPage = 1; 
+        state.searchTerm = searchTerm;
+        searchInput.value = searchTerm; // Đồng bộ với thanh tìm kiếm desktop
+        debouncedRender(); 
+    });
+}
+
+// Gọi hàm này khi khởi tạo trang
+setupMobileCategoryIcons();
+
         });

@@ -175,9 +175,16 @@
                 <div id="icon-menu-row-2" class="flex justify-center items-start gap-3 md:gap-4 flex-wrap"></div>
             </div>
         </section>
-
+<div class="mb-8 lg:hidden">
+    <div class="mb-6 relative">
+        <input type="text" id="mobile-search-input" placeholder="Tìm kiếm tên, mã sản phẩm, công suất..." class="form-input w-full pl-10">
+        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+    </div>
+    <div id="mobile-icon-categories" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        </div>
+</div>
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <aside class="lg:col-span-1 p-6 rounded-xl h-fit lg:sticky top-24 bg-slate-900/50 border border-slate-800">
+            <aside class="hidden lg:block lg:col-span-1 p-6 rounded-xl h-fit lg:sticky top-24 bg-slate-900/50 border border-slate-800">
                 <div class="flex justify-between items-center mb-6"><h2 class="text-xl font-bold text-white">Bộ Lọc</h2><button id="reset-filters-btn" class="text-sm text-blue-400 hover:text-white">Xóa lọc</button></div>
                 <div class="mb-6 relative"><input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." class="form-input w-full pl-10"><i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i></div>
                 <div class="mb-6"><h3 class="font-semibold text-white mb-3">Danh Mục</h3><div id="category-filter-container" class="space-y-2 max-h-60 overflow-y-auto pr-2"></div></div>
@@ -190,7 +197,7 @@
                     <p id="product-count" class="text-gray-400 text-sm mb-3 sm:mb-0">Đang tải...</p>
                     <select id="sort-by" class="form-select text-sm w-full sm:w-auto"><option value="default">Sắp xếp</option><option value="price-asc">Giá tăng dần</option><option value="price-desc">Giá giảm dần</option><option value="name-asc">Tên A-Z</option></select>
                 </div>
-                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 min-h-[60vh]"></div>
+                <div id="product-grid" class="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-6 min-h-[60vh]"></div>
                 <div id="pagination-container" class="flex justify-center items-center mt-12 space-x-2"></div>
             </div>
         </div>
