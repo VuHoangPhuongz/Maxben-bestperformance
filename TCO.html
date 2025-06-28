@@ -310,30 +310,36 @@ body {
             </header>
 
             <div class="input-card space-y-8">
-                <div>
-                    <h2 class="text-xl font-bold border-b pb-2 mb-4">A. Nhu Cầu Chiếu Sáng</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label for="room-length" class="form-label">Chiều dài phòng (m)</label>
-                            <input type="number" id="room-length" class="form-input" value="8">
-                        </div>
-                        <div>
-                            <label for="room-width" class="form-label">Chiều rộng phòng (m)</label>
-                            <input type="number" id="room-width" class="form-input" value="5">
-                        </div>
-                        <div>
-                            <label for="lux-level" class="form-label">Độ rọi tiêu chuẩn (Lux)</label>
-                            <select id="lux-level" class="form-input">
-                                <option value="150">Phòng ngủ (150 Lux)</option>
-                                <option value="300" selected>Phòng khách (300 Lux)</option>
-                                <option value="500">Văn phòng (500 Lux)</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+  <div>
+    <h2 class="text-xl font-bold border-b pb-2 mb-4">A. Nhu Cầu Chiếu Sáng</h2>
+    <div class="grid grid-cols- md:grid-cols-4 gap-4">
+      <div>
+        <label for="room-length" class="form-label">Chiều dài phòng (m)</label>
+        <input type="number" id="room-length" class="form-input" value="8">
+      </div>
+      <div>
+        <label for="room-width" class="form-label">Chiều rộng phòng (m)</label>
+        <input type="number" id="room-width" class="form-input" value="5">
+      </div>
+      <div>
+        <label for="room-height" class="form-label">Chiều cao phòng (m)</label>
+        <input type="number" id="room-height" class="form-input" value="3.2" step="0.1" min="2">
+      </div>
+      <div>
+        <label for="lux-level" class="form-label">Độ rọi tiêu chuẩn (Lux)</label>
+        <select id="lux-level" class="form-input">
+          <option value="150">Phòng ngủ (150 Lux)</option>
+          <option value="300" selected>Phòng khách (300 Lux)</option>
+          <option value="500">Văn phòng (500 Lux)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
 
                 <div>
-                    <h2 class="text-xl font-bold border-b pb-2 mb-4">B. So Sánh Sản Phẩm</h2>
+                    <h2 class="text-xl text-red-500 font-bold border-b pb-2 mb-4">B. So Sánh Sản Phẩm</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                         <div class="space-y-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                             <h3 class="font-bold text-blue-700">Sản phẩm A: Đèn MAXBEN</h3>
@@ -380,20 +386,23 @@ body {
                     </div>
                 </div>
 
-                <div>
-                    <h2 class="text-xl font-bold border-b pb-2 mb-4">C. Thông Số Vận Hành</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="usage-hours" class="form-label">Thời gian sử dụng/ngày (giờ)</label>
-                            <input type="number" id="usage-hours" class="form-input" value="5">
-                        </div>
-                        <div>
-                            <label for="electricity-price" class="form-label">Đơn giá điện (VNĐ/kWh)</label>
-                            <input type="text" id="electricity-price" class="form-input" value="3.000">
-                        </div>
-                    </div>
-                </div>
-            </div>
+               <div>
+    <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-3">C. Thông Số Vận Hành</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label for="usage-hours" class="block text-sm font-medium text-gray-300 mb-1">Thời gian sử dụng/ngày (giờ)</label>
+            <input type="number" id="usage-hours" value="5" 
+                   class="w-full bg-slate-700 text-white rounded-md border border-slate-600 
+                          px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+            <label for="electricity-price" class="block text-sm font-medium text-gray-300 mb-1">Đơn giá điện (VNĐ/kWh)</label>
+            <input type="text" id="electricity-price" value="3.000"
+                   class="w-full bg-slate-700 text-white rounded-md border border-slate-600 
+                          px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+    </div>
+</div>
 
             <div class="mt-8">
                 <button id="calculate-btn" class="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105">
@@ -501,13 +510,180 @@ body {
     </footer>
 
     <script src="product-details.js"></script>
-    <script src="san-pham.js"></script>
     <script src="main-layout.js"></script>
-<script>document.addEventListener('DOMContentLoaded',()=>{const productData={"Đèn LED Bulb tròn 3W":{"price":31000,"power":3,"lumen":270,"lifespan":15000},"Đèn LED Bulb tròn 5W":{"price":39000,"power":5,"lumen":450,"lifespan":15000},"Đèn LED Bulb tròn 7W":{"price":47000,"power":7,"lumen":630,"lifespan":15000},"Đèn LED Bulb tròn 9W":{"price":53000,"power":9,"lumen":810,"lifespan":15000},"Đèn LED Bulb tròn 12W":{"price":63000,"power":12,"lumen":1080,"lifespan":15000},"Đèn LED Bulb tròn 15W":{"price":73000,"power":15,"lumen":1350,"lifespan":15000},"Đèn LED Bulb tròn 18W":{"price":95000,"power":18,"lumen":1620,"lifespan":15000},"Đèn LED Bulb tròn 20W":{"price":116000,"power":20,"lumen":1800,"lifespan":15000},"Đèn LED Bulb trụ Happy 20W":{"price":69000,"power":20,"lumen":1800,"lifespan":30000},"Đèn LED Bulb trụ Happy 30W":{"price":109000,"power":30,"lumen":2700,"lifespan":30000},"Đèn LED Bulb trụ Happy 40W":{"price":139000,"power":40,"lumen":3800,"lifespan":30000},"Đèn LED Bulb trụ Happy 50W":{"price":189000,"power":50,"lumen":4500,"lifespan":30000},"Đèn tuýp LED T8 9W":{"price":78000,"power":9,"lumen":900,"lifespan":30000},"Đèn tuýp LED T8 18W":{"price":86000,"power":18,"lumen":1700,"lifespan":30000},"Đèn tuýp LED T8 28W":{"price":118000,"power":28,"lumen":2800,"lifespan":30000},"Đèn tuýp LED T8 45W":{"price":149000,"power":45,"lumen":4500,"lifespan":30000},"Đèn tuýp LED bán nguyệt 20W":{"price":187000,"power":20,"lumen":2000,"lifespan":30000},"Đèn tuýp LED bán nguyệt 40W":{"price":262000,"power":40,"lumen":4000,"lifespan":30000},"Đèn tuýp LED bán nguyệt oval 20W":{"price":199000,"power":20,"lumen":1900,"lifespan":30000},"Đèn tuýp LED bán nguyệt oval 40W":{"price":262000,"power":40,"lumen":3800,"lifespan":30000},"Đèn tuýp LED bán nguyệt oval 60W":{"price":389000,"power":60,"lumen":6000,"lifespan":30000},"Đèn tuýp LED bán nguyệt oval 70W":{"price":459000,"power":70,"lumen":6650,"lifespan":30000},"Đèn tuýp LED bán nguyệt (Compact) 45W":{"price":270000,"power":45,"lumen":4500,"lifespan":25000},"Đèn tuýp LED bán nguyệt (Compact) 70W":{"price":399000,"power":70,"lumen":7000,"lifespan":25000},"Đèn LED âm trần Happy V2 9W":{"price":77000,"power":9,"lumen":740,"lifespan":25000},"Đèn LED âm trần Happy V2 9W ĐỔI MÀU":{"price":111000,"power":9,"lumen":740,"lifespan":25000},"Đèn LED âm trần Happy V2 12W":{"price":99000,"power":12,"lumen":1100,"lifespan":25000},"Đèn LED âm trần Happy V2 12W ĐỔI MÀU":{"price":144000,"power":12,"lumen":1100,"lifespan":25000},"Đèn LED âm trần siêu mỏng 9W":{"price":135000,"power":9,"lumen":720,"lifespan":30000},"Đèn LED âm trần siêu mỏng 9W ĐỔI MÀU":{"price":155000,"power":9,"lumen":720,"lifespan":30000},"Đèn LED âm trần siêu mỏng 12W":{"price":170000,"power":12,"lumen":960,"lifespan":30000},"Đèn LED âm trần siêu mỏng 12W ĐỔI MÀU":{"price":195000,"power":12,"lumen":960,"lifespan":30000},"Đèn LED âm trần Lucy 9W":{"price":125000,"power":9,"lumen":760,"lifespan":30000},"Đèn LED âm trần Lucy 12W":{"price":177000,"power":12,"lumen":1200,"lifespan":30000},"Đèn LED âm trần Lucy 9W ĐỔI MÀU":{"price":140000,"power":9,"lumen":760,"lifespan":30000},"Đèn LED âm trần Lucy 12W ĐỔI MÀU":{"price":199000,"power":12,"lumen":1200,"lifespan":30000},"Đèn LED âm trần Lucy Pro 7W":{"price":179000,"power":7,"lumen":595,"lifespan":30000},"Đèn LED âm trần Lucy Pro 9W":{"price":189000,"power":9,"lumen":765,"lifespan":30000},"Đèn LED âm trần Lucy Pro 11W":{"price":199000,"power":11,"lumen":935,"lifespan":30000},"Đèn LED âm trần Lucy Pro 7W ĐỔI MÀU":{"price":199000,"power":7,"lumen":595,"lifespan":30000},"Đèn LED âm trần Lucy Pro 9W ĐỔI MÀU":{"price":210000,"power":9,"lumen":765,"lifespan":30000},"Đèn LED âm trần Lucy Pro 11W ĐỔI MÀU":{"price":220000,"power":11,"lumen":935,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 10W":{"price":189000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 12W":{"price":276000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 15W":{"price":376000,"power":15,"lumen":1275,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 10W ĐỔI MÀU":{"price":212000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 12W ĐỔI MÀU":{"price":305000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 15W ĐỔI MÀU":{"price":410000,"power":15,"lumen":1275,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1 7W":{"price":722000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1 7W ĐỔI MÀU":{"price":772000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1 10W":{"price":773000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1 10W ĐỔI MÀU":{"price":854000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 5W":{"price":479000,"power":5,"lumen":425,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 7W":{"price":479000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 7W ĐỔI MÀU":{"price":528000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 10W":{"price":561000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 10W ĐỔI MÀU":{"price":641000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 12W":{"price":609000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 12W ĐỔI MÀU":{"price":679000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 15W":{"price":1046000,"power":15,"lumen":1275,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 18W":{"price":1030000,"power":18,"lumen":1530,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 3W":{"price":479000,"power":3,"lumen":255,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 5W":{"price":486000,"power":5,"lumen":425,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 7W":{"price":668000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 7W ĐỔI MÀU":{"price":731000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 10W":{"price":856000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 10W ĐỔI MÀU":{"price":957000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 12W":{"price":867000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 12W ĐỔI MÀU":{"price":957000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT ME 10W":{"price":299000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT ME 10W ĐỔI MÀU":{"price":399000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PRO LUX-T 9W":{"price":286000,"power":9,"lumen":765,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PRO LUX-T 9W ĐỔI MÀU":{"price":339000,"power":9,"lumen":765,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PRO LUX-T 12W":{"price":407000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PRO LUX-T 12W ĐỔI MÀU":{"price":469000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 7W":{"price":694000,"power":7,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 7W ĐỔI MÀU":{"price":765000,"power":7,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 10W":{"price":735000,"power":10,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 10W ĐỔI MÀU":{"price":854000,"power":10,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 12W":{"price":763000,"power":12,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 12W ĐỔI MÀU":{"price":854000,"power":12,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 15W":{"price":1020000,"power":15,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 18W":{"price":1040000,"power":18,"lumen":0,"lifespan":30000},"Đèn LED ốp trần Classic 12W":{"price":195000,"power":12,"lumen":780,"lifespan":25000},"Đèn LED ốp trần Classic 18W":{"price":255000,"power":18,"lumen":1260,"lifespan":25000},"Đèn LED ốp trần Classic 24W":{"price":328000,"power":24,"lumen":1800,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 6W":{"price":152000,"power":6,"lumen":390,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 6W ĐỔI MÀU":{"price":192000,"power":6,"lumen":390,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 12W":{"price":219000,"power":12,"lumen":960,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 12W ĐỔI MÀU":{"price":250000,"power":12,"lumen":960,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 18W":{"price":279000,"power":18,"lumen":1620,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 18W ĐỔI MÀU":{"price":318000,"power":18,"lumen":1620,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 24W":{"price":448000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 24W ĐỔI MÀU":{"price":550000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 6W":{"price":163000,"power":6,"lumen":390,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 6W ĐỔI MÀU":{"price":204000,"power":6,"lumen":390,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 12W":{"price":225000,"power":12,"lumen":960,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 12W ĐỔI MÀU":{"price":254000,"power":12,"lumen":960,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 18W":{"price":295000,"power":18,"lumen":1620,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 18W ĐỔI MÀU":{"price":339000,"power":18,"lumen":1620,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 24W":{"price":452000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 24W ĐỔI MÀU":{"price":575000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Happy 18W":{"price":137000,"power":18,"lumen":1629,"lifespan":25000},"Đèn LED ốp trần Happy 24W":{"price":191000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Happy 36W":{"price":296000,"power":36,"lumen":3240,"lifespan":25000},"Đèn ốp trần tràn viền 15W":{"price":229000,"power":15,"lumen":970,"lifespan":25000},"Đèn ốp trần tràn viền 24W":{"price":289000,"power":24,"lumen":1770,"lifespan":25000},"Dây LED Happy 11W":{"price":39000,"power":11,"lumen":1100,"lifespan":25000},"Đèn pha LED V2 10W":{"price":199000,"power":10,"lumen":1200,"lifespan":30000},"Đèn pha LED V2 20W":{"price":259000,"power":20,"lumen":2400,"lifespan":30000},"Đèn pha LED V2 30W":{"price":359000,"power":30,"lumen":3600,"lifespan":30000},"Đèn pha LED V2 50W":{"price":449000,"power":50,"lumen":6000,"lifespan":30000},"Đèn pha LED V2 100W":{"price":689000,"power":100,"lumen":12000,"lifespan":30000},"Đèn pha LED V2 150W":{"price":1099000,"power":150,"lumen":18000,"lifespan":30000},"Đèn pha LED V2 200W":{"price":1499000,"power":200,"lumen":24000,"lifespan":30000},"Đèn pha LED V2 300W":{"price":2199000,"power":300,"lumen":36000,"lifespan":30000},"Đèn pha RGB 50W":{"price":1238000,"power":50,"lumen":0,"lifespan":30000},"Đèn pha LED 10W":{"price":169000,"power":10,"lumen":800,"lifespan":30000},"Đèn pha LED 20W":{"price":239000,"power":20,"lumen":1600,"lifespan":30000},"Đèn pha LED 30W":{"price":339000,"power":30,"lumen":2400,"lifespan":30000},"Đèn pha LED 50W":{"price":489000,"power":50,"lumen":4000,"lifespan":30000},"Đèn pha LED 100W":{"price":999000,"power":100,"lumen":8000,"lifespan":30000},"Đèn pha LED 150W":{"price":1699000,"power":150,"lumen":12000,"lifespan":30000},"Đèn pha LED 200W":{"price":2399000,"power":200,"lumen":16000,"lifespan":30000},"Đèn pha Năng lượng mặt trời 100W":{"price":1668000,"power":100,"lumen":0,"lifespan":0},"Đèn pha Năng lượng mặt trời 200W":{"price":2468000,"power":200,"lumen":0,"lifespan":0},"Đèn pha Năng lượng mặt trời 300W":{"price":3268000,"power":300,"lumen":0,"lifespan":0},"Đèn LED Bơ Tỏa 9W":{"price":258000,"power":9,"lumen":600,"lifespan":30000},"Đèn LED Bơ Tỏa 12W":{"price":324000,"power":12,"lumen":920,"lifespan":30000},"Đèn LED Ống Bơ COB-S 10W":{"price":459000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED Ống Bơ COB-S 12W":{"price":479000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED Ống Bơ COB-S 15W":{"price":669000,"power":15,"lumen":1270,"lifespan":30000},"Đèn LED Ống Bơ COB-S 18W":{"price":699000,"power":18,"lumen":1530,"lifespan":30000},"Đèn LED Ống Bơ COB-S 10W ĐỔI MÀU":{"price":559000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED Ống Bơ COB-S 12W ĐỔI MÀU":{"price":579000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED Ống Bơ COB-H 10W":{"price":459000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED Ống Bơ COB-H 12W":{"price":479000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED Ống Bơ COB-H 15W":{"price":599000,"power":15,"lumen":1270,"lifespan":30000},"Đèn LED Ống Bơ COB-H 18W":{"price":629000,"power":18,"lumen":1270,"lifespan":30000},"Đèn LED Ống Bơ COB-H 10W ĐỔI MÀU":{"price":559000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED Ống Bơ COB-H 12W ĐỔI MÀU":{"price":579000,"power":12,"lumen":1020,"lifespan":30000}}
-const productSelect=document.getElementById('maxben-product');const calculateBtn=document.getElementById('calculate-btn');const resultsSection=document.getElementById('results-section');let tcoChart,breakdownChart;const formatNumber=(num)=>num.toLocaleString('vi-VN');const formatCurrency=(num)=>new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND'}).format(num);Object.keys(productData).forEach(name=>{productSelect.add(new Option(name,name))});function updateMaxbenProductInfo(){const product=productData[productSelect.value];if(product){document.getElementById('maxben-price').value=formatNumber(product.price);document.getElementById('maxben-power').value=product.power;document.getElementById('maxben-lumen').value=formatNumber(product.lumen);document.getElementById('maxben-lifespan').value=formatNumber(product.lifespan)}}
-updateMaxbenProductInfo();productSelect.addEventListener('change',updateMaxbenProductInfo);calculateBtn.addEventListener('click',calculateAndDisplay);function calculateAndDisplay(){const getNumberValue=(id)=>parseFloat(String(document.getElementById(id).value).replace(/[\.,]/g,''))||0;const inputs={length:getNumberValue('room-length'),width:getNumberValue('room-width'),lux:getNumberValue('lux-level'),usageHours:getNumberValue('usage-hours'),elecPrice:getNumberValue('electricity-price'),priceA:getNumberValue('maxben-price'),powerA:getNumberValue('maxben-power'),lumenA:getNumberValue('maxben-lumen'),lifespanA:getNumberValue('maxben-lifespan'),priceB:getNumberValue('competitor-price'),powerB:getNumberValue('competitor-power'),lumenB:getNumberValue('competitor-lumen'),lifespanB:getNumberValue('competitor-lifespan'),};if(inputs.lumenA===0||inputs.lumenB===0||inputs.lifespanB===0||inputs.usageHours===0){alert("Vui lòng nhập đầy đủ và chính xác các thông số (Quang thông, Tuổi thọ, Thời gian sử dụng phải lớn hơn 0).");return}
-const area=inputs.length*inputs.width;const totalLumenNeeded=area*inputs.lux;const comparisonHours=inputs.lifespanA;const comparisonYears=comparisonHours/(inputs.usageHours*365);const qtyA=Math.ceil(totalLumenNeeded/inputs.lumenA);const initialCostA=qtyA*inputs.priceA;const energyCostA=(inputs.powerA*qtyA/1000)*comparisonHours*inputs.elecPrice;const tcoA=initialCostA+energyCostA;const qtyB=Math.ceil(totalLumenNeeded/inputs.lumenB);const totalSetsBNeeded=Math.ceil(comparisonHours/inputs.lifespanB);const totalAcquisitionCostB=totalSetsBNeeded*qtyB*inputs.priceB;const initialCostB=qtyB*inputs.priceB;const replacementCostB=totalAcquisitionCostB-initialCostB;const energyCostB=(inputs.powerB*qtyB/1000)*comparisonHours*inputs.elecPrice;const tcoB=totalAcquisitionCostB+energyCostB;const savings=tcoB-tcoA;document.getElementById('res-qty-a').innerText=formatNumber(qtyA);document.getElementById('res-qty-b').innerText=formatNumber(qtyB);document.getElementById('res-initial-cost-a').innerText=formatCurrency(initialCostA);document.getElementById('res-initial-cost-b').innerText=formatCurrency(initialCostB);document.getElementById('res-timeframe').innerText=`--- CHI PHÍ TRONG ${comparisonYears.toFixed(1)} NĂM (${formatNumber(comparisonHours)} GIỜ SỬ DỤNG) ---`;document.getElementById('res-replacement-cost-b').innerText=formatCurrency(replacementCostB);document.getElementById('res-energy-cost-a').innerText=formatCurrency(energyCostA);document.getElementById('res-energy-cost-b').innerText=formatCurrency(energyCostB);document.getElementById('res-tco-a').innerText=formatCurrency(tcoA);document.getElementById('res-tco-b').innerText=formatCurrency(tcoB);document.getElementById('savings-years').innerText=comparisonYears.toFixed(1);document.getElementById('savings-amount').innerText=formatCurrency(savings);drawTcoChart(tcoA,tcoB);drawBreakdownChart({initialCostA,energyCostA},{initialCostB,replacementCostB,energyCostB});resultsSection.classList.remove('hidden');resultsSection.scrollIntoView({behavior:'smooth'})}
-function drawTcoChart(tcoA,tcoB){const ctx=document.getElementById('tco-chart').getContext('2d');if(tcoChart)tcoChart.destroy();tcoChart=new Chart(ctx,{type:'bar',data:{labels:['Sản phẩm A (MAXBEN)','Sản phẩm B (Giá rẻ)'],datasets:[{label:'Tổng chi phí sở hữu (TCO)',data:[tcoA,tcoB],backgroundColor:['#2563EB','#64748B']}]},options:{indexAxis:'y',responsive:!0}})}
-function drawBreakdownChart(dataA,dataB){const ctx=document.getElementById('breakdown-chart').getContext('2d');if(breakdownChart)breakdownChart.destroy();breakdownChart=new Chart(ctx,{type:'bar',data:{labels:['Sản phẩm A (MAXBEN)','Sản phẩm B (Giá rẻ)'],datasets:[{label:'Chi phí ban đầu',data:[dataA.initialCostA,dataB.initialCostB],backgroundColor:'#3B82F6'},{label:'Chi phí điện',data:[dataA.energyCostA,dataB.energyCostB],backgroundColor:'#EF4444'},{label:'Chi phí thay thế',data:[0,dataB.replacementCostB],backgroundColor:'#F59E0B'},]},options:{responsive:!0,scales:{x:{stacked:!0},y:{stacked:!0}}}})}});</script>
+<script>
+    const productData={"Đèn LED Bulb tròn 3W":{"price":31000,"power":3,"lumen":270,"lifespan":15000},"Đèn LED Bulb tròn 5W":{"price":39000,"power":5,"lumen":450,"lifespan":15000},"Đèn LED Bulb tròn 7W":{"price":47000,"power":7,"lumen":630,"lifespan":15000},"Đèn LED Bulb tròn 9W":{"price":53000,"power":9,"lumen":810,"lifespan":15000},"Đèn LED Bulb tròn 12W":{"price":63000,"power":12,"lumen":1080,"lifespan":15000},"Đèn LED Bulb tròn 15W":{"price":73000,"power":15,"lumen":1350,"lifespan":15000},"Đèn LED Bulb tròn 18W":{"price":95000,"power":18,"lumen":1620,"lifespan":15000},"Đèn LED Bulb tròn 20W":{"price":116000,"power":20,"lumen":1800,"lifespan":15000},"Đèn LED Bulb trụ Happy 20W":{"price":69000,"power":20,"lumen":1800,"lifespan":30000},"Đèn LED Bulb trụ Happy 30W":{"price":109000,"power":30,"lumen":2700,"lifespan":30000},"Đèn LED Bulb trụ Happy 40W":{"price":139000,"power":40,"lumen":3800,"lifespan":30000},"Đèn LED Bulb trụ Happy 50W":{"price":189000,"power":50,"lumen":4500,"lifespan":30000},"Đèn tuýp LED T8 9W":{"price":78000,"power":9,"lumen":900,"lifespan":30000},"Đèn tuýp LED T8 18W":{"price":86000,"power":18,"lumen":1700,"lifespan":30000},"Đèn tuýp LED T8 28W":{"price":118000,"power":28,"lumen":2800,"lifespan":30000},"Đèn tuýp LED T8 45W":{"price":149000,"power":45,"lumen":4500,"lifespan":30000},"Đèn tuýp LED bán nguyệt 20W":{"price":187000,"power":20,"lumen":2000,"lifespan":30000},"Đèn tuýp LED bán nguyệt 40W":{"price":262000,"power":40,"lumen":4000,"lifespan":30000},"Đèn tuýp LED bán nguyệt oval 20W":{"price":199000,"power":20,"lumen":1900,"lifespan":30000},"Đèn tuýp LED bán nguyệt oval 40W":{"price":262000,"power":40,"lumen":3800,"lifespan":30000},"Đèn tuýp LED bán nguyệt oval 60W":{"price":389000,"power":60,"lumen":6000,"lifespan":30000},"Đèn tuýp LED bán nguyệt oval 70W":{"price":459000,"power":70,"lumen":6650,"lifespan":30000},"Đèn tuýp LED bán nguyệt (Compact) 45W":{"price":270000,"power":45,"lumen":4500,"lifespan":25000},"Đèn tuýp LED bán nguyệt (Compact) 70W":{"price":399000,"power":70,"lumen":7000,"lifespan":25000},"Đèn LED âm trần Happy V2 9W":{"price":77000,"power":9,"lumen":740,"lifespan":25000},"Đèn LED âm trần Happy V2 9W ĐỔI MÀU":{"price":111000,"power":9,"lumen":740,"lifespan":25000},"Đèn LED âm trần Happy V2 12W":{"price":99000,"power":12,"lumen":1100,"lifespan":25000},"Đèn LED âm trần Happy V2 12W ĐỔI MÀU":{"price":144000,"power":12,"lumen":1100,"lifespan":25000},"Đèn LED âm trần siêu mỏng 9W":{"price":135000,"power":9,"lumen":720,"lifespan":30000},"Đèn LED âm trần siêu mỏng 9W ĐỔI MÀU":{"price":155000,"power":9,"lumen":720,"lifespan":30000},"Đèn LED âm trần siêu mỏng 12W":{"price":170000,"power":12,"lumen":960,"lifespan":30000},"Đèn LED âm trần siêu mỏng 12W ĐỔI MÀU":{"price":195000,"power":12,"lumen":960,"lifespan":30000},"Đèn LED âm trần Lucy 9W":{"price":125000,"power":9,"lumen":760,"lifespan":30000},"Đèn LED âm trần Lucy 12W":{"price":177000,"power":12,"lumen":1200,"lifespan":30000},"Đèn LED âm trần Lucy 9W ĐỔI MÀU":{"price":140000,"power":9,"lumen":760,"lifespan":30000},"Đèn LED âm trần Lucy 12W ĐỔI MÀU":{"price":199000,"power":12,"lumen":1200,"lifespan":30000},"Đèn LED âm trần Lucy Pro 7W":{"price":179000,"power":7,"lumen":595,"lifespan":30000},"Đèn LED âm trần Lucy Pro 9W":{"price":189000,"power":9,"lumen":765,"lifespan":30000},"Đèn LED âm trần Lucy Pro 11W":{"price":199000,"power":11,"lumen":935,"lifespan":30000},"Đèn LED âm trần Lucy Pro 7W ĐỔI MÀU":{"price":199000,"power":7,"lumen":595,"lifespan":30000},"Đèn LED âm trần Lucy Pro 9W ĐỔI MÀU":{"price":210000,"power":9,"lumen":765,"lifespan":30000},"Đèn LED âm trần Lucy Pro 11W ĐỔI MÀU":{"price":220000,"power":11,"lumen":935,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 10W":{"price":189000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 12W":{"price":276000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 15W":{"price":376000,"power":15,"lumen":1275,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 10W ĐỔI MÀU":{"price":212000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 12W ĐỔI MÀU":{"price":305000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED âm trần chống chói ZEN 15W ĐỔI MÀU":{"price":410000,"power":15,"lumen":1275,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1 7W":{"price":722000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1 7W ĐỔI MÀU":{"price":772000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1 10W":{"price":773000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1 10W ĐỔI MÀU":{"price":854000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 5W":{"price":479000,"power":5,"lumen":425,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 7W":{"price":479000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 7W ĐỔI MÀU":{"price":528000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 10W":{"price":561000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 10W ĐỔI MÀU":{"price":641000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 12W":{"price":609000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 12W ĐỔI MÀU":{"price":679000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 15W":{"price":1046000,"power":15,"lumen":1275,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP7 18W":{"price":1030000,"power":18,"lumen":1530,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 3W":{"price":479000,"power":3,"lumen":255,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 5W":{"price":486000,"power":5,"lumen":425,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 7W":{"price":668000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 7W ĐỔI MÀU":{"price":731000,"power":7,"lumen":595,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 10W":{"price":856000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 10W ĐỔI MÀU":{"price":957000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 12W":{"price":867000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-SP2 12W ĐỔI MÀU":{"price":957000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT ME 10W":{"price":299000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT ME 10W ĐỔI MÀU":{"price":399000,"power":10,"lumen":850,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PRO LUX-T 9W":{"price":286000,"power":9,"lumen":765,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PRO LUX-T 9W ĐỔI MÀU":{"price":339000,"power":9,"lumen":765,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PRO LUX-T 12W":{"price":407000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PRO LUX-T 12W ĐỔI MÀU":{"price":469000,"power":12,"lumen":1020,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 7W":{"price":694000,"power":7,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 7W ĐỔI MÀU":{"price":765000,"power":7,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 10W":{"price":735000,"power":10,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 10W ĐỔI MÀU":{"price":854000,"power":10,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 12W":{"price":763000,"power":12,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 12W ĐỔI MÀU":{"price":854000,"power":12,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 15W":{"price":1020000,"power":15,"lumen":0,"lifespan":30000},"Đèn Âm Trần SPOTLIGHT PROLUX-TT 18W":{"price":1040000,"power":18,"lumen":0,"lifespan":30000},"Đèn LED ốp trần Classic 12W":{"price":195000,"power":12,"lumen":780,"lifespan":25000},"Đèn LED ốp trần Classic 18W":{"price":255000,"power":18,"lumen":1260,"lifespan":25000},"Đèn LED ốp trần Classic 24W":{"price":328000,"power":24,"lumen":1800,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 6W":{"price":152000,"power":6,"lumen":390,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 6W ĐỔI MÀU":{"price":192000,"power":6,"lumen":390,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 12W":{"price":219000,"power":12,"lumen":960,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 12W ĐỔI MÀU":{"price":250000,"power":12,"lumen":960,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 18W":{"price":279000,"power":18,"lumen":1620,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 18W ĐỔI MÀU":{"price":318000,"power":18,"lumen":1620,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 24W":{"price":448000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Plush Tròn 24W ĐỔI MÀU":{"price":550000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 6W":{"price":163000,"power":6,"lumen":390,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 6W ĐỔI MÀU":{"price":204000,"power":6,"lumen":390,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 12W":{"price":225000,"power":12,"lumen":960,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 12W ĐỔI MÀU":{"price":254000,"power":12,"lumen":960,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 18W":{"price":295000,"power":18,"lumen":1620,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 18W ĐỔI MÀU":{"price":339000,"power":18,"lumen":1620,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 24W":{"price":452000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Plush Vuông 24W ĐỔI MÀU":{"price":575000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Happy 18W":{"price":137000,"power":18,"lumen":1629,"lifespan":25000},"Đèn LED ốp trần Happy 24W":{"price":191000,"power":24,"lumen":2160,"lifespan":25000},"Đèn LED ốp trần Happy 36W":{"price":296000,"power":36,"lumen":3240,"lifespan":25000},"Đèn ốp trần tràn viền 15W":{"price":229000,"power":15,"lumen":970,"lifespan":25000},"Đèn ốp trần tràn viền 24W":{"price":289000,"power":24,"lumen":1770,"lifespan":25000},"Dây LED Happy 11W":{"price":39000,"power":11,"lumen":1100,"lifespan":25000},"Đèn pha LED V2 10W":{"price":199000,"power":10,"lumen":1200,"lifespan":30000},"Đèn pha LED V2 20W":{"price":259000,"power":20,"lumen":2400,"lifespan":30000},"Đèn pha LED V2 30W":{"price":359000,"power":30,"lumen":3600,"lifespan":30000},"Đèn pha LED V2 50W":{"price":449000,"power":50,"lumen":6000,"lifespan":30000},"Đèn pha LED V2 100W":{"price":689000,"power":100,"lumen":12000,"lifespan":30000},"Đèn pha LED V2 150W":{"price":1099000,"power":150,"lumen":18000,"lifespan":30000},"Đèn pha LED V2 200W":{"price":1499000,"power":200,"lumen":24000,"lifespan":30000},"Đèn pha LED V2 300W":{"price":2199000,"power":300,"lumen":36000,"lifespan":30000},"Đèn pha RGB 50W":{"price":1238000,"power":50,"lumen":0,"lifespan":30000},"Đèn pha LED 10W":{"price":169000,"power":10,"lumen":800,"lifespan":30000},"Đèn pha LED 20W":{"price":239000,"power":20,"lumen":1600,"lifespan":30000},"Đèn pha LED 30W":{"price":339000,"power":30,"lumen":2400,"lifespan":30000},"Đèn pha LED 50W":{"price":489000,"power":50,"lumen":4000,"lifespan":30000},"Đèn pha LED 100W":{"price":999000,"power":100,"lumen":8000,"lifespan":30000},"Đèn pha LED 150W":{"price":1699000,"power":150,"lumen":12000,"lifespan":30000},"Đèn pha LED 200W":{"price":2399000,"power":200,"lumen":16000,"lifespan":30000},"Đèn pha Năng lượng mặt trời 100W":{"price":1668000,"power":100,"lumen":0,"lifespan":0},"Đèn pha Năng lượng mặt trời 200W":{"price":2468000,"power":200,"lumen":0,"lifespan":0},"Đèn pha Năng lượng mặt trời 300W":{"price":3268000,"power":300,"lumen":0,"lifespan":0},"Đèn LED Bơ Tỏa 9W":{"price":258000,"power":9,"lumen":600,"lifespan":30000},"Đèn LED Bơ Tỏa 12W":{"price":324000,"power":12,"lumen":920,"lifespan":30000},"Đèn LED Ống Bơ COB-S 10W":{"price":459000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED Ống Bơ COB-S 12W":{"price":479000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED Ống Bơ COB-S 15W":{"price":669000,"power":15,"lumen":1270,"lifespan":30000},"Đèn LED Ống Bơ COB-S 18W":{"price":699000,"power":18,"lumen":1530,"lifespan":30000},"Đèn LED Ống Bơ COB-S 10W ĐỔI MÀU":{"price":559000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED Ống Bơ COB-S 12W ĐỔI MÀU":{"price":579000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED Ống Bơ COB-H 10W":{"price":459000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED Ống Bơ COB-H 12W":{"price":479000,"power":12,"lumen":1020,"lifespan":30000},"Đèn LED Ống Bơ COB-H 15W":{"price":599000,"power":15,"lumen":1270,"lifespan":30000},"Đèn LED Ống Bơ COB-H 18W":{"price":629000,"power":18,"lumen":1270,"lifespan":30000},"Đèn LED Ống Bơ COB-H 10W ĐỔI MÀU":{"price":559000,"power":10,"lumen":850,"lifespan":30000},"Đèn LED Ống Bơ COB-H 12W ĐỔI MÀU":{"price":579000,"power":12,"lumen":1020,"lifespan":30000}}
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const productSelect = document.getElementById('maxben-product');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultsSection = document.getElementById('results-section');
+      let tcoChart, breakdownChart;
+
+      const formatNumber = (num) => num.toLocaleString('vi-VN');
+      const formatCurrency = (num) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(num);
+
+      Object.keys(productData).forEach(name => {
+        productSelect?.add(new Option(name, name));
+      });
+
+      function updateMaxbenProductInfo() {
+        const product = productData[productSelect?.value];
+        if (product) {
+          document.getElementById('maxben-price').value = formatNumber(product.price);
+          document.getElementById('maxben-power').value = product.power;
+          document.getElementById('maxben-lumen').value = formatNumber(product.lumen);
+          document.getElementById('maxben-lifespan').value = formatNumber(product.lifespan);
+        }
+      }
+      updateMaxbenProductInfo();
+      productSelect?.addEventListener('change', updateMaxbenProductInfo);
+      calculateBtn.addEventListener('click', calculateAndDisplay);
+
+      const WPH = 0.8;
+      const MF = 0.8;
+      const UF_TABLE = { 1: 0.85, 2: 0.78, 3: 0.70, 4: 0.64, 5: 0.59, 6: 0.54, 7: 0.49, 8: 0.45, 9: 0.41, 10: 0.37 };
+
+      function interpolateUF(rcr) {
+        const keys = Object.keys(UF_TABLE).map(Number);
+        if (rcr <= keys[0]) return UF_TABLE[keys[0]];
+        if (rcr >= keys[keys.length - 1]) return UF_TABLE[keys[keys.length - 1]];
+        const lower = Math.floor(rcr);
+        const upper = lower + 1;
+        const UF_low = UF_TABLE[lower];
+        const UF_high = UF_TABLE[upper];
+        return UF_low - (rcr - lower) * (UF_low - UF_high);
+      }
+
+function getNumberValue(id) {
+  const val = document.getElementById(id).value.trim();
+  
+  // 1. Xóa tất cả dấu "." phân cách hàng nghìn.
+  // 2. Đổi dấu "," thập phân (nếu có) thành "."
+  // 3. Chuyển đổi thành số.
+  return parseFloat(val.replace(/\./g, '').replace(',', '.')) || 0;
+}
+
+      function calculateAndDisplay() {
+        const inputs = {
+          length: getNumberValue('room-length'),
+          width: getNumberValue('room-width'),
+          height: getNumberValue('room-height'),
+          lux: getNumberValue('lux-level'),
+          usageHours: getNumberValue('usage-hours'),
+          elecPrice: getNumberValue('electricity-price'),
+          priceA: getNumberValue('maxben-price'),
+          powerA: getNumberValue('maxben-power'),
+          lumenA: getNumberValue('maxben-lumen'),
+          lifespanA: getNumberValue('maxben-lifespan'),
+          priceB: getNumberValue('competitor-price'),
+          powerB: getNumberValue('competitor-power'),
+          lumenB: getNumberValue('competitor-lumen'),
+          lifespanB: getNumberValue('competitor-lifespan')
+        };
+
+        if (inputs.lumenA === 0 || inputs.lumenB === 0 || inputs.lifespanB === 0 || inputs.usageHours === 0 || inputs.height === 0) {
+          alert("Vui lòng nhập đầy đủ và chính xác các thông số (bao gồm chiều cao phòng, quang thông, tuổi thọ, thời gian sử dụng).");
+          return;
+        }
+
+        const A = inputs.length * inputs.width;
+        const h_rc = inputs.height - WPH;
+        const RCR = (5 * h_rc * (inputs.length + inputs.width)) / A;
+        const UF = interpolateUF(RCR);
+        const comparisonHours = inputs.lifespanA;
+        const comparisonYears = comparisonHours / (inputs.usageHours * 365);
+
+        const qtyA = Math.ceil((inputs.lux * A) / (inputs.lumenA * UF * MF));
+        const initialCostA = qtyA * inputs.priceA;
+        const energyCostA = (inputs.powerA * qtyA / 1000) * comparisonHours * inputs.elecPrice;
+        const tcoA = initialCostA + energyCostA;
+
+        const qtyB = Math.ceil((inputs.lux * A) / (inputs.lumenB * UF * MF));
+        const totalSetsBNeeded = Math.ceil(comparisonHours / inputs.lifespanB);
+        const totalAcquisitionCostB = totalSetsBNeeded * qtyB * inputs.priceB;
+        const initialCostB = qtyB * inputs.priceB;
+        const replacementCostB = totalAcquisitionCostB - initialCostB;
+        const energyCostB = (inputs.powerB * qtyB / 1000) * comparisonHours * inputs.elecPrice;
+        const tcoB = totalAcquisitionCostB + energyCostB;
+
+        const savings = tcoB - tcoA;
+
+        document.getElementById('res-qty-a').innerText = formatNumber(qtyA);
+        document.getElementById('res-qty-b').innerText = formatNumber(qtyB);
+        document.getElementById('res-initial-cost-a').innerText = formatCurrency(initialCostA);
+        document.getElementById('res-initial-cost-b').innerText = formatCurrency(initialCostB);
+        document.getElementById('res-timeframe').innerText = `--- CHI PHÍ TRONG ${comparisonYears.toFixed(1)} NĂM (${formatNumber(comparisonHours)} GIỜ SỬ DỤNG) ---`;
+        document.getElementById('res-replacement-cost-b').innerText = formatCurrency(replacementCostB);
+        document.getElementById('res-energy-cost-a').innerText = formatCurrency(energyCostA);
+        document.getElementById('res-energy-cost-b').innerText = formatCurrency(energyCostB);
+        document.getElementById('res-tco-a').innerText = formatCurrency(tcoA);
+        document.getElementById('res-tco-b').innerText = formatCurrency(tcoB);
+        document.getElementById('savings-years').innerText = comparisonYears.toFixed(1);
+        document.getElementById('savings-amount').innerText = formatCurrency(savings);
+
+        drawTcoChart(tcoA, tcoB);
+        drawBreakdownChart({ initialCostA, energyCostA }, { initialCostB, replacementCostB, energyCostB });
+
+        resultsSection.classList.remove('hidden');
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function drawTcoChart(tcoA, tcoB) {
+        const ctx = document.getElementById('tco-chart').getContext('2d');
+        if (tcoChart) tcoChart.destroy();
+        tcoChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Sản phẩm A (MAXBEN)', 'Sản phẩm B (Giá rẻ)'],
+            datasets: [{
+              label: 'Tổng chi phí sở hữu (TCO)',
+              data: [tcoA, tcoB],
+              backgroundColor: ['#2563EB', '#64748B']
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true
+          }
+        });
+      }
+
+      function drawBreakdownChart(dataA, dataB) {
+        const ctx = document.getElementById('breakdown-chart').getContext('2d');
+        if (breakdownChart) breakdownChart.destroy();
+        breakdownChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Sản phẩm A (MAXBEN)', 'Sản phẩm B (Giá rẻ)'],
+            datasets: [
+              {
+                label: 'Chi phí ban đầu',
+                data: [dataA.initialCostA, dataB.initialCostB],
+                backgroundColor: '#3B82F6'
+              },
+              {
+                label: 'Chi phí điện',
+                data: [dataA.energyCostA, dataB.energyCostB],
+                backgroundColor: '#EF4444'
+              },
+              {
+                label: 'Chi phí thay thế',
+                data: [0, dataB.replacementCostB],
+                backgroundColor: '#F59E0B'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: { stacked: true },
+              y: { stacked: true }
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

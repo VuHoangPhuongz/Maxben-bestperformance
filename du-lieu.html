@@ -328,14 +328,18 @@ body {
                 <i class="fas fa-file-excel text-green-600"></i> Tải lên dữ liệu từ Excel
             </h3>
             <div class="grid md:grid-cols-2 gap-6 items-center">
-                <div>
-                    <label for="file-upload" class="block text-sm font-medium text-gray-700 mb-2">Chọn file Excel để nhập dữ liệu:</label>
-                    <input id="file-upload" type="file" accept=".xlsx, .xls" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-5 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100 cursor-pointer transition-colors duration-200"/>
-                    <div id="loading-spinner" class="hidden mt-2 flex items-center gap-2 text-sm text-red-600">
-                        <svg class="animate-spin h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                        <span>Đang xử lý file...</span>
-                    </div>
-                </div>
+<div>
+    <label for="file-upload" class="block text-sm font-medium text-gray-700 mb-2">Quản lý dữ liệu:</label>
+    <div class="flex items-center gap-4">
+        <input id="file-upload" type="file" accept=".xlsx, .xls" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-5 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100 cursor-pointer transition-colors duration-200"/>
+        <button id="clear-data-btn" class="flex-shrink-0 bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 px-5 rounded-full transition-colors duration-200">
+            <i class="fas fa-trash-alt mr-2"></i> Xóa Dữ liệu
+        </button>
+    </div>
+    <div id="loading-spinner" class="hidden mt-2 flex items-center gap-2 text-sm text-red-600">
+        <span>Đang xử lý file...</span>
+    </div>
+</div>
                 <div class="text-sm text-gray-700 bg-red-50 p-4 rounded-lg border border-red-200">
                     <p class="font-semibold text-red-800 flex items-center gap-2"><i class="fas fa-info-circle"></i> Lưu ý quan trọng:</p>
                     <ul class="list-disc list-inside mt-2 space-y-1">
@@ -444,10 +448,7 @@ body {
 
         // Initial dummy data for demonstration if local storage is empty
         const initialProvinceData = {
-            'vn-hn': { daiLy: ['Đại lý Thăng Long', 'Cửa hàng Minh Khai'], khachHang: ['Tập đoàn ABC', 'Công ty XYZ'], spBanChay: ['Đèn LED Âm trần 12W', 'Đèn tuýp LED 0.6m'] },
-            'vn-hc': { daiLy: ['Đại lý Sài Gòn', 'Chi nhánh Q.1'], khachHang: ['Công ty DEF'], spBanChay: ['Đèn Đường LED 150W'] },
-            'vn-dn': { daiLy: ['Đại lý Sông Hàn'], khachHang: [], spBanChay: ['Đèn Downlight 9W'] },
-            'vn-na': { daiLy: ['Đại lý Vinh'], khachHang: ['Dự án Chung cư'], spBanChay: ['Đèn Nhà xưởng 200W'] }
+            
         };
 
         function showNotification(message, isError = false) {
@@ -724,18 +725,34 @@ body {
 
             // Mobile Menu Toggle (from ve-chung-toi.html)
 
-            const mobileMenu = document.getElementById('mobile-menu');
-            if(mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+
+            const clearDataButton = document.getElementById('clear-data-btn');
+    if (clearDataButton) {
+        clearDataButton.addEventListener('click', function() {
+            // Hỏi xác nhận trước khi xóa
+            const isConfirmed = confirm('Bạn có chắc chắn muốn xóa tất cả dữ liệu đã tải lên không? Thao tác này sẽ khôi phục lại dữ liệu mặc định.');
+            
+            if (isConfirmed) {
+                // Xóa dữ liệu khỏi Local Storage
+                localStorage.removeItem('maxbenProvinceData');
+                
+                // Tải lại dữ liệu mặc định vào biến provinceData
+                provinceData = loadDataFromLocalStorage();
+                
+                // Vẽ lại bản đồ với dữ liệu mặc định
+                redrawMap();
+                
+                // Hiển thị thông báo thành công
+                showNotification('Đã xóa dữ liệu và khôi phục cài đặt gốc thành công!');
+                  location.reload();
             }
+        });
+    }
         });
         // End of du-lieu.html specific JavaScript logic
     </script>
 
     <script src="product-details.js"></script>
-    <script src="san-pham.js"></script>
       <script src="main-layout.js"></script> 
 </body>
 </html>
