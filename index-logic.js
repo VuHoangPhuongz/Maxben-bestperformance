@@ -125,7 +125,8 @@ function renderHomepageSections() {
                 <div class="w-full h-px bg-slate-700 mb-6">
                      <div class="w-28 h-px bg-sky-500"></div>
                 </div>
-                <div class="product-showcase-row grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6"> `;
+                <div class="product-showcase-row flex gap-4 overflow-x-auto sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+ `;
 
         // Lặp qua các sản phẩm đã chọn và thêm vào HTML
         productsToDisplayInThisCategory.forEach(product => {

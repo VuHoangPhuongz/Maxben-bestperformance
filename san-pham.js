@@ -146,7 +146,7 @@
             modalCloseBtn.addEventListener('click', closeProductModal);
             modalOverlay.addEventListener('click', closeProductModal);
             document.addEventListener('keydown', (e) => { if (e.key === "Escape" && !productModal.classList.contains('hidden')) closeProductModal(); });
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+         
 
             populateMenus(); populateMobileMenu(); populateFilters(); setupFilterListeners(); initializeFiltersFromURL(); renderProducts();
         });
