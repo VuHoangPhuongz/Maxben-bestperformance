@@ -546,22 +546,71 @@ body {
 
       function interpolateUF(rcr) {
         const keys = Object.keys(UF_TABLE).map(Number);
-        if (rcr <= keys[0]) return UF_TABLE[keys[0]];
-        if (rcr >= keys[keys.length - 1]) return UF_TABLE[keys[keys.length - 1]];
-        const lower = Math.floor(rcr);
-        const upper = lower + 1;
-        const UF_low = UF_TABLE[lower];
-        const UF_high = UF_TABLE[upper];
-        return UF_low - (rcr - lower) * (UF_low - UF_high);
-      }
+        const minRCR = keys[0];
+        const maxRCR = keys[keys.length - 1]; // RCR tối đa trong bảng (là 10)
 
+        // Trả về giá trị nhỏ nhất nếu rcr thấp hơn giới hạn của bảng
+        if (rcr <= minRCR) return UF_TABLE[minRCR];
+
+        // Nếu rcr nằm trong khoảng giá trị của bảng, tiến hành nội suy như cũ
+        if (rcr < maxRCR) {
+            const lower = Math.floor(rcr);
+            const upper = lower + 1;
+            const UF_low = UF_TABLE[lower];
+            const UF_high = UF_TABLE[upper];
+            
+            if (UF_high !== undefined) {
+                return UF_low - (rcr - lower) * (UF_low - UF_high);
+            }
+        }
+
+        // --- LOGIC NGOẠI SUY MỚI ---
+        // Nếu rcr lớn hơn hoặc bằng giá trị tối đa của bảng, tiến hành ngoại suy
+        
+        // 1. Lấy giá trị UF tại hai điểm RCR cuối cùng để tính độ dốc
+        const UF_max = UF_TABLE[maxRCR];       // UF tại RCR = 10 (giá trị: 0.37)
+        const UF_prev = UF_TABLE[maxRCR - 1]; // UF tại RCR = 9 (giá trị: 0.41)
+        
+        // 2. Tính độ dốc (sẽ là số âm vì UF giảm khi RCR tăng)
+        const slope = UF_max - UF_prev; // Kết quả khoảng -0.04
+
+        // 3. Tính giá trị UF mới bằng công thức ngoại suy tuyến tính
+        // UF_mới = UF_cuối + (RCR_mới - RCR_cuối) * độ_dốc
+        const extrapolatedUF = UF_max + (rcr - maxRCR) * slope;
+
+        // 4. Đảm bảo UF không bao giờ nhỏ hơn một ngưỡng tối thiểu (ví dụ 0.1) để tránh kết quả vô lý
+        return Math.max(0.1, extrapolatedUF);
+      }
 function getNumberValue(id) {
-  const val = document.getElementById(id).value.trim();
-  
-  // 1. Xóa tất cả dấu "." phân cách hàng nghìn.
-  // 2. Đổi dấu "," thập phân (nếu có) thành "."
-  // 3. Chuyển đổi thành số.
-  return parseFloat(val.replace(/\./g, '').replace(',', '.')) || 0;
+    const val = document.getElementById(id).value.trim();
+    if (!val) return 0;
+
+    // Đếm số lượng dấu chấm trong chuỗi
+    const dotCount = (val.match(/\./g) || []).length;
+
+    // TRƯỜNG HỢP 1: Nếu có dấu phẩy, chắc chắn là số thập phân kiểu Việt Nam (VD: 1.500,50)
+    // Đây là trường hợp đáng tin cậy nhất để xác định.
+    if (val.includes(',')) {
+        // Xóa dấu chấm (hàng nghìn), đổi dấu phẩy (thập phân) thành dấu chấm.
+        return parseFloat(val.replace(/\./g, '').replace(',', '.')) || 0;
+    }
+
+    // TRƯỜNG HỢP 2: Nếu có 2 dấu chấm trở lên, chắc chắn là phân cách hàng nghìn (VD: 1.500.000)
+    if (dotCount >= 2) {
+        // Chỉ cần xóa tất cả dấu chấm.
+        return parseFloat(val.replace(/\./g, '')) || 0;
+    }
+
+    // TRƯỜNG HỢP 3: Có đúng 1 dấu chấm. Đây là trường hợp khó nhất ("3.5" vs "31.000")
+    // Ta dùng một quy tắc: nếu phần phía sau dấu chấm có đúng 3 ký tự, đó là dấu hàng nghìn.
+    if (dotCount === 1 && val.substring(val.lastIndexOf('.') + 1).length === 3) {
+        // Xóa dấu chấm và phân tích.
+        return parseFloat(val.replace('.', '')) || 0;
+    }
+
+    // TRƯỜNG HỢP 4: Các trường hợp còn lại: số nguyên ("1500"), số thập phân kiểu quốc tế ("3.5", "12.75")
+    // parseFloat sẽ xử lý đúng các chuỗi này mà không cần thay đổi.
+    return parseFloat(val) || 0;
 }
 
       function calculateAndDisplay() {
