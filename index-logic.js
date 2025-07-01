@@ -41,14 +41,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalProductTitle = document.getElementById('modal-product-title');
 
     // --- DATA PREPARATION ---
-    if (typeof allProducts === 'undefined' || Object.keys(allProducts).length === 0) {
-        console.error("Lỗi: Dữ liệu `allProducts` không tồn tại hoặc rỗng. Hãy đảm bảo file `product-details.js` được nạp đúng và hàm `processProductData()` đã chạy.");
+    // Kiểm tra và xử lý biến allProducts nếu nó chưa được định nghĩa
+    // Giả định productDetails là nguồn dữ liệu chính của bạn (được load từ index.html hoặc product-details.js)
+    if (typeof productDatabase === 'undefined' || Object.keys(productDatabase).length === 0) {
+        console.error("Lỗi: Dữ liệu `productDatabase` không tồn tại hoặc rỗng. Hãy đảm bảo file chứa dữ liệu sản phẩm được nạp đúng.");
         if(productShowcaseContainer) {
             productShowcaseContainer.innerHTML = '<div class="container mx-auto px-4"><p class="text-center text-red-500">Lỗi: Không thể tải dữ liệu sản phẩm. Vui lòng kiểm tra console.</p></div>';
         }
         return;
     }
-    const allProductsArray = Object.values(allProducts);
+    // Chuyển đổi productDetails thành một mảng phẳng của tất cả các sản phẩm
+    // Tạo một map để dễ dàng truy cập sản phẩm bằng ID duy nhất (product.id)
+    const allProducts = {};
+    Object.keys(productDatabase).forEach(category => {
+        productDatabase[category].forEach(product => {
+            product.category = category; // Gán category cho từng sản phẩm con
+            // Tạo một ID duy nhất cho mỗi biến thể
+            if (product.variants && product.variants.length > 0) {
+                product.variants.forEach((variant, index) => {
+                    const uniqueId = `${category}-${product.name.replace(/\s/g, '-')}-${variant.power || 'no-power'}-${index}`;
+                    allProducts[uniqueId] = {
+                        ...product,
+                        ...variant, // Ghi đè các thuộc tính của sản phẩm bằng thuộc tính của biến thể
+                        id: uniqueId,
+                        displayName: `${product.name} ${variant.power ? variant.power : ''} ${variant.light ? variant.light : ''}`.trim()
+                    };
+                });
+            } else { // Xử lý các sản phẩm không có variants (ví dụ: một số sản phẩm năng lượng mặt trời)
+                const uniqueId = `${category}-${product.name.replace(/\s/g, '-')}-single`;
+                allProducts[uniqueId] = {
+                    ...product,
+                    id: uniqueId,
+                    displayName: product.name
+                };
+            }
+        });
+    });
+
+    const allProductsArray = Object.values(allProducts); // Mảng tất cả các sản phẩm đã được xử lý và có ID
 
     // --- HELPER FUNCTIONS ---
     const parsePrice = (str) => !str || typeof str !== 'string' ? 0 : parseInt(str.replace(/\D/g, ''), 10) || 0;
@@ -130,10 +160,17 @@ function renderHomepageSections() {
 
         // Lặp qua các sản phẩm đã chọn và thêm vào HTML
         productsToDisplayInThisCategory.forEach(product => {
+            // --- BẮT ĐẦU CHỈNH SỬA PHẦN XỬ LÝ ẢNH KHÔNG RENDER ĐƯỢC ---
+            let homepageImageUrl = product.image;
+            if (homepageImageUrl && homepageImageUrl.includes('imgbb.com') && homepageImageUrl.includes('image not found')) {
+                homepageImageUrl = 'https://placehold.co/300x300/1f2937/4b5563?text=Không có ảnh'; // Thay bằng placeholder nếu ảnh lỗi từ imgbb
+            }
+            // --- KẾT THÚC CHỈNH SỬA ---
+
             finalHtml += `
                 <div class="product-showcase-card group cursor-pointer bg-slate-800 rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition-all duration-300 flex flex-col" data-id="${product.id}">
                     <div class="product-showcase-image-wrapper relative w-full pt-[100%] overflow-hidden bg-white flex items-center justify-center p-2">
-                        <img src="${product.image}" alt="${product.displayName}" class="absolute top-0 left-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e5e7eb/9ca3af?text=Image+Error';">
+                        <img src="${homepageImageUrl}" alt="${product.displayName}" class="absolute top-0 left-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e5e7eb/9ca3af?text=Lỗi ảnh';">
                         <div class="absolute bottom-2 left-2 flex items-center bg-black/70 text-white text-[0.6rem] px-2 py-1 rounded-full pointer-events-none">
                             <img src="/path/to/your/maxben-logo.png" alt="Maxben Logo" class="w-3 h-3 mr-1"> MAXBEN
                         </div>
@@ -166,17 +203,59 @@ function renderHomepageSections() {
             return;
         }
 
-        const productVariants = allProductsArray.filter(p => p.name === product.name);
+        const productVariants = allProductsArray.filter(p => p.name === product.name && p.category === product.category);
         const relatedProducts = allProductsArray.filter(p => p.category === product.category && p.name !== product.name)
             .filter((p, i, self) => i === self.findIndex(t => t.name === p.name))
             .slice(0, 4);
 
         modalProductTitle.textContent = product.displayName;
+
+        // --- BẮT ĐẦU CHỈNH SỬA PHẦN XỬ LÝ ẢNH KHÔNG RENDER ĐƯỢC TRONG MODAL ---
+        let modalMainImageUrl = product.image;
+        if (modalMainImageUrl && modalMainImageUrl.includes('imgbb.com') && modalMainImageUrl.includes('image not found')) {
+            modalMainImageUrl = 'https://placehold.co/400x400/1f2937/4b5563?text=Ảnh không có'; // Placeholder cho ảnh chính
+        }
+
+        const modalThumbnailsHtml = (product.gallery || [product.image]).map((imgSrc, i) => {
+            let thumbUrl = imgSrc;
+            if (thumbUrl && thumbUrl.includes('imgbb.com') && thumbUrl.includes('image not found')) {
+                thumbUrl = 'https://placehold.co/100x100/1f2937/4b5563?text=Lỗi'; // Placeholder nhỏ hơn cho thumbnail
+            }
+            return `<img src="${thumbUrl}" class="thumbnail w-full aspect-square object-cover cursor-pointer rounded-md border-2 bg-slate-700 ${i === 0 ? 'active' : 'border-transparent'}" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1f2937/4b5563?text=Lỗi';">`;
+        }).join('');
+
+        const relatedProductsHtml = relatedProducts.map(rel => {
+            let relImageUrl = rel.image;
+            if (relImageUrl && relImageUrl.includes('imgbb.com') && relImageUrl.includes('image not found')) {
+                relImageUrl = 'https://placehold.co/300x300/1f2937/4b5563?text=Không có ảnh'; // Placeholder cho sản phẩm liên quan
+            }
+            return `
+                <div class="product-showcase-card group cursor-pointer bg-slate-800 rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition-all duration-300 flex flex-col" data-id="${rel.id}">
+                    <div class="product-showcase-image-wrapper relative w-full pt-[100%] overflow-hidden bg-white flex items-center justify-center p-2">
+                        <img src="${relImageUrl}" alt="${rel.displayName}" class="absolute top-0 left-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e5e7eb/9ca3af?text=Lỗi ảnh';">
+                        <div class="absolute bottom-2 left-2 flex items-center bg-black/70 text-white text-[0.6rem] px-2 py-1 rounded-full pointer-events-none">
+                            <img src="/path/to/your/maxben-logo.png" alt="Maxben Logo" class="w-3 h-3 mr-1"> MAXBEN
+                        </div>
+                    </div>
+                    <div class="p-3 bg-slate-900 border-t border-slate-700 text-left flex flex-col flex-grow">
+                        <p class="text-xs text-sky-400 font-semibold uppercase flex-shrink-0">${rel.category || 'Sản phẩm'}</p>
+                        <h4 class="font-bold text-white mt-1 text-sm leading-snug flex-grow">${rel.displayName}</h4>
+                        <div class="flex justify-between items-center mt-2 flex-shrink-0">
+                            <span class="text-md font-bold text-amber-400">${rel.price || 'Liên hệ'}</span>
+                            <span class="text-xs text-gray-400">${rel.power || ''} ${rel.light || ''}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        // --- KẾT THÚC CHỈNH SỬA PHẦN XỬ LÝ ẢNH KHÔNG RENDER ĐƯỢC TRONG MODAL ---
+
+
         modalContentArea.innerHTML = `
             <div class="grid lg:grid-cols-5 gap-8">
                 <div class="lg:col-span-2">
-                    <div class="bg-white rounded-lg p-2 mb-3"><img id="modalMainImage" src="${product.image}" alt="${product.displayName}" class="w-full h-auto object-contain rounded-md"></div>
-                    <div id="modalThumbnailGallery" class="grid grid-cols-4 gap-2">${(product.gallery || [product.image]).map((img, i) => `<img src="${img}" class="thumbnail w-full aspect-square object-cover cursor-pointer rounded-md border-2 bg-slate-700 ${i === 0 ? 'active' : 'border-transparent'}">`).join('')}</div>
+                    <div class="bg-white rounded-lg p-2 mb-3"><img id="modalMainImage" src="${modalMainImageUrl}" alt="${product.displayName}" class="w-full h-auto object-contain rounded-md"></div>
+                    <div id="modalThumbnailGallery" class="grid grid-cols-4 gap-2">${modalThumbnailsHtml}</div>
                 </div>
                 <div class="lg:col-span-3">
                     <h1 class="text-2xl font-bold text-white">${product.displayName}</h1>
@@ -239,24 +318,7 @@ function renderHomepageSections() {
             <div id="related-products-section" class="mt-8 pt-6 border-t border-slate-700">
                 <h3 class="text-xl font-bold text-white mb-4">Sản phẩm tương tự</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    ${relatedProducts.map(rel => `
-                        <div class="product-showcase-card group cursor-pointer bg-slate-800 rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition-all duration-300 flex flex-col" data-id="${rel.id}">
-                            <div class="product-showcase-image-wrapper relative w-full pt-[100%] overflow-hidden bg-white flex items-center justify-center p-2">
-                                <img src="${rel.image}" alt="${rel.displayName}" class="absolute top-0 left-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
-                                <div class="absolute bottom-2 left-2 flex items-center bg-black/70 text-white text-[0.6rem] px-2 py-1 rounded-full pointer-events-none">
-                                    <img src="/path/to/your/maxben-logo.png" alt="Maxben Logo" class="w-3 h-3 mr-1"> MAXBEN
-                                </div>
-                            </div>
-                            <div class="p-3 bg-slate-900 border-t border-slate-700 text-left flex flex-col flex-grow">
-                                <p class="text-xs text-sky-400 font-semibold uppercase flex-shrink-0">${rel.category || 'Sản phẩm'}</p>
-                                <h4 class="font-bold text-white mt-1 text-sm leading-snug flex-grow">${rel.displayName}</h4>
-                                <div class="flex justify-between items-center mt-2 flex-shrink-0">
-                                    <span class="text-md font-bold text-amber-400">${rel.price || 'Liên hệ'}</span>
-                                    <span class="text-xs text-gray-400">${rel.power || ''} ${rel.light || ''}</span>
-                                </div>
-                            </div>
-                        </div>
-                    `).join('')}
+                    ${relatedProductsHtml}
                 </div>
             </div>`; // Close of modalContentArea.innerHTML backtick
 
