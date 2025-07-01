@@ -141,7 +141,17 @@
             }
             
             resetFiltersBtn.addEventListener('click', resetAllFilters);
-            document.getElementById('show-all-products-btn').addEventListener('click', (e) => { e.preventDefault(); resetAllFilters(); });
+            document.getElementById('show-all-products-btn').addEventListener('click', (e) => {
+    // Kiểm tra xem phần tử được nhấp có phải là một liên kết (<a>) không.
+    // Nếu đúng, không làm gì cả và thoát khỏi hàm.
+    if (e.target.closest('a')) {
+        return;
+    }
+
+    // Nếu không phải là một liên kết, thì mới thực hiện reset bộ lọc.
+    e.preventDefault();
+    resetAllFilters();
+});
             productGrid.addEventListener('click', (e) => { const card = e.target.closest('.product-card'); if (card && card.dataset.id) openProductModal(card.dataset.id); });
             modalCloseBtn.addEventListener('click', closeProductModal);
             modalOverlay.addEventListener('click', closeProductModal);

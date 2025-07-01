@@ -309,25 +309,26 @@ body {
                 <p class="text-md text-gray-200 mt-2">Chứng minh giá trị dài hạn của sản phẩm chất lượng cao.</p>
             </header>
 
-            <div class="input-card space-y-8">
-  <div>
-    <h2 class="text-xl font-bold border-b pb-2 mb-4">A. Nhu Cầu Chiếu Sáng</h2>
-    <div class="grid grid-cols- md:grid-cols-4 gap-4">
+  <div class="space-y-10">
+  <!-- A. Nhu cầu chiếu sáng -->
+  <div class="bg-slate-800 p-6 rounded-xl shadow-md">
+    <h2 class="text-xl font-bold text-white border-b border-slate-600 pb-2 mb-4">A. Nhu Cầu Chiếu Sáng</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <div>
-        <label for="room-length" class="form-label">Chiều dài phòng (m)</label>
-        <input type="number" id="room-length" class="form-input" value="8">
+        <label for="room-length" class="block text-sm font-medium text-gray-300 mb-1">Chiều dài phòng (m)</label>
+        <input type="number" id="room-length" class="w-full bg-slate-700 text-white rounded-md border border-slate-600 px-3 py-2" value="8">
       </div>
       <div>
-        <label for="room-width" class="form-label">Chiều rộng phòng (m)</label>
-        <input type="number" id="room-width" class="form-input" value="5">
+        <label for="room-width" class="block text-sm font-medium text-gray-300 mb-1">Chiều rộng phòng (m)</label>
+        <input type="number" id="room-width" class="w-full bg-slate-700 text-white rounded-md border border-slate-600 px-3 py-2" value="5">
       </div>
       <div>
-        <label for="room-height" class="form-label">Chiều cao phòng (m)</label>
-        <input type="number" id="room-height" class="form-input" value="3.2" step="0.1" min="2">
+        <label for="room-height" class="block text-sm font-medium text-gray-300 mb-1">Chiều cao phòng (m)</label>
+        <input type="number" id="room-height" class="w-full bg-slate-700 text-white rounded-md border border-slate-600 px-3 py-2" value="3.2" step="0.1" min="2">
       </div>
       <div>
-        <label for="lux-level" class="form-label">Độ rọi tiêu chuẩn (Lux)</label>
-        <select id="lux-level" class="form-input">
+        <label for="lux-level" class="block text-sm font-medium text-gray-300 mb-1">Độ rọi tiêu chuẩn (Lux)</label>
+        <select id="lux-level" class="w-full bg-slate-700 text-white rounded-md border border-slate-600 px-3 py-2">
           <option value="150">Phòng ngủ (150 Lux)</option>
           <option value="300" selected>Phòng khách (300 Lux)</option>
           <option value="500">Văn phòng (500 Lux)</option>
@@ -335,74 +336,77 @@ body {
       </div>
     </div>
   </div>
-</div>
 
-
-                <div>
-                    <h2 class="text-xl text-red-500 font-bold border-b pb-2 mb-4">B. So Sánh Sản Phẩm</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                        <div class="space-y-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                            <h3 class="font-bold text-blue-700">Sản phẩm A: Đèn MAXBEN</h3>
-                            <div>
-                                <label for="maxben-product" class="form-label">Chọn sản phẩm MAXBEN</label>
-                                <select id="maxben-product" class="form-input"></select>
-                            </div>
-                            <div>
-                                <label class="form-label">Giá bán (VNĐ)</label>
-                                <input type="text" id="maxben-price" class="form-input" >
-                            </div>
-                            <div>
-                                <label class="form-label">Công suất (W)</label>
-                                <input type="text" id="maxben-power" class="form-input" readonly>
-                            </div>
-                            <div>
-                                <label class="form-label">Quang thông (Lumen)</label>
-                                <input type="text" id="maxben-lumen" class="form-input" readonly>
-                            </div>
-                             <div>
-                                <label class="form-label">Tuổi thọ (giờ)</label>
-                                <input type="text" id="maxben-lifespan" class="form-input" readonly>
-                            </div>
-                        </div>
-                        <div class="space-y-3 p-4 bg-slate-50 border border-slate-200 rounded-lg">
-                            <h3 class="font-bold text-slate-700">Sản phẩm B: Đèn giá rẻ</h3>
-                            <div>
-                                <label for="competitor-price" class="form-label">Giá bán (VNĐ)</label>
-                                <input type="text" id="competitor-price" class="form-input" value="80.000">
-                            </div>
-                            <div>
-                                <label for="competitor-power" class="form-label">Công suất (W)</label>
-                                <input type="text" id="competitor-power" class="form-input" value="12">
-                            </div>
-                            <div>
-                                <label for="competitor-lumen" class="form-label">Quang thông (Lumen)</label>
-                                <input type="text" id="competitor-lumen" class="form-input" value="950">
-                            </div>
-                             <div>
-                                <label for="competitor-lifespan" class="form-label">Tuổi thọ (giờ)</label>
-                                <input type="text" id="competitor-lifespan" class="form-input" value="15.000">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-               <div>
-    <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-3">C. Thông Số Vận Hành</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <!-- B. So sánh sản phẩm -->
+  <div class="bg-slate-800 p-6 rounded-xl shadow-md">
+    <h2 class="text-xl font-bold text-red-400 border-b border-slate-600 pb-2 mb-4">B. So Sánh Sản Phẩm</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Sản phẩm A -->
+      <div class="bg-slate-700 p-4 rounded-lg border border-slate-600 space-y-4">
+        <h3 class="font-bold text-white">Sản phẩm A: Đèn MAXBEN</h3>
         <div>
-            <label for="usage-hours" class="block text-sm font-medium text-gray-300 mb-1">Thời gian sử dụng/ngày (giờ)</label>
-            <input type="number" id="usage-hours" value="5" 
-                   class="w-full bg-slate-700 text-white rounded-md border border-slate-600 
-                          px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label class="text-sm text-gray-300">Chọn sản phẩm MAXBEN</label>
+          <select id="maxben-product" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2"></select>
         </div>
         <div>
-            <label for="electricity-price" class="block text-sm font-medium text-gray-300 mb-1">Đơn giá điện (VNĐ/kWh)</label>
-            <input type="text" id="electricity-price" value="3.000"
-                   class="w-full bg-slate-700 text-white rounded-md border border-slate-600 
-                          px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label class="text-sm text-gray-300">Giá bán (VNĐ)</label>
+          <input type="text" id="maxben-price" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2">
         </div>
+        <div>
+          <label class="text-sm text-gray-300">Công suất (W)</label>
+          <input type="text" id="maxben-power" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2" readonly>
+        </div>
+        <div>
+          <label class="text-sm text-gray-300">Quang thông (Lumen)</label>
+          <input type="text" id="maxben-lumen" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2" readonly>
+        </div>
+        <div>
+          <label class="text-sm text-gray-300">Tuổi thọ (giờ)</label>
+          <input type="text" id="maxben-lifespan" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2" readonly>
+        </div>
+      </div>
+
+      <!-- Sản phẩm B -->
+      <div class="bg-slate-700 p-4 rounded-lg border border-slate-600 space-y-4">
+        <h3 class="font-bold text-white">Sản phẩm B: Đèn giá rẻ</h3>
+        <div>
+          <label class="text-sm text-gray-300">Giá bán (VNĐ)</label>
+          <input type="text" id="competitor-price" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2" value="80.000">
+        </div>
+        <div>
+          <label class="text-sm text-gray-300">Công suất (W)</label>
+          <input type="text" id="competitor-power" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2" value="12">
+        </div>
+        <div>
+          <label class="text-sm text-gray-300">Quang thông (Lumen)</label>
+          <input type="text" id="competitor-lumen" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2" value="950">
+        </div>
+        <div>
+          <label class="text-sm text-gray-300">Tuổi thọ (giờ)</label>
+          <input type="text" id="competitor-lifespan" class="w-full bg-slate-800 text-white rounded-md border border-slate-600 px-3 py-2" value="15.000">
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- C. Thông số vận hành -->
+  <div class="bg-slate-800 p-6 rounded-xl shadow-md">
+    <h2 class="text-xl font-bold text-white border-b border-slate-600 pb-2 mb-4">C. Thông Số Vận Hành</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="usage-hours" class="block text-sm font-medium text-gray-300 mb-1">Thời gian sử dụng/ngày (giờ)</label>
+        <input type="number" id="usage-hours" value="5"
+               class="w-full bg-slate-700 text-white rounded-md border border-slate-600 px-3 py-2">
+      </div>
+      <div>
+        <label for="electricity-price" class="block text-sm font-medium text-gray-300 mb-1">Đơn giá điện (VNĐ/kWh)</label>
+        <input type="text" id="electricity-price" value="3.000"
+               class="w-full bg-slate-700 text-white rounded-md border border-slate-600 px-3 py-2">
+      </div>
+    </div>
+  </div>
 </div>
+
 
             <div class="mt-8">
                 <button id="calculate-btn" class="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105">

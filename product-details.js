@@ -451,7 +451,7 @@ const productDatabase = {
   "Đèn Pha LED": [
     {
       "name": "Đèn pha LED V2",
-      "image": "https://i.ibb.co/CFZJwvQ/MB-Pha-led-V2-01.png",
+      "image":"https://i.ibb.co/CFZJwvQ/MB-Pha-led-V2-01.png",
       "description": "Đèn pha LED chiếu sáng ngoài trời. Cải tiến từ Đèn pha LED.",
       "features": "Dải điện áp (160-250V) hoạt động phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao (110-120 lm/W). CRI>80 và lâu giảm sáng. Van điều áp chống đọng nước bên trong đèn, phù hợp với môi trường ở Việt Nam có độ ẩm cao. Vỏ nhôm đúc đảm bảo hiệu suất tản nhiệt cao. Dây điện chống nước IP65 chống hơi nước xâm nhập vào đèn qua dây, có thể tháo rời thuận tiện cho bảo trì. ",
       "applications": "Chiếu sáng sân, vườn, bảng hiệu, công trình.",
@@ -652,7 +652,7 @@ const productDatabase = {
     {
   "name": "Đèn LED Highbay",
   "category": "Đèn LED Nhà xưởng",
-  "image": "https://i.ibb.co/dsCN8SDp/COB-H.png",
+  "image": "./icons/highbay.png ",
   "description": "Đèn LED Highbay công suất lớn, sử dụng chip LED hiệu suất cao và lens tản quang cho ánh sáng đồng đều. Thích hợp cho nhà xưởng, kho bãi.",
   "features": "Thiết kế hiện đại, sử dụng lens tản quang góc rộng 130°. Vỏ nhôm chất lượng cao, bền bỉ, đạt chuẩn IP65. Chỉ số hoàn màu CRI>80. Tuổi thọ 30.000H.",
   "applications": "Nhà Xưởng, Kho bãi",
