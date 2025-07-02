@@ -34,7 +34,7 @@ const productDatabase = {
   "Đèn Tuýp LED": [
     {
       "name": "Đèn tuýp LED T8",
-      "image": "https://i.ibb.co/0VQgyQ1V/den-tuyp-led-t8-maxben-45w-1-247.png",
+      "image": "./icons/MB - Đèn Tuýp LED T8 1.png",
       "description": "Tuýp dài 0.6/1.2m, nhiều bóng led nhỏ. Thay thế đèn huỳnh quang.",
       "features": "Hiệu suất phát sáng cao 100lm/W, CRI>80. Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam. Sử dụng ống thủy tinh có độ bền cao và khả năng xuyên sáng tốt. Chuẩn đui đèn thông dụng thay thế cho đèn huỳnh quang cũ. Tuổi thọ cao lên tới 30000H. Lâu giảm sáng. Chứa linh kiện tụ cao áp giúp chống những bất thường từ lưới điện gây hỏng đèn. Không chứa thủy ngân như đèn huỳnh quang, không tạo ra khí CO2 hoặc các tia gây hại như cực tím, UV, hồng ngoại bức xạ...an toàn cho làn da, người già, trẻ nhỏ, người cần dưỡng bệnh. ",
       "applications": "Chiếu sáng cho nhà ở: Đèn tuýp led T8 Maxben có thể được lắp đặt trong phòng khách, phòng ngủ, phòng bếp và phòng tắm để tạo ra ánh sáng trang nhã và giảm thiểu tiêu thụ điện năng. Chiếu sáng cho văn phòng. Chiếu sáng cho siêu thị và cửa hàng. Chiếu sáng cho nhà để xe và tầng hầm. Chiếu sáng cho các khu vực công nghiệp. ",
@@ -47,7 +47,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn tuýp LED bán nguyệt",
-      "image": "https://i.ibb.co/PzsVJwHj/den-tuyp-led-ban-nguyet-maxben-1.png",
+      "image": "./icons/MB - Đèn Tuýp LED Bán Nguyệt 1.png",
       "description": "Đèn LED bán nguyệt, thiết kế tiện dụng.",
       "features": "Hiệu suất phát sáng cao 100lm/W, CRI>80. Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam. Tuổi thọ cao lên tới 30000H. Lâu giảm sáng. Mặt khuếch tán PC độ xuyên sáng cao giúp ánh sáng tán quang đều, mịn. Góc chiều rộng giúp chiếu sáng đến các ngóc ngách nhỏ nhất, hạn chế để lại điểm tối. Bền bỉ: Cấu trúc đèn chắc chắn, cầm chắc tay, bền hơn với thời gian. Mặt khuếch tán: Nhựa PC độ xuyên sáng >90%. Chip led: Chip SMD Seoul hiệu suất phát sáng cao, lâu giảm sáng. Driver - bộ nguồn chuyển đổi dòng điện ổn định, chống xung áp cao. Thân đèn bằng hợp kim nhôm hàm lượng cao giúp tản nhiệt hiệu quả. Hiện đại: Sử dụng chip LED Seoul Hàn Quốc thế hệ mới nhất cho ra hiệu suất chiếu sáng cao, chỉ số hoàn màu cao. Tiện dụng: Nẹp lắp đặt dễ dàng tháo ra và di chuyển, bộ phụ kiện đi kèm nên có thể tự lắp đặt tại nhà. ",
       "applications": "Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.",
@@ -58,7 +58,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn tuýp LED bán nguyệt oval",
-      "image": "https://i.ibb.co/Gvn01MxZ/den-led-ban-nguyet-oval-maxben-1.png",
+      "image": "./icons/MB - Đèn Tuýp LED Bán Nguyệt Oval 1.png",
       "description": "Thiết kế hình vòm cong bán nguyệt Oval.",
       "features": "Hiệu suất phát sáng cao 100lm/W, CRI>80. Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam. Tuổi thọ cao lên tới 30000H. Lâu giảm sáng. Mặt khuếch tán PC độ xuyên sáng cao giúp ánh sáng tán quang đều, mịn. Góc chiếu rộng giúp chiếu sáng đến các ngóc ngách nhỏ nhất, hạn chế để lại điểm tối. Bền bỉ: Cấu trúc đèn chắc chắn, cầm chắc tay, bền hơn với thời gian. Mặt khuếch tán: Nhựa PC độ xuyên sáng >90%. Chip led: Chip SMD Seoul hiệu suất phát sáng cao, lâu giảm sáng. Driver - bộ nguồn chuyển đổi dòng điện ổn định, chống xung áp cao. Thân đèn bằng hợp kim nhôm hàm lượng cao giúp tản nhiệt hiệu quả. Hiện đại: Sử dụng chip LED Seoul Hàn Quốc thế hệ mới nhất cho ra hiệu suất chiếu sáng cao, chỉ số hoàn màu cao. Tiện dụng: Nẹp lắp đặt dễ dàng tháo ra và di chuyển, bộ phụ kiện đi kèm nên có thể tự lắp đặt tại nhà. ",
       "applications": "Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.",
@@ -71,7 +71,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn tuýp LED bán nguyệt (Compact)",
-      "image": "https://i.ibb.co/yc4gW6W3/MB-n-Tu-p-LED-B-n-Nguy-t-1.png",
+      "image": "./icons/MB-Bán-nguyệt-TC-01.png",
       "description": "Đèn LED bán nguyệt loại Compact, thiết kế tiện dụng.",
       "features": "Hiệu suất phát sáng cao 100lm/W, CRI>80. Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam. Tuổi thọ cao lên tới 25000H. Lâu giảm sáng. Hiệu quả: Mặt khuếch tán PC độ xuyên sáng cao giúp ánh sáng tán quang đều, mịn. Góc chiếu rộng giúp chiếu sáng đến các ngóc ngách nhỏ nhất, hạn chế để lại điểm tối. Bền bỉ: Cấu trúc đèn chắc chắn, cầm chắc tay, bền hơn với thời gian. Mặt khuếch tán: Nhựa PC độ xuyên sáng >90%. Chip led: Chip 2835 với hiệu suất phát sáng cao, lâu giảm sáng. Driver - bộ nguồn chuyển đổi dòng điện ổn định, chống xung áp cao. Thân đèn bằng hợp kim nhôm hàm lượng cao giúp tản nhiệt hiệu quả. Hiện đại: Kích thước nhỏ gọn tạo sự tinh tế cho sản phẩm trong khi vẫn đáp ứng chiếu sáng không gian tốt. Tiện dụng: Nẹp lắp đặt dễ dàng tháo ra và di chuyển, bộ phụ kiện đi kèm nên có thể tự lắp đặt tại nhà. ",
       "applications": "Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.",
@@ -84,7 +84,7 @@ const productDatabase = {
   "Đèn LED Âm Trần": [
     {
       "name": "Đèn LED âm trần Happy V2",
-      "image": "https://i.ibb.co/0RdqTTXf/happy-v2-13-247x296.jpg",
+      "image": "./icons/happy-v2-13-247x296_7_11zon.webp",
       "description": "Đèn LED âm trần ánh sáng tỏa, thiết kế tròn. Cải tiến từ Happy.",
       "features": "Dải điện áp 150V-250V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao 85lm/W, CRI>80. Vỏ nhựa PP với khả năng chịu nhiệt lên tới 200°C. Sử dụng LENS chống chói cho chip LED giúp ánh sáng đồng đều và mịn. Công nghệ DOB, dây truyền 100% tự động hóa giúp tối ưu giá thành. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -101,7 +101,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED âm trần siêu mỏng",
-      "image": "https://i.ibb.co/KxP7DFzP/den-led-am-tran-sieu-mong-maxben.png",
+      "image": "./icons/den-led-am-tran-sieu-mong-maxben_4_11zon.webp",
       "description": "Đèn LED âm trần ánh sáng tỏa, thiết kế siêu mỏng.",
       "features": "Dải điện áp 85V-250V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao 85lm/W, CRI>80. Vỏ nhôm hàm lượng cao giúp tản nhiệt tối ưu cho chip LED. Nguồn Driver rời tích hợp linh kiện chống xung áp cao và ổn định. Thiết kế siêu mỏng giúp dễ dàng lắp đặt, không phải cắt xương của trần thạch cao. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -116,7 +116,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED âm trần Lucy",
-      "image": "https://i.ibb.co/Xk8GvthV/den-led-am-tran-lucy-01-247x296.png",
+      "image": "./icons/den-led-am-tran-lucy-02.png",
       "description": "Đèn LED âm trần ánh sáng tỏa, thiết kế tròn.",
       "features": "Dải điện áp 165V-250V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao 85~100lm/W. Độ hoàn màu CRI>90 tạo ánh sáng chân thực và tốt cho mắt người. Vỏ nhôm hàm lượng cao giúp tản nhiệt tối ưu cho chip LED. Công nghệ DOB giúp tối ưu giá thành. Thiết kế viền vàng và viền bạc khác biệt với thị trường, tạo điểm nhấn. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -129,7 +129,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED âm trần Lucy Pro",
-      "image": "https://i.ibb.co/8DXqC4yg/den-led-am-tran-lucy-01.png",
+      "image": "./icons/den-led-am-tran-lucy-01-247x296_3_11zon.webp",
       "description": "Đèn LED âm trần ánh sáng tỏa, thiết kế tròn. Cải tiến từ Lucy.",
       "features": "Mặt tản quang PC với độ xuyên sáng 82%. Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao 85 Lm/W. Độ hoàn màu CRI>90 tạo ánh sáng chân thực và tốt cho mắt người. Vỏ nhôm hàm lượng cao giúp tản nhiệt tối ưu cho chip LED. Công nghệ DOB giúp tối ưu giá thành. Thiết kế viền vàng, bạc và trắng khác biệt với thị trường, tạo điểm nhấn. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. Cắt lỗ siêu nhỏ 85 -115mm, tiết kiệm không gian trần. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -144,7 +144,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED âm trần chống chói ZEN",
-      "image": "https://i.ibb.co/Y7zkd2qz/Ch-ng-ch-i-ZEN.png",
+      "image": "./icons/3.png",
       "description": "Đèn LED âm trần ánh sáng tỏa, thiết kế tròn, chống chói.",
       "features": "Dải điện áp 165V-250V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao 85~100lm/W. Độ hoàn màu CRI>90 tạo ánh sáng chân thực và tốt cho mắt người. Vỏ nhôm chất lượng cao, tai gài inox chắc chắn chống han rỉ. Công nghệ mới khuếch tán chống chói kim cương, cho ra ánh sáng nhẹ nhàng, êm dịu, không mỏi và chói mắt. Đa dạng màu chóa và ánh sáng đáp ứng nhu cầu và mục đích sử dụng của người tiêu dùng. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -159,7 +159,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn Âm Trần SPOTLIGHT PROLUX-SPX1",
-      "image": "https://i.ibb.co/b5cTCxZT/prolux-SPX1.png",
+      "image": "./icons/prolux SPX1.png",
       "description": "Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ",
       "features": "Dải điện áp 85V-265V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao >85lm/W. Độ hoàn màu CRI>98 tạo ánh sáng chân thực, không gian sống động và tốt cho mắt người. Ánh sáng tỏa góc chiếu linh hoạt 15/24/36/60 độ, dễ dàng điều chỉnh theo nhu cầu sử dụng. Chip RG1 Hạn chế ánh sáng xanh gây hại cho mắt. Công nghệ chống chói UGR<6, tích hợp chức năng ẩn nguồn sáng và điều khiển màu sáng. Không chói không nhòe, không gây nhức mỏi mắt. Vỏ nhôm đúc bền, tản nhiệt tốt. Không phát tia UV, tia hồng ngoại, không chứa thủy ngân - an toàn cho sức khỏe gia đình. ",
       "applications": "Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.",
@@ -172,7 +172,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn Âm Trần SPOTLIGHT PROLUX-SP7",
-      "image": "https://i.ibb.co/1f274t9t/spotlight-prolux-sp7.png",
+      "image": "./icons/Prolux SP7.png",
       "description": "Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ",
       "features": "Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao >85lm/W. Độ hoàn màu cao CRI>98 tạo ánh sáng chân thực, không gian sống động. Không phát tia UV, tia hồng ngoại, không chứa thủy ngân - an toàn cho sức khỏe gia đình. Công nghệ chống chói UGR<6, tích hợp chức năng ẩn nguồn sáng và điều khiển màu sáng. Không chói không nhòe, không nhức mỏi mắt. Ánh sáng tỏa góc chiếu linh hoạt 15/24/36/50 độ, dễ dàng điều chỉnh theo nhu cầu sử dụng. ",
       "applications": "Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.",
@@ -195,7 +195,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn Âm Trần SPOTLIGHT PROLUX-SP2",
-      "image": "https://i.ibb.co/yc33cf20/Prolux-SP2.png",
+      "image": "./icons/Prolux SP2.png",
       "description": "Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ",
       "features": "Dải điện áp 85V-265V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao >85lm/W. Độ hoàn màu CRI>98 tạo ánh sáng chân thực, không gian sống động và tốt cho mắt người. Ánh sáng tỏa góc chiếu linh hoạt 15/24/36 độ, dễ dàng điều chỉnh theo nhu cầu sử dụng. Chip RG1 Hạn chế ánh sáng xanh gây hại cho mắt. Công nghệ chống chói UGR<6, tích hợp chức năng ẩn nguồn sáng và điều khiển màu sáng. Không chói không nhòe, không gây nhức mỏi mắt. Vỏ nhôm đúc bền, tản nhiệt tốt. Kiểu dáng nhỏ gọn, sang trọng, hòa hợp với mọi không gian từ hiện đại đến tối giản. ",
       "applications": "Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.",
@@ -215,7 +215,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn Âm Trần SPOTLIGHT ME",
-      "image": "https://i.ibb.co/20Tknm19/spotlight-prolux-ME.png",
+      "image": "./icons/Spotlight ME.png",
       "description": "Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ",
       "features": "CRI >95, công nghệ chống chói, hiệu ứng ánh sáng tỏa theo góc chiếu linh hoạt 15°-24°-36°, không chứa tia UV/IR, không chứa thủy ngân - an toàn cho sức khỏe gia đình. IP20, AC165-250V 50/60Hz, Nhiệt độ hoạt động -20°C - 50°C, >85Lm/W. Chip RG1 Hạn chế ánh sáng xanh gây hại cho mắt. ",
       "applications": "Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.",
@@ -226,7 +226,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn Âm Trần SPOTLIGHT PRO LUX-T",
-      "image": "https://i.ibb.co/dwSS6WCT/Prolux-T.png",
+      "image": "./icons/Prolux T.png",
       "description": "Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu.",
       "features": "CRI >97, góc chiếu 90° tạo ánh sáng tập trung, không phát tia UV/IR, không chứa thủy ngân, hạn chế ánh sáng xanh gây hại mắt. IP20, AC170-240V, Nhiệt độ hoạt động -20°C - 50°C, >85Lm/W, Vật liệu: Nhôm đúc. Có 3 màu chóa: chóa vàng, chóa trắng, chóa đen. ",
       "applications": "Chiếu sáng dân dụng, văn phòng, cửa hàng, showroom.",
@@ -239,7 +239,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn Âm Trần SPOTLIGHT PROLUX-TT",
-      "image": "https://i.ibb.co/qPJJHqg/Prolux-TT.png",
+      "image": "./icons/Prolux TT.png",
       "description": "Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ",
       "features": "Dải điện áp 85V-265V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao >85lm/W. Độ hoàn màu CRI>98 tạo ánh sáng chân thực, không gian sống động và tốt cho mắt người. Ánh sáng tỏa góc chiếu linh hoạt 15/24/36/50 độ, dễ dàng điều chỉnh theo nhu cầu sử dụng. Chip RG1 Hạn chế ánh sáng xanh gây hại cho mắt. Công nghệ chống chói UGR<6, tích hợp chức năng ẩn nguồn sáng và điều khiển màu sáng. Không chói không nhòe, không gây nhức mỏi mắt. Vỏ nhôm đúc bền, tản nhiệt tốt. Không phát tia UV, tia hồng ngoại, không chứa thủy ngân - an toàn cho sức khỏe gia đình. ",
       "applications": "Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.",
@@ -257,7 +257,7 @@ const productDatabase = {
     {
   "name": "Đèn Âm Trần Spotlight Prolux-TT (Bát Đôi)",
   "category": "Đèn LED Âm Trần",
-  "image": "URL_CUA_ANH_SPOTLIGHT_PROLUX_TT",
+  "image": "./icons/Prolux-TT(bát tròn).png",
   "description": "Đèn spotlight âm trần bát đôi công nghệ chống chói UGR<6, cho phép điều chỉnh góc chiếu linh hoạt. Chỉ số hoàn màu CRI>98 siêu cao, mang lại ánh sáng chân thực.",
   "features": "Công nghệ chống chói UGR<6 tích hợp ẩn nguồn sáng. Góc chiếu linh hoạt 15°-50°. Chỉ số hoàn màu CRI>98 cho màu sắc chân thực. An toàn cho sức khỏe, không phát tia UV, không chứa thủy ngân. Hạn chế ánh sáng xanh. Vỏ nhôm đúc.",
   "applications": "Cửa hàng, Nhà ở, Văn phòng",
@@ -298,7 +298,7 @@ const productDatabase = {
   "Đèn LED Ốp Trần": [
     {
       "name": "Đèn LED ốp trần Classic",
-      "image": "https://i.ibb.co/zVP2yxBq/den-led-op-tran-classic-maxben-t.png",
+      "image": "./icons/Ốp Classic.png",
       "description": "Đèn LED ốp trần, thiết kế tròn hoặc vuông.",
       "features": "Dải điện áp 85V-250V phù hợp với lưới điện ở Việt Nam. Ánh sáng đều và trung thực với CRI>80. Vỏ nhôm hàm lượng cao giúp tản nhiệt tối ưu cho chip LED. Nguồn Driver rời tích hợp linh kiện chống xung áp cao và ổn định. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -310,7 +310,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED ốp trần Plush Tròn",
-      "image": "https://i.ibb.co/VWQwgzbm/plush-1.png",
+      "image": "./icons/plush-2.png",
       "description": "Đèn LED ốp trần, thiết kế tròn.",
       "features": "Dải điện áp 85V-250V phù hợp với lưới điện ở Việt Nam. Ánh sáng đều và trung thực với CRI>80. Vỏ nhôm dày dặn với hàm lượng cao giúp tản nhiệt tối ưu cho chip LED. Khung gờ nối tạo điểm nhấn nổi bật cho sản phẩm. Nguồn Driver rời tích hợp linh kiện chống xung áp cao và ổn định. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -327,7 +327,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED ốp trần Plush Vuông",
-      "image": "https://i.ibb.co/VWQwgzbm/plush-1.png",
+      "image": "./icons/plush-3.png",
       "description": "Đèn LED ốp trần, thiết kế vuông.",
       "features": "Dải điện áp 85V-250V phù hợp với lưới điện ở Việt Nam. Ánh sáng đều và trung thực với CRI>80. Vỏ nhôm dày dặn với hàm lượng cao giúp tản nhiệt tối ưu cho chip LED. Khung gờ nối tạo điểm nhấn nổi bật cho sản phẩm. Nguồn Driver rời tích hợp linh kiện chống xung áp cao và ổn định. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -344,7 +344,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED ốp trần Happy",
-      "image": "https://i.ibb.co/Jjd58RKx/happy-tron.png",
+      "image": "./icons/Ốp Classic.png",
       "description": "Đèn LED ốp trần, thiết kế tròn hoặc vuông.",
       "features": "Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao 90lm/W. Ánh sáng đều và trung thực với CRI>80. Vỏ nhựa chịu nhiệt cao lên tới 200°C. Công nghệ DOB giúp tối ưu giá thành. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -359,7 +359,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn ốp trần tràn viền",
-      "image": "https://i.ibb.co/xSbvyg5g/op-tran-vien.png",
+      "image": "./icons/Ốp tràn viền.png",
       "description": "Đèn LED ốp trần, thiết kế tràn viền hiện đại.",
       "features": "Dải điện áp 165V-250V phù hợp với lưới điện ở Việt Nam. Độ hoàn màu CRI>90 tạo ánh sáng chân thực và tốt cho mắt người. Vỏ nhựa có công nghệ chống ố vàng. Công nghệ DOB giúp tối ưu giá thành. Thiết kế hình dáng đĩa bay mỏng, hiện đại và tinh tế. Bộ kết nối với lưới điện dạng module giúp dễ dàng tháo lắp. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. Với IP40 chống muỗi và chống ẩm tốt nên sử dụng được ở những nơi có độ ẩm cao như phòng xông hơi, phòng tắm. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -451,7 +451,7 @@ const productDatabase = {
   "Đèn Pha LED": [
     {
       "name": "Đèn pha LED V2",
-      "image":"https://i.ibb.co/CFZJwvQ/MB-Pha-led-V2-01.png",
+      "image":"./icons/MB-Pha-led-V2-02_12_11zon.webp",
       "description": "Đèn pha LED chiếu sáng ngoài trời. Cải tiến từ Đèn pha LED.",
       "features": "Dải điện áp (160-250V) hoạt động phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao (110-120 lm/W). CRI>80 và lâu giảm sáng. Van điều áp chống đọng nước bên trong đèn, phù hợp với môi trường ở Việt Nam có độ ẩm cao. Vỏ nhôm đúc đảm bảo hiệu suất tản nhiệt cao. Dây điện chống nước IP65 chống hơi nước xâm nhập vào đèn qua dây, có thể tháo rời thuận tiện cho bảo trì. ",
       "applications": "Chiếu sáng sân, vườn, bảng hiệu, công trình.",

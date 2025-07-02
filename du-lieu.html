@@ -3,77 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bản đồ Đại lý Maxben</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/mapdata/countries/vn/vn-all.js"></script>
+    <title>MAXBEN - Giải Pháp Chiếu Sáng LED Chuyên Nghiệp</title>
+    <meta name="description" content="MAXBEN cung cấp các giải pháp chiếu sáng LED chất lượng cao với chỉ số hoàn màu CRI > 98, thiết kế hiện đại và an toàn cho mắt. Phù hợp cho cả dân dụng và dự án chuyên nghiệp.">
+    <meta name="keywords" content="đèn led, maxben, chiếu sáng, cri 98, đèn led âm trần, đèn led spotlight">
     
-    <style>
-        /* CSS từ ve-chung-toi.html cho header/footer và tổng thể */
-        body {
-            font-family: 'Be Vietnam Pro', sans-serif; /* Consistent font with ve-chung-toi */
-            background-color: #020617; /* Consistent background with ve-chung-toi */
-            color: #d1d5db; /* Default text color for dark background */
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #38bdf8, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .sticky-nav{
-            position:sticky;
-            top:0;
-            z-index:50;
-            background-color:rgba(17,24,39,0.8);
-            backdrop-filter:blur(10px);
-        }
-        #product-dropdown-menu a {
-            display: block;
-            padding: 0.6rem 1rem;
-            border-radius: 0.375rem;
-            color: #d1d5db;
-            font-size: 0.875rem;
-            white-space: nowrap;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        #product-dropdown-menu a:hover {
-            background-color: #2563EB;
-            color: #ffffff;
-        }
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-        /* CSS của du-lieu.html (có điều chỉnh để phù hợp với nền tối và toàn bộ main là trắng) */
-        #container { height: 70vh; min-width: 310px; width: 100%; border-radius: 0.75rem; }
-        /* Tooltip background for Highcharts - should be dark to fit overall theme */
-        .highcharts-tooltip span { background-color: #1a202c; border: 1px solid #4a5568; padding: 10px; border-radius: 8px; color: #d1d5db; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+    <link rel="stylesheet" href="style.css">
+ <link rel="apple-touch-icon" sizes="180x180" href="./icons/LOGO-MAXBEN-TRANGCHU-1.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/LOGO-MAXBEN-TRANGCHU-1.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/LOGO-MAXBEN-TRANGCHU-1.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ef4444">
+    <meta name="msapplication-TileColor" content="#1f2937">
+    <meta name="theme-color" content="#ffffff">
+    
 
-        /* Custom notification style */
-        #notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #B91C1C; /* Dark Red */
+<style>body{font-family:'Be Vietnam Pro',sans-serif;background-color:#111827;color:#E5E7EB;scroll-behavior:smooth}.gradient-text{background:linear-gradient(90deg,#38BDF8,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.sticky-nav{position:sticky;top:0;z-index:50;background-color:rgba(17,24,39,0.8);backdrop-filter:blur(10px)}.cta-button{transition:all 0.3s ease}.cta-button:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(59,130,246,0.4)}.card-hover{transition:transform 0.3s ease,box-shadow 0.3s ease}.card-hover:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,0.3)}.product-table{width:100%;border-collapse:collapse;margin-top:1rem}.product-table th,.product-table td{border:1px solid #4B5563;padding:8px 12px;text-align:left}.product-table th{background-color:#1F2937;font-weight:600}.product-table tbody tr:nth-child(odd){background-color:#374151}.product-table tbody tr:nth-child(even){background-color:#1f2937}.gradient-text{background:linear-gradient(90deg,#38BDF8,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.cta-button{transition:all 0.3s ease}.cta-button:hover{transform:translateY(-3px);box-shadow:0 4px 25px rgba(59,130,246,0.4)}.content-card{background-color:#1F2937;border:1px solid #374151;border-radius:0.75rem;padding:1.5rem}.custom-table{width:100%;border-collapse:collapse}.custom-table th,.custom-table td{border:1px solid #4B5563;padding:0.75rem 1rem;text-align:left}.custom-table th{background-color:#374151}.custom-table tbody tr:nth-of-type(even){background-color:#1f293799}.gradient-text{background:linear-gradient(90deg,#38BDF8,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.cta-button{transition:all 0.3s ease}.cta-button:hover{transform:translateY(-3px);box-shadow:0 4px 25px rgba(59,130,246,0.4)}.stat-card{background-color:#1F2937;border:1px solid #374151;padding:1.5rem;border-radius:0.75rem;text-align:center}
+#productDetailsContent::-webkit-scrollbar{width:8px}
+#productDetailsContent::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2);border-radius:10px}
+#productDetailsContent::-webkit-scrollbar-track{background:transparent}.form-input,.form-select{background-color:#1F2937;border:1px solid #4B5563;color:#FFFFFF;transition:border-color 0.3s}.form-input:focus,.form-select:focus{outline:none;border-color:#38BDF8;box-shadow:0 0 0 2px rgba(56,189,248,0.4)}.form-select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+#calculatorModal.form-select option{background:#1F2937;color:#E5E7EB}
+        #story-hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+        .product-showcase-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            width: 260px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .product-showcase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .product-showcase-image-wrapper {
+            position: relative;
+            padding: 1rem;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-showcase-image-wrapper img {
+            max-width: 100%; max-height: 100%; object-fit: contain;
+        }
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            left: -10px;
+            background-color: #ef4444; /* red-500 */
             color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
-            transform: translateY(-20px);
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(-45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        #notification.show { opacity: 1; visibility: visible; transform: translateY(0); }
-        #notification.error { background-color: #991B1B; } /* Even darker for error */
+.product-showcase-row {
+  @apply grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5;
+  padding: 1rem 0;
+}
+        .product-showcase-row::-webkit-scrollbar { height: 8px; }
+        .product-showcase-row::-webkit-scrollbar-track { background: #1f2937; border-radius: 4px; }
+        .product-showcase-row::-webkit-scrollbar-thumb { background-color: #4b5563; border-radius: 4px; }
+        
+        /* Modal Styles */
+            .product-showcase-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb; /* border-gray-200 */
+            border-radius: 0.5rem;
+            overflow: hidden; /* Changed to hidden to contain the badge */
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+        }
+        .product-showcase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: #10b981; /* emerald-500 */
+        }
+        .product-showcase-image-wrapper {
+            padding: 2rem 1rem 1rem 1rem;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-showcase-image-wrapper img {
+            max-width: 100%; max-height: 100%; object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .product-showcase-card:hover img {
+            transform: scale(1.05);
+        }
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #ef4444; /* red-500 */
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+        }
+        .product-showcase-row {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1.5rem 0.5rem;
+            margin: -1.5rem -0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: #4b5563 #1f2937;
+        }
+        .product-showcase-row::-webkit-scrollbar { height: 8px; }
+        .product-showcase-row::-webkit-scrollbar-track { background: #1f2937; border-radius: 4px; }
+        .product-showcase-row::-webkit-scrollbar-thumb { background-color: #4b5563; border-radius: 4px; }
+        
+        /* Modal Styles */
+        body.modal-open { overflow: hidden; }
+        .modal-overlay { transition: opacity 0.3s ease-in-out; }
+        .modal-container { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+        .modal-content-area::-webkit-scrollbar { width: 6px; }
+        .modal-content-area::-webkit-scrollbar-track { background: #1e293b; }
+        .modal-content-area::-webkit-scrollbar-thumb { background-color: #4b5563; border-radius: 6px; }
+        .variant-btn { border: 1px solid #4b5563; color: #d1d5db; transition: all 0.2s ease-in-out; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; }
+        .variant-btn:hover { border-color: #3b82f6; color: #3b82f6; }
+        .variant-btn.active { border-color: #3b82f6; background-color: #3b82f6; color: white; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25); }
+        .modal-tab-btn { position: relative; color: #9ca3af; padding-bottom: 0.75rem; }
+        .modal-tab-btn.active { color: #3b82f6; font-weight: 600; }
+        .modal-tab-btn.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background-color: #3b82f6; }
+        .modal-specs-table { border-collapse: collapse; width: 100%; }
+        .modal-specs-table tr { border-bottom: 1px solid #334155; }
+        .modal-specs-table tr:last-child { border-bottom: none; }
+        .modal-specs-table td { padding: 0.75rem 0.5rem; }
+        .modal-specs-table td:first-child { color: #94a3b8; width: 40%; }
+        #product-dropdown-menu a {
+    display: block;
+    padding: 0.6rem 1rem;
+    border-radius: 0.375rem; /* tương đương rounded-md */
+    color: #d1d5db; /* tương đương text-gray-300 */
+    font-size: 0.875rem; /* tương đương text-sm */
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+}
+#product-dropdown-menu a:hover {
+    background-color: #2563EB; /* tương đương bg-blue-600 */
+    color: #ffffff; /* tương đương text-white */
+}
+ #modal-tab-content #description-content ul {
+        list-style-type: disc; /* Đảm bảo kiểu gạch đầu dòng là đĩa */
+        margin-left: 1.5rem;   /* Thụt vào để có không gian cho gạch đầu dòng */
+        padding-left: 0;       /* Đảm bảo không có padding thừa */
+    }
 
-        /* Custom scrollbar for dealer list (adjusted for light background within info box) */
-        #dealer-list::-webkit-scrollbar { width: 8px; }
-        #dealer-list::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 10px; } /* Light track */
-        #dealer-list::-webkit-scrollbar-thumb { background-color: #f87171; border-radius: 10px; border: 2px solid #e5e7eb; }
-        #dealer-list::-webkit-scrollbar-thumb:hover { background-color: #ef4444; }
-        /* Cài đặt chung */
+    #modal-tab-content #description-content ul li {
+        margin-bottom: 0.5rem; /* Khoảng cách giữa các mục */
+        padding-left: 0.5rem;  /* Một chút padding cho text */
+    }
+
+    /* Đổi màu của gạch đầu dòng (bullet point) */
+    #modal-tab-content #description-content ul li::marker {
+        color: #38bdf8; /* Màu xanh sáng của Tailwind's sky-400 hoặc blue-400 */
+    }
+    #product-dropdown-menu {
+    display: none; /* Mặc định ẩn */
+}
+
+@media (min-width: 768px) { /* Khi màn hình là md trở lên */
+    #product-dropdown-menu {
+        display: block; /* Hoặc flex/grid tùy vào layout của bạn */
+        /* Các style desktop dropdown khác */
+    }
+}
+/* Cài đặt chung */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
@@ -249,19 +389,18 @@ body {
         grid-template-columns: repeat(4, 1fr); /* 4 cột */
     }
 }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</style>
 </head>
-<body class="bg-slate-950 text-gray-300">
+<body class="bg-gray-900 text-gray-200">
 
-    <div id="notification"></div>
-
+    <!-- 
+      HEADER & NAVIGATION BAR
+      Đã cập nhật các đường dẫn href để trỏ đến các file HTML tương ứng.
+    -->
     <header class="sticky-nav border-b border-gray-700">
         <div class="container mx-auto px-4">
             <nav class="flex items-center justify-between h-20">
-                   <a href="index.html" class="text-3xl font-bold text-red-500">MAXBEN💡</a>
+                <a href="index.html" class="text-3xl font-bold text-red-500">MAXBEN💡</a>
                 <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
                     <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Trang Chủ</a>
                     <a href="ve-chung-toi.html" class="text-gray-300 hover:text-white">Về Chúng Tôi</a>
@@ -279,6 +418,7 @@ body {
         </div>
     </div>
 </div>
+                    
                     <a href="du-lieu.html" class="text-gray-300 hover:text-white transition-colors">Dữ liệu khách hàng</a>
                     <a href="TCO.html" class="text-gray-300 hover:text-white transition-colors">Công cụ tính TCO</a>
                 </div>
@@ -294,7 +434,8 @@ body {
                 </div>
             </nav>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+        <!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
     <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Trang Chủ</a>
       <a href="ve-chung-toi.html" class="text-gray-300 hover:text-white">Về Chúng Tôi</a>
     <div class="relative group">
@@ -312,60 +453,184 @@ body {
 </div>
     </header>
 
-    <main class="container mx-auto p-4 md:p-8 bg-white rounded-xl shadow-xl border border-gray-200">
-        <header class="text-center mb-8">
-            <div class="flex justify-center items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-                <h1 class="text-3xl md:text-5xl font-extrabold text-red-700 tracking-tight">Bản đồ Phân phối Đại lý Maxben</h1>
-            </div>
-            <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Khám phá dữ liệu kinh doanh và phân phối đèn LED trên toàn quốc. Tương tác với bản đồ để xem thông tin chi tiết theo từng tỉnh thành.</p>
-        </header>
-
-        <div class="mb-8 bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-            <h3 class="font-bold text-xl text-gray-800 mb-4 flex items-center gap-2">
-                <i class="fas fa-file-excel text-green-600"></i> Tải lên dữ liệu từ Excel
-            </h3>
-            <div class="grid md:grid-cols-2 gap-6 items-center">
-<div>
-    <label for="file-upload" class="block text-sm font-medium text-gray-700 mb-2">Quản lý dữ liệu:</label>
-    <div class="flex items-center gap-4">
-        <input id="file-upload" type="file" accept=".xlsx, .xls" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-5 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100 cursor-pointer transition-colors duration-200"/>
-        <button id="clear-data-btn" class="flex-shrink-0 bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 px-5 rounded-full transition-colors duration-200">
-            <i class="fas fa-trash-alt mr-2"></i> Xóa Dữ liệu
-        </button>
-    </div>
-    <div id="loading-spinner" class="hidden mt-2 flex items-center gap-2 text-sm text-red-600">
-        <span>Đang xử lý file...</span>
-    </div>
-</div>
-                <div class="text-sm text-gray-700 bg-red-50 p-4 rounded-lg border border-red-200">
-                    <p class="font-semibold text-red-800 flex items-center gap-2"><i class="fas fa-info-circle"></i> Lưu ý quan trọng:</p>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        <li>File Excel cần có các cột: <code class="font-mono text-red-700">hc-key</code>, <code class="font-mono text-red-700">daiLy</code>, <code class="font-mono text-red-700">khachHang</code>, và <code class="font-mono text-red-700">spBanChay</code>.</li>
-                        <li>Để nhập nhiều mục trong một ô (ví dụ: nhiều đại lý), hãy ngăn cách bằng dấu phẩy ",".</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col lg:flex-row gap-8">
-            <div class="w-full lg:w-2/3 bg-white p-4 rounded-xl shadow-xl border border-gray-200">
-                <div id="container"></div>
-            </div>
-
-            <div class="w-full lg:w-1/3">
-                 <div id="info-box" class="bg-white p-6 rounded-xl shadow-xl h-full sticky top-20 border border-gray-200">
-                    <div id="info-content" class="mt-4 text-gray-700 h-full flex flex-col justify-center items-center text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                        <h3 class="text-xl font-semibold text-gray-700">Thông tin Chi tiết Tỉnh/Thành</h3>
-                        <p class="text-sm text-gray-500 mt-2">Bấm vào một tỉnh trên bản đồ để xem dữ liệu phân phối.</p>
+    <main>
+        <!-- HERO SECTION -->
+             <section id="hero-slider" class="relative h-[70vh] md:h-[90vh] text-white">
+    <div class="swiper h-full">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide bg-cover bg-center" style="background-image:  url('./icons/pexels-photo-1571460_13_11zon.webp');">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="relative z-10 flex items-center justify-center h-full text-center p-4">
+                    <div>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                            Ánh Sáng <span class="gradient-text">Kiến Tạo</span> Không Gian Sống
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 drop-shadow-md">
+                            MAXBEN mang đến các sản phẩm LED cao cấp với chỉ số hoàn màu CRI > 98,
+                            tái tạo màu sắc chân thực và bảo vệ thị lực.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="#new-product-catalog" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Khám Phá Sản Phẩm</a>
+                            <a href="#" id="openCalculatorBtn" class="cta-button bg-green-600 font-semibold py-3 px-8 rounded-lg shadow-lg"><i class="fas fa-calculator mr-2"></i> Công Cụ Tính Đèn</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="swiper-slide bg-cover bg-center" style="background-image: url('./icons/tải\ xuống\ \(1\)_14.webp');">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="relative z-10 flex items-center justify-center h-full text-center p-4">
+                    <div>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                            Giải Pháp <span class="gradient-text">Chiếu Sáng</span> Chuyên Nghiệp
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 drop-shadow-md">
+                            Tư vấn và thiết kế cho biệt thự, showroom, văn phòng với các sản phẩm UGR < 19, an toàn cho mắt.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                             <a href="tu-van-du-an.html" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Tư Vấn Dự Án</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide bg-cover bg-center" style="background-image: url('./icons/tải\ xuống_15.webp');">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="relative z-10 flex items-center justify-center h-full text-center p-4">
+                    <div>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                            Đối Tác <span class="gradient-text">Tin Cậy</span> Của Mọi Công Trình
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 drop-shadow-md">
+                           Sản phẩm chất lượng cao, bảo hành 3-5 năm, chính sách đại lý hấp dẫn.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="cam-nang-kinh-doanh.html" class="cta-button bg-blue-600 font-semibold py-3 px-8 rounded-lg shadow-lg">Dành Cho Đối Tác</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <div class="swiper-button-prev text-white"></div>
+        <div class="swiper-button-next text-white"></div>
+
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+        <!-- WHY CHOOSE US SECTION -->
+        <section class="py-20 bg-gray-800/50">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                     <div class="p-6">
+                        <div class="text-5xl text-blue-400 mb-4"><i class="fas fa-palette"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Chỉ Số Hoàn Màu CRI > 98</h3>
+                        <p class="text-gray-400">Ánh sáng chân thực, tôn vinh màu sắc nguyên bản của vật thể.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-5xl text-green-400 mb-4"><i class="fas fa-hourglass-half"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Tuổi Thọ Vượt Trội 30,000+ giờ</h3>
+                        <p class="text-gray-400">Bền bỉ, tiết kiệm chi phí thay thế và bảo trì.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-5xl text-yellow-400 mb-4"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Bảo Hành Dài Hạn 3-5 Năm</h3>
+                        <p class="text-gray-400">Cam kết chất lượng và sự an tâm tuyệt đối cho khách hàng.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+<section id="homepage-product-showcase" class="py-16 lg:py-24 bg-gray-900">
+    <div class="container mx-auto px-4 text-center">
+        <div class="overall-category-title mb-12">
+            <h1 class="text-3xl lg:text-5xl font-bold text-red-500 mb-4">
+                <span class="inline-block border-b-2 border-blue-500 pb-2">SẢN PHẨM NỔI BẬT</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Khám phá bộ sưu tập đa dạng các sản phẩm đèn LED chất lượng cao, thiết kế hiện đại và hiệu quả tối ưu.
+            </p>
+        </div>
+
+        <div id="homepage-product-showcase-content">
+            </div>
+
+        </div>
+</section>
+        <!-- SOLUTIONS SECTION (B2B FOCUS) -->
+<section id="solutions" class="py-20 bg-gray-900 text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Giải Pháp Chiếu Sáng Toàn Diện</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Cửa Hàng & Showroom -->
+      <div class="relative rounded-lg overflow-hidden h-64 bg-cover bg-center group"
+        style="background-image: url('./icons/den-led-roi-ray-cho-shop-thoi-trang_5_11zon.webp');">
+        <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-70 transition duration-300 flex flex-col items-center justify-center text-center p-4">
+          <div class="text-4xl text-blue-400 mb-2 drop-shadow"><i class="fas fa-store"></i></div>
+          <h3 class="text-xl font-bold mb-1 drop-shadow-md">Cửa Hàng & Showroom</h3>
+          <p class="text-sm text-gray-200 drop-shadow-sm">Tăng sức hút sản phẩm với ánh sáng chân thực, thu hút khách hàng.</p>
+        </div>
+      </div>
+
+      <!-- Văn Phòng Hiện Đại -->
+      <div class="relative rounded-lg overflow-hidden h-64 bg-cover bg-center group"
+        style="background-image: url('./icons/cach-chon-den-led-chieu-sang-cho-van-phong_1_11zon.webp');">
+        <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-70 transition duration-300 flex flex-col items-center justify-center text-center p-4">
+          <div class="text-4xl text-blue-400 mb-2 drop-shadow"><i class="fas fa-building"></i></div>
+          <h3 class="text-xl font-bold mb-1 drop-shadow-md">Văn Phòng Hiện Đại</h3>
+          <p class="text-sm text-gray-200 drop-shadow-sm">Tạo môi trường làm việc hiệu quả, bảo vệ sức khỏe thị giác nhân viên.</p>
+        </div>
+      </div>
+
+      <!-- Nhà Ở & Căn Hộ Cao Cấp -->
+      <div class="relative rounded-lg overflow-hidden h-64 bg-cover bg-center group"
+        style="background-image: url('./icons/chiếu\ sáng\ nội\ thất\ 2_2.webp');">
+        <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-70 transition duration-300 flex flex-col items-center justify-center text-center p-4">
+          <div class="text-4xl text-blue-400 mb-2 drop-shadow"><i class="fas fa-home"></i></div>
+          <h3 class="text-xl font-bold mb-1 drop-shadow-md">Nhà Ở & Căn Hộ Cao Cấp</h3>
+          <p class="text-sm text-gray-200 drop-shadow-sm">Kiến tạo không gian sống sang trọng, ấm cúng và đầy cảm xúc.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nút xem tất cả -->
+    <div class="text-center mt-12">
+      <a href="du-an.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition">
+        Xem Dự Án Tiêu Biểu
+      </a>
+    </div>
+  </div>
+</section>
     </main>
+    <!-- Hero Section -->
+ <section class="py-16 md:py-20 bg-gray-800/50">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Câu Chuyện Về MAXBEN</h2>
+                    <p class="text-gray-400 mb-8">Chúng tôi không chỉ tạo ra những sản phẩm chiếu sáng. Chúng tôi kiến tạo nên những không gian đầy cảm hứng, nơi công nghệ và nghệ thuật hòa quyện để nâng cao chất lượng sống và làm việc. Với niềm đam mê mang đến ánh sáng chất lượng cao, an toàn và tinh tế, MAXBEN là lựa chọn tin cậy cho mọi công trình.</p>
+                    <a href="ve-chung-toi.html" class="cta-button bg-transparent border-2 border-blue-500 text-blue-400 font-semibold py-3 px-8 rounded-lg hover:bg-blue-500 hover:text-white">
+                        Tìm Hiểu Thêm Về Chúng Tôi
+                    </a>
+                </div>
+            </div>
+        </section>
+ <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden">
+        <div id="modal-overlay" class="modal-overlay absolute inset-0 bg-black/70 opacity-0"></div>
+        <div id="modal-container" class="modal-container relative w-full max-w-4xl max-h-[90vh] bg-slate-800 rounded-2xl shadow-2xl flex flex-col opacity-0 transform scale-95">
+            <div class="flex-shrink-0 p-4 flex items-center justify-between border-b border-slate-700">
+                <h2 class="text-lg font-bold text-white" id="modal-product-title">Chi tiết sản phẩm</h2>
+                <button id="modal-close-btn" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div id="modal-content-area" class="modal-content-area p-6 overflow-y-auto">
+                <!-- Product detail content will be rendered here by JS -->
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
         <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-grid">
@@ -425,334 +690,165 @@ body {
     </footer>
 
 
-
-    <script>
-        // Start of du-lieu.html specific JavaScript logic
-        let chart;
-        let provinceData = {};
-        const provinceNameMap = {
-            'vn-hn': 'Hà Nội', 'vn-hc': 'TP. Hồ Chí Minh', 'vn-hp': 'Hải Phòng', 'vn-da': 'Đà Nẵng', 'vn-ct': 'Cần Thơ',
-            'vn-ag': 'An Giang', 'vn-br': 'Bà Rịa - Vũng Tàu', 'vn-bk': 'Bắc Kạn', 'vn-bg': 'Bắc Giang', 'vn-bl': 'Bạc Liêu',
-            'vn-bn': 'Bắc Ninh', 'vn-bt': 'Bến Tre', 'vn-bi': 'Bình Định', 'vn-bd': 'Bình Dương', 'vn-bp': 'Bình Phước',
-            'vn-bu': 'Bình Thuận', 'vn-cm': 'Cà Mau', 'vn-cb': 'Cao Bằng', 'vn-dl': 'Đắk Lắk', 'vn-do': 'Đắk Nông',
-            'vn-db': 'Điện Biên', 'vn-dn': 'Đồng Nai', 'vn-dt': 'Đồng Tháp', 'vn-gl': 'Gia Lai', 'vn-hg': 'Hà Giang',
-            'vn-hm': 'Hà Nam', 'vn-ht': 'Hà Tĩnh', 'vn-hd': 'Hải Dương', 'vn-711': 'Hậu Giang', 'vn-hb': 'Hòa Bình',
-            'vn-hy': 'Hưng Yên', 'vn-kh': 'Khánh Hòa', 'vn-kg': 'Kiên Giang', 'vn-kt': 'Kon Tum', 'vn-li': 'Lai Châu',
-            'vn-ld': 'Lâm Đồng', 'vn-ls': 'Lạng Sơn', 'vn-lc': 'Lào Cai', 'vn-la': 'Long An', 'vn-nd': 'Nam Định',
-            'vn-na': 'Nghệ An', 'vn-nb': 'Ninh Bình', 'vn-nt': 'Ninh Thuận', 'vn-pt': 'Phú Thọ', 'vn-py': 'Phú Yên',
-            'vn-qb': 'Quảng Bình', 'vn-qm': 'Quảng Nam', 'vn-qg': 'Quảng Ngãi', 'vn-qn': 'Quảng Ninh', 'vn-qt': 'Quảng Trị',
-            'vn-st': 'Sóc Trăng', 'vn-sl': 'Sơn La', 'vn-tn': 'Tây Ninh', 'vn-tb': 'Thái Bình', 'vn-ty': 'Thái Nguyên',
-            'vn-th': 'Thanh Hóa', 'vn-tt': 'Thừa Thiên Huế', 'vn-tg': 'Tiền Giang', 'vn-tv': 'Trà Vinh', 'vn-tq': 'Tuyên Quang',
-            'vn-vl': 'Vĩnh Long', 'vn-vp': 'Vĩnh Phúc', 'vn-yb': 'Yên Bái'
-        };
-
-        // Initial dummy data for demonstration if local storage is empty
-        const initialProvinceData = {
-            
-        };
-
-        function showNotification(message, isError = false) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.className = 'show'; // Resets and adds 'show'
-            if (isError) {
-                notification.classList.add('error');
-            } else {
-                notification.classList.remove('error'); // Ensure error class is removed for success messages
-            }
-            setTimeout(() => {
-                notification.className = ''; // Hides and resets transition
-            }, 3000);
-        }
-
-        function saveDataToLocalStorage(data) {
-            try {
-                localStorage.setItem('maxbenProvinceData', JSON.stringify(data));
-            } catch (error) {
-                console.error("Lỗi khi lưu dữ liệu vào LocalStorage:", error);
-                showNotification("Lỗi khi lưu dữ liệu. Vui lòng kiểm tra cài đặt trình duyệt.", true);
-            }
-        }
-
-        function loadDataFromLocalStorage() {
-            const savedData = localStorage.getItem('maxbenProvinceData');
-            if (savedData) {
-                try {
-                    const parsedData = JSON.parse(savedData);
-                    // Basic validation to ensure it's an object and not null
-                    if (typeof parsedData === 'object' && parsedData !== null) {
-                        return parsedData;
-                    }
-                } catch (error) {
-                    console.error("Lỗi khi đọc dữ liệu từ LocalStorage:", error);
-                    // If corrupted, return initial data and notify
-                    showNotification("Dữ liệu lưu trữ bị lỗi hoặc cũ. Đang tải dữ liệu mặc định.", true);
-                    return initialProvinceData;
-                }
-            }
-            return initialProvinceData; // Return initial data if nothing saved or error
-        }
-
-        function redrawMap() {
-            const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
-                'hc-key': p.properties['hc-key'],
-                value: provinceData[p.properties['hc-key']] ? 100 : 10, // Highlight if data exists
-                name: provinceNameMap[p.properties['hc-key']] || p.properties.name
-            }));
-
-            if (chart) {
-                chart.series[0].setData(seriesData, true);
-            }
-
-            // Reset info box content
-            document.getElementById('info-content').innerHTML = `
-                <div class="h-full flex flex-col justify-center items-center text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                    <h3 class="text-xl font-semibold text-gray-700">Thông tin Chi tiết Tỉnh/Thành</h3>
-                    <p class="text-sm text-gray-500 mt-2">Bấm vào một tỉnh trên bản đồ để xem dữ liệu phân phối.</p>
-                </div>
-            `;
-        }
-
-        function initializeMap() {
-            const seriesData = Highcharts.maps['countries/vn/vn-all'].features.map(p => ({
-                'hc-key': p.properties['hc-key'],
-                value: provinceData[p.properties['hc-key']] ? 100 : 10, // Value determines color, 100 if data, 10 if not
-                name: provinceNameMap[p.properties['hc-key']] || p.properties.name
-            }));
-
-            chart = Highcharts.mapChart('container', {
-                chart: {
-                    map: 'countries/vn/vn-all',
-                    backgroundColor: '#FFFFFF' // Set background to white for the map
-                },
-                title: {
-                    text: null // No chart title
-                },
-                subtitle: {
-                    text: null // No chart subtitle
-                },
-                mapNavigation: {
-                    enabled: true,
-                    buttonOptions: {
-                        verticalAlign: 'bottom',
-                        align: 'right',
-                        theme: { // Adjust button theme for light background
-                            fill: '#f0f0f0', // Lighter background for buttons
-                            stroke: '#cccccc',
-                            'stroke-width': 1,
-                            r: 5,
-                            style: {
-                                color: '#333333' // Darker text color
-                            },
-                            states: {
-                                hover: {
-                                    fill: '#e0e0e0',
-                                    style: {
-                                        color: '#000000'
-                                    }
-                                },
-                                select: {
-                                    fill: '#d0d0d0',
-                                    style: {
-                                        color: '#000000'
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                colorAxis: {
-                    min: 0,
-                    stops: [
-                        [0, '#FEE2E2'], // Lightest red for no data (Tailwind red-100)
-                        [0.8, '#DC2626'], // Medium red for some data (Tailwind red-700)
-                        [1, '#991B1B']   // Darkest red for data presence (Tailwind red-800)
-                    ],
-                    visible: false // Hide the color axis legend
-                },
-                legend: {
-                    enabled: false // Hide the legend
-                },
-                tooltip: {
-                    formatter: function () {
-                        const info = provinceData[this.point['hc-key']];
-                        const provinceName = provinceNameMap[this.point['hc-key']] || this.point.name;
-                        let text = `<b style="font-size: 14px; color: #333;">${provinceName}</b><br/>`; // Adjust text color for light tooltip
-                        text += info ? `Số đại lý: <b>${info.daiLy?.length || 0}</b>` : 'Chưa có dữ liệu';
-                        return text;
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        point: {
-                            events: {
-                                click: function () {
-                                    const data = provinceData[this['hc-key']];
-                                    const infoContent = document.getElementById('info-content');
-                                    const provinceName = provinceNameMap[this['hc-key']] || this.name;
-
-                                    if (data) {
-                                        const createGenericList = (items) => {
-                                            return (items && items.length)
-                                                ? items.map(x => `<li class="py-1.5 px-3 bg-red-50 text-red-800 rounded-md mb-1.5 text-sm">${x}</li>`).join('')
-                                                : '<li class="text-xs italic text-gray-500">Chưa có dữ liệu</li>';
-                                        };
-
-                                        infoContent.innerHTML = `
-                                            <div class="flex items-center gap-3 mb-4 border-b border-gray-200 pb-3">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                                <h3 class="text-2xl font-bold text-gray-800">${provinceName}</h3>
-                                            </div>
-                                            <div class="space-y-5">
-                                                <div>
-                                                    <b class="text-gray-700">Đại lý (${data.daiLy?.length || 0}):</b>
-                                                    <div class="relative mt-2">
-                                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg></span>
-                                                        <input type="text" id="dealer-search" placeholder="Tìm kiếm đại lý..." class="block w-full text-sm border-gray-200 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 p-2 pl-10 text-gray-800 bg-white">
-                                                    </div>
-                                                    <ul id="dealer-list" class="mt-2 list-none max-h-36 overflow-y-auto pr-2">${createGenericList(data.daiLy)}</ul>
-                                                </div>
-                                                <div><b class="text-gray-700">Khách hàng (${data.khachHang?.length || 0}):</b> <ul class="mt-2 list-none">${createGenericList(data.khachHang)}</ul></div>
-                                                <div><b class="text-gray-700">Sản phẩm bán chạy:</b> <ul class="mt-2 list-none">${createGenericList(data.spBanChay)}</ul></div>
-                                            </div>
-                                        `;
-                                        // Add event listener for search input
-                                        const searchInput = document.getElementById('dealer-search');
-                                        if (searchInput) {
-                                            searchInput.addEventListener('input', function() {
-                                                const filter = this.value.toLowerCase();
-                                                const items = document.querySelectorAll('#dealer-list li');
-                                                items.forEach(item => {
-                                                    const itemText = (item.textContent || item.innerText).toLowerCase();
-                                                    item.style.display = itemText.includes(filter) ? "" : "none";
-                                                });
-                                            });
-                                        }
-                                    } else {
-                                        infoContent.innerHTML = `
-                                            <div class="h-full flex flex-col justify-center items-center text-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                                <p class="italic text-gray-500">Không có dữ liệu cho <b>${provinceName}</b>.</p>
-                                            </div>
-                                        `;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                series: [{
-                    data: seriesData,
-                    name: 'Tình hình kinh doanh',
-                    states: {
-                        hover: {
-                            color: '#F87171' // Lighter red on hover (Tailwind red-400)
-                        }
-                    },
-                    dataLabels: {
-                        enabled: true,
-                        formatter: function () {
-                            return provinceNameMap[this.point['hc-key']] || this.point.name;
-                        },
-                        style: {
-                            color: '#881337', // Darker red for labels to stand out on white map
-                            fontSize: '9px',
-                            fontWeight: 'bold',
-                            textOutline: 'none' // Remove text outline for cleaner look
-                        }
-                    }
-                }]
-            });
-        }
-
-        function handleFile(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const spinner = document.getElementById('loading-spinner');
-            spinner.classList.remove('hidden');
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const workbook = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
-                    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                    const jsonData = XLSX.utils.sheet_to_json(worksheet);
-
-                    let updatedCount = 0;
-                    jsonData.forEach(row => {
-                        const hcKey = row['hc-key']; // Expected column name for province key
-                        if (hcKey && provinceNameMap[hcKey]) {
-                            provinceData[hcKey] = {
-                                daiLy: row.daiLy ? String(row.daiLy).split(',').map(s => s.trim()) : [],
-                                khachHang: row.khachHang ? String(row.khachHang).split(',').map(s => s.trim()) : [],
-                                spBanChay: row.spBanChay ? String(row.spBanChay).split(',').map(s => s.trim()) : []
-                            };
-                            updatedCount++;
-                        }
-                    });
-
-                    if (updatedCount > 0) {
-                        redrawMap();
-                        saveDataToLocalStorage(provinceData);
-                        showNotification(`Đã cập nhật thành công dữ liệu cho ${updatedCount} tỉnh/thành!`);
-                    } else {
-                        showNotification('File Excel không có dữ liệu hợp lệ hoặc cột "hc-key" bị thiếu.', true);
-                    }
-
-                } catch (error) {
-                    console.error("Lỗi khi xử lý file Excel:", error);
-                    showNotification("Lỗi khi đọc file. Vui lòng kiểm tra định dạng file.", true);
-                } finally {
-                    spinner.classList.add('hidden');
-                    event.target.value = ''; // Clear the file input
-                }
-            };
-
-            reader.onerror = function() {
-                spinner.classList.add('hidden');
-                showNotification('Không thể đọc file đã chọn.', true);
-            };
-
-            reader.readAsArrayBuffer(file);
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            provinceData = loadDataFromLocalStorage();
-            initializeMap();
-            document.getElementById('file-upload').addEventListener('change', handleFile, false);
-
-            // Mobile Menu Toggle (from ve-chung-toi.html)
-
-
-            const clearDataButton = document.getElementById('clear-data-btn');
-    if (clearDataButton) {
-        clearDataButton.addEventListener('click', function() {
-            // Hỏi xác nhận trước khi xóa
-            const isConfirmed = confirm('Bạn có chắc chắn muốn xóa tất cả dữ liệu đã tải lên không? Thao tác này sẽ khôi phục lại dữ liệu mặc định.');
-            
-            if (isConfirmed) {
-                // Xóa dữ liệu khỏi Local Storage
-                localStorage.removeItem('maxbenProvinceData');
-                
-                // Tải lại dữ liệu mặc định vào biến provinceData
-                provinceData = loadDataFromLocalStorage();
-                
-                // Vẽ lại bản đồ với dữ liệu mặc định
-                redrawMap();
-                
-                // Hiển thị thông báo thành công
-                showNotification('Đã xóa dữ liệu và khôi phục cài đặt gốc thành công!');
-                  location.reload();
-            }
-        });
-    }
-        });
-        // End of du-lieu.html specific JavaScript logic
-    </script>
-
     <script src="product-details.js"></script>
-      <script src="main-layout.js"></script> 
+ <script src="index-logic.js"></script>
+    <!-- JAVASCRIPT FROM main.js -->
+<script>document.addEventListener('DOMContentLoaded',()=>{window.addEventListener("DOMContentLoaded",()=>{window.scrollTo(0,0)});const vibrantPalette={red:'#FF5C5C',orange:'#FFC048',blue:'#4891FF',green:'#3DDC97',lightAccent:'#B8C1EC',white:'#FFFFFF'};document.onkeydown=function(e){if(e.keyCode==123||(e.ctrlKey&&e.shiftKey&&(e.keyCode=='I'.charCodeAt(0)||e.keyCode=='J'.charCodeAt(0)||e.keyCode=='C'.charCodeAt(0)))||(e.ctrlKey&&e.keyCode=='U'.charCodeAt(0))){return!1}};document.addEventListener('contextmenu',event=>event.preventDefault());let productCategoryChart,productPowerChart,criComparisonChart;const backButton=document.getElementById('backButton');const productDetailsContent=document.getElementById('productDetailsContent');const powerChartWrapper=document.getElementById('powerChartWrapper');const productChartsContainer=document.getElementById('productChartsContainer');const searchInput=document.getElementById('searchInput');let currentChartDataState={type:'main',mainCategory:''};const productDetails={"Đèn LED Bulb":[{"name":"Đèn LED Bulb tròn","image":"https://i.ibb.co/p6XYMY9n/den-bulb-led-tron-maxben-18w-247x296.jpg","description":"Kiểu dáng tròn, thay thế đèn Compact và sợi đốt. Công suất <20W. Đui E27.","features":"Thiết kế hình tròn nhỏ gọn, thẩm mỹ. Kết cấu bằng vỏ nhôm bọc lớp nhựa màu trắng cao cấp, khép kín, chống rò điện gây nguy hiểm tới người sử dụng. Hoạt động với dải điện áp rộng từ 180V-240V, thích ứng được với những nơi có lưới điện thấp hơn 220V, giúp ánh sáng luôn ổn định, bảo vệ mắt người sử dụng cho chống cận và chống mù lòa. Đa dạng công suất và kích thước bóng đèn. Công nghệ DOB tối ưu giá thành. Chuẩn đui phổ thông E27. Tuổi thọ đạt 15000h chiếu sáng. Chất lượng ánh sáng cao, ánh sáng trung thực: CRI >80. ","applications":"Chiếu sáng dân dụng, trang trí. ","variants":[{"power":"3W","light":"6500K/3000K","price":"31.000 VND","lumen":"270","dimensions_mm":"Ø45*H81","Mã Quản Lý":"BE27-MB-A45-3","Đóng Gói (PCS/M)":"200","Điện áp":"AC180-250V 50/60Hz"},{"power":"5W","light":"6500K/3000K","price":"39.000 VND","lumen":"450","dimensions_mm":"Ø50*H91","Mã Quản Lý":"BE27-MB-A50-5","Đóng Gói (PCS/M)":"100","Điện áp":"AC180-250V 50/60Hz"},{"power":"7W","light":"6500K/3000K","price":"47.000 VND","lumen":"630","dimensions_mm":"Ø60*H109","Mã Quản Lý":"BE27-MB-A60-7","Đóng Gói (PCS/M)":"100","Điện áp":"AC180-250V 50/60Hz"},{"power":"9W","light":"6500K/3000K","price":"53.000 VND","lumen":"810","dimensions_mm":"Ø60*H109","Mã Quản Lý":"BE27-MB-A60-9","Đóng Gói (PCS/M)":"100","Điện áp":"AC180-250V 50/60Hz"},{"power":"12W","light":"6500K/3000K","price":"63.000 VND","lumen":"1080","dimensions_mm":"Ø60*H117","Mã Quản Lý":"BE27-MB-A60L-12","Đóng Gói (PCS/M)":"100","Điện áp":"AC180-250V 50/60Hz"},{"power":"15W","light":"6500K/3000K","price":"73.000 VND","lumen":"1350","dimensions_mm":"Ø70*H132","Mã Quản Lý":"BE27-MB-A70-15","Đóng Gói (PCS/M)":"100","Điện áp":"AC180-250V 50/60Hz"},{"power":"18W","light":"6500K/3000K","price":"95.000 VND","lumen":"1620","dimensions_mm":"Ø80*H146","Mã Quản Lý":"BE27-MB-A80-18","Đóng Gói (PCS/M)":"100","Điện áp":"AC180-250V 50/60Hz"},{"power":"20W","light":"6500K/3000K","price":"116.000 VND","lumen":"1800","dimensions_mm":"Ø90*H187","Mã Quản Lý":"BE27-MB-A95-20","Đóng Gói (PCS/M)":"24","Điện áp":"AC180-250V 50/60Hz"}]},{"name":"Đèn LED Bulb trụ Happy","image":"https://i.ibb.co/VWtKYKDH/bong-den-led-tru-happy-247x296.jpg","description":"Kiểu dáng trụ, thay thế đèn Compact và sợi đốt. Công suất ≥20W.  Đui E27.","features":"Vỏ đèn thân nhôm bọc nhựa được kiểm định không biến dạng trong buồng nhiệt độ giả định -40°C và 120°C.  Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao 90lm/W, độ hoàn màu CRI>80.  Vỏ đèn có hàm lượng nhôm cao giúp tản nhiệt tốt và nhanh cho chip LED, độ bền ánh sáng tăng 30% so với thiết kế thông thường.  An toàn khi sử dụng, không gây cháy nổ: Driver đèn led bulb có điện trở cầu chì, khi có bất ổn từ lưới điện như sét đánh vào lưới điện, dây cầu chì sẽ đứt ngăn chặn cháy nổ do hiện tượng ngắn mạch.  Bộ phận khuếch tán của được làm từ chất liệu nhựa PC – loại nhựa có thể chịu được nhiệt độ cao lên tới 137°C, khả năng phát ra ánh sáng đạt >90%, khả năng cách điện và chống cháy cực tốt.  Sử dụng chip led 2835 siêu bền, CRI>80 mang đến màu sắc trung thực và bảo vệ thị lực người dùng.  Tiết kiệm điện năng: Bóng đèn led bulb trụ giúp tiết kiệm 80% điện năng so với đèn sợi đốt và 50% so với đèn compact.  Không tạo ra khí CO2 hoặc các tia gây hại như cực tím, UV, hồng ngoại bức xạ...an toàn cho làn da, người già, trẻ nhỏ, người cần dưỡng bệnh. ","applications":"Chiếu sáng dân dụng, trang trí.","variants":[{"power":"20W","light":"6500K","price":"69.000 VND","lumen":"1800","dimensions_mm":"Φ90*H143"},{"power":"30W","light":"6500K","price":"109.000 VND","lumen":"2700","dimensions_mm":"Φ102*H178"},{"power":"40W","light":"6500K/3000K","price":"139.000 VND","lumen":"3800","dimensions_mm":"Φ117*H200"},{"power":"50W","light":"6500K/3000K","price":"189.000 VND","lumen":"4500","dimensions_mm":"Φ137*H230"}]}],"Đèn Tuýp LED":[{"name":"Đèn tuýp LED T8","image":"https://i.ibb.co/0VQgyQ1V/den-tuyp-led-t8-maxben-45w-1-247.png","description":"Tuýp dài 0.6/1.2m, nhiều bóng led nhỏ.  Thay thế đèn huỳnh quang.","features":"Hiệu suất phát sáng cao 100lm/W, CRI>80.  Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam.  Sử dụng ống thủy tinh có độ bền cao và khả năng xuyên sáng tốt.  Chuẩn đui đèn thông dụng thay thế cho đèn huỳnh quang cũ.  Tuổi thọ cao lên tới 30000H.  Lâu giảm sáng.  Chứa linh kiện tụ cao áp giúp chống những bất thường từ lưới điện gây hỏng đèn.  Không chứa thủy ngân như đèn huỳnh quang, không tạo ra khí CO2 hoặc các tia gây hại như cực tím, UV, hồng ngoại bức xạ...an toàn cho làn da, người già, trẻ nhỏ, người cần dưỡng bệnh. ","applications":"Chiếu sáng cho nhà ở: Đèn tuýp led T8 Maxben có thể được lắp đặt trong phòng khách, phòng ngủ, phòng bếp và phòng tắm để tạo ra ánh sáng trang nhã và giảm thiểu tiêu thụ điện năng.  Chiếu sáng cho văn phòng.  Chiếu sáng cho siêu thị và cửa hàng.  Chiếu sáng cho nhà để xe và tầng hầm.  Chiếu sáng cho các khu vực công nghiệp. ","variants":[{"power":"9W","light":"6500K","price":"78.000 VND","lumen":"900","dimensions_mm":"D610*Φ35"},{"power":"18W","light":"6500K","price":"86.000 VND","lumen":"1700","dimensions_mm":"D1210*Φ35"},{"power":"28W","light":"6500K","price":"118.000 VND","lumen":"2800","dimensions_mm":"D1210*Φ35"},{"power":"45W","light":"6500K","price":"149.000 VND","lumen":"4500","dimensions_mm":"D1210*Φ35"}]},{"name":"Đèn tuýp LED bán nguyệt","image":"https://i.ibb.co/PzsVJwHj/den-tuyp-led-ban-nguyet-maxben-1.png","description":"Đèn LED bán nguyệt, thiết kế tiện dụng.","features":"Hiệu suất phát sáng cao 100lm/W, CRI>80.  Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam.  Tuổi thọ cao lên tới 30000H.  Lâu giảm sáng.  Mặt khuếch tán PC độ xuyên sáng cao giúp ánh sáng tán quang đều, mịn.  Góc chiều rộng giúp chiếu sáng đến các ngóc ngách nhỏ nhất, hạn chế để lại điểm tối.  Bền bỉ: Cấu trúc đèn chắc chắn, cầm chắc tay, bền hơn với thời gian.  Mặt khuếch tán: Nhựa PC độ xuyên sáng >90%.  Chip led: Chip SMD Seoul hiệu suất phát sáng cao, lâu giảm sáng.  Driver - bộ nguồn chuyển đổi dòng điện ổn định, chống xung áp cao.  Thân đèn bằng hợp kim nhôm hàm lượng cao giúp tản nhiệt hiệu quả.  Hiện đại: Sử dụng chip LED Seoul Hàn Quốc thế hệ mới nhất cho ra hiệu suất chiếu sáng cao, chỉ số hoàn màu cao.  Tiện dụng: Nẹp lắp đặt dễ dàng tháo ra và di chuyển, bộ phụ kiện đi kèm nên có thể tự lắp đặt tại nhà. ","applications":"Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.","variants":[{"power":"20W","light":"6500K","kích_thước":"D600*R74*H24","price":"187.000 VND","lumen":"2000"},{"power":"40W","light":"6500K","kích_thước":"D1200*R74*H24","price":"262.000 VND","lumen":"4000"}]},{"name":"Đèn tuýp LED bán nguyệt oval","image":"https://i.ibb.co/Gvn01MxZ/den-led-ban-nguyet-oval-maxben-1.png","description":"Thiết kế hình vòm cong bán nguyệt Oval.","features":"Hiệu suất phát sáng cao 100lm/W, CRI>80.  Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam.  Tuổi thọ cao lên tới 30000H.  Lâu giảm sáng.  Mặt khuếch tán PC độ xuyên sáng cao giúp ánh sáng tán quang đều, mịn.  Góc chiếu rộng giúp chiếu sáng đến các ngóc ngách nhỏ nhất, hạn chế để lại điểm tối.  Bền bỉ: Cấu trúc đèn chắc chắn, cầm chắc tay, bền hơn với thời gian.  Mặt khuếch tán: Nhựa PC độ xuyên sáng >90%.  Chip led: Chip SMD Seoul hiệu suất phát sáng cao, lâu giảm sáng.  Driver - bộ nguồn chuyển đổi dòng điện ổn định, chống xung áp cao.  Thân đèn bằng hợp kim nhôm hàm lượng cao giúp tản nhiệt hiệu quả.  Hiện đại: Sử dụng chip LED Seoul Hàn Quốc thế hệ mới nhất cho ra hiệu suất chiếu sáng cao, chỉ số hoàn màu cao.  Tiện dụng: Nẹp lắp đặt dễ dàng tháo ra và di chuyển, bộ phụ kiện đi kèm nên có thể tự lắp đặt tại nhà. ","applications":"Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.","variants":[{"power":"20W","light":"6500K","kích_thước":"D600*R60*H30","price":"199.000 VND","lumen":"1900"},{"power":"40W","light":"6500K","kích_thước":"D1200*R60*H30","price":"262.000 VND","lumen":"3800"},{"power":"60W","light":"6500K","kích_thước":"D1200*R60*H30","price":"389.000 VND","lumen":"6000"},{"power":"70W","light":"6500K","kích_thước":"D1200*R85*H30","price":"459.000 VND","lumen":"6650"}]},{"name":"Đèn tuýp LED bán nguyệt (Compact)","image":"./icons/MB-n-Tu-p-LED-B-n-Nguy-t-1.png","description":"Đèn LED bán nguyệt loại Compact, thiết kế tiện dụng.","features":"Hiệu suất phát sáng cao 100lm/W, CRI>80.  Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam.  Tuổi thọ cao lên tới 25000H.  Lâu giảm sáng.  Hiệu quả: Mặt khuếch tán PC độ xuyên sáng cao giúp ánh sáng tán quang đều, mịn.  Góc chiếu rộng giúp chiếu sáng đến các ngóc ngách nhỏ nhất, hạn chế để lại điểm tối.  Bền bỉ: Cấu trúc đèn chắc chắn, cầm chắc tay, bền hơn với thời gian.  Mặt khuếch tán: Nhựa PC độ xuyên sáng >90%.  Chip led: Chip 2835 với hiệu suất phát sáng cao, lâu giảm sáng.  Driver - bộ nguồn chuyển đổi dòng điện ổn định, chống xung áp cao.  Thân đèn bằng hợp kim nhôm hàm lượng cao giúp tản nhiệt hiệu quả.  Hiện đại: Kích thước nhỏ gọn tạo sự tinh tế cho sản phẩm trong khi vẫn đáp ứng chiếu sáng không gian tốt.  Tiện dụng: Nẹp lắp đặt dễ dàng tháo ra và di chuyển, bộ phụ kiện đi kèm nên có thể tự lắp đặt tại nhà. ","applications":"Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.","variants":[{"power":"45W","light":"6500K/4000K","kích_thước":"1200*68*29","price":"270.000 VND","lumen":"4500"},{"power":"70W","light":"6500K","kích_thước":"1200*75*29","price":"399.000 VND","lumen":"7000"}]}],"Đèn LED Âm Trần":[{"name":"Đèn LED âm trần Happy V2","image":"https://i.ibb.co/0RdqTTXf/happy-v2-13-247x296.jpg","description":"Đèn LED âm trần ánh sáng tỏa, thiết kế tròn.  Cải tiến từ Happy.","features":"Dải điện áp 150V-250V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao 85lm/W, CRI>80.  Vỏ nhựa PP với khả năng chịu nhiệt lên tới 200°C.  Sử dụng LENS chống chói cho chip LED giúp ánh sáng đồng đều và mịn.  Công nghệ DOB, dây truyền 100% tự động hóa giúp tối ưu giá thành.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"9W","light":"6500K/3000K/4000K","price":"77.000 VND","lumen":"740","dimensions_mm":"D120*H30","cutout_mm":"90"},{"power":"9W","light":"ĐỔI MÀU","price":"111.000 VND","lumen":"740","dimensions_mm":"D120*H30","cutout_mm":"90"},{"power":"12W","light":"6500K/3000K/4000K","price":"99.000 VND","lumen":"1100","dimensions_mm":"D140*H30","cutout_mm":"110"},{"power":"12W","light":"ĐỔI MÀU","price":"144.000 VND","lumen":"1100","dimensions_mm":"D140*H30","cutout_mm":"110"}]},{"name":"Đèn LED âm trần siêu mỏng","image":"https://i.ibb.co/KxP7DFzP/den-led-am-tran-sieu-mong-maxben.png","description":"Đèn LED âm trần ánh sáng tỏa, thiết kế siêu mỏng.","features":"Dải điện áp 85V-250V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao 85lm/W, CRI>80.  Vỏ nhôm hàm lượng cao giúp tản nhiệt tối ưu cho chip LED.  Nguồn Driver rời tích hợp linh kiện chống xung áp cao và ổn định.  Thiết kế siêu mỏng giúp dễ dàng lắp đặt, không phải cắt xương của trần thạch cao.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"9W","light":"6500K/4000K/3000K","kích_thước":"D122*H15","cắt_lỗ":"D110","đóng_gói":"50 PCS","price":"135.000 VND","lumen":"720"},{"power":"9W","light":"ĐỔI MÀU","kích_thước":"D122*H15","cắt_lỗ":"D110","đóng_gói":"50 PCS","price":"155.000 VND","lumen":"720"},{"power":"12W","light":"6500K/4000K/3000K","kích_thước":"D145*H22","cắt_lỗ":"D125-135","đóng_gói":"50 PCS","price":"170.000 VND","lumen":"960"},{"power":"12W","light":"ĐỔI MÀU","kích_thước":"D145*H22","cắt_lỗ":"D125-135","đóng_gói":"50 PCS","price":"195.000 VND","lumen":"960"}]},{"name":"Đèn LED âm trần Lucy","image":"https://i.ibb.co/Xk8GvthV/den-led-am-tran-lucy-01-247x296.png","description":"Đèn LED âm trần ánh sáng tỏa, thiết kế tròn.","features":"Dải điện áp 165V-250V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao 85~100lm/W.  Độ hoàn màu CRI>90 tạo ánh sáng chân thực và tốt cho mắt người.  Vỏ nhôm hàm lượng cao giúp tản nhiệt tối ưu cho chip LED.  Công nghệ DOB giúp tối ưu giá thành.  Thiết kế viền vàng và viền bạc khác biệt với thị trường, tạo điểm nhấn.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"9W","light":"6500K/4000K/3000K","price":"125.000 VND","lumen":"760","dimensions_mm":"D115*H32","cutout_mm":"D90-105"},{"power":"12W","light":"6500K/4000K/3000K","price":"177.000 VND","lumen":"1200","dimensions_mm":"D145*H34","cutout_mm":"D115-140"},{"power":"9W","light":"ĐỔI MÀU","price":"140.000 VND","lumen":"760","dimensions_mm":"D115*H32","cutout_mm":"D90-105"},{"power":"12W","light":"ĐỔI MÀU","price":"199.000 VND","lumen":"1200","dimensions_mm":"D145*H34","cutout_mm":"D115-140"}]},{"name":"Đèn LED âm trần Lucy Pro","image":"https://i.ibb.co/8DXqC4yg/den-led-am-tran-lucy-01.png","description":"Đèn LED âm trần ánh sáng tỏa, thiết kế tròn.  Cải tiến từ Lucy.","features":"Mặt tản quang PC với độ xuyên sáng 82%.  Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao 85 Lm/W.  Độ hoàn màu CRI>90 tạo ánh sáng chân thực và tốt cho mắt người.  Vỏ nhôm hàm lượng cao giúp tản nhiệt tối ưu cho chip LED.  Công nghệ DOB giúp tối ưu giá thành.  Thiết kế viền vàng, bạc và trắng khác biệt với thị trường, tạo điểm nhấn.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt.  Cắt lỗ siêu nhỏ 85 -115mm, tiết kiệm không gian trần. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"7W","light":"6500K/3000K/4000K","price":"179.000 VND","lumen":"595","cutout_mm":"Φ85-115","dimensions_mm":"D120*H30"},{"power":"9W","light":"6500K/3000K/4000K","price":"189.000 VND","lumen":"765","cutout_mm":"Φ85-115","dimensions_mm":"D120*H30"},{"power":"11W","light":"6500K/3000K/4000K","price":"199.000 VND","lumen":"935","cutout_mm":"Φ85-115","dimensions_mm":"D120*H30"},{"power":"7W","light":"ĐỔI MÀU","price":"199.000 VND","lumen":"595","cutout_mm":"Φ85-115","dimensions_mm":"D120*H30"},{"power":"9W","light":"ĐỔI MÀU","price":"210.000 VND","lumen":"765","cutout_mm":"Φ85-115","dimensions_mm":"D120*H30"},{"power":"11W","light":"ĐỔI MÀU","price":"220.000 VND","lumen":"935","cutout_mm":"Φ85-115","dimensions_mm":"D120*H30"}]},{"name":"Đèn LED âm trần chống chói ZEN","image":"https://i.ibb.co/Y7zkd2qz/Ch-ng-ch-i-ZEN.png","description":"Đèn LED âm trần ánh sáng tỏa, thiết kế tròn, chống chói.","features":"Dải điện áp 165V-250V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao 85~100lm/W.  Độ hoàn màu CRI>90 tạo ánh sáng chân thực và tốt cho mắt người.  Vỏ nhôm chất lượng cao, tai gài inox chắc chắn chống han rỉ.  Công nghệ mới khuếch tán chống chói kim cương, cho ra ánh sáng nhẹ nhàng, êm dịu, không mỏi và chói mắt.  Đa dạng màu chóa và ánh sáng đáp ứng nhu cầu và mục đích sử dụng của người tiêu dùng. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"10W","light":"6500K/4000K/3000K","price":"189.000 VND","lumen":"850","dimensions_mm":"Φ88*H38","cutout_mm":"Φ75"},{"power":"12W","light":"6500K/4000K/3000K","price":"276.000 VND","lumen":"1020","dimensions_mm":"Φ110*H53","cutout_mm":"Φ95"},{"power":"15W","light":"6500K/4000K/3000K","price":"376.000 VND","lumen":"1275","dimensions_mm":"Φ135*H57","cutout_mm":"Φ115"},{"power":"10W","light":"ĐỔI MÀU","price":"212.000 VND","lumen":"850","dimensions_mm":"Φ88*H38","cutout_mm":"Φ75"},{"power":"12W","light":"ĐỔI MÀU","price":"305.000 VND","lumen":"1020","dimensions_mm":"Φ110*H53","cutout_mm":"Φ95"},{"power":"15W","light":"ĐỔI MÀU","price":"410.000 VND","lumen":"1275","dimensions_mm":"Φ135*H57","cutout_mm":"Φ115"}]},{"name":"Đèn Âm Trần SPOTLIGHT PROLUX-SPX1","image":"https://i.ibb.co/b5cTCxZT/prolux-SPX1.png","description":"Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ","features":"Dải điện áp 85V-265V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao >85lm/W.  Độ hoàn màu CRI>98 tạo ánh sáng chân thực, không gian sống động và tốt cho mắt người.  Ánh sáng tỏa góc chiếu linh hoạt 15/24/36/60 độ, dễ dàng điều chỉnh theo nhu cầu sử dụng.  Chip RG1 Hạn chế ánh sáng xanh gây hại cho mắt.  Công nghệ chống chói UGR<6, tích hợp chức năng ẩn nguồn sáng và điều khiển màu sáng.  Không chói không nhòe, không gây nhức mỏi mắt.  Vỏ nhôm đúc bền, tản nhiệt tốt.  Không phát tia UV, tia hồng ngoại, không chứa thủy ngân - an toàn cho sức khỏe gia đình. ","applications":"Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.","variants":[{"power":"7W","light":"3000K/4000K/6500K","choa":"ĐEN/TRẮNG","kích_thước":"Φ90*H55","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"722.000 VND","lumen":"595","góc_chiếu":"15°/24°/36°/60°"},{"power":"7W","light":"ĐỔI MÀU","choa":"ĐEN/TRẮNG","kích_thước":"Φ90*H55","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"772.000 VND","lumen":"595","góc_chiếu":"15°/24°/36°/60°"},{"power":"10W","light":"3000K/4000K/6500K","choa":"ĐEN/TRẮNG","kích_thước":"Φ90*H55","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"773.000 VND","lumen":"850","góc_chiếu":"15°/24°/36°/60°"},{"power":"10W","light":"ĐỔI MÀU","choa":"ĐEN/TRẮNG","kích_thước":"Φ90*H55","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"854.000 VND","lumen":"850","góc_chiếu":"15°/24°/36°/60°"}]},{"name":"Đèn Âm Trần SPOTLIGHT PROLUX-SP7","image":"https://i.ibb.co/1f274t9t/spotlight-prolux-sp7.png","description":"Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ","features":"Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao >85lm/W.  Độ hoàn màu cao CRI>98 tạo ánh sáng chân thực, không gian sống động.  Không phát tia UV, tia hồng ngoại, không chứa thủy ngân - an toàn cho sức khỏe gia đình.  Công nghệ chống chói UGR<6, tích hợp chức năng ẩn nguồn sáng và điều khiển màu sáng.  Không chói không nhòe, không nhức mỏi mắt.  Ánh sáng tỏa góc chiếu linh hoạt 15/24/36/50 độ, dễ dàng điều chỉnh theo nhu cầu sử dụng. ","applications":"Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.","variants":[{"power":"5W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ65*H75","cắt_lỗ":"Φ55","đóng_gói":"36 PCS","price":"479.000 VND","lumen":"425"},{"power":"7W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ65*H75","cắt_lỗ":"Φ55","đóng_gói":"36 PCS","price":"479.000 VND","lumen":"595"},{"power":"7W","light":"ĐỔI MÀU","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ65*H75","cắt_lỗ":"Φ55","đóng_gói":"36 PCS","price":"528.000 VND","lumen":"595"},{"power":"10W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ85*H90","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"561.000 VND","lumen":"850"},{"power":"10W","light":"ĐỔI MÀU","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ85*H90","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"641.000 VND","lumen":"850"},{"power":"12W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ85*H90","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"609.000 VND","lumen":"1020"},{"power":"12W","light":"ĐỔI MÀU","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ85*H90","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"679.000 VND","lumen":"1020"},{"power":"15W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ85*H100","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"1.046.000 VND","lumen":"1275"},{"power":"18W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"Φ105*H105","cắt_lỗ":"Φ95","đóng_gói":"20 PCS","price":"1.030.000 VND","lumen":"1530"}]},{"name":"Đèn Âm Trần SPOTLIGHT PROLUX-SP2","image":"https://i.ibb.co/yc33cf20/Prolux-SP2.png","description":"Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ","features":"Dải điện áp 85V-265V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao >85lm/W.  Độ hoàn màu CRI>98 tạo ánh sáng chân thực, không gian sống động và tốt cho mắt người.  Ánh sáng tỏa góc chiếu linh hoạt 15/24/36 độ, dễ dàng điều chỉnh theo nhu cầu sử dụng.  Chip RG1 Hạn chế ánh sáng xanh gây hại cho mắt.  Công nghệ chống chói UGR<6, tích hợp chức năng ẩn nguồn sáng và điều khiển màu sáng.  Không chói không nhòe, không gây nhức mỏi mắt.  Vỏ nhôm đúc bền, tản nhiệt tốt.  Kiểu dáng nhỏ gọn, sang trọng, hòa hợp với mọi không gian từ hiện đại đến tối giản. ","applications":"Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.","variants":[{"power":"3W","light":"3000K/4000K/6500K","choa":"ĐEN","kích_thước":"Φ45*H50","cắt_lỗ":"Φ40","đóng_gói":"36 PCS","price":"479.000 VND","lumen":"255"},{"power":"5W","light":"3000K/4000K/6500K","choa":"ĐEN","kích_thước":"Φ45*H50","cắt_lỗ":"Φ40","đóng_gói":"36 PCS","price":"486.000 VND","lumen":"425"},{"power":"5W","light":"3000K/4000K/6500K","choa":"ĐEN","kích_thước":"Φ55*H66","cắt_lỗ":"Φ50","đóng_gói":"36 PCS","price":"658.000 VND","lumen":"425"},{"power":"7W","light":"3000K/4000K/6500K","choa":"ĐEN","kích_thước":"Φ55*H66","cắt_lỗ":"Φ50","đóng_gói":"36 PCS","price":"668.000 VND","lumen":"595"},{"power":"7W","light":"ĐỔI MÀU","choa":"ĐEN","kích_thước":"Φ55*H66","cắt_lỗ":"Φ50","đóng_gói":"36 PCS","price":"731.000 VND","lumen":"595"},{"power":"7W","light":"3000K/4000K/6500K","choa":"ĐEN","kích_thước":"Φ70*H76","cắt_lỗ":"Φ60","đóng_gói":"36 PCS","price":"805.000 VND","lumen":"595"},{"power":"7W","light":"ĐỔI MÀU","choa":"ĐEN","kích_thước":"Φ70*H76","cắt_lỗ":"Φ60","đóng_gói":"36 PCS","price":"879.000 VND","lumen":"595"},{"power":"10W","light":"3000K/4000K/6500K","choa":"ĐEN","kích_thước":"Φ70*H76","cắt_lỗ":"Φ60","đóng_gói":"36 PCS","price":"856.000 VND","lumen":"850"},{"power":"10W","light":"ĐỔI MÀU","choa":"ĐEN","kích_thước":"Φ70*H76","cắt_lỗ":"Φ60","đóng_gói":"36 PCS","price":"957.000 VND","lumen":"850"},{"power":"12W","light":"3000K/4000K/6500K","choa":"ĐEN","kích_thước":"Φ70*H76","cắt_lỗ":"Φ60","đóng_gói":"36 PCS","price":"867.000 VND","lumen":"1020"},{"power":"12W","light":"ĐỔI MÀU","choa":"ĐEN","kích_thước":"Φ70*H76","cắt_lỗ":"Φ60","đóng_gói":"36 PCS","price":"957.000 VND","lumen":"1020"}]},{"name":"Đèn Âm Trần SPOTLIGHT ME","image":"https://i.ibb.co/20Tknm19/spotlight-prolux-ME.png","description":"Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ","features":"CRI >95, công nghệ chống chói, hiệu ứng ánh sáng tỏa theo góc chiếu linh hoạt 15°-24°-36°, không chứa tia UV/IR, không chứa thủy ngân - an toàn cho sức khỏe gia đình.  IP20, AC165-250V 50/60Hz, Nhiệt độ hoạt động -20°C - 50°C, >85Lm/W.  Chip RG1 Hạn chế ánh sáng xanh gây hại cho mắt. ","applications":"Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.","variants":[{"power":"10W","light":"3000K/4000K/6500K","choa":"ĐEN/TRẮNG","kích_thước":"Φ85*H75","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"299.000 VND","lumen":"850"},{"power":"10W","light":"ĐỔI MÀU","choa":"ĐEN/TRẮNG","kích_thước":"Φ85*H75","cắt_lỗ":"Φ75","đóng_gói":"36 PCS","price":"399.000 VND","lumen":"850"}]},{"name":"Đèn Âm Trần SPOTLIGHT PRO LUX-T","image":"https://i.ibb.co/dwSS6WCT/Prolux-T.png","description":"Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu.","features":"CRI >97, góc chiếu 90° tạo ánh sáng tập trung, không phát tia UV/IR, không chứa thủy ngân, hạn chế ánh sáng xanh gây hại mắt.  IP20, AC170-240V, Nhiệt độ hoạt động -20°C - 50°C, >85Lm/W, Vật liệu: Nhôm đúc.  Có 3 màu chóa: chóa vàng, chóa trắng, chóa đen. ","applications":"Chiếu sáng dân dụng, văn phòng, cửa hàng, showroom.","variants":[{"power":"9W","light":"3000K/4000K/6500K","choa":"Đen/Trắng/Vàng","kích_thước":"D100*H44","cắt_lỗ":"Φ75","đóng_gói":"100 PCS","price":"286.000 VND","lumen":"765"},{"power":"9W","light":"ĐỔI MÀU","choa":"Đen/Trắng/Vàng","kích_thước":"D100*H44","cắt_lỗ":"Φ75","đóng_gói":"100 PCS","price":"339.000 VND","lumen":"765"},{"power":"12W","light":"3000K/4000K/6500K","choa":"Đen/Trắng/Vàng","kích_thước":"D122*H44","cắt_lỗ":"Φ90","đóng_gói":"48 PCS","price":"407.000 VND","lumen":"1020"},{"power":"12W","light":"ĐỔI MÀU","choa":"Đen/Trắng/Vàng","kích_thước":"D122*H44","cắt_lỗ":"Φ90","đóng_gói":"48 PCS","price":"469.000 VND","lumen":"1020"}]},{"name":"Đèn Âm Trần SPOTLIGHT PROLUX-TT","image":"https://i.ibb.co/qPJJHqg/Prolux-TT.png","description":"Đèn âm trần chiếu điểm, nhiều góc chiếu và nhiệt độ màu. ","features":"Dải điện áp 85V-265V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao >85lm/W.  Độ hoàn màu CRI>98 tạo ánh sáng chân thực, không gian sống động và tốt cho mắt người.  Ánh sáng tỏa góc chiếu linh hoạt 15/24/36/50 độ, dễ dàng điều chỉnh theo nhu cầu sử dụng.  Chip RG1 Hạn chế ánh sáng xanh gây hại cho mắt.  Công nghệ chống chói UGR<6, tích hợp chức năng ẩn nguồn sáng và điều khiển màu sáng.  Không chói không nhòe, không gây nhức mỏi mắt.  Vỏ nhôm đúc bền, tản nhiệt tốt.  Không phát tia UV, tia hồng ngoại, không chứa thủy ngân - an toàn cho sức khỏe gia đình. ","applications":"Chiếu sáng dân dụng, trang trí, văn phòng, cửa hàng.","variants":[{"power":"7W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"D89*H97","cắt_lỗ":"Φ80","đóng_gói":"30 PCS","price":"694.000 VND"},{"power":"7W","light":"ĐỔI MÀU","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"D89*H97","cắt_lỗ":"Φ80","đóng_gói":"30 PCS","price":"765.000 VND"},{"power":"10W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"D89*H97","cắt_lỗ":"Φ80","đóng_gói":"30 PCS","price":"735.000 VND"},{"power":"10W","light":"ĐỔI MÀU","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"D89*H97","cắt_lỗ":"Φ80","đóng_gói":"30 PCS","price":"854.000 VND"},{"power":"12W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"D89*H97","cắt_lỗ":"Φ80","đóng_gói":"30 PCS","price":"763.000 VND"},{"power":"12W","light":"ĐỔI MÀU","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"D89*H97","cắt_lỗ":"Φ80","đóng_gói":"30 PCS","price":"854.000 VND"},{"power":"15W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"D110*H117","cắt_lỗ":"Φ100","đóng_gói":"30 PCS","price":"1.020.000 VND"},{"power":"18W","light":"3000K/4000K/6500K","góc_chiếu":"15°/24°/36°/50°","choa":"ĐEN/TRẮNG","kích_thước":"D110*H117","cắt_lỗ":"Φ100","đóng_gói":"30 PCS","price":"1.040.000 VND"}]}],"Đèn LED Ốp Trần":[{"name":"Đèn LED ốp trần Classic","image":"https://i.ibb.co/zVP2yxBq/den-led-op-tran-classic-maxben-t.png","description":"Đèn LED ốp trần, thiết kế tròn hoặc vuông.","features":"Dải điện áp 85V-250V phù hợp với lưới điện ở Việt Nam.  Ánh sáng đều và trung thực với CRI>80.  Vỏ nhôm hàm lượng cao giúp tản nhiệt tối ưu cho chip LED.  Nguồn Driver rời tích hợp linh kiện chống xung áp cao và ổn định.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"12W","light":"6500K/4000K/3000K","price":"195.000 VND","lumen":"780","dimensions_mm":"Φ173*H32"},{"power":"18W","light":"6500K/4000K/3000K","price":"255.000 VND","lumen":"1260","dimensions_mm":"Φ222*H32"},{"power":"24W","light":"6500K/4000K/3000K","price":"328.000 VND","lumen":"1800","dimensions_mm":"Φ300*H32"}]},{"name":"Đèn LED ốp trần Plush Tròn","image":"https://i.ibb.co/VWQwgzbm/plush-1.png","description":"Đèn LED ốp trần, thiết kế tròn.","features":"Dải điện áp 85V-250V phù hợp với lưới điện ở Việt Nam.  Ánh sáng đều và trung thực với CRI>80.  Vỏ nhôm dày dặn với hàm lượng cao giúp tản nhiệt tối ưu cho chip LED.  Khung gờ nối tạo điểm nhấn nổi bật cho sản phẩm.  Nguồn Driver rời tích hợp linh kiện chống xung áp cao và ổn định.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"6W","light":"6500K/3000K","price":"152.000 VND","lumen":"390","dimensions_mm":"Φ115*H40"},{"power":"6W","light":"ĐỔI MÀU","price":"192.000 VND","lumen":"390","dimensions_mm":"Φ115*H40"},{"power":"12W","light":"6500K/3000K","price":"219.000 VND","lumen":"960","dimensions_mm":"Φ165*H40"},{"power":"12W","light":"ĐỔI MÀU","price":"250.000 VND","lumen":"960","dimensions_mm":"Φ165*H40"},{"power":"18W","light":"6500K/3000K","price":"279.000 VND","lumen":"1620","dimensions_mm":"Φ210*H40"},{"power":"18W","light":"ĐỔI MÀU","price":"318.000 VND","lumen":"1620","dimensions_mm":"Φ210*H40"},{"power":"24W","light":"6500K/3000K","price":"448.000 VND","lumen":"2160","dimensions_mm":"Φ285*H40"},{"power":"24W","light":"ĐỔI MÀU","price":"550.000 VND","lumen":"2160","dimensions_mm":"Φ285*H40"}]},{"name":"Đèn LED ốp trần Plush Vuông","image":"https://i.ibb.co/VWQwgzbm/plush-1.png","description":"Đèn LED ốp trần, thiết kế vuông.","features":"Dải điện áp 85V-250V phù hợp với lưới điện ở Việt Nam.  Ánh sáng đều và trung thực với CRI>80.  Vỏ nhôm dày dặn với hàm lượng cao giúp tản nhiệt tối ưu cho chip LED.  Khung gờ nối tạo điểm nhấn nổi bật cho sản phẩm.  Nguồn Driver rời tích hợp linh kiện chống xung áp cao và ổn định.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"6W","light":"6500K/3000K","price":"163.000 VND","lumen":"390","dimensions_mm":"115*115*H40"},{"power":"6W","light":"ĐỔI MÀU","price":"204.000 VND","lumen":"390","dimensions_mm":"115*115*H40"},{"power":"12W","light":"6500K/3000K","price":"225.000 VND","lumen":"960","dimensions_mm":"165*165*H40"},{"power":"12W","light":"ĐỔI MÀU","price":"254.000 VND","lumen":"960","dimensions_mm":"165*165*H40"},{"power":"18W","light":"6500K/3000K","price":"295.000 VND","lumen":"1620","dimensions_mm":"210*210*H40"},{"power":"18W","light":"ĐỔI MÀU","price":"339.000 VND","lumen":"1620","dimensions_mm":"210*210*H40"},{"power":"24W","light":"6500K/3000K","price":"452.000 VND","lumen":"2160","dimensions_mm":"285*285*H40"},{"power":"24W","light":"ĐỔI MÀU","price":"575.000 VND","lumen":"2160","dimensions_mm":"285*285*H40"}]},{"name":"Đèn LED ốp trần Happy","image":"https://i.ibb.co/Jjd58RKx/happy-tron.png","description":"Đèn LED ốp trần, thiết kế tròn hoặc vuông.","features":"Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao 90lm/W.  Ánh sáng đều và trung thực với CRI>80.  Vỏ nhựa chịu nhiệt cao lên tới 200°C.  Công nghệ DOB giúp tối ưu giá thành.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"18W","light":"6500K/4000K/3000K","price":"137.000 VND","lumen":"1629","dimensions_mm":"Φ163*H30"},{"power":"24W","light":"6500K/4000K/3000K","price":"191.000 VND","lumen":"2160","dimensions_mm":"Φ200*H32"},{"power":"36W","light":"6500K/4000K/3000K","price":"296.000 VND","lumen":"3240","dimensions_mm":"Φ280*H32"}]},{"name":"Đèn ốp trần tràn viền","image":"https://i.ibb.co/xSbvyg5g/op-tran-vien.png","description":"Đèn LED ốp trần, thiết kế tràn viền hiện đại.","features":"Dải điện áp 165V-250V phù hợp với lưới điện ở Việt Nam.  Độ hoàn màu CRI>90 tạo ánh sáng chân thực và tốt cho mắt người.  Vỏ nhựa có công nghệ chống ố vàng.  Công nghệ DOB giúp tối ưu giá thành.  Thiết kế hình dáng đĩa bay mỏng, hiện đại và tinh tế.  Bộ kết nối với lưới điện dạng module giúp dễ dàng tháo lắp.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt.  Với IP40 chống muỗi và chống ẩm tốt nên sử dụng được ở những nơi có độ ẩm cao như phòng xông hơi, phòng tắm. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"15W","light":"6500K/4000K","price":"229.000 VND","lumen":"970","dimensions_mm":"Φ230*H52"},{"power":"24W","light":"6500K/4000K","price":"289.000 VND","lumen":"1770","dimensions_mm":"Φ300*H52"}]}],"Dây LED":[{"name":"Dây LED Galaxy","image":"https://i.ibb.co/DfGTync0/cuon-day.png","description":"Dây LED trang trí, nhiều màu sắc.","features":"Dây đồng bọc kẽm tăng hiệu suất truyền điện và chống Oxi-hóa.  Bản mạch là lõi đồng 2 lớp giúp tản nhiệt tốt cho chip LED.  Sử dụng chip LED 2835 của MLS với hiệu suất phát sáng 80lm/W.  CRI>80 giúp màu sắc ánh sáng của dây chân thực và đẹp mắt.  Sản xuất tập trung, tối ưu chi phí.  1m/Cut giúp đa dạng địa hình lắp đặt và tối ưu chi phí.  Đóng gói 100m/cuộn. ","applications":"Trang trí nội ngoại thất, quán cafe, nhà hàng.","variants":[{"length":"5m","light":"RGB, Trắng, Vàng","price":"Liên hệ"}]},{"name":"Dây LED 12V/24V","image":"https://i.ibb.co/DfGys675/day-led-maxbne-12v-247x296.jpg","description":"Dây LED sử dụng điện áp thấp 12V hoặc 24V.","features":"Là loại điện áp thấp an toàn cho người sử dụng không bị điện giật khi chạm vào.  Hiệu suất phát sáng cao 100lm/W.  Độ hoàn màu CRI>80 cho chất lượng ánh sáng tốt.  Kết hợp cùng thanh nhôm định hình thành giải pháp chiếu sáng cho các ứng dụng trang trí Decor, chiếu sáng.  Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn.  Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ","applications":"Trang trí nội ngoại thất, chiếu sáng tủ, kệ.","variants":[{"length":"5m","light":"Trắng, Vàng, Xanh, Đỏ","price":"Liên hệ"}]},{"name":"Dây LED 24 SMD/COB","image":"https://i.ibb.co/ksHMJBdw/Day-led-24-V-SMD.png","description":"Dây LED sử dụng chip SMD hoặc COB.","features":"Là loại điện áp thấp an toàn cho người sử dụng không bị điện giật khi chạm vào.  Sở hữu công suất 10W/m, được trang bị tới 120-320 hạt LED/m, cho ánh sáng đều, liên tục và không gây chói.  Sử dụng bản mạch đồng 2 lớp cao cấp, sản phẩm đảm bảo khả năng tản nhiệt tốt, hoạt động ổn định và bền bỉ trong thời gian dài.  Dễ dàng cắt nối, uốn cong linh hoạt tùy theo nhu cầu và không gian. ","applications":"Trang trí nội ngoại thất, chiếu sáng tủ, kệ.","variants":[{"power":"10W/m","light":"3000K/4000K/6500K (SMD)","price":"56.000 VND","led_per_meter":"120","dimensions_mm":"8","material":"Đóng 2 lớp"},{"power":"10W/m","light":"3000K/4000K/6500K (COB)","price":"99.000 VND","led_per_meter":"320","dimensions_mm":"8","material":"Đóng 2 lớp"}]},{"name":"Nguồn dây LED 24V","image":"https://i.ibb.co/whQBzR00/day-led-24v.png","description":"Nguồn cấp điện cho dây LED 24V.","features":"Công suất đa dạng từ 60W đến 400W, phù hợp cho từng quy mô chiếu sáng từ nhỏ đến lớn.  Vỏ kim loại: chắc chắn, chống gỉ, dễ lắp đặt. ","applications":"Cấp điện cho dây LED 24V.","variants":[{"power":"60W","price":"265.000 VND","dimensions_mm":"120*36*23"},{"power":"100W","price":"331.000 VND","dimensions_mm":"146*48*23"},{"power":"150W","price":"347.000 VND","dimensions_mm":"161*48*23"},{"power":"200W","price":"364.000 VND","dimensions_mm":"183*48*23"},{"power":"300W","price":"463.000 VND","dimensions_mm":"215*48*23"},{"power":"400W","price":"545.000 VND","dimensions_mm":"215*48*23"}]},{"name":"Dây LED Happy","image":"https://i.ibb.co/NdF62nyZ/day-led-happy-247x296.jpg","description":"Dây LED trang trí, nhiều màu sắc, hiệu ứng. ","features":"Bản mạch là lõi đồng 2 lớp giúp tản nhiệt tốt cho chip LED.  Sử dụng chip LED 2835 với hiệu suất phát sáng 100lm/W.  CRI>80 giúp màu sắc ánh sáng của dây chân thực và đẹp mắt.  Sản xuất tập trung, tối ưu chi phí.  20cm/Cut giúp đa dạng địa hình lắp đặt và tối ưu chi phí.  Đóng gói 100m/cuộn. ","applications":"Trang trí nội ngoại thất, quán cafe, nhà hàng.","variants":[{"power":"11W","light":"6500K/4000K/3000K","price":"39.000 VND","lumen":"1100","standard":"IP65"},{"power":"11W","light":"BLUE","price":"46.000 VND","lumen":"1100","standard":"IP65"},{"power":"11W","light":"TRẮNG VÀNG/XANH VÀNG","price":"58.000 VND","lumen":"1100","standard":"IP65"}],"accessories":[{"description":"Bộ Nguồn","price":"39.000 VND","model_code":"PK-MB-ZN2-HP-2835-180B"},{"description":"Bộ Nguồn","price":"83.000 VND","model_code":"PK-MB-ZN2-HP-2835-120B"}]}],"Đèn Pha LED":[{"name":"Đèn pha LED V2","image":"https://i.ibb.co/CFZJwvQ/MB-Pha-led-V2-01.png","description":"Đèn pha LED chiếu sáng ngoài trời.  Cải tiến từ Đèn pha LED.","features":"Dải điện áp (160-250V) hoạt động phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao (110-120 lm/W).  CRI>80 và lâu giảm sáng.  Van điều áp chống đọng nước bên trong đèn, phù hợp với môi trường ở Việt Nam có độ ẩm cao.  Vỏ nhôm đúc đảm bảo hiệu suất tản nhiệt cao.  Dây điện chống nước IP65 chống hơi nước xâm nhập vào đèn qua dây, có thể tháo rời thuận tiện cho bảo trì. ","applications":"Chiếu sáng sân, vườn, bảng hiệu, công trình.","variants":[{"power":"10W","light":"6500K/3000K","price":"199.000 VND","lumen":"1200","dimensions_mm":"D101*R97*C26"},{"power":"20W","light":"6500K/4000K/3000K","price":"259.000 VND","lumen":"2400","dimensions_mm":"D120*R120*C28"},{"power":"30W","light":"6500K/3000K","price":"359.000 VND","lumen":"3600","dimensions_mm":"D156*R139*C30"},{"power":"50W","light":"6500K/4000K/3000K","price":"449.000 VND","lumen":"6000","dimensions_mm":"D188*R165*C32"},{"power":"100W","light":"6500K/4000K/3000K","price":"689.000 VND","lumen":"12000","dimensions_mm":"D242*R203*C34"},{"power":"150W","light":"6500K","price":"1.099.000 VND","lumen":"18000","dimensions_mm":"D279*R230*C35"},{"power":"200W","light":"6500K","price":"1.499.000 VND","lumen":"24000","dimensions_mm":"D329*R276*C37"},{"power":"300W","light":"6500K","price":"2.199.000 VND","lumen":"36000","dimensions_mm":"D379*R312*C45"}]},{"name":"Đèn pha RGB","image":"./icons/e69a968e-17a0-457e-a511-d94f9c2c0bc1.png","description":"Đèn pha LED chiếu sáng ngoài trời, đổi màu RGB.","features":"Dải điện áp (160-250V) hoạt động phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao (1200-36000lm/W).  CRI>80 và lâu giảm sáng.  Vỏ nhôm đúc đảm bảo hiệu suất tản nhiệt cao.  Điều khiển từ xa với nhiều chế độ màu sắc ánh sáng.  Sử dụng Lens tản quang để ánh sáng phổ rộng và đồng đều. ","applications":"Chiếu sáng sân, vườn, bảng hiệu, công trình, trang trí.","variants":[{"power":"50W","light":"RGB","price":"1.238.000 VND","control":"Từ xa","dimensions_mm":"D191*R165*C26"}]},{"name":"Đèn pha LED","image":"./icons/pha-led.jpg","description":"Đèn pha LED chiếu sáng ngoài trời. ","features":"Dải điện áp (185-240V) hoạt động phù hợp với lưới điện ở Việt Nam.  Hiệu suất phát sáng cao (800-16000lm/W).  CRI>70 và lâu giảm sáng.  Chip LED có tuổi thọ cao lên đến 30.000H.  Sử dụng van cân bằng thoát hơi ẩm thông minh.  Kết hợp hộp nhôm kính bền nhẹ, dễ dàng thi công.  Linh hoạt lắp đặt ở nhiều không gian. ","applications":"Chiếu sáng sân, vườn, bảng hiệu, công trình.","variants":[{"power":"10W","light":"6500K/3000K","price":"169.000 VND","lumen":"800","dimensions_mm":"D108*R81*C24"},{"power":"20W","light":"6500K/3000K","price":"239.000 VND","lumen":"1600","dimensions_mm":"D143*R108*C24"},{"power":"30W","light":"6500K/3000K","price":"339.000 VND","lumen":"2400","dimensions_mm":"D187*R140*C24"},{"power":"50W","light":"6500K/3000K","price":"489.000 VND","lumen":"4000","dimensions_mm":"D217*R163*C26"},{"power":"100W","light":"6500K/3000K","price":"999.000 VND","lumen":"8000","dimensions_mm":"D287*R225*C32"},{"power":"150W","light":"6500K","price":"1.699.000 VND","lumen":"12000","dimensions_mm":"D328*R275*C35"},{"power":"200W","light":"6500K","price":"2.399.000 VND","lumen":"16000","dimensions_mm":"D382*R317*C35"}]}],"Đèn Năng Lượng Mặt Trời":[{"name":"Đèn pha Năng lượng mặt trời","image":"https://i.postimg.cc/t40NjVqN/page4-img6.jpg","description":"Đèn pha sử dụng năng lượng mặt trời. ","features":"Pin Lithium LiFePo4 với 3000 chu kỳ sạc-xả giúp chống chai pin trong quá trình sử dụng.  Thời gian sạc đầy 5-8h.  Sức bền lên tới 26h - đáp ứng đủ 2 đêm chiếu sáng.  Tấm pin năng lượng công nghệ MONO với khả năng hấp thụ năng lượng mặt trời lên tới 25% (Công nghệ Poly chỉ đạt 17%). ","applications":"Chiếu sáng sân, vườn, bảng hiệu, công trình ở những nơi không có điện lưới.","variants":[{"power":"100W","light":"6500K","price":"1.668.000 VND"},{"power":"200W","light":"6500K","price":"2.468.000 VND"},{"power":"300W","light":"6500K","price":"3.268.000 VND"}]},{"name":"Đèn Trụ Năng lượng mặt trời","image":"https://i.postimg.cc/Kzsts1pL/page5-img2.jpg","description":"Đèn trụ sử dụng năng lượng mặt trời.","features":"Pin Lithium LiFePo4 với 3000 chu kỳ sạc-xả giúp chống chai pin trong quá trình sử dụng.  Lựa chọn nhiều chế độ màu sắc ánh sáng bằng nút bấm.  Lắp đặt trụ cổng hoặc trên tường. ","applications":"Chiếu sáng đường đi, công viên, sân vườn.","variants":[{"power":"400lm","light":"Đổi màu","price":"1.586.000 VND"}]},{"name":"Đèn tường Năng lượng mặt trời","image":"https://i.postimg.cc/cJhRw9QF/page5-img3.jpg","description":"Đèn tường sử dụng năng lượng mặt trời.","features":"Pin Lithium LiFePo4 với 3000 chu kỳ sạc-xả giúp chống chai pin trong quá trình sử dụng.  Lựa chọn nhiều chế độ màu sắc ánh sáng bằng nút bấm.  Tích hợp cảm biến chuyển động sáng khi có người. ","applications":"Chiếu sáng tường nhà, ban công, cửa.","variants":[{"power":"400lm","light":"Đổi màu","price":"693.000 VND"}]}],"Đèn Ống Bơ":[{"name":"Đèn LED Bơ Tỏa","image":"https://i.ibb.co/2YsT8V8p/B-t-a.png","description":"Ống bơ ánh sáng tỏa, thiết kế trụ tròn.","features":"Vỏ nhôm đúc với hàm lượng cao, thiết kế dày dặn và tinh tế.  Dải điện áp 170V-240V hoạt động phù hợp với lưới điện ở Việt Nam.  Thiết kế chống chói giúp ánh sáng phát ra đẹp và chân thực.  Trang bị dây cao bảo vệ, an toàn khi lắp đặt. ","applications":"Chiếu sáng dân dụng, văn phòng.","variants":[{"power":"9W","light":"6500K/4200K/3000K","price":"258.000 VND","lumen":"600","dimensions_mm":"Φ95*H68"},{"power":"12W","light":"6500K/4200K/3000K","price":"324.000 VND","lumen":"920","dimensions_mm":"Φ120*H70"},{"power":"9W","light":"ĐỔI MÀU","price":"Liên hệ","lumen":"600","dimensions_mm":"Φ95*H68"},{"power":"12W","light":"ĐỔI MÀU","price":"Liên hệ","lumen":"920","dimensions_mm":"Φ120*H70"}]},{"name":"Đèn LED Ống Bơ COB-S","image":"https://i.ibb.co/DH928TNg/COB-S.png","description":"Ống bơ chiếu điểm, sử dụng chip COB.","features":"Vỏ nhôm đúc với hàm lượng cao, thiết kế dày dặn và tinh tế.  Dải điện áp 85V-265V hoạt động phù hợp với lưới điện ở Việt Nam.  Gắn nổi trần hoặc treo thả, phù hợp với nhiều kiểu trần.  Thiết kế gờ nổi tinh tế, khác biệt và đầy phong cách.  Chỉ số hoàn màu cao CRI>95 cho màu sắc chân thực, không gian sống động.  Hạn chế ánh sáng xanh gây hại mắt. ","applications":"Chiếu sáng dân dụng, văn phòng, cửa hàng.","variants":[{"power":"10W","light":"3000K/4000K/6500K","quang_thông":"850Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ98*H45","đóng_gói":"48 PCS","price":"459.000 VND"},{"power":"12W","light":"3000K/4000K/6500K","quang_thông":"1020Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ98*H45","đóng_gói":"48 PCS","price":"479.000 VND"},{"power":"15W","light":"3000K/4000K/6500K","quang_thông":"1270Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ120*H55","đóng_gói":"48 PCS","price":"669.000 VND"},{"power":"18W","light":"3000K/4000K/6500K","quang_thông":"1530Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ120*H55","đóng_gói":"48 PCS","price":"699.000 VND"},{"power":"10W","light":"ĐỔI MÀU","quang_thông":"850Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ98*H45","đóng_gói":"48 PCS","price":"559.000 VND"},{"power":"12W","light":"ĐỔI MÀU","quang_thông":"1020Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ98*H45","đóng_gói":"48 PCS","price":"579.000 VND"}]},{"name":"Đèn LED Ống Bơ COB-H","image":"https://i.ibb.co/dsCN8SDp/COB-H.png","description":"Ống bơ chiếu điểm, sử dụng chip COB.  Công suất cao.","features":"Vỏ nhôm đúc với hàm lượng cao, thiết kế dày dặn và tinh tế.  Dải điện áp 85V-265V hoạt động phù hợp với lưới điện ở Việt Nam.  Gắn nổi trần hoặc treo thả, phù hợp với nhiều kiểu trần.  Thiết kế gờ nổi tinh tế, khác biệt và đầy phong cách.  Chỉ số hoàn màu cao CRI>95 cho màu sắc chân thực, không gian sống động.  Hạn chế ánh sáng xanh gây hại mắt. ","applications":"Chiếu sáng dân dụng, văn phòng, cửa hàng, nhà xưởng.","variants":[{"power":"10W","light":"3000K/4000K/6500K","price":"459.000 VND","quang_thông":"850Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ80*H85","đóng_gói":"36 PCS"},{"power":"12W","light":"3000K/4000K/6500K","price":"479.000 VND","quang_thông":"1020Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ80*H85","đóng_gói":"36 PCS"},{"power":"15W","light":"3000K/4000K/6500K","price":"599.000 VND","quang_thông":"1270Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ80*H90","đóng_gói":"36 PCS"},{"power":"18W","light":"3000K/4000K/6500K","price":"629.000 VND","quang_thông":"1270Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ80*H90","đóng_gói":"36 PCS"},{"power":"10W","light":"ĐỔI MÀU","price":"559.000 VND","quang_thông":"850Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ80*H85","đóng_gói":"36 PCS"},{"power":"12W","light":"ĐỔI MÀU","price":"579.000 VND","quang_thông":"1020Lm","choa":"ĐEN/TRẮNG","vỏ":"ĐEN/TRẮNG","kích_thước":"Φ80*H85","đóng_gói":"36 PCS"}]}],"Quạt Trần Đèn":[{"name":"Đèn quạt 5 và 6 cánh","image":"https://i.ibb.co/vxPGt3b2/MB-Quat-5-canh-go-c-n.png","description":"Quạt trần kết hợp đèn, 5 hoặc 6 cánh.","features":"Dễ dàng lắp đặt, quay ổn định không rung lắc, luồng gió mạnh mẽ với 6 cấp tốc độ và không gây tiếng ồn.  Động cơ sử dụng đồng nguyên chất và thép nhập khẩu từ Đài Loan.  Quy trình sản xuất cánh quạt kiểm soát nghiêm ngặt về khối lượng và hình dáng phải đồng đều, chống rung lắc tốt.  Điều khiển thông minh với các kết nối 1-1, 1-nhiều quạt và bảo mật cao. ","applications":"Chiếu sáng và làm mát phòng khách, phòng ngủ.","variants":[{"fan_power":"35W","light_power":"20W","blades":"5 cánh","light":"3000K/4000K/6500K","price":"3.600.000 VND","loại_động_cơ":"DC","điện_áp":"220V/50Hz","chất_liệu_cánh":"Nhựa ABS","tốc_độ":"105-134-159-186-204-220 (RPM)","đường_kính_cánh":"1219mm (48\")","chiều_cao_quạt":"405mm (trục treo 125mm) / 530mm (trục treo 250mm)"},{"fan_power":"55W","light_power":"Không có đèn","blades":"5 cánh","light":"Không có đèn","price":"4.500.000 VND","loại_động_cơ":"DC","điện_áp":"220V/50Hz","chất_liệu_cánh":"Nhựa ABS","tốc_độ":"86-100-118-133-146-161 (RPM)","đường_kính_cánh":"1575mm (62\")","chiều_cao_quạt":"385mm (trục treo 125mm) / 510mm (trục treo 250mm)"},{"fan_power":"55W","light_power":"20W","blades":"6 cánh","light":"2000Lm","price":"4.500.000 VND","loại_động_cơ":"DC","điện_áp":"220V/50Hz","chất_liệu_cánh":"Nhựa ABS","tốc_độ":"93-112-129-137-150-161 (RPM)","đường_kính_cánh":"1620mm (64\")","chiều_cao_quạt":"420mm (trục treo 125mm) / 545mm (trục treo 250mm)"}]},{"name":"Đèn quạt 8 cánh","image":"https://i.ibb.co/d0yzJkyt/Quat-tran-8-c-nh.jpg","description":"Quạt trần kết hợp đèn, 8 cánh.","features":"Dễ dàng lắp đặt, quay ổn định không rung lắc, luồng gió mạnh mẽ với 8 cấp tốc độ và không gây tiếng ồn.  Động cơ sử dụng đồng nguyên chất và thép nhập khẩu từ Đài Loan.  Do sử dụng nhiều cánh nên tạo nhiều lưu lượng gió tạo không gian mát mẻ nhanh chóng.  Quy trình sản xuất cánh quạt kiểm soát nghiêm ngặt về khối lượng và hình dáng phải đồng đều, chống rung lắc tốt.  Điều khiển thông minh với các kết nối 1-1, 1-nhiều quạt và bảo mật cao. ","applications":"Chiếu sáng và làm mát phòng khách, phòng ngủ, phòng họp.","variants":[{"fan_power":"55W","light_power":"20W","blades":"8 cánh","light":"2000Lm","price":"6.900.000 VND","loại_động_cơ":"DC","điện_áp":"220V/50Hz","chất_liệu_cánh":"Nhựa ABS","tốc_độ":"55-67-77-88-102-112-120-134 (RPM)","đường_kính_cánh":"1524mm (60\")","chiều_cao_quạt":"375mm (trục treo 125mm) / 500mm (trục treo 250mm)"}]},{"name":"Quạt Trần 3 Cánh","image":"https://i.postimg.cc/z6680207292785_f37b22a96290304b307019718461a3d6.jpg","description":"Quạt trần kết hợp đèn, 3 cánh.","features":"Dễ dàng lắp đặt, quay ổn định không rung lắc, luồng gió mạnh mẽ với 6 cấp tốc độ và không gây tiếng ồn.  Động cơ sử dụng đồng nguyên chất và thép nhập khẩu từ Đài Loan.  Quy trình sản xuất cánh quạt kiểm soát nghiêm ngặt về khối lượng và hình dáng phải đồng đều, chống rung lắc tốt.  Điều khiển thông minh với các kết nối 1-1, 1-nhiều quạt và bảo mật cao. ","applications":"Chiếu sáng và làm mát phòng khách, phòng ngủ.","variants":[{"fan_power":"35W","light_power":"18W","blades":"3 cánh","light":"3000K/4000K/6500K - 1800Lm","price":"5.429.000 VND","loại_động_cơ":"DC","điện_áp":"220V/50Hz","chất_liệu_cánh":"Nhựa ABS","tốc_độ":"100-116-131-147-160-179 (RPM)","đường_kính_cánh":"1320mm (52\")","chiều_cao_quạt":"330mm (trục treo 150mm) / 380mm (trục treo 200mm)"}]}],"Đèn Pin":[{"name":"Đèn pin đội đầu 303","image":"https://i.ibb.co/FSNKLZw/n-pin-303.jpg","description":"Đèn pin đội đầu, sử dụng pin sạc.","features":"Dung lượng pin lớn, sạc nhanh chỉ 6-8 giờ.  Thời gian chiếu sáng lên đến 12h liên tục chỉ sau 1 lần sạc.  Thiết kế nhỏ gọn, có thể điều chỉnh góc chiếu linh hoạt.  Dây đeo đội đầu bằng vải thun co giãn phù hợp cho mọi người sử dụng.  2 chế độ sáng: chiếu xa và chiếu gần. ","applications":"Chiếu sáng khi đi cắm trại, leo núi, sửa chữa.","variants":[{"battery":"3.6V - 2400mA","charger":"4.2V - 600mA","light":"6500K/3000K","price":"173.000 VND"}]},{"name":"Đèn pin đội đầu 304","image":"https://i.ibb.co/B5rqtL2X/den-pin-304.png","description":"Đèn pin đội đầu, sử dụng pin sạc.  Cải tiến từ 303.","features":"Dung lượng pin lớn, sạc nhanh chỉ 6-8 giờ.  Thời gian chiếu sáng lên đến 12h liên tục chỉ sau 1 lần sạc.  Thiết kế nhỏ gọn, có thể điều chỉnh góc chiếu linh hoạt.  Dây đeo đội đầu bằng vải thun co giãn phù hợp cho mọi người sử dụng.  3 chế độ sáng: chiếu xa, chiếu gần, nháy cảnh báo. ","applications":"Chi chiếu sáng khi đi cắm trại, leo núi, sửa chữa.","variants":[{"battery":"3.6V-3600mA","charger":"4.2V - 800mA","light":"6500K/3000K","price":"224.000 VND"}]},{"name":"Đèn pin đội đầu T6","image":"https://i.ibb.co/0y8r5VnZ/Den-Pin-T6.png","description":"Đèn pin đội đầu, sử dụng pin sạc, chip LED T6. ","features":"Dung lượng pin lớn, sạc nhanh chỉ 6-8 giờ.  Thời gian chiếu sáng lên đến 12h liên tục chỉ sau 1 lần sạc.  Thiết kế nhỏ gọn, có thể điều chỉnh góc chiếu linh hoạt.  Dây đeo đội đầu bằng vải thun co giãn phù hợp cho mọi người sử dụng.  3 chế độ sáng: chiếu xa, chiếu gần, nháy cảnh báo. ","applications":"Chiếu sáng khi đi cắm trại, leo núi, sửa chữa, tuần tra.","variants":[{"battery":"3.6V-5200mA","charger":"4.2V - 800mA","light":"6500K/3000K","price":"542.000 VND"}]},{"name":"Đèn pin cầm tay NLMT JO2","image":"https://i.postimg.cc/LhFYrLtq/page110-img2.jpg","description":"Đèn pin cầm tay, sử dụng năng lượng mặt trời và pin sạc.","features":"Dung lượng pin lớn, sạc nhanh chỉ 6-8 giờ.  Thời gian chiếu sáng lên đến 12h liên tục chỉ sau 1 lần sạc.  Thiết kế nhỏ gọn, có thể điều chỉnh góc chiếu linh hoạt.  Dây đeo đội đầu bằng vải thun co giãn phù hợp cho mọi người sử dụng.  4 chế độ sáng: chiếu xa, chiếu gần, nháy cảnh báo, ánh sáng tỏa.  2 hình thức sạc: sạc bằng USB và sạc bằng tấm pin NLMT. ","applications":"Chiếu sáng khi đi cắm trại, leo núi, sửa chữa, sử dụng hàng ngày.","variants":[{"battery":"3.6V-1800mA","charger":"USB/Solar","light":"6500K/3000K","price":"201.000 VND"}]}]};function wrapLabel(label,maxWidth){if(typeof label!=='string'||label.length<=maxWidth)return label;const words=label.split(' ');let lines=[];let currentLine='';words.forEach(word=>{if((currentLine+' '+word).trim().length>maxWidth){lines.push(currentLine);currentLine=word}else{currentLine=(currentLine+' '+word).trim()}});lines.push(currentLine);return lines}
+function getRepresentativePower(product){let powers=[];if(product.variants&&product.variants.length>0){product.variants.forEach(variant=>{if(variant.power&&typeof variant.power==='string'){const powerMatch=variant.power.match(/(\d+)/);if(powerMatch)powers.push(parseInt(powerMatch[1]));}
+if(variant.fan_power&&typeof variant.fan_power==='string'){const fanPowerMatch=variant.fan_power.match(/(\d+)/);if(fanPowerMatch)powers.push(parseInt(fanPowerMatch[1]));}
+if(variant.light_power&&typeof variant.light_power==='string'){const lightPowerMatch=variant.light_power.match(/(\d+)/);if(lightPowerMatch)powers.push(parseInt(lightPowerMatch[1]));}})}
+return powers.length>0?Math.max(...powers):0}
+function calculateCriCounts(details){let criCategories={'>95':0,'>90':0,'>80':0};for(const category in details){details[category].forEach(product=>{let minCri=0;const criFeatureMatch=product.features.match(/CRI\s*>\s*(\d+)/);if(criFeatureMatch){minCri=parseInt(criFeatureMatch[1])}
+if(minCri>=95)criCategories['>95']++;else if(minCri>=90)criCategories['>90']++;else if(minCri>=80)criCategories['>80']++})}
+return criCategories}
+function createProductCardHtml(product){const allKeys=new Set();product.variants.forEach(variant=>{Object.keys(variant).forEach(key=>allKeys.add(key))});const headers=Array.from(allKeys);let cardHtml=`<div class="product-card bg-gray-700/30 p-4 rounded-lg mb-4">
+ <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mb-4">
+            ${product.image ? `<img src="${product.image}" alt="${product.name}" class="w-48 h-48 object-contain flex-shrink-0 rounded-lg shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/300x200/232946/B8C1EC?text=Không có ảnh';">` : `<div class='w-48 h-48 flex items-center justify-center bg-gray-600 rounded-lg'>Không có ảnh</div>`}
+            <div class="flex-1 flex-grow">
+                <p class="text-lg font-medium text-white mb-1">${product.name}</p>
+                <p class="text-sm text-gray-300 mb-1"><strong>Mô tả:</strong> ${product.description || 'N/A'}</p>
+                <p class="text-sm text-gray-300 mb-1"><strong>Đặc điểm:</strong> ${product.features || 'N/A'}</p>
+                <p class="text-sm text-gray-300 mb-1"><strong>Ứng dụng:</strong> ${product.applications || 'N/A'}</p>
+            </div>
+        </div>
+        <div class="hidden md:block overflow-x-auto">
+            <table class="product-table w-full text-sm text-white border border-gray-600">
+                <thead class="bg-gray-800">
+                    <tr>
+                        ${headers.map(header => `<th class="px-2 py-2 border-b border-gray-600 text-left whitespace-nowrap">${header.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>
+                    ${product.variants.map(variant => `<tr>${headers.map(header=>{if(header==='price'){const original=parseInt(variant.price.replace(/[^0-9]/g,''),10);const discounted=Math.round(original*0.55).toLocaleString('vi-VN')+' VND';return `<td class="px-2 py-2 border-b border-gray-700 whitespace-nowrap">
+                                                <span class="line-through text-gray-400 mr-2">${variant.price}</span>
+                                                <span class="text-red-400 font-semibold">${discounted}</span>
+                                            </td>`}else{return `<td class="px-2 py-2 border-b border-gray-700 whitespace-nowrap">${variant[header] !== undefined ? variant[header] : 'N/A'}</td>`}}).join('')}</tr>`).join('')}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="md:hidden flex flex-col gap-4">
+            ${product.variants.map((variant, index) => `<div class="bg-gray-800/50 rounded-lg p-4 shadow"><p class="text-red-400 text-sm font-semibold mb-3">Phân loại #${index+1}</p><dl class="space-y-2">${headers.map(header=>`
+                            <div class="flex justify-between">
+                                <dt class="text-gray-400 text-sm font-medium">${header.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</dt>
+                                <dd class="text-gray-200 text-sm">
+                                    ${header === 'price'
+                                        ? `<span class="line-through text-gray-400 mr-2">${variant.price}</span><span class="text-red-400 font-semibold">${Math.round(parseInt(variant.price.replace(/[^0-9]/g,''),10)*0.55).toLocaleString('vi-VN')}VND</span>`
+                                        : (variant[header] !== undefined ? variant[header] : 'N/A')}
+                                </dd>
+                            </div>`).join('')}</dl></div>`).join('')}
+        </div>
+    </div>`;return cardHtml}
+function displayProducts(productList,title){let html=`<h4 class="text-2xl font-bold text-white mb-6">${title}</h4>`;if(productList&&productList.length>0){productList.forEach(product=>{html+=createProductCardHtml(product)})}else{html+=`<p class="text-center text-gray-400 py-10">Không tìm thấy sản phẩm phù hợp.</p>`}
+productDetailsContent.innerHTML=html}
+function initProductCategoryChart(labels,counts){const ctx=document.getElementById('productCategoryChart').getContext('2d');if(productCategoryChart)productCategoryChart.destroy();productCategoryChart=new Chart(ctx,{type:'bar',data:{labels:labels,datasets:[{label:'Số lượng sản phẩm',data:counts,backgroundColor:[vibrantPalette.blue,vibrantPalette.green,vibrantPalette.orange,vibrantPalette.red,'#8B5CF6','#10B981','#F59E0B','#EF4444','#3B82F6','#6366F1'],borderRadius:5}]},options:{responsive:!0,maintainAspectRatio:!1,plugins:{legend:{display:!1}},scales:{y:{beginAtZero:!0,ticks:{color:vibrantPalette.lightAccent},grid:{color:'rgba(184, 193, 236, 0.1)'}},x:{ticks:{color:vibrantPalette.lightAccent},grid:{color:'rgba(184, 193, 236, 0.1)'}}},onClick:(evt)=>{if(currentChartDataState.type==='main'){const points=productCategoryChart.getElementsAtEventForMode(evt,'nearest',{intersect:!0},!0);if(points.length){const originalCategory=sortedCategories[points[0].index].originalLabel;const subProducts=productDetails[originalCategory];if(subProducts&&subProducts.length>0){const subProductData=subProducts.map(p=>({label:wrapLabel(p.name,15),count:p.variants.length,power:getRepresentativePower(p)})).sort((a,b)=>a.count-b.count);initProductCategoryChart(subProductData.map(item=>item.label),subProductData.map(item=>item.count));initProductPowerChart(subProductData.map(item=>item.label),subProductData.map(item=>item.power),originalCategory);powerChartWrapper.classList.remove('hidden');productChartsContainer.classList.add('md:grid-cols-2');currentChartDataState={type:'sub',mainCategory:originalCategory};backButton.classList.remove('hidden');document.getElementById('productCategoryChartDescription').textContent=`Chi tiết các loại ${originalCategory}.`}}}}}})}
+function initProductPowerChart(labels,values,categoryName){const ctx=document.getElementById('productPowerChart').getContext('2d');if(productPowerChart)productPowerChart.destroy();document.getElementById('powerChartTitle').textContent=`Công suất (W) - ${categoryName}`;productPowerChart=new Chart(ctx,{type:'bar',data:{labels:labels,datasets:[{label:'Công suất cao nhất (W)',data:values,backgroundColor:vibrantPalette.orange,borderRadius:5}]},options:{indexAxis:'y',responsive:!0,maintainAspectRatio:!1,plugins:{legend:{display:!1}},scales:{y:{ticks:{color:vibrantPalette.lightAccent,font:{size:10}},grid:{color:'rgba(184, 193, 236, 0.1)'}},x:{ticks:{color:vibrantPalette.lightAccent},grid:{color:'rgba(184, 193, 236, 0.1)'}}}}})}
+function initCriComparisonChart(){const ctx=document.getElementById('criComparisonChart').getContext('2d');const criResult=calculateCriCounts(productDetails);if(criComparisonChart)criComparisonChart.destroy();criComparisonChart=new Chart(ctx,{type:'pie',data:{labels:[`CRI > 95`,`CRI > 90`,`CRI > 80`],datasets:[{label:'Số lượng dòng sản phẩm',data:[criResult['>95'],criResult['>90'],criResult['>80']],backgroundColor:[vibrantPalette.blue,vibrantPalette.green,vibrantPalette.orange],borderColor:'#111827',borderWidth:3,hoverOffset:8}]},options:{responsive:!0,maintainAspectRatio:!1,plugins:{legend:{position:'bottom',labels:{color:vibrantPalette.lightAccent,boxWidth:20,padding:20,generateLabels:function(chart){const data=chart.data;if(data.labels.length&&data.datasets.length){const total=data.datasets[0].data.reduce((sum,val)=>sum+val,0);return data.labels.map((label,i)=>{const value=data.datasets[0].data[i];const percentage=total>0?((value/total)*100).toFixed(1)+'%':'0%';return{text:`${label}: ${value} (${percentage})`,fontColor:'#FFFFFF',fillStyle:data.datasets[0].backgroundColor[i],hidden:isNaN(data.datasets[0].data[i]),index:i}})}
+return[]}}},tooltip:{callbacks:{label:function(context){let label=context.dataset.label||'';if(label)label+=': ';if(context.parsed!==null)label+=context.parsed;return label}}}}}})}
+const initialCategoryLabels=['Đèn LED Bulb','Đèn Tuýp LED','Đèn LED Âm Trần','Đèn LED Ốp Trần','Dây LED','Đèn Pha LED','Đèn Năng Lượng Mặt Trời','Đèn Ống Bơ','Quạt Trần Đèn','Đèn Pin'];const initialCategoryCountsRaw=initialCategoryLabels.map(cat=>productDetails[cat]?productDetails[cat].length:0);const sortedCategories=initialCategoryLabels.map((label,index)=>({originalLabel:label,wrappedLabel:wrapLabel(label,16),count:initialCategoryCountsRaw[index]})).sort((a,b)=>a.count-b.count);if(document.getElementById('productCategoryChart')){initProductCategoryChart(sortedCategories.map(item=>item.wrappedLabel),sortedCategories.map(item=>item.count))}
+if(document.getElementById('criComparisonChart')){initCriComparisonChart()}
+if(backButton){backButton.addEventListener('click',()=>{currentChartDataState={type:'main',mainCategory:''};initProductCategoryChart(sortedCategories.map(item=>item.wrappedLabel),sortedCategories.map(item=>item.count));backButton.classList.add('hidden');powerChartWrapper.classList.add('hidden');productChartsContainer.classList.remove('md:grid-cols-2');document.getElementById('productCategoryChartDescription').textContent="Click vào một cột để xem chi tiết các dòng sản phẩm con."})}
+document.querySelectorAll('.product-category-button').forEach(button=>{button.addEventListener('click',(event)=>{const category=event.currentTarget.dataset.category;const products=productDetails[category];displayProducts(products,category);if(searchInput)searchInput.value='';window.scrollTo({top:document.getElementById('new-product-catalog').offsetTop-80,behavior:'smooth'})})});if(searchInput){searchInput.addEventListener('input',()=>{const keyword=searchInput.value.toLowerCase().trim();if(keyword===''){if(productDetailsContent){productDetailsContent.innerHTML=`<p class="text-center text-gray-400 py-10">Vui lòng chọn một danh mục sản phẩm để xem chi tiết hoặc nhập từ khóa để tìm kiếm.</p>`}
+return}
+const keywords=keyword.split(/\s+/).filter(Boolean);let searchResults=[];Object.keys(productDetails).forEach(category=>{productDetails[category].forEach(product=>{const productText=`${product.name} ${product.description} ${product.features} ${product.applications}`.toLowerCase();const fullText=`${productText} ${(product.variants || []).map(v => Object.values(v).join(' ')).join(' ').toLowerCase()}`;if(!keywords.every(word=>fullText.includes(word)))return;let matchedVariants=product.variants||[];if(product.variants){matchedVariants=matchedVariants.filter(variant=>{const variantText=Object.values(variant).join(' ').toLowerCase();return keywords.every(word=>variantText.includes(word)||productText.includes(word))})}
+if(!product.variants||matchedVariants.length>0){searchResults.push({...product,variants:matchedVariants})}})});if(searchResults.length===0){productDetailsContent.innerHTML=`<p class="text-center text-gray-400 py-10">Không tìm thấy sản phẩm phù hợp.</p>`}else{displayProducts(searchResults,`Kết quả tìm kiếm cho "${keyword}"`)}})}
+const mobileMenuButton=document.getElementById('mobile-menu-button');const mobileMenu=document.getElementById('mobile-menu');if(mobileMenuButton&&mobileMenu){mobileMenuButton.addEventListener('click',()=>{mobileMenu.classList.toggle('hidden')});document.querySelectorAll('#mobile-menu a').forEach(link=>{link.addEventListener('click',()=>mobileMenu.classList.add('hidden'))})}
+const calculatorModal=document.getElementById('calculatorModal');const openCalculatorBtn=document.getElementById('openCalculatorBtn');const closeCalculatorBtn=document.getElementById('closeCalculatorBtn');const modalOverlay=document.getElementById('modalOverlay');const modalContent=calculatorModal.querySelector('.relative');const openModal=()=>{calculatorModal.classList.remove('hidden');setTimeout(()=>{modalOverlay.classList.remove('opacity-0');modalContent.classList.remove('scale-95')},10)};const closeModal=()=>{modalOverlay.classList.add('opacity-0');modalContent.classList.add('scale-95');setTimeout(()=>{calculatorModal.classList.add('hidden')},300)};openCalculatorBtn.addEventListener('click',(e)=>{e.preventDefault();openModal()});closeCalculatorBtn.addEventListener('click',closeModal);modalOverlay.addEventListener('click',closeModal);modalContent.addEventListener('click',(e)=>{e.stopPropagation()});document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&!calculatorModal.classList.contains('hidden')){closeModal()}});const calc_roomTypeSelect=document.getElementById('roomType');const calc_illuminanceInput=document.getElementById('illuminance');const calc_calculateBtn=document.getElementById('calculateBtn');const calc_lampCountResult=document.getElementById('lampCount');const calc_powerDensityResult=document.getElementById('powerDensity');const calc_errorMessage=document.getElementById('errorMessage');const calc_categorySelect=document.getElementById('productCategory');const calc_nameSelect=document.getElementById('productName');const calc_variantSelect=document.getElementById('productVariant');const CALC_UF_TABLE={1:0.85,2:0.78,3:0.70,4:0.64,5:0.59,6:0.54,7:0.49,8:0.45,9:0.41,10:0.37};const CALC_MF=0.8;const CALC_WPH=0.8;function populateCategories(){Object.keys(productDetails).forEach(category=>{const option=new Option(category,category);calc_categorySelect.add(option)})}
+function populateProducts(category){calc_nameSelect.innerHTML='<option value="">-- Chọn dòng sản phẩm --</option>';calc_variantSelect.innerHTML='<option value="">-- Chọn phiên bản --</option>';calc_nameSelect.disabled=!0;calc_variantSelect.disabled=!0;if(category&&productDetails[category]){productDetails[category].forEach((product,index)=>{const option=new Option(product.name,index);calc_nameSelect.add(option)});calc_nameSelect.disabled=!1}}
+function populateVariants(category,productIndex){calc_variantSelect.innerHTML='<option value="">-- Chọn phiên bản --</option>';calc_variantSelect.disabled=!0;if(category&&productIndex!==''&&productDetails[category][productIndex]){const product=productDetails[category][productIndex];product.variants.forEach(variant=>{const power=(variant.power||'').replace('W','');const lumen=variant.lumen||'N/A';if(!power||!lumen||isNaN(parseFloat(power))||isNaN(parseFloat(lumen)))return;const text=`${variant.power} - ${variant.light || ''} (${lumen}lm)`;const option=new Option(text,text);option.dataset.wattage=power;option.dataset.lumen=lumen;calc_variantSelect.add(option)});calc_variantSelect.disabled=!1}}
+calc_roomTypeSelect.addEventListener('change',e=>{if(e.target.value!=='custom')calc_illuminanceInput.value=e.target.value});calc_categorySelect.addEventListener('change',()=>{populateProducts(calc_categorySelect.value)});calc_nameSelect.addEventListener('change',()=>{populateVariants(calc_categorySelect.value,calc_nameSelect.value)});calc_calculateBtn.addEventListener('click',()=>{const E=parseFloat(calc_illuminanceInput.value);const L=parseFloat(document.getElementById('length').value);const W=parseFloat(document.getElementById('width').value);const H=parseFloat(document.getElementById('height').value);const selectedVariantOption=calc_variantSelect.options[calc_variantSelect.selectedIndex];const F=selectedVariantOption?parseFloat(selectedVariantOption.dataset.lumen):null;const P=selectedVariantOption?parseFloat(selectedVariantOption.dataset.wattage):null;if(!E||!L||!W||!H||!F||!P||E<=0||L<=0||W<=0||H<=0||F<=0||P<=0){calc_errorMessage.textContent='Vui lòng nhập đủ thông số không gian và chọn một sản phẩm cụ thể.';calc_lampCountResult.textContent='-';calc_powerDensityResult.textContent='-';return}
+calc_errorMessage.textContent='';const A=L*W;const h_rc=H-CALC_WPH;const RCR=(5*h_rc*(L+W))/A;let UF=0;const rcr_keys=Object.keys(CALC_UF_TABLE).map(Number);if(RCR<=rcr_keys[0]){UF=CALC_UF_TABLE[rcr_keys[0]]}else if(RCR>=rcr_keys[rcr_keys.length-1]){UF=CALC_UF_TABLE[rcr_keys[rcr_keys.length-1]]}else{let lower_rcr=Math.floor(RCR);let upper_rcr=lower_rcr+1;let lower_uf=CALC_UF_TABLE[lower_rcr]||CALC_UF_TABLE[rcr_keys[0]];let upper_uf=CALC_UF_TABLE[upper_rcr]||CALC_UF_TABLE[rcr_keys[rcr_keys.length-1]];UF=lower_uf-(RCR-lower_rcr)*(lower_uf-upper_uf)}
+const N=(E*A)/(F*UF*CALC_MF);const lampCount=Math.ceil(N);const totalPower=lampCount*P;const powerDensity=totalPower/A;calc_lampCountResult.textContent=lampCount;calc_powerDensityResult.textContent=powerDensity.toFixed(2)});populateCategories()});</script>
+<div id="calculatorModal" class="fixed inset-0 z-50 flex items-start justify-center p-4 pt-10 md:pt-16 hidden">
+    
+    <div id="modalOverlay" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+    <div class="relative w-full max-w-4xl mx-auto bg-gray-800 rounded-2xl shadow-2xl transform transition-all duration-300 ease-in-out scale-95 flex flex-col max-h-[90vh]">
+        
+        <div class="flex-shrink-0 p-4 md:p-6 flex items-center justify-between border-b border-gray-700">
+            <h1 class="text-xl font-bold text-white">
+                <i class="fas fa-calculator mr-2 text-blue-400"></i>
+                Công Cụ Tư Vấn Đèn
+            </h1>
+            <button id="closeCalculatorBtn" class="text-gray-400 hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="p-4 md:p-6 overflow-y-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <div class="bg-gray-900/50 rounded-lg p-6 flex flex-col items-center justify-center text-center lg:order-last">
+                    <h2 class="text-lg font-semibold text-gray-300 mb-4">GIẢI PHÁP ĐỀ XUẤT</h2>
+                    <div id="result" class="space-y-6 w-full">
+                        <div class="bg-blue-500/10 p-4 rounded-lg">
+                            <p class="text-sm text-blue-300">Số lượng đèn cần dùng</p>
+                            <p id="lampCount" class="text-4xl font-bold text-white">-</p>
+                        </div>
+                        <div class="bg-green-500/10 p-4 rounded-lg">
+                            <p class="text-sm text-green-300">Mật độ công suất (W/m²)</p>
+                            <p id="powerDensity" class="text-4xl font-bold text-white">-</p>
+                        </div>
+                    </div>
+                    <div id="errorMessage" class="text-red-400 mt-4 font-medium h-5"></div>
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-300">1. Thông số không gian</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+                            <div>
+                                <label for="length" class="text-xs text-gray-400">Dài (m)</label>
+                                <input type="number" id="length" placeholder="8" class="w-full rounded-md p-2 form-input">
+                            </div>
+                            <div>
+                                <label for="width" class="text-xs text-gray-400">Rộng (m)</label>
+                                <input type="number" id="width" placeholder="5" class="w-full rounded-md p-2 form-input">
+                            </div>
+                            <div>
+                                <label for="height" class="text-xs text-gray-400">Cao (m)</label>
+                                <input type="number" id="height" placeholder="3.2" class="w-full rounded-md p-2 form-input">
+                            </div>
+                        </div>
+                        <select id="roomType" class="w-full rounded-md p-2.5 form-select">
+                            <option value="custom">-- Chọn loại không gian để gợi ý độ rọi --</option>
+                            <option value="500">Văn phòng làm việc, Phòng học</option>
+                            <option value="500">Bếp, Khu vực cần độ chính xác cao</option>
+                            <option value="300">Phòng khách, Phòng ăn, Showroom</option>
+                            <option value="200">Phòng tắm, Phòng đợi</option>
+                            <option value="150">Cầu thang</option>
+                            <option value="100">Hành lang, Kho, Phòng nghỉ</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="illuminance" class="block text-sm font-medium mb-2 text-gray-300">2. Độ rọi yêu cầu (Lux)</label>
+                        <input type="number" id="illuminance" placeholder="Ví dụ: 500" class="w-full rounded-md p-2 form-input" value="300">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-300">3. Chọn sản phẩm MAXBEN</label>
+                        <div class="space-y-3">
+                            <select id="productCategory" class="w-full rounded-md p-2.5 form-select">
+                                <option value="">-- Chọn danh mục --</option>
+                            </select>
+                            <select id="productName" class="w-full rounded-md p-2.5 form-select" disabled>
+                                <option value="">-- Chọn dòng sản phẩm --</option>
+                            </select>
+                            <select id="productVariant" class="w-full rounded-md p-2.5 form-select" disabled>
+                                <option value="">-- Chọn phiên bản --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="calculateBtn" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105">
+                        <i class="fas fa-cogs mr-2"></i>TÍNH TOÁN
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>const swiper=new Swiper('.swiper',{loop:!0,effect:'fade',autoplay:{delay:5000,disableOnInteraction:!1,},pagination:{el:'.swiper-pagination',clickable:!0,},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev',},});</script>
+
 </body>
 </html>
