@@ -9,8 +9,8 @@ const allProjects = [
         solution: "Chúng tôi đã tư vấn giải pháp chiếu sáng 3 lớp toàn diện: 1. Chiếu sáng chung dùng đèn downlight âm trần Lucy Pro. 2. Chiếu sáng tác vụ dùng hệ ray nam châm linh hoạt. 3. Chiếu sáng điểm nhấn dùng spotlight PROLUX-SPX1 (CRI>98) để làm nổi bật các tác phẩm nghệ thuật.",
         gallery: [ "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1770&auto=format&fit=crop", "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1770&auto=format&fit=crop", "https://images.unsplash.com/photo-1600585153492-3a216834b6e3?q=80&w=1770&auto=format&fit=crop", "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1770&auto=format&fit=crop" ],
         productsUsed: [
-            { name: "Đèn Âm Trần SPOTLIGHT PROLUX-SPX1", img: "https://i.ibb.co/b5cTCxZT/prolux-SPX1.png" },
-            { name: "Đèn LED âm trần chống chói ZEN", img: "https://i.ibb.co/Y7zkd2qz/Ch-ng-ch-i-ZEN.png" },
+            { name: "Đèn Âm Trần SPOTLIGHT PROLUX-SPX1", img: "./icons/prolux SPX1.png" },
+            { name: "Đèn LED âm trần chống chói ZEN", img: "./icons/3.png" },
             { name: "Dây LED 24 SMD/COB", img: "https://i.ibb.co/ksHMJBdw/Day-led-24-V-SMD.png" }
         ],
         testimonial: "Tôi thực sự hài lòng với giải pháp mà MAXBEN đã cung cấp. Đội ngũ tư vấn rất chuyên nghiệp, giúp tôi hình dung được toàn bộ không gian trước khi lắp đặt. Chất lượng ánh sáng rất tuyệt vời, làm nổi bật từng chi tiết nội thất.",
@@ -26,8 +26,8 @@ const allProjects = [
         solution: "MAXBEN đã sử dụng hệ thống đèn rọi ray PROLUX-T với chỉ số CRI > 97 và góc chiếu có thể điều chỉnh. Ánh sáng tập trung vào sản phẩm, tạo nên một không gian mua sắm sang trọng và chuyên nghiệp.",
         gallery: [ "https://images.pexels.com/photos/271795/pexels-photo-271795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", "https://images.pexels.com/photos/1341279/pexels-photo-1341279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", "https://images.pexels.com/photos/1078958/pexels-photo-1078958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" ],
         productsUsed: [
-            { name: "Đèn Âm Trần SPOTLIGHT PRO LUX-T", img: "https://i.ibb.co/dwSS6WCT/Prolux-T.png" },
-            { name: "Đèn LED âm trần chống chói ZEN", img: "https://i.ibb.co/Y7zkd2qz/Ch-ng-ch-i-ZEN.png" }
+            { name: "Đèn Âm Trần SPOTLIGHT PRO LUX-T", img: "./icons/Prolux T.png" },
+            { name: "Đèn LED âm trần chống chói ZEN", img: "./icons/3.png" }
         ],
         testimonial: "Ánh sáng từ đèn của MAXBEN thực sự tôn vinh vẻ đẹp của từng bộ sưu tập. Chỉ số CRI cao giúp màu sắc sản phẩm hiển thị trung thực, thu hút khách hàng ngay từ cái nhìn đầu tiên. Không gian showroom trở nên sang trọng và chuyên nghiệp hơn hẳn.",
         customerName: "Chị Thuỳ Linh, Quản lý Cửa hàng IVY Moda"
