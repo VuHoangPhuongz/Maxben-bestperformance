@@ -2,7 +2,7 @@ const productDatabase = {
   "Đèn LED Bulb": [
     {
       "name": "Đèn LED Bulb tròn",
-      "image": "https://i.ibb.co/p6XYMY9n/den-bulb-led-tron-maxben-18w-247x296.jpg",
+      "image": "./icons/bulb tròn.jpg",
       "description": "Kiểu dáng tròn, thay thế đèn Compact và sợi đốt. Công suất <20W. Đui E27.",
       "features": "Thiết kế hình tròn nhỏ gọn, thẩm mỹ. Kết cấu bằng vỏ nhôm bọc lớp nhựa màu trắng cao cấp, khép kín, chống rò điện gây nguy hiểm tới người sử dụng. Hoạt động với dải điện áp rộng từ 180V-240V, thích ứng được với những nơi có lưới điện thấp hơn 220V, giúp ánh sáng luôn ổn định, bảo vệ mắt người sử dụng cho chống cận và chống mù lòa. Đa dạng công suất và kích thước bóng đèn. Công nghệ DOB tối ưu giá thành. Chuẩn đui phổ thông E27. Tuổi thọ đạt 15000h chiếu sáng. Chất lượng ánh sáng cao, ánh sáng trung thực: CRI >80. ",
       "applications": "Chiếu sáng dân dụng, trang trí. ",
@@ -19,7 +19,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED Bulb trụ Happy",
-      "image": "https://i.ibb.co/VWtKYKDH/bong-den-led-tru-happy-247x296.jpg",
+      "image": "./icons/trụ happy.webp",
       "description": "Kiểu dáng trụ, thay thế đèn Compact và sợi đốt. Công suất ≥20W. Đui E27.",
       "features": "Vỏ đèn thân nhôm bọc nhựa được kiểm định không biến dạng trong buồng nhiệt độ giả định -40°C và 120°C. Dải điện áp 170V-240V phù hợp với lưới điện ở Việt Nam. Hiệu suất phát sáng cao 90lm/W, độ hoàn màu CRI>80. Vỏ đèn có hàm lượng nhôm cao giúp tản nhiệt tốt và nhanh cho chip LED, độ bền ánh sáng tăng 30% so với thiết kế thông thường. An toàn khi sử dụng, không gây cháy nổ: Driver đèn led bulb có điện trở cầu chì, khi có bất ổn từ lưới điện như sét đánh vào lưới điện, dây cầu chì sẽ đứt ngăn chặn cháy nổ do hiện tượng ngắn mạch. Bộ phận khuếch tán của được làm từ chất liệu nhựa PC – loại nhựa có thể chịu được nhiệt độ cao lên tới 137°C, khả năng phát ra ánh sáng đạt >90%, khả năng cách điện và chống cháy cực tốt. Sử dụng chip led 2835 siêu bền, CRI>80 mang đến màu sắc trung thực và bảo vệ thị lực người dùng. Tiết kiệm điện năng: Bóng đèn led bulb trụ giúp tiết kiệm 80% điện năng so với đèn sợi đốt và 50% so với đèn compact. Không tạo ra khí CO2 hoặc các tia gây hại như cực tím, UV, hồng ngoại bức xạ...an toàn cho làn da, người già, trẻ nhỏ, người cần dưỡng bệnh. ",
       "applications": "Chiếu sáng dân dụng, trang trí.",
@@ -372,7 +372,7 @@ const productDatabase = {
   "Dây LED": [
     {
       "name": "Dây LED Galaxy",
-      "image": "https://i.ibb.co/DfGTync0/cuon-day.png",
+      "image": "./icons/day-led-maxben-galaxy-v2-2.png",
       "description": "Dây LED trang trí, nhiều màu sắc.",
       "features": "Dây đồng bọc kẽm tăng hiệu suất truyền điện và chống Oxi-hóa. Bản mạch là lõi đồng 2 lớp giúp tản nhiệt tốt cho chip LED. Sử dụng chip LED 2835 of MLS with luminous efficacy 80lm/W. CRI>80 giúp màu sắc ánh sáng của dây chân thực và đẹp mắt. Sản xuất tập trung, tối ưu chi phí. 1m/Cut giúp đa dạng địa hình lắp đặt và tối ưu chi phí. Đóng gói 100m/cuộn. ",
       "applications": "Trang trí nội ngoại thất, quán cafe, nhà hàng.",
@@ -382,7 +382,7 @@ const productDatabase = {
     },
     {
       "name": "Dây LED 12V/24V",
-      "image": "https://i.ibb.co/DfGys675/day-led-maxbne-12v-247x296.jpg",
+      "image": "./icons/z6789540544506_945c4e038e9e46d9ca1fa49267e5a567.jpg",
       "description": "Dây LED sử dụng điện áp thấp 12V hoặc 24V.",
       "features": "Là loại điện áp thấp an toàn cho người sử dụng không bị điện giật khi chạm vào. Hiệu suất phát sáng cao 100lm/W. Độ hoàn màu CRI>80 cho chất lượng ánh sáng tốt. Kết hợp cùng thanh nhôm định hình thành giải pháp chiếu sáng cho các ứng dụng trang trí Decor, chiếu sáng. Không sử dụng thủy ngân cũng không phát ra tia cực tím, CO2 nên vô cùng an toàn. Ánh sáng ổn định và không bị nhấp nháy, bảo vệ mắt tốt và chống lóa mỏi mắt. ",
       "applications": "Trang trí nội ngoại thất, chiếu sáng tủ, kệ.",
@@ -392,7 +392,7 @@ const productDatabase = {
     },
     {
       "name": "Dây LED 24 SMD/COB",
-      "image": "https://i.ibb.co/ksHMJBdw/Day-led-24-V-SMD.png",
+      "image": "./icons/1.png",
       "description": "Dây LED sử dụng chip SMD hoặc COB.",
       "features": "Là loại điện áp thấp an toàn cho người sử dụng không bị điện giật khi chạm vào. Sở hữu công suất 10W/m, được trang bị tới 120-320 hạt LED/m, cho ánh sáng đều, liên tục và không gây chói. Sử dụng bản mạch đồng 2 lớp cao cấp, sản phẩm đảm bảo khả năng tản nhiệt tốt, hoạt động ổn định và bền bỉ trong thời gian dài. Dễ dàng cắt nối, uốn cong linh hoạt tùy theo nhu cầu và không gian. ",
       "applications": "Trang trí nội ngoại thất, chiếu sáng tủ, kệ.",
@@ -403,7 +403,7 @@ const productDatabase = {
     },
     {
       "name": "Nguồn dây LED 24V",
-      "image": "https://i.ibb.co/whQBzR00/day-led-24v.png",
+      "image": "./icons/Nguon-day-led-24-V.png",
       "description": "Nguồn cấp điện cho dây LED 24V.",
       "features": "Công suất đa dạng từ 60W đến 400W, phù hợp cho từng quy mô chiếu sáng từ nhỏ đến lớn. Vỏ kim loại: chắc chắn, chống gỉ, dễ lắp đặt. ",
       "applications": "Cấp điện cho dây LED 24V.",
@@ -530,7 +530,7 @@ const productDatabase = {
   "Đèn Ống Bơ": [
     {
       "name": "Đèn LED Bơ Tỏa",
-      "image": "https://i.ibb.co/2YsT8V8p/B-t-a.png",
+      "image": "./icons/MB-Quạt-ống-bơ-01.png",
       "description": "Ống bơ ánh sáng tỏa, thiết kế trụ tròn.",
       "features": "Vỏ nhôm đúc với hàm lượng cao, thiết kế dày dặn và tinh tế. Dải điện áp 170V-240V hoạt động phù hợp với lưới điện ở Việt Nam. Thiết kế chống chói giúp ánh sáng phát ra đẹp và chân thực. Trang bị dây cao bảo vệ, an toàn khi lắp đặt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng.",
@@ -543,7 +543,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED Ống Bơ COB-S",
-      "image": "https://i.ibb.co/DH928TNg/COB-S.png",
+      "image": "./icons/COB- S.png",
       "description": "Ống bơ chiếu điểm, sử dụng chip COB.",
       "features": "Vỏ nhôm đúc với hàm lượng cao, thiết kế dày dặn và tinh tế. Dải điện áp 85V-265V hoạt động phù hợp với lưới điện ở Việt Nam. Gắn nổi trần hoặc treo thả, phù hợp với nhiều kiểu trần. Thiết kế gờ nổi tinh tế, khác biệt và đầy phong cách. Chỉ số hoàn màu cao CRI>95 cho màu sắc chân thực, không gian sống động. Hạn chế ánh sáng xanh gây hại mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng, cửa hàng.",
@@ -558,7 +558,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn LED Ống Bơ COB-H",
-      "image": "https://i.ibb.co/dsCN8SDp/COB-H.png",
+      "image": "./icons/COB H.png",
       "description": "Ống bơ chiếu điểm, sử dụng chip COB. Công suất cao.",
       "features": "Vỏ nhôm đúc với hàm lượng cao, thiết kế dày dặn và tinh tế. Dải điện áp 85V-265V hoạt động phù hợp với lưới điện ở Việt Nam. Gắn nổi trần hoặc treo thả, phù hợp với nhiều kiểu trần. Thiết kế gờ nổi tinh tế, khác biệt và đầy phong cách. Chỉ số hoàn màu cao CRI>95 cho màu sắc chân thực, không gian sống động. Hạn chế ánh sáng xanh gây hại mắt. ",
       "applications": "Chiếu sáng dân dụng, văn phòng, cửa hàng, nhà xưởng.",
@@ -575,7 +575,7 @@ const productDatabase = {
   "Quạt Trần Đèn": [
     {
       "name": "Đèn quạt 5 và 6 cánh",
-      "image": "https://i.ibb.co/vxPGt3b2/MB-Quat-5-canh-go-c-n.png",
+      "image": "./icons/MB-Quạt-5-cánh-gỗ-đèn-02.png",
       "description": "Quạt trần kết hợp đèn, 5 hoặc 6 cánh.",
       "features": "Dễ dàng lắp đặt, quay ổn định không rung lắc, luồng gió mạnh mẽ với 6 cấp tốc độ và không gây tiếng ồn. Động cơ sử dụng đồng nguyên chất và thép nhập khẩu từ Đài Loan. Quy trình sản xuất cánh quạt kiểm soát nghiêm ngặt về khối lượng và hình dáng phải đồng đều, chống rung lắc tốt. Điều khiển thông minh với các kết nối 1-1, 1-nhiều quạt và bảo mật cao. ",
       "applications": "Chiếu sáng và làm mát phòng khách, phòng ngủ.",
@@ -587,7 +587,7 @@ const productDatabase = {
     },
     {
       "name": "Đèn quạt 8 cánh",
-      "image": "https://i.ibb.co/d0yzJkyt/Quat-tran-8-c-nh.jpg",
+      "image": "./icons/MB-Quạt-8-cánh-đen-02.png",
       "description": "Quạt trần kết hợp đèn, 8 cánh.",
       "features": "Dễ dàng lắp đặt, quay ổn định không rung lắc, luồng gió mạnh mẽ với 8 cấp tốc độ và không gây tiếng ồn. Động cơ sử dụng đồng nguyên chất và thép nhập khẩu từ Đài Loan. Do sử dụng nhiều cánh nên tạo nhiều lưu lượng gió tạo không gian mát mẻ nhanh chóng. Quy trình sản xuất cánh quạt kiểm soát nghiêm ngặt về khối lượng và hình dáng phải đồng đều, chống rung lắc tốt. Điều khiển thông minh với các kết nối 1-1, 1-nhiều quạt và bảo mật cao. ",
       "applications": "Chiếu sáng và làm mát phòng khách, phòng ngủ, phòng họp.",
